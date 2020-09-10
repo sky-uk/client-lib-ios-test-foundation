@@ -1,9 +1,35 @@
 
 # Warning, do not change version.
-version: 2.1
-
-orbs:
-  carthage: ngs/carthage@0.0.3
+version: 2
+aliases:
+  - &boot_simulator
+      name: Boot Simulator
+      command: xcrun instruments -w "iPhone 11 (13.5) [" || true
+  - &restore_gem_cache
+      name: Restore Gemfile Cache
+      key: 1-gems-{{ checksum "Gemfile.lock" }}
+  - &bundle_install
+      name: Update Gemfile
+      command: bundle check || bundle install --path vendor/bundle
+  - &save_gem_cache
+      name: Save Gemfile Cache
+      key: 1-gems-{{ checksum "Gemfile.lock" }}
+      paths:
+        - vendor/bundle
+  - &restore_carthage_cache
+      name: Restore Cartfile Cache
+      key: 2-ca-{{ checksum "date" }}
+  - &carthage_bootstrap
+      name: Bootstrap iOS dependencies
+      command: carthage bootstrap --platform ios --cache-builds
+  - &save_carthage_cache
+      name: Save Cartfile Cache
+      key: 2-ca-{{ checksum "date" }}
+      paths:
+        - Carthage
+  - &ruby_fix
+      name: Set Ruby Version
+      command:  echo "ruby-2.6" > ~/.ruby-version
 
 jobs:
 # Swift setup
