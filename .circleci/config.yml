@@ -10,8 +10,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build
-        command: xcodebuild | xcpretty
+          name: Build Framework
+          command: xcodebuild | xcpretty
 
 workflows:
   version: 2
