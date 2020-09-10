@@ -1,15 +1,15 @@
 //
-//  ios_test_foundationTests.swift
-//  ios-test-foundationTests
+//  client_lib_ios_test_foundationTests.swift
+//  client-lib-ios-test-foundationTests
 //
 //  Created by Sky on 10/09/2020.
 //  Copyright © 2020 Sky. All rights reserved.
 //
 
 import XCTest
-@testable import ios_test_foundation
+@testable import client_lib_ios_test_foundation
 
-class ios_test_foundationTests: XCTestCase {
+class client_lib_ios_test_foundationTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

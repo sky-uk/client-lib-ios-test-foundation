@@ -7,154 +7,158 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		334A66A2250A212B0007CCA3 /* ios_test_foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334A6698250A212B0007CCA3 /* ios_test_foundation.framework */; };
-		334A66A7250A212B0007CCA3 /* ios_test_foundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A66A6250A212B0007CCA3 /* ios_test_foundationTests.swift */; };
-		334A66A9250A212B0007CCA3 /* ios_test_foundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 334A669B250A212B0007CCA3 /* ios_test_foundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		334A66C6250A221A0007CCA3 /* client_lib_ios_test_foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334A66BC250A221A0007CCA3 /* client_lib_ios_test_foundation.framework */; };
+		334A66CB250A221A0007CCA3 /* client_lib_ios_test_foundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A66CA250A221A0007CCA3 /* client_lib_ios_test_foundationTests.swift */; };
+		334A66CD250A221A0007CCA3 /* client_lib_ios_test_foundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 334A66BF250A221A0007CCA3 /* client_lib_ios_test_foundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		334A6713250A24660007CCA3 /* HttpServerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A6712250A24660007CCA3 /* HttpServerBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		334A66A3250A212B0007CCA3 /* PBXContainerItemProxy */ = {
+		334A66C7250A221A0007CCA3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 334A668F250A212B0007CCA3 /* Project object */;
+			containerPortal = 334A66B3250A221A0007CCA3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 334A6697250A212B0007CCA3;
-			remoteInfo = "ios-test-foundation";
+			remoteGlobalIDString = 334A66BB250A221A0007CCA3;
+			remoteInfo = "client-lib-ios-test-foundation";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		334A6698250A212B0007CCA3 /* ios_test_foundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ios_test_foundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		334A669B250A212B0007CCA3 /* ios_test_foundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ios_test_foundation.h; sourceTree = "<group>"; };
-		334A669C250A212B0007CCA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		334A66A1250A212B0007CCA3 /* ios-test-foundationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-test-foundationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		334A66A6250A212B0007CCA3 /* ios_test_foundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_test_foundationTests.swift; sourceTree = "<group>"; };
-		334A66A8250A212B0007CCA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		334A66BC250A221A0007CCA3 /* client_lib_ios_test_foundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = client_lib_ios_test_foundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		334A66BF250A221A0007CCA3 /* client_lib_ios_test_foundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = client_lib_ios_test_foundation.h; sourceTree = "<group>"; };
+		334A66C0250A221A0007CCA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		334A66C5250A221A0007CCA3 /* client-lib-ios-test-foundationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "client-lib-ios-test-foundationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		334A66CA250A221A0007CCA3 /* client_lib_ios_test_foundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = client_lib_ios_test_foundationTests.swift; sourceTree = "<group>"; };
+		334A66CC250A221A0007CCA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		334A6712250A24660007CCA3 /* HttpServerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpServerBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		334A6695250A212B0007CCA3 /* Frameworks */ = {
+		334A66B9250A221A0007CCA3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		334A669E250A212B0007CCA3 /* Frameworks */ = {
+		334A66C2250A221A0007CCA3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				334A66A2250A212B0007CCA3 /* ios_test_foundation.framework in Frameworks */,
+				334A66C6250A221A0007CCA3 /* client_lib_ios_test_foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		334A668E250A212B0007CCA3 = {
+		334A66B2250A221A0007CCA3 = {
 			isa = PBXGroup;
 			children = (
-				334A669A250A212B0007CCA3 /* ios-test-foundation */,
-				334A66A5250A212B0007CCA3 /* ios-test-foundationTests */,
-				334A6699250A212B0007CCA3 /* Products */,
+				334A66BE250A221A0007CCA3 /* client-lib-ios-test-foundation */,
+				334A66C9250A221A0007CCA3 /* client-lib-ios-test-foundationTests */,
+				334A66BD250A221A0007CCA3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		334A6699250A212B0007CCA3 /* Products */ = {
+		334A66BD250A221A0007CCA3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				334A6698250A212B0007CCA3 /* ios_test_foundation.framework */,
-				334A66A1250A212B0007CCA3 /* ios-test-foundationTests.xctest */,
+				334A66BC250A221A0007CCA3 /* client_lib_ios_test_foundation.framework */,
+				334A66C5250A221A0007CCA3 /* client-lib-ios-test-foundationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		334A669A250A212B0007CCA3 /* ios-test-foundation */ = {
+		334A66BE250A221A0007CCA3 /* client-lib-ios-test-foundation */ = {
 			isa = PBXGroup;
 			children = (
-				334A669B250A212B0007CCA3 /* ios_test_foundation.h */,
-				334A669C250A212B0007CCA3 /* Info.plist */,
+				334A66BF250A221A0007CCA3 /* client_lib_ios_test_foundation.h */,
+				334A66C0250A221A0007CCA3 /* Info.plist */,
+				334A6712250A24660007CCA3 /* HttpServerBuilder.swift */,
 			);
-			path = "ios-test-foundation";
+			path = "client-lib-ios-test-foundation";
 			sourceTree = "<group>";
 		};
-		334A66A5250A212B0007CCA3 /* ios-test-foundationTests */ = {
+		334A66C9250A221A0007CCA3 /* client-lib-ios-test-foundationTests */ = {
 			isa = PBXGroup;
 			children = (
-				334A66A6250A212B0007CCA3 /* ios_test_foundationTests.swift */,
-				334A66A8250A212B0007CCA3 /* Info.plist */,
+				334A66CA250A221A0007CCA3 /* client_lib_ios_test_foundationTests.swift */,
+				334A66CC250A221A0007CCA3 /* Info.plist */,
 			);
-			path = "ios-test-foundationTests";
+			path = "client-lib-ios-test-foundationTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		334A6693250A212B0007CCA3 /* Headers */ = {
+		334A66B7250A221A0007CCA3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				334A66A9250A212B0007CCA3 /* ios_test_foundation.h in Headers */,
+				334A66CD250A221A0007CCA3 /* client_lib_ios_test_foundation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		334A6697250A212B0007CCA3 /* ios-test-foundation */ = {
+		334A66BB250A221A0007CCA3 /* client-lib-ios-test-foundation */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 334A66AC250A212B0007CCA3 /* Build configuration list for PBXNativeTarget "ios-test-foundation" */;
+			buildConfigurationList = 334A66D0250A221A0007CCA3 /* Build configuration list for PBXNativeTarget "client-lib-ios-test-foundation" */;
 			buildPhases = (
-				334A6693250A212B0007CCA3 /* Headers */,
-				334A6694250A212B0007CCA3 /* Sources */,
-				334A6695250A212B0007CCA3 /* Frameworks */,
-				334A6696250A212B0007CCA3 /* Resources */,
+				334A66B7250A221A0007CCA3 /* Headers */,
+				334A66B8250A221A0007CCA3 /* Sources */,
+				334A66B9250A221A0007CCA3 /* Frameworks */,
+				334A66BA250A221A0007CCA3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "ios-test-foundation";
-			productName = "ios-test-foundation";
-			productReference = 334A6698250A212B0007CCA3 /* ios_test_foundation.framework */;
+			name = "client-lib-ios-test-foundation";
+			productName = "client-lib-ios-test-foundation";
+			productReference = 334A66BC250A221A0007CCA3 /* client_lib_ios_test_foundation.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		334A66A0250A212B0007CCA3 /* ios-test-foundationTests */ = {
+		334A66C4250A221A0007CCA3 /* client-lib-ios-test-foundationTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 334A66AF250A212B0007CCA3 /* Build configuration list for PBXNativeTarget "ios-test-foundationTests" */;
+			buildConfigurationList = 334A66D3250A221A0007CCA3 /* Build configuration list for PBXNativeTarget "client-lib-ios-test-foundationTests" */;
 			buildPhases = (
-				334A669D250A212B0007CCA3 /* Sources */,
-				334A669E250A212B0007CCA3 /* Frameworks */,
-				334A669F250A212B0007CCA3 /* Resources */,
+				334A66C1250A221A0007CCA3 /* Sources */,
+				334A66C2250A221A0007CCA3 /* Frameworks */,
+				334A66C3250A221A0007CCA3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				334A66A4250A212B0007CCA3 /* PBXTargetDependency */,
+				334A66C8250A221A0007CCA3 /* PBXTargetDependency */,
 			);
-			name = "ios-test-foundationTests";
-			productName = "ios-test-foundationTests";
-			productReference = 334A66A1250A212B0007CCA3 /* ios-test-foundationTests.xctest */;
+			name = "client-lib-ios-test-foundationTests";
+			productName = "client-lib-ios-test-foundationTests";
+			productReference = 334A66C5250A221A0007CCA3 /* client-lib-ios-test-foundationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		334A668F250A212B0007CCA3 /* Project object */ = {
+		334A66B3250A221A0007CCA3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
 				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = Sky;
 				TargetAttributes = {
-					334A6697250A212B0007CCA3 = {
+					334A66BB250A221A0007CCA3 = {
 						CreatedOnToolsVersion = 11.7;
+						LastSwiftMigration = 1170;
 					};
-					334A66A0250A212B0007CCA3 = {
+					334A66C4250A221A0007CCA3 = {
 						CreatedOnToolsVersion = 11.7;
 					};
 				};
 			};
-			buildConfigurationList = 334A6692250A212B0007CCA3 /* Build configuration list for PBXProject "ios-test-foundation" */;
+			buildConfigurationList = 334A66B6250A221A0007CCA3 /* Build configuration list for PBXProject "client-lib-ios-test-foundation" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -162,26 +166,26 @@
 				en,
 				Base,
 			);
-			mainGroup = 334A668E250A212B0007CCA3;
-			productRefGroup = 334A6699250A212B0007CCA3 /* Products */;
+			mainGroup = 334A66B2250A221A0007CCA3;
+			productRefGroup = 334A66BD250A221A0007CCA3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				334A6697250A212B0007CCA3 /* ios-test-foundation */,
-				334A66A0250A212B0007CCA3 /* ios-test-foundationTests */,
+				334A66BB250A221A0007CCA3 /* client-lib-ios-test-foundation */,
+				334A66C4250A221A0007CCA3 /* client-lib-ios-test-foundationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		334A6696250A212B0007CCA3 /* Resources */ = {
+		334A66BA250A221A0007CCA3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		334A669F250A212B0007CCA3 /* Resources */ = {
+		334A66C3250A221A0007CCA3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -191,33 +195,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		334A6694250A212B0007CCA3 /* Sources */ = {
+		334A66B8250A221A0007CCA3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				334A6713250A24660007CCA3 /* HttpServerBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		334A669D250A212B0007CCA3 /* Sources */ = {
+		334A66C1250A221A0007CCA3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				334A66A7250A212B0007CCA3 /* ios_test_foundationTests.swift in Sources */,
+				334A66CB250A221A0007CCA3 /* client_lib_ios_test_foundationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		334A66A4250A212B0007CCA3 /* PBXTargetDependency */ = {
+		334A66C8250A221A0007CCA3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 334A6697250A212B0007CCA3 /* ios-test-foundation */;
-			targetProxy = 334A66A3250A212B0007CCA3 /* PBXContainerItemProxy */;
+			target = 334A66BB250A221A0007CCA3 /* client-lib-ios-test-foundation */;
+			targetProxy = 334A66C7250A221A0007CCA3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		334A66AA250A212B0007CCA3 /* Debug */ = {
+		334A66CE250A221A0007CCA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,7 +285,7 @@
 			};
 			name = Debug;
 		};
-		334A66AB250A212B0007CCA3 /* Release */ = {
+		334A66CF250A221A0007CCA3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -337,47 +342,50 @@
 			};
 			name = Release;
 		};
-		334A66AD250A212B0007CCA3 /* Debug */ = {
+		334A66D1250A221A0007CCA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 64346Y5J98;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "ios-test-foundation/Info.plist";
+				INFOPLIST_FILE = "client-lib-ios-test-foundation/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sky.ios-test-foundation";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sky.client-lib-ios-test-foundation";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		334A66AE250A212B0007CCA3 /* Release */ = {
+		334A66D2250A221A0007CCA3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 64346Y5J98;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "ios-test-foundation/Info.plist";
+				INFOPLIST_FILE = "client-lib-ios-test-foundation/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sky.ios-test-foundation";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sky.client-lib-ios-test-foundation";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -385,36 +393,38 @@
 			};
 			name = Release;
 		};
-		334A66B0250A212B0007CCA3 /* Debug */ = {
+		334A66D4250A221A0007CCA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64346Y5J98;
-				INFOPLIST_FILE = "ios-test-foundationTests/Info.plist";
+				INFOPLIST_FILE = "client-lib-ios-test-foundationTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sky.ios-test-foundationTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sky.client-lib-ios-test-foundationTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		334A66B1250A212B0007CCA3 /* Release */ = {
+		334A66D5250A221A0007CCA3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64346Y5J98;
-				INFOPLIST_FILE = "ios-test-foundationTests/Info.plist";
+				INFOPLIST_FILE = "client-lib-ios-test-foundationTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sky.ios-test-foundationTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sky.client-lib-ios-test-foundationTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -424,34 +434,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		334A6692250A212B0007CCA3 /* Build configuration list for PBXProject "ios-test-foundation" */ = {
+		334A66B6250A221A0007CCA3 /* Build configuration list for PBXProject "client-lib-ios-test-foundation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				334A66AA250A212B0007CCA3 /* Debug */,
-				334A66AB250A212B0007CCA3 /* Release */,
+				334A66CE250A221A0007CCA3 /* Debug */,
+				334A66CF250A221A0007CCA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		334A66AC250A212B0007CCA3 /* Build configuration list for PBXNativeTarget "ios-test-foundation" */ = {
+		334A66D0250A221A0007CCA3 /* Build configuration list for PBXNativeTarget "client-lib-ios-test-foundation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				334A66AD250A212B0007CCA3 /* Debug */,
-				334A66AE250A212B0007CCA3 /* Release */,
+				334A66D1250A221A0007CCA3 /* Debug */,
+				334A66D2250A221A0007CCA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		334A66AF250A212B0007CCA3 /* Build configuration list for PBXNativeTarget "ios-test-foundationTests" */ = {
+		334A66D3250A221A0007CCA3 /* Build configuration list for PBXNativeTarget "client-lib-ios-test-foundationTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				334A66B0250A212B0007CCA3 /* Debug */,
-				334A66B1250A212B0007CCA3 /* Release */,
+				334A66D4250A221A0007CCA3 /* Debug */,
+				334A66D5250A221A0007CCA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 334A668F250A212B0007CCA3 /* Project object */;
+	rootObject = 334A66B3250A221A0007CCA3 /* Project object */;
 }
