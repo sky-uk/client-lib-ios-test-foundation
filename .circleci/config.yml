@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: Build Framework
-          command: xcodebuild | xcpretty
+          command: xcodebuild -sdk iphonesimulator | xcpretty
 
 workflows:
   version: 2
