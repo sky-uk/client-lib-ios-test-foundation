@@ -1,6 +1,10 @@
 
 # Warning, do not change version.
-version: 2
+version: 2.1
+
+orbs:
+  carthage: ngs/carthage@0.0.3
+
 jobs:
 # Swift setup
   build:
