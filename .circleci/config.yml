@@ -50,7 +50,7 @@ jobs:
           root: ~/
           paths: project
 
-  build:
+  run-unit-test:
     macos:
       xcode: 11.7.0
     shell: /bin/bash --login -eo pipefail
@@ -59,14 +59,19 @@ jobs:
           at: ~/
       - run:
           name: Build Framework
-          command: xcodebuild -sdk iphonesimulator | xcpretty
+          command: >
+            xcodebuild test
+            -scheme client-lib-ios-test-foundation
+            -sdk iphonesimulator
+            -destination 'platform=iOS Simulator,name=iPhone 11'
+            | xcpretty
 
 workflows:
   version: 2
   build-test:
     jobs:
       - prebase
-      - build:
+      - run-unit-test:
           requires:
             - prebase
 

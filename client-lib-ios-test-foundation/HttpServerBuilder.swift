@@ -1,10 +1,187 @@
 import Foundation
 import Swifter
+
+
+typealias EndpointDataResponse = (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?)
 public class HttpServerBuilder {
+    public static let httpLocalhost = "http://127.0.0.1"
 
     public init() {}
 
-    public func info() {
-        print("Mock server.")
+    private struct EDResponse {
+        let endpoint: String
+        let statusCode: Int
+        let body: Data
+        let responseTime: UInt32?
+        let onReceivedHttpRequest: ((Swifter.HttpRequest) -> Void)?
     }
+
+    private let uncallqQueue = DispatchQueue(label: "queue.endpoint.uncalled")
+    private var httpResponses: [EDResponse] = []
+    private var imagesResponse: [ImageReponse] = []
+    public private(set) var httpServer: HttpServer = HttpServer()
+    private var endpointCallCount: [String: Int] = [:]
+
+    func insert(_ responses: [EndpointDataResponse]) -> HttpServerBuilder {
+        responses.forEach { response in
+            _ = insert(response)
+        }
+        return self
+    }
+
+    func insertImagesAt(path: String, properties: ((Swifter.HttpRequest) -> ImageProperties)? = nil) {
+        imagesResponse.append(ImageReponse(path: path, properties: properties))
+    }
+
+    func insert(_ response: EndpointDataResponse, on: ((Swifter.HttpRequest) -> Void)? = nil) -> HttpServerBuilder {
+        httpResponses.append(EDResponse(endpoint: response.endpoint,
+                                        statusCode: response.statusCode,
+                                        body: response.body,
+                                        responseTime: response.responseTime,
+                                        onReceivedHttpRequest: on))
+        return self
+    }
+
+    private func updateEndpointCallCount(_ endpoint: String) {
+        uncallqQueue.async {
+            let callCount: Int
+            if let count = self.endpointCallCount[endpoint] {
+                callCount = count + 1
+            } else {
+                callCount = 1
+            }
+            self.endpointCallCount[endpoint] = callCount
+        }
+    }
+
+    public func callReport() -> [EndpointReport] {
+        uncallqQueue.sync {
+            let groupByEndpoint = Dictionary(grouping: httpResponses, by: { $0.endpoint })
+            let expectedReports: [EndpointReport] = groupByEndpoint.keys.map {
+                let responseCount = groupByEndpoint[$0]?.count ?? 0
+                return EndpointReport(endpoint: $0, responseCount: responseCount, httpRequestCount: 0)
+            }
+            return expectedReports.map {
+                $0.edited(receivedCallCount: endpointCallCount[$0.endpoint] ?? 0)
+            }
+        }
+    }
+
+    public func definedResponses() -> [String] {
+        return self.httpResponses.map { (edResponse) -> String in
+            return "Endpoint: \(edResponse.endpoint)\n" + "\(String(describing: String(bytes: edResponse.body, encoding: .utf8)))"
+        }
+    }
+    func buildImageResponses() {
+        imagesResponse.forEach { (imageResponse) in
+            httpServer[imageResponse.path] = { request in
+                debugPrint("Request image: \(request.path)")
+                let data: Data
+                if let imageProperties = imageResponse.properties {
+                    let properties = imageProperties(request)
+                    data = HttpServerBuilder.drawOnImage(text: request.path, properties: properties)!.jpegData(compressionQuality: 1)!
+                } else {
+                    data = HttpServerBuilder.drawOnImage(text: request.path)!.jpegData(compressionQuality: 1)!
+                }
+
+                return HttpResponse.raw(200, "", nil) { (writer) in
+                    try writer.write(data)
+                }
+            }
+        }
+    }
+
+    func buildAndStart(port: in_port_t = 8080, file: StaticString = #file, line: UInt = #line) throws -> HttpServer {
+        buildImageResponses()
+        let groupByEndpoint = Dictionary(grouping: httpResponses) { $0.endpoint }
+        for (endpoint, responses) in groupByEndpoint {
+            let queue = DispatchQueue(label: "queue.endpoint.\(endpoint)")
+            var index = 0
+            debugPrint("Building endpoint: \(endpoint) Response.count:\(responses.count)")
+            httpServer[endpoint] = { request in
+                debugPrint("Requested path:\(request.path) Params:\(request.queryParams) Response.count:\(responses.count)")
+                var response: EDResponse!
+                self.updateEndpointCallCount(endpoint)
+                queue.sync {
+                    index = index < responses.count ? index : 0
+                    response = responses[index]
+                    index = index + 1
+                }
+                if let onReceivedHttpRequest = response.onReceivedHttpRequest {
+                    DispatchQueue.main.sync {
+                        onReceivedHttpRequest(request)
+                    }
+                }
+                sleep(response.responseTime ?? 0)
+                return HttpResponse.raw(response.statusCode, "", nil) { (writer) in
+                    try writer.write(response.body)
+                }
+            }
+        }
+        debugPrint("Starting  server [port=\(port)]")
+        try httpServer.start(port)
+        return httpServer
+    }
+
+    public struct EndpointReport {
+        // endpoint
+        let endpoint: String
+        // associated response count
+        let responseCount: Int
+        // received http requests count
+        let httpRequestCount: Int
+    }
+}
+
+extension HttpServerBuilder.EndpointReport {
+    func edited(receivedCallCount: Int) -> HttpServerBuilder.EndpointReport {
+        HttpServerBuilder.EndpointReport(
+            endpoint: endpoint,
+            responseCount: responseCount,
+            httpRequestCount: receivedCallCount
+        )
+    }
+
+    func string() -> String {
+        return "endpoint: \(endpoint) expected call count:\(responseCount) received call count: \(httpRequestCount)"
+    }
+}
+
+extension Sequence where Element == HttpServerBuilder.EndpointReport {
+    func filter(_ endpoint: String) -> Element? {
+        return self.first { $0.endpoint == endpoint }
+    }
+
+    func string() -> String {
+        return self.reduce("") { (result, report) -> String in
+            return report.string() + result
+        }
+    }
+}
+
+extension HttpServer {
+    var port: Int {
+        return (try? self.port()) ?? 8080
+    }
+}
+
+extension Swifter.HttpRequest {
+
+    func queryParam(key: String) -> String? {
+        return queryParams.first { $0.0 == key }?.1
+    }
+
+    func pathParam(key: String = ":path") -> String? {
+        params.first { $0.0 == key }?.1
+    }
+}
+
+public func encode<T: Encodable>(value: T) throws -> Data {
+    let encoder = JSONEncoder()
+    encoder.dateEncodingStrategy = .custom({ (date, encoder) in
+        var container = encoder.singleValueContainer()
+        let encodedDate = ISO8601DateFormatter().string(from: date)
+        try container.encode(encodedDate)
+    })
+    return try encoder.encode(value)
 }

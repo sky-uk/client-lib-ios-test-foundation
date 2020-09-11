@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330278DC250BB0C9009D5F22 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 330278DB250BB0C9009D5F22 /* Swifter.framework */; };
+		330278DD250BB0C9009D5F22 /* Swifter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 330278DB250BB0C9009D5F22 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		330278DF250BB215009D5F22 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 330278DB250BB0C9009D5F22 /* Swifter.framework */; };
+		330278E0250BB238009D5F22 /* Swifter.framework in Copy Files Carthage */ = {isa = PBXBuildFile; fileRef = 330278DB250BB0C9009D5F22 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		334A66C6250A221A0007CCA3 /* client_lib_ios_test_foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334A66BC250A221A0007CCA3 /* client_lib_ios_test_foundation.framework */; };
-		334A66CB250A221A0007CCA3 /* client_lib_ios_test_foundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A66CA250A221A0007CCA3 /* client_lib_ios_test_foundationTests.swift */; };
 		334A66CD250A221A0007CCA3 /* client_lib_ios_test_foundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 334A66BF250A221A0007CCA3 /* client_lib_ios_test_foundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		334A6713250A24660007CCA3 /* HttpServerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A6712250A24660007CCA3 /* HttpServerBuilder.swift */; };
-		33E4637A250A7AEC008A6F12 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E46379250A7AEC008A6F12 /* Swifter.framework */; };
-		33E4637B250A7AEC008A6F12 /* Swifter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33E46379250A7AEC008A6F12 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3390A060250B5A96004E0EE0 /* ImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3390A05F250B5A96004E0EE0 /* ImageResponse.swift */; };
+		3390A062250B5ABF004E0EE0 /* ImageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3390A061250B5ABF004E0EE0 /* ImageProperties.swift */; };
+		3390A066250B8AA7004E0EE0 /* HttSeverBuilder+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3390A065250B8AA7004E0EE0 /* HttSeverBuilder+Images.swift */; };
+		3390A06A250B8CA2004E0EE0 /* InitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3390A069250B8CA2004E0EE0 /* InitTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,13 +31,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3390A06C250BA2CA004E0EE0 /* Copy Files Carthage */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				330278E0250BB238009D5F22 /* Swifter.framework in Copy Files Carthage */,
+			);
+			name = "Copy Files Carthage";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		33E4637C250A7AEC008A6F12 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				33E4637B250A7AEC008A6F12 /* Swifter.framework in Embed Frameworks */,
+				330278DD250BB0C9009D5F22 /* Swifter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,14 +56,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		330278DB250BB0C9009D5F22 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		334A66BC250A221A0007CCA3 /* client_lib_ios_test_foundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = client_lib_ios_test_foundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		334A66BF250A221A0007CCA3 /* client_lib_ios_test_foundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = client_lib_ios_test_foundation.h; sourceTree = "<group>"; };
 		334A66C0250A221A0007CCA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		334A66C5250A221A0007CCA3 /* client-lib-ios-test-foundationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "client-lib-ios-test-foundationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		334A66CA250A221A0007CCA3 /* client_lib_ios_test_foundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = client_lib_ios_test_foundationTests.swift; sourceTree = "<group>"; };
 		334A66CC250A221A0007CCA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		334A6712250A24660007CCA3 /* HttpServerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpServerBuilder.swift; sourceTree = "<group>"; };
-		33E46379250A7AEC008A6F12 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
+		3390A05F250B5A96004E0EE0 /* ImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResponse.swift; sourceTree = "<group>"; };
+		3390A061250B5ABF004E0EE0 /* ImageProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProperties.swift; sourceTree = "<group>"; };
+		3390A065250B8AA7004E0EE0 /* HttSeverBuilder+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttSeverBuilder+Images.swift"; sourceTree = "<group>"; };
+		3390A069250B8CA2004E0EE0 /* InitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33E4637A250A7AEC008A6F12 /* Swifter.framework in Frameworks */,
+				330278DC250BB0C9009D5F22 /* Swifter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				334A66C6250A221A0007CCA3 /* client_lib_ios_test_foundation.framework in Frameworks */,
+				330278DF250BB215009D5F22 /* Swifter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +115,9 @@
 				334A66BF250A221A0007CCA3 /* client_lib_ios_test_foundation.h */,
 				334A66C0250A221A0007CCA3 /* Info.plist */,
 				334A6712250A24660007CCA3 /* HttpServerBuilder.swift */,
+				3390A05F250B5A96004E0EE0 /* ImageResponse.swift */,
+				3390A061250B5ABF004E0EE0 /* ImageProperties.swift */,
+				3390A065250B8AA7004E0EE0 /* HttSeverBuilder+Images.swift */,
 			);
 			path = "client-lib-ios-test-foundation";
 			sourceTree = "<group>";
@@ -102,8 +125,8 @@
 		334A66C9250A221A0007CCA3 /* client-lib-ios-test-foundationTests */ = {
 			isa = PBXGroup;
 			children = (
-				334A66CA250A221A0007CCA3 /* client_lib_ios_test_foundationTests.swift */,
 				334A66CC250A221A0007CCA3 /* Info.plist */,
+				3390A069250B8CA2004E0EE0 /* InitTests.swift */,
 			);
 			path = "client-lib-ios-test-foundationTests";
 			sourceTree = "<group>";
@@ -111,7 +134,7 @@
 		33E46378250A7AEC008A6F12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				33E46379250A7AEC008A6F12 /* Swifter.framework */,
+				330278DB250BB0C9009D5F22 /* Swifter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -156,6 +179,7 @@
 				334A66C1250A221A0007CCA3 /* Sources */,
 				334A66C2250A221A0007CCA3 /* Frameworks */,
 				334A66C3250A221A0007CCA3 /* Resources */,
+				3390A06C250BA2CA004E0EE0 /* Copy Files Carthage */,
 			);
 			buildRules = (
 			);
@@ -227,7 +251,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3390A066250B8AA7004E0EE0 /* HttSeverBuilder+Images.swift in Sources */,
+				3390A060250B5A96004E0EE0 /* ImageResponse.swift in Sources */,
 				334A6713250A24660007CCA3 /* HttpServerBuilder.swift in Sources */,
+				3390A062250B5ABF004E0EE0 /* ImageProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				334A66CB250A221A0007CCA3 /* client_lib_ios_test_foundationTests.swift in Sources */,
+				3390A06A250B8CA2004E0EE0 /* InitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +462,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64346Y5J98;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "client-lib-ios-test-foundationTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -454,6 +485,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64346Y5J98;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "client-lib-ios-test-foundationTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
