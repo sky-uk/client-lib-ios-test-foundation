@@ -61,7 +61,7 @@ jobs:
           name: Build Framework
           command: >
             xcodebuild test
-            -scheme client-lib-ios-test-foundation
+            -scheme SkyTestFoundation
             -sdk iphonesimulator
             -destination 'platform=iOS Simulator,name=iPhone 11'
             | xcpretty
