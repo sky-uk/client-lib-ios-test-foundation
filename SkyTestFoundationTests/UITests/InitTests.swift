@@ -1,15 +1,14 @@
 import XCTest
-
 @testable import SkyTestFoundation
 
 class InitTests: XCTestCase {
 
     func testInit() {
-        XCTAssertNotNil(HttpServerBuilder())
+        XCTAssertNotNil(UITestHttpServerBuilder())
     }
 
     func testBuildAndStart() throws {
-        let mockServer = try HttpServerBuilder().buildAndStart()
+        let mockServer = try UITestHttpServerBuilder().buildAndStart()
         XCTAssertNotNil(mockServer)
         mockServer.stop()
 

@@ -1,7 +1,7 @@
 import UIKit
 import Foundation
 
-extension HttpServerBuilder {
+extension UITestHttpServerBuilder {
     // MARK: Image utilities
     static func drawOnImage(text: String, properties: ImageProperties? = nil) -> UIImage? {
         let size = properties?.size ?? CGSize(width: 500, height: 500)

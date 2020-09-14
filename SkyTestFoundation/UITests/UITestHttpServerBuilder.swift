@@ -1,10 +1,10 @@
 import Foundation
 import Swifter
 
-
 typealias EndpointDataResponse = (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?)
-public class HttpServerBuilder {
+public class UITestHttpServerBuilder {
     public static let httpLocalhost = "http://127.0.0.1"
+    public private(set) var httpServer: HttpServer = HttpServer()
 
     public init() {}
 
@@ -19,10 +19,10 @@ public class HttpServerBuilder {
     private let uncallqQueue = DispatchQueue(label: "queue.endpoint.uncalled")
     private var httpResponses: [EDResponse] = []
     private var imagesResponse: [ImageReponse] = []
-    public private(set) var httpServer: HttpServer = HttpServer()
+
     private var endpointCallCount: [String: Int] = [:]
 
-    func insert(_ responses: [EndpointDataResponse]) -> HttpServerBuilder {
+    func insert(_ responses: [EndpointDataResponse]) -> UITestHttpServerBuilder {
         responses.forEach { response in
             _ = insert(response)
         }
@@ -33,7 +33,7 @@ public class HttpServerBuilder {
         imagesResponse.append(ImageReponse(path: path, properties: properties))
     }
 
-    func insert(_ response: EndpointDataResponse, on: ((Swifter.HttpRequest) -> Void)? = nil) -> HttpServerBuilder {
+    func insert(_ response: EndpointDataResponse, on: ((Swifter.HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder {
         httpResponses.append(EDResponse(endpoint: response.endpoint,
                                         statusCode: response.statusCode,
                                         body: response.body,
@@ -79,9 +79,9 @@ public class HttpServerBuilder {
                 let data: Data
                 if let imageProperties = imageResponse.properties {
                     let properties = imageProperties(request)
-                    data = HttpServerBuilder.drawOnImage(text: request.path, properties: properties)!.jpegData(compressionQuality: 1)!
+                    data = UITestHttpServerBuilder.drawOnImage(text: request.path, properties: properties)!.jpegData(compressionQuality: 1)!
                 } else {
-                    data = HttpServerBuilder.drawOnImage(text: request.path)!.jpegData(compressionQuality: 1)!
+                    data = UITestHttpServerBuilder.drawOnImage(text: request.path)!.jpegData(compressionQuality: 1)!
                 }
 
                 return HttpResponse.raw(200, "", nil) { (writer) in
@@ -131,58 +131,5 @@ public class HttpServerBuilder {
         // received http requests count
         let httpRequestCount: Int
     }
-}
-
-extension HttpServerBuilder.EndpointReport {
-    func edited(receivedCallCount: Int) -> HttpServerBuilder.EndpointReport {
-        HttpServerBuilder.EndpointReport(
-            endpoint: endpoint,
-            responseCount: responseCount,
-            httpRequestCount: receivedCallCount
-        )
-    }
-
-    func string() -> String {
-        return "endpoint: \(endpoint) expected call count:\(responseCount) received call count: \(httpRequestCount)"
-    }
-}
-
-extension Sequence where Element == HttpServerBuilder.EndpointReport {
-    func filter(_ endpoint: String) -> Element? {
-        return self.first { $0.endpoint == endpoint }
-    }
-
-    func string() -> String {
-        return self.reduce("") { (result, report) -> String in
-            return report.string() + result
-        }
-    }
-}
-
-extension HttpServer {
-    var port: Int {
-        return (try? self.port()) ?? 8080
-    }
-}
-
-extension Swifter.HttpRequest {
-
-    func queryParam(key: String) -> String? {
-        return queryParams.first { $0.0 == key }?.1
-    }
-
-    func pathParam(key: String = ":path") -> String? {
-        params.first { $0.0 == key }?.1
-    }
-}
-
-public func encode<T: Encodable>(value: T) throws -> Data {
-    let encoder = JSONEncoder()
-    encoder.dateEncodingStrategy = .custom({ (date, encoder) in
-        var container = encoder.singleValueContainer()
-        let encodedDate = ISO8601DateFormatter().string(from: date)
-        try container.encode(encodedDate)
-    })
-    return try encoder.encode(value)
 }
 
