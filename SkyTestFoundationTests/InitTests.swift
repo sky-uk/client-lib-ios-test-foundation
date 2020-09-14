@@ -1,14 +1,6 @@
-//
-//  InitTests.swift
-//  client-lib-ios-test-foundationTests
-//
-//  Created by Sky on 11/09/2020.
-//  Copyright © 2020 Sky. All rights reserved.
-//
-
 import XCTest
 
-@testable import client_lib_ios_test_foundation
+@testable import SkyTestFoundation
 
 class InitTests: XCTestCase {
 
@@ -25,5 +17,5 @@ class InitTests: XCTestCase {
         mockServer.stop()
         XCTAssertNotNil(mockServer)
     }
-
 }
+

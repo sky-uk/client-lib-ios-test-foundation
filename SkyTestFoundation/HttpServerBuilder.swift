@@ -19,7 +19,7 @@ extension HttpServerBuilder {
         let midPoint = CGPoint(x: size.width / 2, y: size.height / 2)
         [0, 0.3, 0.48].forEach { (inset) in
             let x = (size.width - minSide) / 2
-            let y = (size.height - minSide) / 2
+            let y = (size .height - minSide) / 2
             context.strokeEllipse(in: CGRect(x: x, y: y, width: minSide, height: minSide).insetBy(dx: minSide * CGFloat(inset), dy: minSide * CGFloat(inset)))
         }
 
@@ -49,3 +49,4 @@ extension HttpServerBuilder {
     }
 
 }
+

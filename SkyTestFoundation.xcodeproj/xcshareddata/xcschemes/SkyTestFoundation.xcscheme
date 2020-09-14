@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1170"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "334A66BB250A221A0007CCA3"
-               BuildableName = "client_lib_ios_test_foundation.framework"
-               BlueprintName = "client-lib-ios-test-foundation"
-               ReferencedContainer = "container:client-lib-ios-test-foundation.xcodeproj">
+               BlueprintIdentifier = "F06378CAD02068C9AFE4069E"
+               BuildableName = "SkyTestFoundation.framework"
+               BlueprintName = "SkyTestFoundation"
+               ReferencedContainer = "container:SkyTestFoundation.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,19 +26,35 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "334A66C4250A221A0007CCA3"
-               BuildableName = "client-lib-ios-test-foundationTests.xctest"
-               BlueprintName = "client-lib-ios-test-foundationTests"
-               ReferencedContainer = "container:client-lib-ios-test-foundation.xcodeproj">
+               BlueprintIdentifier = "F84906D1DA8C37A21B5C42B2"
+               BuildableName = "SkyTestFoundation-Tests.xctest"
+               BlueprintName = "SkyTestFoundation-Tests"
+               ReferencedContainer = "container:SkyTestFoundation.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F06378CAD02068C9AFE4069E"
+            BuildableName = "SkyTestFoundation.framework"
+            BlueprintName = "SkyTestFoundation"
+            ReferencedContainer = "container:SkyTestFoundation.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <CommandLineArguments>
+      </CommandLineArguments>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <CodeCoverageTargets>
+      </CodeCoverageTargets>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -50,6 +66,19 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F06378CAD02068C9AFE4069E"
+            BuildableName = "SkyTestFoundation.framework"
+            BlueprintName = "SkyTestFoundation"
+            ReferencedContainer = "container:SkyTestFoundation.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <CommandLineArguments>
+      </CommandLineArguments>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,15 +86,18 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "334A66BB250A221A0007CCA3"
-            BuildableName = "client_lib_ios_test_foundation.framework"
-            BlueprintName = "client-lib-ios-test-foundation"
-            ReferencedContainer = "container:client-lib-ios-test-foundation.xcodeproj">
+            BlueprintIdentifier = "F06378CAD02068C9AFE4069E"
+            BuildableName = "SkyTestFoundation.framework"
+            BlueprintName = "SkyTestFoundation"
+            ReferencedContainer = "container:SkyTestFoundation.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
+      <CommandLineArguments>
+      </CommandLineArguments>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

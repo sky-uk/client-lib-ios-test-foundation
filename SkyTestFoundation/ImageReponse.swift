@@ -6,3 +6,4 @@ struct ImageReponse {
     let properties: ((Swifter.HttpRequest) -> ImageProperties)?
 }
 
+

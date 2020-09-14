@@ -1,0 +1,44 @@
+name: SkyTestFoundation
+options:
+  bundleIdPrefix: it.sky
+  deploymentTarget:
+    iOS: "12.4"
+targets:
+  SkyTestFoundation:
+    templates:
+      - iOSFramework
+    sources:
+      - path: SkyTestFoundation
+        group: SkyTestFoundation
+    scheme:
+      testTargets:
+        - SkyTestFoundation-Tests
+  SkyTestFoundation-Tests:
+    templates:
+      - iOSTestFramework
+    sources:
+      - SkyTestFoundationTests
+    dependencies:
+      - target: SkyTestFoundation
+targetTemplates:
+  iOSFramework:
+    platform: iOS
+    type: framework
+    info:
+      path: ${target_name}.plist
+      properties:
+        CFBundleIdentifier: it.sky.${target_name}
+        CFBundleShortVersionString: "3.0.2"
+    sources:
+      - path: SkyTestFoundationTests
+        group: SkyTestFoundationTests
+    scheme:
+      gatherCoverageData: true
+    dependencies:
+      - carthage: Swifter
+  iOSTestFramework:
+    type: bundle.unit-test
+    platform: iOS
+    scheme: {}
+    dependencies:
+      - carthage: Swifter
