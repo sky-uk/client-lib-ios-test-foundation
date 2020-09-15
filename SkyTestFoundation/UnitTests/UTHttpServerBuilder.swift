@@ -9,7 +9,9 @@ class UTHttpServerBuilder {
         let lock = DispatchSemaphore(value: 1)
         var callCount = 0
         httpServer.self[endpoint] = { request in
+
             lock.wait()
+            print("callcount: \(callCount) \(Thread.current)")
             callCount += 1
             lock.signal()
             return completion(request, callCount)

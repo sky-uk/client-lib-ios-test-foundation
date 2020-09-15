@@ -16,7 +16,6 @@
 		332083A8250FBC68009BE85B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332083A7250FBC68009BE85B /* XCTest.framework */; };
 		332083AC250FC3C7009BE85B /* UTHttpServerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332083AB250FC3C7009BE85B /* UTHttpServerBuilder.swift */; };
 		332083AE250FC490009BE85B /* UITestHttpServerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332083AD250FC490009BE85B /* UITestHttpServerBuilder.swift */; };
-		33FAD0BB2510A4EF002A2C88 /* UTHttpServerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FAD0BA2510A4EF002A2C88 /* UTHttpServerBuilderTests.swift */; };
 		33FAD0BD2510B143002A2C88 /* SkyUnitTestCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FAD0BC2510B143002A2C88 /* SkyUnitTestCaseTests.swift */; };
 		7D76F1F2DA5E180BC57FFD03 /* SkyTestFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E730C31B9B08BBA9539A0446 /* SkyTestFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7DCCCF794790A37B4B9B1EBE /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F096C27DE6386F809733E6 /* Swifter.framework */; };
@@ -60,7 +59,6 @@
 		332083A7250FBC68009BE85B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		332083AB250FC3C7009BE85B /* UTHttpServerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTHttpServerBuilder.swift; sourceTree = "<group>"; };
 		332083AD250FC490009BE85B /* UITestHttpServerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHttpServerBuilder.swift; sourceTree = "<group>"; };
-		33FAD0BA2510A4EF002A2C88 /* UTHttpServerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTHttpServerBuilderTests.swift; sourceTree = "<group>"; };
 		33FAD0BC2510B143002A2C88 /* SkyUnitTestCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUnitTestCaseTests.swift; sourceTree = "<group>"; };
 		62F096C27DE6386F809733E6 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Swifter.framework; sourceTree = "<group>"; };
 		640400ED71614BB401FB12A2 /* SkyTestFoundation-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SkyTestFoundation-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,7 +135,6 @@
 		332083B1250FC5B2009BE85B /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				33FAD0BA2510A4EF002A2C88 /* UTHttpServerBuilderTests.swift */,
 				33FAD0BC2510B143002A2C88 /* SkyUnitTestCaseTests.swift */,
 			);
 			path = UnitTests;
@@ -266,7 +263,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				33208397250FACAF009BE85B /* InitTests.swift in Sources */,
-				33FAD0BB2510A4EF002A2C88 /* UTHttpServerBuilderTests.swift in Sources */,
 				33FAD0BD2510B143002A2C88 /* SkyUnitTestCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
