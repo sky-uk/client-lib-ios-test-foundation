@@ -5,13 +5,15 @@ import Swifter
 class UTHttpServerBuilderTests: XCTestCase {
 
     func testBuildAndRun() throws {
-        XCTAssertNotNil(try UTHttpServerBuilder().buildAndStart())
+        let httpServer = try UTHttpServerBuilder().buildAndStart()
+        XCTAssertNotNil(httpServer)
+        httpServer.stop()
     }
 
     func testRoute() throws {
         let exp = expectation(description: "")
         let httpServerBuilder = UTHttpServerBuilder()
-        try httpServerBuilder
+        let httpServer = try httpServerBuilder
             .route("login") { (request, callCount) -> (HttpResponse) in
                 XCTAssertEqual(callCount, 1)
                 XCTAssertEqual(request.path, "/login")
@@ -26,6 +28,7 @@ class UTHttpServerBuilderTests: XCTestCase {
         waitForExpectations(timeout: 3) { (error) in
             print("\(String(describing: error))")
         }
+        httpServer.stop()
     }
 
     func testRouteCallCount() throws {
@@ -48,6 +51,7 @@ class UTHttpServerBuilderTests: XCTestCase {
         waitForExpectations(timeout: 3) { (error) in
             print("\(String(describing: error))")
         }
+        httpServerBuilder.httpServer.stop()
     }
 
 }

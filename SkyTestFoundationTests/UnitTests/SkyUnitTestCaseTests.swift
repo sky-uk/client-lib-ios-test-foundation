@@ -13,8 +13,8 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         let exp = expectation(description: "")
         try httpServerBuilder
             .route("/login") { (_, _) -> (HttpResponse) in
-                    exp.fulfill()
-                    return HttpResponse.ok(HttpResponseBody.data(Data()))
+                exp.fulfill()
+                return HttpResponse.ok(HttpResponseBody.data(Data()))
             }
             .buildAndStart()
 
