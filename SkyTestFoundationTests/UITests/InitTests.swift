@@ -17,4 +17,3 @@ class InitTests: XCTestCase {
         XCTAssertNotNil(mockServer)
     }
 }
-

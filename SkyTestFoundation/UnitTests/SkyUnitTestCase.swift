@@ -3,35 +3,17 @@ import Foundation
 import XCTest
 
 class SkyUnitTestCase: XCTestCase {
-
-    var httpServer: HttpServer = HttpServer()
+    var httpServerBuilder: UTHttpServerBuilder = UTHttpServerBuilder()
 
     override func setUpWithError() throws {
         super.setUp()
-        httpServer.stop()
+        httpServerBuilder.httpServer.stop()
+        httpServerBuilder = UTHttpServerBuilder()
     }
 
     override func tearDownWithError() throws {
-        httpServer.stop()
+        httpServerBuilder.httpServer.stop()
         super.tearDown()
-    }
-
-    func startServer() throws {
-        try httpServer.start(8080)
-    }
-}
-
-extension HttpServer {
-    func route(_ endpoint: String, _ completion: @escaping (HttpRequest, Int) -> (HttpResponse)) {
-        let lock = DispatchSemaphore(value: 1)
-        var callCount = 0
-        self[endpoint] = { request in
-            lock.wait()
-            callCount += 1
-            lock.signal()
-            return completion(request, callCount)
-        }
-
     }
 }
 

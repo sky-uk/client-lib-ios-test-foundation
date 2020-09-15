@@ -53,4 +53,3 @@ public func encode<T: Encodable>(value: T) throws -> Data {
     })
     return try encoder.encode(value)
 }
-
