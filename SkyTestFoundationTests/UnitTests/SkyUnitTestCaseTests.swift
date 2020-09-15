@@ -46,9 +46,8 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         wait(for: [exp00, exp01], timeout: 3)
     }
 
-
-     func testStressTests() throws {
-           for _ in 1...1000 {
+     func testStressCallCount() throws {
+           for _ in 1...10 {
                super.setUp()
                try _testRouteCallCount()
                super.tearDown()
