@@ -11,7 +11,6 @@ class SkyUnitTestCase: XCTestCase {
         httpServerBuilder = UTHttpServerBuilder()
     }
 
-
     override func tearDown() {
         httpServerBuilder.httpServer.stop()
         super.tearDown()
