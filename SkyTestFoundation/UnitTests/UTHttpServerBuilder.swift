@@ -1,22 +1,28 @@
 import Foundation
 import Swifter
 
+typealias RouteHandler = (HttpRequest, Int) -> (HttpResponse)
+
 class UTHttpServerBuilder {
     public private(set) var httpServer: HttpServer = HttpServer()
     public var httpRoutes: [Route] = []
 
-    func route(_ endpoint: String, _ completion: @escaping (HttpRequest, Int) -> (HttpResponse)) -> UTHttpServerBuilder {
+    func route(_ endpoint: String, _ completion: @escaping RouteHandler) -> UTHttpServerBuilder {
         let lock = DispatchSemaphore(value: 1)
         var callCount = 0
         httpServer.self[endpoint] = { request in
-
             lock.wait()
-            print("callcount: \(callCount) \(Thread.current)")
             callCount += 1
             lock.signal()
             return completion(request, callCount)
         }
         return self
+    }
+
+    func route(_ endpoint: String, _ completion: @escaping () -> (HttpResponse)) {
+        httpServer.self[endpoint] = { request in
+            return completion()
+        }
     }
 
     @discardableResult

@@ -3,15 +3,16 @@ import Foundation
 import XCTest
 
 class SkyUnitTestCase: XCTestCase {
-    var httpServerBuilder: UTHttpServerBuilder = UTHttpServerBuilder()
+    var httpServerBuilder: UTHttpServerBuilder! = UTHttpServerBuilder()
 
-    override func setUpWithError() throws {
+    override func setUp() {
         super.setUp()
         httpServerBuilder.httpServer.stop()
         httpServerBuilder = UTHttpServerBuilder()
     }
 
-    override func tearDownWithError() throws {
+
+    override func tearDown() {
         httpServerBuilder.httpServer.stop()
         super.tearDown()
     }
