@@ -1,13 +1,11 @@
 import Foundation
 import Swifter
 
-typealias RouteHandler = (HttpRequest, Int) -> (HttpResponse)
-
 class UTHttpServerBuilder {
     public private(set) var httpServer: HttpServer = HttpServer()
     public var httpRoutes: [Route] = []
 
-    func route(_ endpoint: String, _ completion: @escaping RouteHandler) -> UTHttpServerBuilder {
+    public func route(_ endpoint: String, _ completion: @escaping (HttpRequest, Int) -> (HttpResponse)) -> UTHttpServerBuilder {
         let lock = DispatchSemaphore(value: 1)
         var callCount = 0
         httpServer.self[endpoint] = { request in
@@ -19,14 +17,10 @@ class UTHttpServerBuilder {
         return self
     }
 
-    func route(_ endpoint: String, _ completion: @escaping () -> (HttpResponse)) {
-        httpServer.self[endpoint] = { request in
-            return completion()
-        }
-    }
+
 
     @discardableResult
-    func buildAndStart(port: in_port_t = 8080, forceIPv4: Bool = false) throws -> HttpServer {
+    public func buildAndStart(port: in_port_t = 8080, forceIPv4: Bool = false) throws -> HttpServer {
         httpRoutes.forEach { (route) in
             buildRoute(endpoint: route.enpoint, completion: route.completion)
         }
@@ -45,7 +39,7 @@ class UTHttpServerBuilder {
         }
     }
 
-    struct Route {
+    public struct Route {
         let enpoint: String
         let completion: (HttpRequest, Int) -> (HttpResponse)
     }

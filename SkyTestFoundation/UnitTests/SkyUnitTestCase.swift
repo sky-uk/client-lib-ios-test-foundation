@@ -2,16 +2,16 @@ import Swifter
 import Foundation
 import XCTest
 
-class SkyUnitTestCase: XCTestCase {
+open class SkyUnitTestCase: XCTestCase {
     var httpServerBuilder: UTHttpServerBuilder! = UTHttpServerBuilder()
 
-    override func setUp() {
+    override public func setUp() {
         super.setUp()
         httpServerBuilder.httpServer.stop()
         httpServerBuilder = UTHttpServerBuilder()
     }
 
-    override func tearDown() {
+    override public func tearDown() {
         httpServerBuilder.httpServer.stop()
         super.tearDown()
     }
