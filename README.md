@@ -1,3 +1,4 @@
 # Sky Test Foundation [![CircleCI](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master.svg?style=svg&circle-token=6a18106ecc99952ea6841f658f86282b5ff557f5)](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master)
-Test suite for iOS mobile applications. The suite has to parts, one for Unit testing and the other one for User Interface (or functional) tests.
+Test suite for iOS mobile applications: a collection of tools and classes to facilitate the writing of automatic tests during development of an iOS mobile application.
+The suite has to parts, one for Unit testing and the other one for User Interface (or functional) tests.
 
