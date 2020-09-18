@@ -43,12 +43,16 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         let session = URLSession(configuration: URLSessionConfiguration.default)
 
         let url00 = URL(string: "http://localhost:8080/endpoint00")!
-        session.dataTask(with: url00).resume()
+        let dataTask00 = session.dataTask(with: url00)
 
         let url01 = URL(string: "http://localhost:8080/endpoint01")!
-        session.dataTask(with: url01).resume()
+        let dataTask01 = session.dataTask(with: url01)
 
+        dataTask00.resume()
+        dataTask01.resume()
         wait(for: [exp00, exp01], timeout: 3)
+        dataTask00.cancel()
+        dataTask01.cancel()
     }
 
     func testStressRouteCallCount() throws {

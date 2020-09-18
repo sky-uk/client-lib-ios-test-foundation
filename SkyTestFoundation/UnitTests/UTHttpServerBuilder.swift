@@ -1,7 +1,7 @@
 import Foundation
 import Swifter
 
-class UTHttpServerBuilder {
+public class UTHttpServerBuilder {
     public private(set) var httpServer: HttpServer = HttpServer()
     public var httpRoutes: [Route] = []
 

@@ -3,7 +3,7 @@ import Foundation
 import XCTest
 
 open class SkyUnitTestCase: XCTestCase {
-    var httpServerBuilder: UTHttpServerBuilder! = UTHttpServerBuilder()
+    public var httpServerBuilder: UTHttpServerBuilder! = UTHttpServerBuilder()
 
     override public func setUp() {
         super.setUp()
