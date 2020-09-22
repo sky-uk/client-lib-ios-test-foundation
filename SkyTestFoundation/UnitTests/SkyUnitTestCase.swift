@@ -5,13 +5,13 @@ import XCTest
 open class SkyUnitTestCase: XCTestCase {
     public var httpServerBuilder: UTHttpServerBuilder! = UTHttpServerBuilder()
 
-    override public func setUp() {
+     override open func setUp() {
         super.setUp()
         httpServerBuilder.httpServer.stop()
         httpServerBuilder = UTHttpServerBuilder()
     }
 
-    override public func tearDown() {
+    override open func tearDown() {
         httpServerBuilder.httpServer.stop()
         super.tearDown()
     }
