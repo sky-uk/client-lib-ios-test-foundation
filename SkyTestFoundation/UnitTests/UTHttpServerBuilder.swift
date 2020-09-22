@@ -20,11 +20,11 @@ public class UTHttpServerBuilder {
 
 
     @discardableResult
-    public func buildAndStart(port: in_port_t = 8080, forceIPv4: Bool = false) throws -> HttpServer {
+    public func buildAndStart(port: in_port_t = 8080, forceIPv4: Bool = false, priority: DispatchQoS.QoSClass = .userInteractive) throws -> HttpServer {
         httpRoutes.forEach { (route) in
             buildRoute(endpoint: route.enpoint, completion: route.completion)
         }
-        try httpServer.start(port, forceIPv4: forceIPv4)
+        try httpServer.start(port, forceIPv4: forceIPv4, priority: priority)
         return httpServer
     }
 
