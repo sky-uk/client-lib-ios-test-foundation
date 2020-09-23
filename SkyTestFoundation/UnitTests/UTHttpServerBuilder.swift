@@ -17,7 +17,15 @@ public class UTHttpServerBuilder {
         return self
     }
 
-
+    public func onUnexpected(_ asserts: @escaping (HttpRequest)->()) -> UTHttpServerBuilder {
+        httpServer.notFoundHandler = { request in
+            DispatchQueue.main.sync {
+                asserts(request)
+            }
+            return HttpResponse.badRequest(HttpResponseBody.html(""))
+        }
+        return self
+    }
 
     @discardableResult
     public func buildAndStart(port: in_port_t = 8080, forceIPv4: Bool = false, priority: DispatchQoS.QoSClass = .userInteractive) throws -> HttpServer {
