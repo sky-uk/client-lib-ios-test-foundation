@@ -85,7 +85,7 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
     }
 
     func testStressRouteCallCount() throws {
-        for _ in 1...20 {
+        for _ in 1...5 {
             super.setUp()
             try _testRouteCallCount()
             super.tearDown()
