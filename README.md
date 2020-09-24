@@ -37,4 +37,4 @@ func UnexepctedRequestFail(_ request: Swifter.HttpRequest, file: StaticString = 
     XCTFail("Url request not stubbed: \(String(describing: request.path))", file: file, line: line)
 }
 ```
-
+Note: `Endpoint.Selfcare.cities.urlPath` is a relative path not containing `localhost:8080`.
