@@ -4,7 +4,18 @@ The suite has to parts, one for Unit testing and the other one for User Interfac
 
 ### Unit Test Template with SUT performing Http Requests
 ```swift
- func testGetNormalizedCities() throws {
+class CustomerRepositoryTests: SkyUnitTestCase {
+
+    var sut: AddressServices!
+
+     override func setUp() {
+        super.setUp()
+        let sdk = FakeMySkyAppSDK.localhost()
+        sdk.services.selfCare.customerRepository.clearAll(removingUserSelections: true)
+        sut = sdk.services.selfCare.address
+    }
+    
+    func testGetNormalizedCities() throws {
         // Given
         let query = "Milano"
         let citiesResponse = [City.mock(egonId: String.mock(), name: String.mock(), province: String.mock())]
@@ -28,6 +39,7 @@ The suite has to parts, one for Unit testing and the other one for User Interfac
         XCTAssertNotNil(streamed)
         XCTAssertEqual(streamed.first, citiesResponse.first)
     }
+}
 ```
 
 where 
