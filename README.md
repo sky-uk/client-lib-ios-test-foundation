@@ -6,7 +6,7 @@ During tests execution, iOS Mobile App (MA) should interact with a Mock Server w
 ![](https://user-images.githubusercontent.com/51656240/94529361-ed25c900-0239-11eb-92da-1cb33699da4b.png)
 
 ### Unit Test Template with SUT performing Http Requests
-The goal of this kind of unit test is to verify the correctness of the http request performed by the MA. `httpServerBuilder` allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUP()` forwards http request performed by MA to localhost.
+The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUP()` forwards http request performed by MA to localhost.
 ```swift
 class CustomerRepositoryTests: SkyUnitTestCase {
 
