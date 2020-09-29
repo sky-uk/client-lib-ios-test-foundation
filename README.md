@@ -2,10 +2,11 @@
 Test suite for iOS mobile applications: a collection of tools and classes to facilitate the writing of automatic tests during development of an iOS mobile application.
 The suite has to parts, one for Unit testing and the other one for User Interface (or functional) tests.
 ## Test Environment
-During tests execution iOS App should interact with a Mock Server which appear to be the real counterparts of BE server. The framework provides a mock server that allows a tight control over what data the iOS App receives.
+During tests execution, iOS Mobile App (MA) should interact with a Mock Server which appear to be the real counterparts of BE server. The framework provides a mock server that allows a tight control over what data the iOS App receives.
 ![](https://user-images.githubusercontent.com/51656240/94529361-ed25c900-0239-11eb-92da-1cb33699da4b.png)
 
 ### Unit Test Template with SUT performing Http Requests
+The goal of this kind of unit test is to verify the correctness of the http request performed by the MA. `httpServerBuilder` allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUP()` forwards http request performed by MA to localhost.
 ```swift
 class CustomerRepositoryTests: SkyUnitTestCase {
 
@@ -13,7 +14,7 @@ class CustomerRepositoryTests: SkyUnitTestCase {
 
      override func setUp() {
         super.setUp()
-        let sdk = FakeMySkyAppSDK.localhost()
+        let sdk = FakeMySkyAppSDK.localhost()     // forwards MSA's http requests to 127.0.0.0:8080 
         sdk.services.selfCare.customerRepository.clearAll(removingUserSelections: true)
         sut = sdk.services.selfCare.address
     }
@@ -53,3 +54,8 @@ func UnexepctedRequestFail(_ request: Swifter.HttpRequest, file: StaticString = 
 }
 ```
 Note: `Endpoint.Selfcare.cities.urlPath` is a relative path not containing `127.0.0.1:8080`.
+The `testGetNormalizedCities` is composed by 3 sections:
+- Given: mocks and http routes are defined.
+- When: call to sut method to be tested
+- Then: expected values assertions
+If the execution of the method under test perform http request not defined in the Given section then `onUnexpected` clousure `(HttpRequest) -> ()` is called.
