@@ -55,7 +55,7 @@ func UnexepctedRequestFail(_ request: Swifter.HttpRequest, file: StaticString = 
 ```
 Note: `Endpoint.Selfcare.cities.urlPath` is a relative path not containing `127.0.0.1:8080`.
 
-The `testGetNormalizedCities` is composed by 3 sections:
+The test is composed by 3 sections:
 - Given: mocks and http routes are defined
 - When: call to method of SUT (system under test) to be tested
 - Then: expected values assertions
