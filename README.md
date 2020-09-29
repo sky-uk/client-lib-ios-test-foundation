@@ -3,7 +3,7 @@ Test suite for iOS mobile applications: a collection of tools and classes to fac
 The suite has to parts, one for Unit testing and the other one for User Interface (or functional) tests.
 ## Test Environment
 During tests execution, iOS Mobile App (MA) should interact with a Mock Server which appear to be the real counterparts of BE server. The framework provides a mock server that allows a tight control over what data the iOS App receives.
-![](https://user-images.githubusercontent.com/51656240/94529361-ed25c900-0239-11eb-92da-1cb33699da4b.png)
+![](https://user-images.githubusercontent.com/51656240/94568277-9685b280-026c-11eb-80ac-d5a6d95bcdf3.png)
 
 ### Unit Test Template with SUT performing Http Requests
 The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUp()` forwards http request performed by MA to localhost.
