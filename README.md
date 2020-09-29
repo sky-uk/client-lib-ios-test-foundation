@@ -3,7 +3,7 @@ Test suite for iOS mobile applications: a collection of tools and classes to fac
 The suite has to parts, one for Unit testing and the other one for User Interface (or functional) tests.
 ## Test Environment
 
-![env-context](https://user-images.githubusercontent.com/51656240/94525709-c31dd800-0234-11eb-836a-8df4d01715e5.gif)
+![](https://user-images.githubusercontent.com/51656240/94526385-bc439500-0235-11eb-8935-42123d5b4430.png)
 
 ### Unit Test Template with SUT performing Http Requests
 ```swift
