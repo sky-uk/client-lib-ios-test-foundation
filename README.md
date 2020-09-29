@@ -59,4 +59,5 @@ The test is composed by 3 sections:
 - Given: mocks and http routes are defined
 - When: call to method of SUT (system under test) to be tested
 - Then: expected values assertions
+
 If the execution of the method under test performs an http request not handled by the mocks server then `onUnexpected`'s clousure `(HttpRequest) -> ()` is called.
