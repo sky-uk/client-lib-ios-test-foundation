@@ -6,7 +6,7 @@ During tests execution, iOS Mobile App (MA) should interact with a Mock Server w
 ![](https://user-images.githubusercontent.com/51656240/94529361-ed25c900-0239-11eb-92da-1cb33699da4b.png)
 
 ### Unit Test Template with SUT performing Http Requests
-The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUP()` forwards http request performed by MA to localhost.
+The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUp()` forwards http request performed by MA to localhost.
 ```swift
 class CustomerRepositoryTests: SkyUnitTestCase {
 
@@ -55,7 +55,7 @@ func UnexepctedRequestFail(_ request: Swifter.HttpRequest, file: StaticString = 
 ```
 Note: `Endpoint.Selfcare.cities.urlPath` is a relative path not containing `127.0.0.1:8080`.
 The `testGetNormalizedCities` is composed by 3 sections:
-- Given: mocks and http routes are defined.
-- When: call to sut method to be tested
+- Given: mocks and http routes are defined
+- When: call to method of SUT (system under test) to be tested
 - Then: expected values assertions
-If the execution of the method under test perform http request not defined in the Given section then `onUnexpected` clousure `(HttpRequest) -> ()` is called.
+If the execution of the method under test performs an http request not handled by the mocks server then `onUnexpected`'s clousure `(HttpRequest) -> ()` is called.
