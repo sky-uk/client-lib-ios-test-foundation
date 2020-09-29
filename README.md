@@ -2,7 +2,7 @@
 Test suite for iOS mobile applications: a collection of tools and classes to facilitate the writing of automatic tests during development of an iOS mobile application.
 The suite has to parts, one for Unit testing and the other one for User Interface (or functional) tests.
 ## Test Environment
-
+During test execution iOS App should interact with a Mock Server which appear to be the real counterparts of BE server. The framework provides a mock server that allows a tight control over what data the iOS App receives, making it much more amenable to testing.
 ![](https://user-images.githubusercontent.com/51656240/94526385-bc439500-0235-11eb-8935-42123d5b4430.png)
 
 ### Unit Test Template with SUT performing Http Requests
