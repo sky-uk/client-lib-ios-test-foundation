@@ -9,6 +9,8 @@ targets:
       - iOSFramework
     sources:
       - path: SkyTestFoundation
+    settings:
+        ENABLE_BITCODE: NO
     scheme:
       testTargets:
         - SkyTestFoundation-Tests
