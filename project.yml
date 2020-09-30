@@ -9,7 +9,6 @@ targets:
       - iOSFramework
     sources:
       - path: SkyTestFoundation
-        group: SkyTestFoundation
     scheme:
       testTargets:
         - SkyTestFoundation-Tests
@@ -28,10 +27,7 @@ targetTemplates:
       path: ${target_name}.plist
       properties:
         CFBundleIdentifier: it.sky.${target_name}
-        CFBundleShortVersionString: "3.0.2"
-    sources:
-      - path: SkyTestFoundationTests
-        group: SkyTestFoundationTests
+        CFBundleShortVersionString: "1.0.0"
     scheme:
       gatherCoverageData: true
     dependencies:
