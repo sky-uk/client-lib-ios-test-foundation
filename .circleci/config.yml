@@ -30,11 +30,12 @@ aliases:
   - &ruby_fix
       name: Set Ruby Version
       command:  echo "ruby-2.6" > ~/.ruby-version
+  - &xcode_version
+      xcode: 12.0.0
 
 jobs:
   prebase:
-    macos:
-      xcode: 11.7.0
+    macos: *xcode_version
     shell: /bin/bash --login -eo pipefail
     steps:
       - checkout
@@ -51,8 +52,7 @@ jobs:
           paths: project
 
   run-unit-test:
-    macos:
-      xcode: 11.7.0
+    macos: *xcode_version
     shell: /bin/bash --login -eo pipefail
     steps:
       - attach_workspace:
