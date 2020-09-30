@@ -21,7 +21,9 @@ aliases:
       key: 2-ca-{{ checksum "date" }}
   - &carthage_bootstrap
       name: Bootstrap iOS dependencies
-      command: carthage bootstrap --platform ios --cache-builds
+      command: |
+        curl https://gist.githubusercontent.com/skymobilebuilds/61f4a95bd62a3db36b52719aeab7e0d5/raw/4ba422e5f3a5e7e37cdcb1e232058c5431fc59fc/carthage-xc12.sh -o wcarthage && chmod +x wcarthage
+        ./wcarthage bootstrap --platform ios --cache-builds
   - &save_carthage_cache
       name: Save Cartfile Cache
       key: 2-ca-{{ checksum "date" }}
