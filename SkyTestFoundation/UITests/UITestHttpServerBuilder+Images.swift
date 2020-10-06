@@ -15,7 +15,7 @@ extension UITestHttpServerBuilder.EndpointReport {
     }
 }
 
-extension Sequence where Element == UITestHttpServerBuilder.EndpointReport {
+public extension Sequence where Element == UITestHttpServerBuilder.EndpointReport {
     func filter(_ endpoint: String) -> Element? {
         return self.first { $0.endpoint == endpoint }
     }
@@ -24,23 +24,6 @@ extension Sequence where Element == UITestHttpServerBuilder.EndpointReport {
         return self.reduce("") { (result, report) -> String in
             return report.string() + result
         }
-    }
-}
-
-extension HttpServer {
-    var port: Int {
-        return (try? self.port()) ?? 8080
-    }
-}
-
-extension Swifter.HttpRequest {
-
-    func queryParam(key: String) -> String? {
-        return queryParams.first { $0.0 == key }?.1
-    }
-
-    func pathParam(key: String = ":path") -> String? {
-        params.first { $0.0 == key }?.1
     }
 }
 

@@ -7,9 +7,13 @@ public extension HttpRequest {
         return self.headers[name]
     }
 
-    func queryParam(name: String) -> String? {
-        return self.queryParams.first { (tupla) -> Bool in
-            return tupla.0 == name
-            }?.1
+    func pathParam(key: String = ":path") -> String? {
+        params.first { $0.0 == key }?.1
     }
+
+    func queryParam(_ key: String) -> String? {
+        let row = queryParams.first { $0.0 == key }?.1
+        return row?.removingPercentEncoding
+    }
+
 }
