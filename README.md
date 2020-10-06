@@ -62,3 +62,6 @@ The test is composed by 3 sections:
 - Then: expected values assertions
 
 If the execution of the method under test performs an http request not handled by the mocks server then `onUnexpected`'s clousure `(HttpRequest) -> ()` is called.
+
+### UI Test Template
+TODO...
