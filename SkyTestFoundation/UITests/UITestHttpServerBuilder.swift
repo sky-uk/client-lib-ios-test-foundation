@@ -93,7 +93,7 @@ public class UITestHttpServerBuilder {
         }
     }
     @discardableResult
-    func buildAndStart(port: in_port_t = 8080, file: StaticString = #file, line: UInt = #line) throws -> HttpServer {
+    public func buildAndStart(port: in_port_t = 8080, file: StaticString = #file, line: UInt = #line) throws -> HttpServer {
         buildImageResponses()
         let groupByEndpoint = Dictionary(grouping: httpResponses) { $0.endpoint }
         for (endpoint, responses) in groupByEndpoint {
