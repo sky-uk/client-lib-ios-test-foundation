@@ -132,5 +132,11 @@ public class UITestHttpServerBuilder {
         public let responseCount: Int
         // received http requests count
         public let httpRequestCount: Int
+
+        public init(endpoint: String, responseCount: Int, httpRequestCount: Int) {
+            self.endpoint = endpoint
+            self.responseCount = responseCount
+            self.httpRequestCount = httpRequestCount
+        }
     }
 }
