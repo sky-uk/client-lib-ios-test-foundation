@@ -1,7 +1,7 @@
 import Foundation
 import Swifter
 
-typealias EndpointDataResponse = (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?)
+public typealias EndpointDataResponse = (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?)
 
 public class UITestHttpServerBuilder {
     public static let httpLocalhost = "http://127.0.0.1"
@@ -23,18 +23,18 @@ public class UITestHttpServerBuilder {
 
     private var endpointCallCount: [String: Int] = [:]
 
-    func route(_ responses: [EndpointDataResponse]) -> UITestHttpServerBuilder {
+    public func route(_ responses: [EndpointDataResponse]) -> UITestHttpServerBuilder {
         responses.forEach { response in
             _ = route(response)
         }
         return self
     }
 
-    func routeImagesAt(path: String, properties: ((Swifter.HttpRequest) -> ImageProperties)? = nil) {
+    public func routeImagesAt(path: String, properties: ((Swifter.HttpRequest) -> ImageProperties)? = nil) {
         imagesResponse.append(ImageReponse(path: path, properties: properties))
     }
 
-    func route(_ response: EndpointDataResponse, on: ((Swifter.HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder {
+    public func route(_ response: EndpointDataResponse, on: ((Swifter.HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder {
         httpResponses.append(EDResponse(endpoint: response.endpoint,
                                         statusCode: response.statusCode,
                                         body: response.body,
@@ -73,6 +73,7 @@ public class UITestHttpServerBuilder {
             return "Endpoint: \(edResponse.endpoint)\n" + "\(String(describing: String(bytes: edResponse.body, encoding: .utf8)))"
         }
     }
+    
     func buildImageResponses() {
         imagesResponse.forEach { (imageResponse) in
             httpServer[imageResponse.path] = { request in
