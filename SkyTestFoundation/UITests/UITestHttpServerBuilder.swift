@@ -127,10 +127,10 @@ public class UITestHttpServerBuilder {
 
     public struct EndpointReport {
         // endpoint
-        let endpoint: String
+        public let endpoint: String
         // associated response count
-        let responseCount: Int
+        public let responseCount: Int
         // received http requests count
-        let httpRequestCount: Int
+        public let httpRequestCount: Int
     }
 }
