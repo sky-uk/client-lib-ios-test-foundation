@@ -1,7 +1,8 @@
+import Foundation
 import XCTest
 @testable import SkyTestFoundation
 
-class InitTests: XCTestCase {
+class UITestHttpServerBuilderTest: XCTestCase {
 
     func testInit() {
         XCTAssertNotNil(UITestHttpServerBuilder())

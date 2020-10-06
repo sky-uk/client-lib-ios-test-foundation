@@ -17,7 +17,7 @@ public class UTHttpServerBuilder {
         return self
     }
 
-    public func onUnexpected(_ asserts: @escaping (HttpRequest)->()) -> UTHttpServerBuilder {
+    public func onUnexpected(_ asserts: @escaping (HttpRequest) -> Void) -> UTHttpServerBuilder {
         httpServer.notFoundHandler = { request in
             DispatchQueue.main.sync {
                 asserts(request)

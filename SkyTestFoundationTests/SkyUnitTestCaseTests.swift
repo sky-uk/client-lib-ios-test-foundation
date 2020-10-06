@@ -18,7 +18,7 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
             .buildAndStart()
         let url = URL(string: "http://localhost:8080/login")!
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        session.dataTask(with: url, completionHandler: { (data, response, error) in
+        session.dataTask(with: url, completionHandler: { (_, _, error) in
             XCTAssertNil(error)
             exp.fulfill()
         }).resume()
@@ -43,13 +43,13 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         let session = URLSession(configuration: URLSessionConfiguration.default)
 
         let url00 = URL(string: "http://localhost:8080/endpoint00")!
-        let dataTask00 = session.dataTask(with: url00) { (data, reponse, error) in
+        let dataTask00 = session.dataTask(with: url00) { (_, _, error) in
             XCTAssertNil(error)
             exp00.fulfill()
         }
 
         let url01 = URL(string: "http://localhost:8080/endpoint01")!
-        let dataTask01 = session.dataTask(with: url01) { (data, response, error) in
+        let dataTask01 = session.dataTask(with: url01) { (_, _, error) in
             XCTAssertNil(error)
             exp01.fulfill()
         }
@@ -67,7 +67,7 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
             .route("/endpoint00") { (_, _) -> (HttpResponse) in
                 return HttpResponse.ok(HttpResponseBody.data(Data()))
             }
-            .onUnexpected { request in
+            .onUnexpected { _ in
                 exp01.fulfill() // "Unexpected request.path
             }
             .buildAndStart()
@@ -75,13 +75,13 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         let session = URLSession(configuration: URLSessionConfiguration.default)
 
         let url00 = URL(string: "http://localhost:8080/endpoint00")!
-        let dataTask00 = session.dataTask(with: url00) { (data, response, error) in
+        let dataTask00 = session.dataTask(with: url00) { (_, _, error) in
             XCTAssertNil(error)
             exp00.fulfill()
         }
 
         let url01 = URL(string: "http://localhost:8080/endpoint01")!
-        let dataTask01 = session.dataTask(with: url01) { (data, response, error) in
+        let dataTask01 = session.dataTask(with: url01) { (_, _, error) in
             XCTAssertNil(error)
             exp02.fulfill()
         }
@@ -105,14 +105,14 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         }
         let exp = expectation(description: "..")
         try httpServerBuilder
-            .route("login") { (_, callCount) -> (HttpResponse) in
+            .route("login") { (_, _) -> (HttpResponse) in
                 return HttpResponse.ok(HttpResponseBody.data(Data()))
             }
             .buildAndStart()
 
         let url = URL(string: "http://localhost:8080/login")!
         let session = URLSession(configuration: .default)
-        let dataTask00 = session.dataTask(with:  url) { (data, reponse, error) in
+        let dataTask00 = session.dataTask(with: url) { (_, _, error) in
             XCTAssertNil(error)
             exp.fulfill()
         }
