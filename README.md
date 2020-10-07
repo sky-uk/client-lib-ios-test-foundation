@@ -70,7 +70,7 @@ If the execution of the method under test performs an http request not handled b
 ### UI Test Template
 TODO...
 
-[Input/Output](https://user-images.githubusercontent.com/51656240/95300065-f38df380-087e-11eb-8b21-4bdb32762516.png)
+![Input/Output](https://user-images.githubusercontent.com/51656240/95300065-f38df380-087e-11eb-8b21-4bdb32762516.png)
 
 ```swift
 import XCTest
