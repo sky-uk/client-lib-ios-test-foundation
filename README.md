@@ -117,4 +117,9 @@ class LoginTests: SkyUITestCase {
     
  }
  ```
+The test is composed by 3 sections:
+
+    Given: mocks, http routes are defined and app is launced
+    When: ui gesture are performed in order to navigate to the view to be testes
+    Then: assertions on ui element of the view (to be tested)
 
