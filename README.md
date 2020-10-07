@@ -65,3 +65,43 @@ If the execution of the method under test performs an http request not handled b
 
 ### UI Test Template
 TODO...
+```swift
+class LoginTests: SkyUITestCase {
+
+    func testSelectSignedContractGivenContractNotActivated() throws {
+        // Given
+        try httpServerBuilder
+            .route(try TokenManagerMocks.Auths.Response.ok200.edr())
+            .route(try Mocks.Selfcare.E2EContract.Response.contractIdcmJjRzF3cTdiU3oranF3bWlLWG96dz09.edr())
+            .route(try Mocks.Selfcare.E2EContract.Response.contractIdWUNjanhxMXNMZTg3emRzVURPa1ExZz09.edr())
+            .route(try TokenManagerMocks.CustomersMe.Response.multiContract.edr())
+            .buildAndStart()
+
+        appLaunched(httpServerBuilder.httpServer.port, disableFeatureFlags: [.skipPreActiveCheck], persistenceStatus: .empty)
+        // When
+        tap(MSAElements.Welcome.accediButton)
+
+        tap(MSAElements.Login.mainView.scrollViews.otherElements.textFields[String.msa.login.userPlaceholder()])
+        MSAElements.Login.mainView.typeText(testCredentialUsername)
+
+        tap(MSAElements.Login.mainView.scrollViews.otherElements.secureTextFields[String.msa.generics.password()])
+        MSAElements.Login.mainView.typeText(testCredentialPassword)
+
+        tap(MSAElements.Login.loginButton)
+        tap(MSAElements.Alert.secondaryButton, "Biometric alert")
+        tap(MSAElements.Alert.mainButton)
+
+        exist(MSAElements.AlternativeHome.mainView)
+        // Then
+        tap(MSAElements.Home.profileButton)
+        exist(MSAElements.ContractSelector.mainView)
+        tap(MSAElements.ContractSelector.mainView.tables.staticTexts["Codice cliente: 15519872"])
+        tap(MSAElements.ContractSelector.mainView.staticTexts[String.msa.generics.confirm().uppercased()])
+        exist(MSAElements.Alert.mainView)
+        tap(MSAElements.Alert.mainButton)
+        exist(MSAElements.Home.mainView)
+    }
+    
+ }
+ ```
+
