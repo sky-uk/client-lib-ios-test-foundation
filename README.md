@@ -9,6 +9,10 @@ During tests execution, iOS Mobile App (MA) should interact with a Mock Server w
 The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUp()` forwards http request performed by MA to localhost.
 See [Unit Test Overview](https://developer.bskyb.com/wiki/pages/viewpage.action?spaceKey=DPTECH&title=Unit+testing) for more deatil on unit testing approach in Sky.
 ```swift
+import XCTest
+import Swifter
+import SkyTestFoundation
+
 class CustomerRepositoryTests: SkyUnitTestCase {
 
     var sut: AddressServices!
@@ -66,6 +70,10 @@ If the execution of the method under test performs an http request not handled b
 ### UI Test Template
 TODO...
 ```swift
+import XCTest
+import Swifter
+import SkyTestFoundation
+
 class LoginTests: SkyUITestCase {
 
     func testSelectSignedContractGivenContractNotActivated() throws {
