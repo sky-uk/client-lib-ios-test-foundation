@@ -68,9 +68,11 @@ The test is composed by 3 sections:
 If the execution of the method under test performs an http request not handled by the mocks server then `onUnexpected`'s clousure `(HttpRequest) -> ()` is called.
 
 ### UI Test Template
-TODO...
+In the context of UI test a mobile app (MA) can be represented as a black box (see Input/Output) defined by its own inputs and outputs. 
 
 ![Input/Output](https://user-images.githubusercontent.com/51656240/95300065-f38df380-087e-11eb-8b21-4bdb32762516.png)
+
+MA behaviour depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the behaviour of MSA can be described by the view hierarchy displayed to the user and by the http requests executed so far by MSA. UI Tests verify the correctness of MSA's behaviour defining asserts on inputs and/or ouputs of the black box. 
 
 ```swift
 import XCTest
