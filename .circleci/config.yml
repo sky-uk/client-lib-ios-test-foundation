@@ -12,11 +12,11 @@ jobs:
       - run: rm ~/.ssh/id_rsa || true
       - run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
       - run:
-         name: Build ReactiveAPIDemo
+         name: Build SkyTestFoundation
          command: >
            xcodebuild
            -disableAutomaticPackageResolution
-           -scheme ReactiveAPIDemo
+           -scheme SkyTestFoundation
            -destination 'platform=iOS Simulator,name=iPhone 11'
 
 workflows:
