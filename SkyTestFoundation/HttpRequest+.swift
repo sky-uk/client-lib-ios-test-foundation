@@ -12,7 +12,7 @@ public extension HttpRequest {
     }
 
     func queryParam(_ key: String) -> String? {
-        let row = queryParams.first { $0.0 == key }?.1
+        let row = queryParams.first { $0.0.removingPercentEncoding == key }?.1
         return row?.removingPercentEncoding
     }
 
