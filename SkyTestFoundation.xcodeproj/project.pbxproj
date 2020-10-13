@@ -7,26 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		33C46C48252C505400769F8C /* SkyUITestsCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C46C47252C505400769F8C /* SkyUITestsCase.swift */; };
-		33C46C50252C514600769F8C /* UITestHttpServerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C46C4B252C50EA00769F8C /* UITestHttpServerBuilderTests.swift */; };
-		33C46C57252C51BB00769F8C /* SkyUITestCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C46C54252C518400769F8C /* SkyUITestCaseTests.swift */; };
-		33DA1CA1252C755600C42CED /* EndpointReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA1CA0252C755600C42CED /* EndpointReportTests.swift */; };
-		33DA1CB8252C7B9800C42CED /* HttpRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA1CB7252C7B9800C42CED /* HttpRequest+.swift */; };
-		33DA1CBC252C7DAB00C42CED /* HttpServer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DA1CBB252C7DAB00C42CED /* HttpServer+.swift */; };
+		01A7977975384CE692551621 /* HttpRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DBBFC3CD53194E38ACD3A /* HttpRequest+.swift */; };
 		3B443AB1C1DDFDBBD2A50B0E /* ImageReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD070446E1E0E9541A2A7CF5 /* ImageReponse.swift */; };
 		5A7100522D02CDBB1287C6C1 /* SkyUnitTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65C1C180F264CF8DC8D072C /* SkyUnitTestCase.swift */; };
 		5CC91A2D61082CA4F2789974 /* ImageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A8894EAEDFF548353E2318 /* ImageProperties.swift */; };
+		6C5F2E4BB54DC22288C231A3 /* UITestHttpServerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FB0471D386217EF129A068 /* UITestHttpServerBuilderTests.swift */; };
+		6C6852F6AF73B6F214D95B12 /* SkyUITestsCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F2218338112C69072FBAAB /* SkyUITestsCase.swift */; };
 		70E890FB7D7B67AF9E4562EE /* UITestHttpServerBuilder+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6D0CDB028674E6548BDBA /* UITestHttpServerBuilder+Images.swift */; };
 		7D76F1F2DA5E180BC57FFD03 /* SkyTestFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E730C31B9B08BBA9539A0446 /* SkyTestFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7DCCCF794790A37B4B9B1EBE /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F096C27DE6386F809733E6 /* Swifter.framework */; };
 		8076FB9D575F5F0CC9278A87 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117041351FEA09482DE98464 /* XCTest.framework */; };
 		878FBCDE416F5CBAC7A14FA6 /* UTHttpServerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40461C6488D17601217932C5 /* UTHttpServerBuilder.swift */; };
+		90ABCA0651E0C584FAC30C56 /* SkyUnitTestCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274EB3B71EEA2EC1513C2800 /* SkyUnitTestCaseTests.swift */; };
 		952BB70A79D6792D165AC2AA /* SkyTestFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E730C31B9B08BBA9539A0446 /* SkyTestFoundation.framework */; };
 		9B3340362A3C6B3C57EF227D /* HttpServerBuilder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4DE9B84171540129F015EA /* HttpServerBuilder+.swift */; };
-		A829260E16E8AE6F730C3421 /* SkyUnitTestCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2496B6F7116573D5512C905A /* SkyUnitTestCaseTests.swift */; };
+		A6FDF146CD6FEBBE547665F3 /* HttpServer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D147AC6341121CA6B7CF5 /* HttpServer+.swift */; };
+		C92B45EA59BAAE4386A17A21 /* EndpointReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9581552E92610A68894AEB /* EndpointReportTests.swift */; };
 		D70C4D258E049B4A91A558F3 /* UITestHttpServerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9ECDD9B5A87F06BDCF3745 /* UITestHttpServerBuilder.swift */; };
-		DC96A519081C16C9ED76E56C /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F096C27DE6386F809733E6 /* Swifter.framework */; };
-		F210FDB45DEB8512D7BF7FB5 /* Swifter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 62F096C27DE6386F809733E6 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EE8B9D78CC697DCFCE9BE2FA /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = CECAA8E69297812DC4872743 /* Swifter */; };
+		FB74B6D32D52B39B145DE772 /* SkyUITestCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EE092EF4E12E61F0679E25 /* SkyUITestCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +45,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7D76F1F2DA5E180BC57FFD03 /* SkyTestFoundation.framework in Embed Frameworks */,
-				F210FDB45DEB8512D7BF7FB5 /* Swifter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,23 +52,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03FB0471D386217EF129A068 /* UITestHttpServerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHttpServerBuilderTests.swift; sourceTree = "<group>"; };
 		0C4DE9B84171540129F015EA /* HttpServerBuilder+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpServerBuilder+.swift"; sourceTree = "<group>"; };
 		0F9ECDD9B5A87F06BDCF3745 /* UITestHttpServerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHttpServerBuilder.swift; sourceTree = "<group>"; };
 		117041351FEA09482DE98464 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = System/Library/Frameworks/XCTest.framework; sourceTree = SDKROOT; };
-		2496B6F7116573D5512C905A /* SkyUnitTestCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUnitTestCaseTests.swift; sourceTree = "<group>"; };
-		33C46C47252C505400769F8C /* SkyUITestsCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUITestsCase.swift; sourceTree = "<group>"; };
-		33C46C4B252C50EA00769F8C /* UITestHttpServerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHttpServerBuilderTests.swift; sourceTree = "<group>"; };
-		33C46C54252C518400769F8C /* SkyUITestCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUITestCaseTests.swift; sourceTree = "<group>"; };
-		33DA1CA0252C755600C42CED /* EndpointReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointReportTests.swift; sourceTree = "<group>"; };
-		33DA1CB7252C7B9800C42CED /* HttpRequest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpRequest+.swift"; sourceTree = "<group>"; };
-		33DA1CBB252C7DAB00C42CED /* HttpServer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpServer+.swift"; sourceTree = "<group>"; };
+		274EB3B71EEA2EC1513C2800 /* SkyUnitTestCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUnitTestCaseTests.swift; sourceTree = "<group>"; };
 		40461C6488D17601217932C5 /* UTHttpServerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTHttpServerBuilder.swift; sourceTree = "<group>"; };
-		62F096C27DE6386F809733E6 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Swifter.framework; sourceTree = "<group>"; };
 		640400ED71614BB401FB12A2 /* SkyTestFoundation-Tests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = "SkyTestFoundation-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E9581552E92610A68894AEB /* EndpointReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointReportTests.swift; sourceTree = "<group>"; };
 		99A8894EAEDFF548353E2318 /* ImageProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProperties.swift; sourceTree = "<group>"; };
 		ADF6D0CDB028674E6548BDBA /* UITestHttpServerBuilder+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITestHttpServerBuilder+Images.swift"; sourceTree = "<group>"; };
 		B65C1C180F264CF8DC8D072C /* SkyUnitTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUnitTestCase.swift; sourceTree = "<group>"; };
 		BD070446E1E0E9541A2A7CF5 /* ImageReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReponse.swift; sourceTree = "<group>"; };
+		C10DBBFC3CD53194E38ACD3A /* HttpRequest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpRequest+.swift"; sourceTree = "<group>"; };
+		C13D147AC6341121CA6B7CF5 /* HttpServer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpServer+.swift"; sourceTree = "<group>"; };
+		D1EE092EF4E12E61F0679E25 /* SkyUITestCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUITestCaseTests.swift; sourceTree = "<group>"; };
+		D4F2218338112C69072FBAAB /* SkyUITestsCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUITestsCase.swift; sourceTree = "<group>"; };
 		E730C31B9B08BBA9539A0446 /* SkyTestFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SkyTestFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -81,7 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8076FB9D575F5F0CC9278A87 /* XCTest.framework in Frameworks */,
-				DC96A519081C16C9ED76E56C /* Swifter.framework in Frameworks */,
+				EE8B9D78CC697DCFCE9BE2FA /* Swifter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DCCCF794790A37B4B9B1EBE /* Swifter.framework in Frameworks */,
 				952BB70A79D6792D165AC2AA /* SkyTestFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,9 +114,9 @@
 		2E12B1ED388E2B40593E3333 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
+				D4F2218338112C69072FBAAB /* SkyUITestsCase.swift */,
 				0F9ECDD9B5A87F06BDCF3745 /* UITestHttpServerBuilder.swift */,
 				ADF6D0CDB028674E6548BDBA /* UITestHttpServerBuilder+Images.swift */,
-				33C46C47252C505400769F8C /* SkyUITestsCase.swift */,
 			);
 			path = UITests;
 			sourceTree = "<group>";
@@ -130,36 +125,18 @@
 			isa = PBXGroup;
 			children = (
 				117041351FEA09482DE98464 /* XCTest.framework */,
-				49FC2860A6A3968ED4BBFDBB /* Carthage */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		49FC2860A6A3968ED4BBFDBB /* Carthage */ = {
-			isa = PBXGroup;
-			children = (
-				B5F8B3BAD3DA5EB2332603E9 /* iOS */,
-			);
-			name = Carthage;
-			path = Carthage/Build;
-			sourceTree = "<group>";
-		};
-		B5F8B3BAD3DA5EB2332603E9 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				62F096C27DE6386F809733E6 /* Swifter.framework */,
-			);
-			path = iOS;
 			sourceTree = "<group>";
 		};
 		BDF781422223FFFC27C2CB85 /* SkyTestFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				C10DBBFC3CD53194E38ACD3A /* HttpRequest+.swift */,
+				C13D147AC6341121CA6B7CF5 /* HttpServer+.swift */,
 				0C4DE9B84171540129F015EA /* HttpServerBuilder+.swift */,
 				99A8894EAEDFF548353E2318 /* ImageProperties.swift */,
 				BD070446E1E0E9541A2A7CF5 /* ImageReponse.swift */,
-				33DA1CB7252C7B9800C42CED /* HttpRequest+.swift */,
-				33DA1CBB252C7DAB00C42CED /* HttpServer+.swift */,
 				2E12B1ED388E2B40593E3333 /* UITests */,
 				D714603CC88EA545292F3AC5 /* UnitTests */,
 			);
@@ -169,10 +146,10 @@
 		C0D19CDB730A4553CA251B9E /* SkyTestFoundationTests */ = {
 			isa = PBXGroup;
 			children = (
-				2496B6F7116573D5512C905A /* SkyUnitTestCaseTests.swift */,
-				33C46C54252C518400769F8C /* SkyUITestCaseTests.swift */,
-				33C46C4B252C50EA00769F8C /* UITestHttpServerBuilderTests.swift */,
-				33DA1CA0252C755600C42CED /* EndpointReportTests.swift */,
+				7E9581552E92610A68894AEB /* EndpointReportTests.swift */,
+				D1EE092EF4E12E61F0679E25 /* SkyUITestCaseTests.swift */,
+				274EB3B71EEA2EC1513C2800 /* SkyUnitTestCaseTests.swift */,
+				03FB0471D386217EF129A068 /* UITestHttpServerBuilderTests.swift */,
 			);
 			path = SkyTestFoundationTests;
 			sourceTree = "<group>";
@@ -201,6 +178,9 @@
 			dependencies = (
 			);
 			name = SkyTestFoundation;
+			packageProductDependencies = (
+				CECAA8E69297812DC4872743 /* Swifter */,
+			);
 			productName = SkyTestFoundation;
 			productReference = E730C31B9B08BBA9539A0446 /* SkyTestFoundation.framework */;
 			productType = "com.apple.product-type.framework";
@@ -230,6 +210,8 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1020;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 7A827916D0C3CD57952B50B2 /* Build configuration list for PBXProject "SkyTestFoundation" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -239,6 +221,9 @@
 				en,
 			);
 			mainGroup = 00C86BAC76F6D91EBBDE5328;
+			packageReferences = (
+				387C2D1AF68369163CA46231 /* XCRemoteSwiftPackageReference "swifter" */,
+			);
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -253,10 +238,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33DA1CA1252C755600C42CED /* EndpointReportTests.swift in Sources */,
-				33C46C50252C514600769F8C /* UITestHttpServerBuilderTests.swift in Sources */,
-				A829260E16E8AE6F730C3421 /* SkyUnitTestCaseTests.swift in Sources */,
-				33C46C57252C51BB00769F8C /* SkyUITestCaseTests.swift in Sources */,
+				C92B45EA59BAAE4386A17A21 /* EndpointReportTests.swift in Sources */,
+				FB74B6D32D52B39B145DE772 /* SkyUITestCaseTests.swift in Sources */,
+				90ABCA0651E0C584FAC30C56 /* SkyUnitTestCaseTests.swift in Sources */,
+				6C5F2E4BB54DC22288C231A3 /* UITestHttpServerBuilderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,15 +249,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01A7977975384CE692551621 /* HttpRequest+.swift in Sources */,
+				A6FDF146CD6FEBBE547665F3 /* HttpServer+.swift in Sources */,
 				9B3340362A3C6B3C57EF227D /* HttpServerBuilder+.swift in Sources */,
 				5CC91A2D61082CA4F2789974 /* ImageProperties.swift in Sources */,
 				3B443AB1C1DDFDBBD2A50B0E /* ImageReponse.swift in Sources */,
-				33C46C48252C505400769F8C /* SkyUITestsCase.swift in Sources */,
-				33DA1CBC252C7DAB00C42CED /* HttpServer+.swift in Sources */,
+				6C6852F6AF73B6F214D95B12 /* SkyUITestsCase.swift in Sources */,
 				5A7100522D02CDBB1287C6C1 /* SkyUnitTestCase.swift in Sources */,
 				70E890FB7D7B67AF9E4562EE /* UITestHttpServerBuilder+Images.swift in Sources */,
 				D70C4D258E049B4A91A558F3 /* UITestHttpServerBuilder.swift in Sources */,
-				33DA1CB8252C7B9800C42CED /* HttpRequest+.swift in Sources */,
 				878FBCDE416F5CBAC7A14FA6 /* UTHttpServerBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,10 +283,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = SkyTestFoundation.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -372,10 +353,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,10 +368,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -416,10 +389,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = SkyTestFoundation.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -525,6 +494,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		387C2D1AF68369163CA46231 /* XCRemoteSwiftPackageReference "swifter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/httpswift/swifter.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CECAA8E69297812DC4872743 /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 387C2D1AF68369163CA46231 /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 00B7F66283DAC4CE4DF5E46B /* Project object */;
 }

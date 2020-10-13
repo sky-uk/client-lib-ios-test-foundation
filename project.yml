@@ -1,4 +1,8 @@
 name: SkyTestFoundation
+packages:
+  Swifter:
+    url: https://github.com/httpswift/swifter.git
+    from: 1.5.0
 options:
   bundleIdPrefix: it.sky
   deploymentTarget:
@@ -34,10 +38,8 @@ targetTemplates:
       gatherCoverageData: true
     dependencies:
       - sdk: XCTest.framework
-      - carthage: Swifter
+      - package: Swifter
   iOSTestFramework:
     type: bundle.unit-test
     platform: iOS
     scheme: {}
-    dependencies:
-      - carthage: Swifter
