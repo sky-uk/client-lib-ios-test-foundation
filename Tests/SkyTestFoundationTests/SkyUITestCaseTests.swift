@@ -57,5 +57,4 @@ class SkyUITestCaseTests: SkyUITestCase {
         dataTask01.resume()
         wait(for: [exp00, exp01], timeout: 3)
     }
-
 }

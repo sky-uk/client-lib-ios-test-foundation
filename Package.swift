@@ -5,26 +5,23 @@ import PackageDescription
 
 let package = Package(
     name: "SkyTestFoundation",
+    platforms: [
+            .iOS(.v12)
+        ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "SkyTestFoundation",
-            targets: ["SkyTestFoundation"]),
+        .library(name: "SkyTestFoundation", targets: ["SkyTestFoundation"])
     ],
     dependencies: [
         .package(name: "Swifter", url: "https://github.com/httpswift/swifter", from: "1.5.0")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "SkyTestFoundation",
-            dependencies: []),
+            dependencies: ["Swifter"]
+        ),
         .testTarget(
             name: "SkyTestFoundationTests",
-            dependencies: [
-                "SkyTestFoundation",
-                "Swifter"
-            ]),
+            dependencies: ["SkyTestFoundation"]
+        )
     ]
 )
