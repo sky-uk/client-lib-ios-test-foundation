@@ -1,10 +1,3 @@
-//
-//  EndpointReportTests.swift
-//  SkyTestFoundation-Tests
-//
-//  Created by Sky on 06/10/2020.
-//
-
 import XCTest
 @testable import SkyTestFoundation
 
