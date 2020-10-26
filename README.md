@@ -123,10 +123,14 @@ The test is composed by 3 sections:
 - Then: assertions on ui element of the view (to be tested)
 
 ### XCTAssert Extension
-Useful extensions of XCTest assestions.
- ``` XCTAssertURLEqual(_ url1, _ url2, ignores, ...)```
- Asserts that two http url are equals. Use `ignores` parameter to skip comparisions between specific url components.
- Example
+Useful extensions assertions defined in XCTest framework.
+
+```swift
+XCTAssertURLEqual(_ url1, _ url2, ignores, ...)
+```
+Asserts that two http url are equals. Use `ignores` parameter to skip comparisions between specific url components.
+
+Example
 ```swift 
 XCTAssertURLEqual("http://www.sky.com", "http://www.sky.com")
 XCTAssertURLEqual("http://www.sky.XXX", "http://www.sky.com", ignores: [.host])
