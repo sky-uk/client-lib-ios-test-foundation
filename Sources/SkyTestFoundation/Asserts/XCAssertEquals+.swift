@@ -1,13 +1,13 @@
 import Foundation
 import XCTest
 
-enum URLComponent {
+public enum URLComponent {
     case host
     case path
     case queryParameters
 }
 
-func XCTAssertURLEqual(_ url1: String, _ url2: String, ignores:[URLComponent] = [], file: StaticString = #filePath, line: UInt = #line) {
+public func XCTAssertURLEqual(_ url1: String, _ url2: String, ignores:[URLComponent] = [], file: StaticString = #filePath, line: UInt = #line) {
     guard  let urlComponents1 = URLComponents(string: url1) else {
         XCTFail("Cannot get URL components of \(url1)")
         return
