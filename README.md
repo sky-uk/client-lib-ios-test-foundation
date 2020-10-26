@@ -122,7 +122,7 @@ The test is composed by 3 sections:
 - When: ui gesture are performed in order to navigate to the view to be tested 
 - Then: assertions on ui element of the view (to be tested)
 
-### XCTAssert Extension
+### XCTAssert Extensions
 Useful extensions assertions defined in XCTest framework.
 
 ```swift
