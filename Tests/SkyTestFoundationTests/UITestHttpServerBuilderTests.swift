@@ -1,4 +1,3 @@
-import Foundation
 import XCTest
 @testable import SkyTestFoundation
 
@@ -18,3 +17,4 @@ class UITestHttpServerBuilderTest: XCTestCase {
         XCTAssertNotNil(mockServer)
     }
 }
+

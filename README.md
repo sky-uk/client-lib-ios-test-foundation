@@ -121,3 +121,23 @@ The test is composed by 3 sections:
 - Given: mocks, http routes are defined and app is launced 
 - When: ui gesture are performed in order to navigate to the view to be tested 
 - Then: assertions on ui element of the view (to be tested)
+
+### XCTAssert Extensions
+Useful extensions assertions defined in XCTest framework.
+
+#### XCTAssertURLEqual(_ url1, _ url2, ignores, ...)
+Asserts that two http urls are equals. Use `ignores` parameter to skip comparisions between specific components of url1 and url2.
+
+Example
+```swift 
+XCTAssertURLEqual("http://www.sky.com", "http://www.sky.com")
+XCTAssertURLEqual("http://www.sky.XXX", "http://www.sky.com", ignores: [.host])
+
+XCTAssertURLEqual("http://www.sky.com/path1", "http://www.sky.com/path1")
+XCTAssertURLEqual("http://www.sky.com/path1", "http://xxx.xxx.xxx/path1", ignores: [.host])
+XCTAssertURLEqual("http://www.sky.com/path1", "http://www.sky.com/path2", ignores: [.path])
+
+XCTAssertURLEqual("http://www.sky.com?name1=value1", "http://www.sky.com?name1=value1")
+XCTAssertURLEqual("http://www.sky.com?name2=value2&name1=value1", "http://www.sky.com?name1=value1&name2=value2")
+XCTAssertURLEqual("http://www.sky.com", "http://www.sky.com?q1=value1", ignores: [.queryParameters])
+```

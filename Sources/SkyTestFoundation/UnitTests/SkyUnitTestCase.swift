@@ -1,5 +1,4 @@
 import Swifter
-import Foundation
 import XCTest
 
 open class SkyUnitTestCase: XCTestCase {
