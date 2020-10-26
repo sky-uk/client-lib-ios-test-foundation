@@ -16,7 +16,7 @@ jobs:
          command: >
            xcodebuild test
            -disableAutomaticPackageResolution
-           -scheme SkyContentClient
+           -scheme SkyTestFoundation
            -destination 'platform=iOS Simulator,name=iPhone 11'
 
 workflows:
