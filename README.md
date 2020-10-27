@@ -130,9 +130,6 @@ Asserts that two http urls are equals. Use `ignores` parameter to skip comparisi
 
 Example
 ```swift 
-XCTAssertURLEqual("http://www.sky.com", "http://www.sky.com")
-XCTAssertURLEqual("http://www.sky.XXX", "http://www.sky.com", ignores: [.host])
-
 XCTAssertURLEqual("http://www.sky.com/path1", "http://www.sky.com/path1")
 XCTAssertURLEqual("http://www.sky.com/path1", "http://xxx.xxx.xxx/path1", ignores: [.host])
 XCTAssertURLEqual("http://www.sky.com/path1", "http://www.sky.com/path2", ignores: [.path])
