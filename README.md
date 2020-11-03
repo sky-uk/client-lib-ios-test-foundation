@@ -123,7 +123,7 @@ The test is composed by 3 sections:
 - Then: assertions on ui element of the view (to be tested)
 
 ### XCTAssert Extensions
-Useful extensions assertions defined in XCTest framework.
+Useful extensions of assertions defined in XCTest framework.
 
 #### XCTAssertURLEqual(_ url1, _ url2, ignores, ...)
 Asserts that two http urls are equals. Use `ignores` parameter to skip comparisions between specific components of url1 and url2.
