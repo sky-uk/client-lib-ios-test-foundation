@@ -9,8 +9,8 @@ func exist(_ element: XCUIElement, _ message: String = "", file: StaticString = 
     return element
 }
 
-func notExist(_ element: XCUIElement, _ message: String = "") {
-    XCTAssertFalse(element.waitForExistence(timeout: notExpectationTimeout), "\(message) - \(element) does exist.")
+func notExist(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) {
+    XCTAssertFalse(element.waitForExistence(timeout: notExpectationTimeout), "\(message) - \(element) does exist.", file: file, line: line)
 }
 
 func tap(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) {
@@ -19,18 +19,18 @@ func tap(_ element: XCUIElement, _ message: String = "", file: StaticString = #f
 }
 
 @discardableResult
-func isEnabled(_ element: XCUIElement, _ message: String = "") -> XCUIElement {
-    XCTAssertEqual(element.elementType, .button, "\(message) - \(element) is not of type Button.")
-    XCTAssertTrue(element.waitForExistence(timeout: expectationTimeout), "\(message) - \(element) does not exist.")
+func isEnabled(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) -> XCUIElement {
+    XCTAssertEqual(element.elementType, .button, "\(message) - \(element) is not of type Button.", file: file, line: line)
+    XCTAssertTrue(element.waitForExistence(timeout: expectationTimeout), "\(message) - \(element) does not exist.", file: file, line: line)
     XCTAssertTrue(element.isEnabled)
     return element
 }
 
 @discardableResult
-func isDisabled(_ element: XCUIElement, _ message: String = "") -> XCUIElement {
-    XCTAssertEqual(element.elementType, .button, "\(message) - \(element) is not of type Button.")
-    XCTAssertTrue(element.waitForExistence(timeout: expectationTimeout), "\(message) - \(element) does not exist.")
-    XCTAssertFalse(element.isEnabled)
+func isDisabled(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) -> XCUIElement {
+    XCTAssertEqual(element.elementType, .button, "\(message) - \(element) is not of type Button.", file: file, line: line)
+    XCTAssertTrue(element.waitForExistence(timeout: expectationTimeout), "\(message) - \(element) does not exist.", file: file, line: line)
+    XCTAssertFalse(element.isEnabled, file: file, line: line)
     return element
 }
 
