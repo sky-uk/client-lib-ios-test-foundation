@@ -140,7 +140,7 @@ XCTAssertURLEqual("http://www.sky.com", "http://www.sky.com?q1=value1", ignores:
 ```
 ### UI XCTAssert Extensions
 Useful extensions of assertions defined in XCTest framework that can be used in UI tests.
-The following custom assertions are wrapper of events defined in `XCUIElement` like `tap()`. The custom assertions wait for any element to appear before firing the wrapped event.
+The following custom assertions are wrappers of events defined in `XCUIElement` like `tap()`. The custom assertions wait for any element to appear before firing the wrapped event.
 The effect of using custom assertions is to reduce flakiness of ui test execution.
 #### exist(_ element)
 Determines if the element exists.
