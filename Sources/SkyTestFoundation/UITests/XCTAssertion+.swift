@@ -2,7 +2,7 @@ import XCTest
 import Foundation
 
 let expectationTimeout: Double = 30
-let expectationTimeout: Double = 1
+let notExpectationTimeout: Double = 1
 
 @discardableResult
 func exist(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) -> XCUIElement {
