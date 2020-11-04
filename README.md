@@ -138,3 +138,6 @@ XCTAssertURLEqual("http://www.sky.com?name1=value1", "http://www.sky.com?name1=v
 XCTAssertURLEqual("http://www.sky.com?name2=value2&name1=value1", "http://www.sky.com?name1=value1&name2=value2")
 XCTAssertURLEqual("http://www.sky.com", "http://www.sky.com?q1=value1", ignores: [.queryParameters])
 ```
+### UI XCTAssert Extensions
+Useful extensions of assertions defined in XCTest framework during UI test.
+
