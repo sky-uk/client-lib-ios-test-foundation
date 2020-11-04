@@ -149,7 +149,7 @@ Determines if the element NOT exists.
 #### tap(_ element)
 Sends a tap event to a hittable point computed for the element.
 #### isEnabled(_ element)
-Determines if the element is enabled for user interaction
+Determines if the element is enabled for user interaction.
 #### isNotEnabled(_ elemenyt)
-Determines if the element is NOT enabled for user interaction
+Determines if the element is NOT enabled for user interaction.
 
