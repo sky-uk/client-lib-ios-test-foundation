@@ -152,4 +152,5 @@ Sends a tap event to a hittable point computed for the element.
 Determines if the element is enabled for user interaction.
 #### isNotEnabled(_ elemenyt)
 Determines if the element is NOT enabled for user interaction.
-
+#### isRunningOnSimulator() -> Bool
+Returns true if ui test is running on iOS simulator. It can be used in conjunction with `XCTSkipIf/1` in order to skip the execution of a ui test if on iOS simulator.
