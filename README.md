@@ -117,6 +117,28 @@ class LoginTests: SkyUITestCase {
     
  }
  ```
+### UI UITestHttpServerBuilder
+Mock server builder to be used in UI tests.
+Example
+```swift
+import XCTest
+import Swifter
+import SkyTestFoundation
+class UITests: SkyUITestCase {
+    func test() throws {
+        // Given
+        try httpServerBuilder
+            .route(endpoint: "/endpoint1", on: { (request) -> HttpResponse in
+                return HttpResponse.raw(statusCode: 200, body: Data())
+            })
+            .buildAndStart()
+
+        appLaunched(httpServerBuilder.httpServer.port)
+        // ...
+    }
+}
+```
+ 
 The test is composed by 3 sections:
 - Given: mocks, http routes are defined and app is launced 
 - When: ui gesture are performed in order to navigate to the view to be tested 
@@ -138,3 +160,19 @@ XCTAssertURLEqual("http://www.sky.com?name1=value1", "http://www.sky.com?name1=v
 XCTAssertURLEqual("http://www.sky.com?name2=value2&name1=value1", "http://www.sky.com?name1=value1&name2=value2")
 XCTAssertURLEqual("http://www.sky.com", "http://www.sky.com?q1=value1", ignores: [.queryParameters])
 ```
+### UI XCTAssert Extensions
+Useful extensions of assertions defined in XCTest framework that can be used in UI tests.
+The following custom assertions are wrappers of events defined in `XCUIElement` like `tap()`. The custom assertions wait for any element to appear before firing the wrapped event.
+The effect of using custom assertions is to reduce flakiness of ui test execution.
+#### exist(_ element)
+Determines if the element exists.
+#### notExist(_ element)
+Determines if the element NOT exists.
+#### tap(_ element)
+Sends a tap event to a hittable point computed for the element.
+#### isEnabled(_ element)
+Determines if the element is enabled for user interaction.
+#### isNotEnabled(_ elemenyt)
+Determines if the element is NOT enabled for user interaction.
+#### isRunningOnSimulator() -> Bool
+Returns true if ui test is running on iOS simulator. It can be used in conjunction with `XCTSkipIf/1` in order to skip the execution of a ui test if on iOS simulator.

@@ -2,6 +2,7 @@ import Foundation
 import Swifter
 
 public typealias EndpointDataResponse = (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?)
+public typealias DataReponse = (statusCode: Int, body: Data, responseTime: UInt32?)
 
 public class UITestHttpServerBuilder {
     public static let httpLocalhost = "http://127.0.0.1"
@@ -17,8 +18,14 @@ public class UITestHttpServerBuilder {
         let onReceivedHttpRequest: ((Swifter.HttpRequest) -> Void)?
     }
 
+    private struct ECallBackResponse {
+        let endpoint: String
+        let callBack: (Swifter.HttpRequest) -> HttpResponse
+    }
+
     private let uncallqQueue = DispatchQueue(label: "queue.endpoint.uncalled")
     private var httpResponses: [EDResponse] = []
+    private var httpCallBackResponses: [ECallBackResponse] = []
     private var imagesResponse: [ImageReponse] = []
 
     private var endpointCallCount: [String: Int] = [:]
@@ -42,6 +49,12 @@ public class UITestHttpServerBuilder {
                                         onReceivedHttpRequest: on))
         return self
     }
+
+    public func route(endpoint: String, on: @escaping ((Swifter.HttpRequest) -> HttpResponse)) -> UITestHttpServerBuilder {
+        httpCallBackResponses.append(ECallBackResponse(endpoint: endpoint, callBack: on))
+        return self
+    }
+
 
     private func updateEndpointCallCount(_ endpoint: String) {
         uncallqQueue.async {
@@ -77,7 +90,7 @@ public class UITestHttpServerBuilder {
     func buildImageResponses() {
         imagesResponse.forEach { (imageResponse) in
             httpServer[imageResponse.path] = { request in
-                debugPrint("Request image: \(request.path)")
+                Logger.info("Request image: \(request.path)")
                 let data: Data
                 if let imageProperties = imageResponse.properties {
                     let properties = imageProperties(request)
@@ -99,9 +112,9 @@ public class UITestHttpServerBuilder {
         for (endpoint, responses) in groupByEndpoint {
             let queue = DispatchQueue(label: "queue.endpoint.\(endpoint)")
             var index = 0
-            debugPrint("Building endpoint: \(endpoint) Response.count:\(responses.count)")
+            Logger.info("Building endpoint: \(endpoint) Response.count:\(responses.count)")
             httpServer[endpoint] = { request in
-                debugPrint("Requested path:\(request.path) Params:\(request.queryParams) Response.count:\(responses.count)")
+                Logger.info("Handled request path:\(request.path) Params:\(request.queryParams) Response.count:\(responses.count)")
                 var response: EDResponse!
                 self.updateEndpointCallCount(endpoint)
                 queue.sync {
@@ -115,12 +128,24 @@ public class UITestHttpServerBuilder {
                     }
                 }
                 sleep(response.responseTime ?? 0)
-                return HttpResponse.raw(response.statusCode, "", nil) { (writer) in
-                    try writer.write(response.body)
-                }
+                return HttpResponse.raw(statusCode: response.statusCode, body: response.body)
             }
         }
-        debugPrint("Starting  server [port=\(port)]")
+
+        for endpointCallBackResponse in httpCallBackResponses {
+            let queue = DispatchQueue(label: "queue.endpoint.\(endpointCallBackResponse.endpoint)")
+            httpServer[endpointCallBackResponse.endpoint] = { request in
+                self.updateEndpointCallCount(endpointCallBackResponse.endpoint)
+                return endpointCallBackResponse.callBack(request)
+            }
+        }
+
+        httpServer.notFoundHandler = { request in
+            Logger.info("NOT handled request path: \(request.path) Params:\(request.queryParams)")
+            return HttpResponse.notFound
+        }
+
+        Logger.info("Starting  server [port=\(port)]")
         try httpServer.start(port)
         return httpServer
     }
@@ -137,6 +162,16 @@ public class UITestHttpServerBuilder {
             self.endpoint = endpoint
             self.responseCount = responseCount
             self.httpRequestCount = httpRequestCount
+        }
+    }
+
+
+}
+
+public extension HttpResponse {
+    static func raw(statusCode: Int, body: Data) -> HttpResponse {
+        return HttpResponse.raw(statusCode, "", nil) { (writer) in
+            try writer.write(body)
         }
     }
 }
