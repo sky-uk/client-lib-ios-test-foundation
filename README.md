@@ -119,8 +119,10 @@ class LoginTests: SkyUITestCase {
  ```
 ### UI UITestHttpServerBuilder
 Mock server builder to be used in UI tests.
-#### func route(_ response: EndpointDataResponse, on: ((Swifter.HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder
+#### func route(_ response: (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?), on: ((Swifter.HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder
+Adds http route to mock server. Clousure `on` is called on main thread when a http request with path equals to `endpoint` is received by the mock server.
 #### func route(endpoint: String, on: @escaping ((Swifter.HttpRequest) -> HttpResponse)) -> UITestHttpServerBuilder
+Adds http route to mock server. Closure `on` id called on a background thread when a http request with path equals to `endpoint` is received by the mock server. The clousere allows to return different Http responses given an http request.
 Example
 ```swift
 import XCTest
