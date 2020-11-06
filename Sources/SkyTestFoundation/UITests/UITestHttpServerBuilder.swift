@@ -2,6 +2,7 @@ import Foundation
 import Swifter
 
 public typealias EndpointDataResponse = (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?)
+public typealias DataReponse = (statusCode: Int, body: Data, responseTime: UInt32?)
 
 public class UITestHttpServerBuilder {
     public static let httpLocalhost = "http://127.0.0.1"
@@ -17,8 +18,14 @@ public class UITestHttpServerBuilder {
         let onReceivedHttpRequest: ((Swifter.HttpRequest) -> Void)?
     }
 
+    private struct ECallBackResponse {
+        let endpoint: String
+        let callBack: (Swifter.HttpRequest) -> HttpResponse
+    }
+
     private let uncallqQueue = DispatchQueue(label: "queue.endpoint.uncalled")
     private var httpResponses: [EDResponse] = []
+    private var httpCallBackResponses: [ECallBackResponse] = []
     private var imagesResponse: [ImageReponse] = []
 
     private var endpointCallCount: [String: Int] = [:]
@@ -40,6 +47,11 @@ public class UITestHttpServerBuilder {
                                         body: response.body,
                                         responseTime: response.responseTime,
                                         onReceivedHttpRequest: on))
+        return self
+    }
+
+    public func route(endpoint: String, on: @escaping ((Swifter.HttpRequest) -> HttpResponse)) -> UITestHttpServerBuilder {
+        httpCallBackResponses.append(ECallBackResponse(endpoint: endpoint, callBack: on))
         return self
     }
 
@@ -116,9 +128,15 @@ public class UITestHttpServerBuilder {
                     }
                 }
                 sleep(response.responseTime ?? 0)
-                return HttpResponse.raw(response.statusCode, "", nil) { (writer) in
-                    try writer.write(response.body)
-                }
+                return HttpResponse.raw(statusCode: response.statusCode, body: response.body)
+            }
+        }
+
+        for endpointCallBackResponse in httpCallBackResponses {
+            let queue = DispatchQueue(label: "queue.endpoint.\(endpointCallBackResponse.endpoint)")
+            httpServer[endpointCallBackResponse.endpoint] = { request in
+                self.updateEndpointCallCount(endpointCallBackResponse.endpoint)
+                return endpointCallBackResponse.callBack(request)
             }
         }
 
@@ -147,4 +165,13 @@ public class UITestHttpServerBuilder {
         }
     }
 
+
+}
+
+public extension HttpResponse {
+    static func raw(statusCode: Int, body: Data) -> HttpResponse {
+        return HttpResponse.raw(statusCode, "", nil) { (writer) in
+            try writer.write(body)
+        }
+    }
 }
