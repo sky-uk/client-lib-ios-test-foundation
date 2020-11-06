@@ -43,6 +43,7 @@ public class UITestHttpServerBuilder {
         return self
     }
 
+
     private func updateEndpointCallCount(_ endpoint: String) {
         uncallqQueue.async {
             let callCount: Int
@@ -77,7 +78,7 @@ public class UITestHttpServerBuilder {
     func buildImageResponses() {
         imagesResponse.forEach { (imageResponse) in
             httpServer[imageResponse.path] = { request in
-                debugPrint("Request image: \(request.path)")
+                Logger.info("Request image: \(request.path)")
                 let data: Data
                 if let imageProperties = imageResponse.properties {
                     let properties = imageProperties(request)
@@ -99,9 +100,9 @@ public class UITestHttpServerBuilder {
         for (endpoint, responses) in groupByEndpoint {
             let queue = DispatchQueue(label: "queue.endpoint.\(endpoint)")
             var index = 0
-            debugPrint("Building endpoint: \(endpoint) Response.count:\(responses.count)")
+            Logger.info("Building endpoint: \(endpoint) Response.count:\(responses.count)")
             httpServer[endpoint] = { request in
-                debugPrint("Requested path:\(request.path) Params:\(request.queryParams) Response.count:\(responses.count)")
+                Logger.info("Handled request path:\(request.path) Params:\(request.queryParams) Response.count:\(responses.count)")
                 var response: EDResponse!
                 self.updateEndpointCallCount(endpoint)
                 queue.sync {
@@ -120,7 +121,13 @@ public class UITestHttpServerBuilder {
                 }
             }
         }
-        debugPrint("Starting  server [port=\(port)]")
+
+        httpServer.notFoundHandler = { request in
+            Logger.info("NOT handled request path: \(request.path) Params:\(request.queryParams)")
+            return HttpResponse.notFound
+        }
+
+        Logger.info("Starting  server [port=\(port)]")
         try httpServer.start(port)
         return httpServer
     }
@@ -139,4 +146,5 @@ public class UITestHttpServerBuilder {
             self.httpRequestCount = httpRequestCount
         }
     }
+
 }
