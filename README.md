@@ -119,6 +119,8 @@ class LoginTests: SkyUITestCase {
  ```
 ### UI UITestHttpServerBuilder
 Mock server builder to be used in UI tests.
+#### func route(_ response: EndpointDataResponse, on: ((Swifter.HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder
+#### func route(endpoint: String, on: @escaping ((Swifter.HttpRequest) -> HttpResponse)) -> UITestHttpServerBuilder
 Example
 ```swift
 import XCTest
