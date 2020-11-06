@@ -117,6 +117,28 @@ class LoginTests: SkyUITestCase {
     
  }
  ```
+### UI UITestHttpServerBuilder
+Mock server builder to be used in UI tests.
+Example
+```swift
+import XCTest
+import Swifter
+import SkyTestFoundation
+class UITests: SkyUITestCase {
+    func test() throws {
+        // Given
+        try httpServerBuilder
+            .route(endpoint: "/endpoint1", on: { (request) -> HttpResponse in
+                return HttpResponse.raw(statusCode: 200, body: Data())
+            })
+            .buildAndStart()
+
+        appLaunched(httpServerBuilder.httpServer.port)
+        // ...
+    }
+}
+```
+ 
 The test is composed by 3 sections:
 - Given: mocks, http routes are defined and app is launced 
 - When: ui gesture are performed in order to navigate to the view to be tested 
