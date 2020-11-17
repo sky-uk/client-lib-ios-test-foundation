@@ -1,7 +1,7 @@
 import Foundation
 
 // Primitive Mock
-enum RealDataDictionary {
+public enum RealDataDictionary {
     case int
     case uint
     case url
@@ -19,7 +19,7 @@ enum RealDataDictionary {
     case landlinePhone
 }
 
-extension String {
+public extension String {
     static func mock(_ type: RealDataDictionary = .uuid) -> String {
         switch type {
             case .city: return ["Torino", "Milano", "Ivrea"].randomElement()!
@@ -45,25 +45,25 @@ extension String {
     }
 }
 
-extension Int {
+public extension Int {
     static func mock() -> Int {
         return Int.random(in: 0...100)
     }
 }
 
-extension Bool {
+public extension Bool {
     static func mock() -> Bool {
         return Bool.random()
     }
 }
 
-extension URL {
+public extension URL {
     static func mock(string: String = String.mock(.url)) -> URL {
         return URL(string: string)!
     }
 }
 
-extension Date {
+public extension Date {
     static func mock(_ date: Date = Date()) -> Date {
         let calendar = Calendar(identifier: .gregorian)
         return calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date))!
