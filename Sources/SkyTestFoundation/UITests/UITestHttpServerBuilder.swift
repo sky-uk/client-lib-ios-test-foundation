@@ -132,7 +132,6 @@ public class UITestHttpServerBuilder {
         }
 
         for endpointCallBackResponse in httpCallBackResponses {
-            let queue = DispatchQueue(label: "queue.endpoint.\(endpointCallBackResponse.endpoint)")
             httpServer[endpointCallBackResponse.endpoint] = { request in
                 self.updateEndpointCallCount(endpointCallBackResponse.endpoint)
                 return endpointCallBackResponse.callBack(request)
