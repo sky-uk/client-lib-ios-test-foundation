@@ -1,6 +1,25 @@
 import Foundation
 import Swifter
+#if os(macOS)
+import Cocoa
+typealias UIImage = NSImage
+
+extension NSImage {
+    var cgImage: CGImage? {
+        var proposedRect = CGRect(origin: .zero, size: size)
+
+        return cgImage(forProposedRect: &proposedRect,
+                       context: nil,
+                       hints: nil)
+    }
+
+    convenience init?(named name: String) {
+        self.init(named: Name(name))
+    }
+}
+#else
 import UIKit
+#endif
 
 extension UITestHttpServerBuilder.EndpointReport {
     func edited(receivedCallCount: Int) -> UITestHttpServerBuilder.EndpointReport {
