@@ -6,7 +6,10 @@ import PackageDescription
 let package = Package(
     name: "SkyTestFoundation",
     platforms: [
-            .iOS(.v12)
+        .iOS(.v12),
+        .macOS(.v10_15),
+        .tvOS(.v12),
+        .watchOS(.v5)
         ],
     products: [
         .library(name: "SkyTestFoundation", targets: ["SkyTestFoundation"])

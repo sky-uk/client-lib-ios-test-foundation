@@ -1,9 +1,10 @@
 import Foundation
 import Swifter
-#if os(macOS)
+#if canImport(UIKit)
+import UIKit
+#else
 import Cocoa
 typealias UIImage = NSImage
-
 extension NSImage {
     var cgImage: CGImage? {
         var proposedRect = CGRect(origin: .zero, size: size)
@@ -13,9 +14,24 @@ extension NSImage {
     convenience init?(named name: String) {
         self.init(named: Name(name))
     }
+
+    func jpegData(compressionQuality: CGFloat) -> Data? {
+        guard let cgImage = cgImage else {
+            return nil
+        }
+        let bitmapRep = NSBitmapImageRep(cgImage: cgImage)
+        return bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:])!
+    }
 }
-#else
-import UIKit
+
+typealias UIFont = NSFont
+
+typealias UIColor = NSColor
+
+extension NSColor {
+    static let white = NSColor(white: 1, alpha: 1)
+}
+
 #endif
 
 extension UITestHttpServerBuilder.EndpointReport {
@@ -56,8 +72,10 @@ public func encode<T: Encodable>(value: T) throws -> Data {
 
 extension UITestHttpServerBuilder {
     // MARK: Image utilities
-    static func drawOnImage(text: String, properties: ImageProperties? = nil) -> UIImage? {
+    static func drawOnImage(text: String, properties: ImageProperties? = nil) -> Data {
         let size = properties?.size ?? CGSize(width: 500, height: 500)
+
+        #if canImport(UIKit)
         UIGraphicsBeginImageContext(size)
         let context = UIGraphicsGetCurrentContext()!
         context.setFillColor(gray: 0.9, alpha: 1.0)
@@ -86,10 +104,15 @@ extension UITestHttpServerBuilder {
 
         let myImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return myImage
+        return myImage?.jpegData(compressionQuality: 1) ?? Data()
+        #else
+        // TODO draw image with NSImage
+        return Data()
+        #endif
     }
 
     static func drawText(context: CGContext, at point: CGPoint, text: String, offsize: CGFloat = 20) {
+        #if canImport(UIKit)
         UIGraphicsPushContext(context)
         let font = UIFont.systemFont(ofSize: offsize)
         let string = NSAttributedString(string: text, attributes: [
@@ -99,5 +122,6 @@ extension UITestHttpServerBuilder {
         ])
         string.draw(at: point)
         UIGraphicsPopContext()
+        #endif
     }
 }
