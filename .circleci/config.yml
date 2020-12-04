@@ -32,13 +32,14 @@ jobs:
          name: Run UI Test of DemoMacOS
          command: >
             cd Demos/DemoMacOS;
-            xcodebuild test
+            xcodebuild
             -project DemoMacOS.xcodeproj
             -disableAutomaticPackageResolution
             -scheme DemoMacOSUITests
             -resultBundlePath TestResultsDemoMacOs
             -enableCodeCoverage YES
             -clonedSourcePackagesDirPath SourcePackages
+            clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
       - run:
          name: Change directory to root...
          command: cd ../../
