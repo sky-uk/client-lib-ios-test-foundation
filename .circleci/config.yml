@@ -34,11 +34,11 @@ jobs:
             cd Demos/DemoMacOS;
             xcodebuild
             -project DemoMacOS.xcodeproj
+            -sdk macosx
             -disableAutomaticPackageResolution
             -scheme DemoMacOSUITests
-            -resultBundlePath TestResultsDemoMacOs
             -clonedSourcePackagesDirPath SourcePackages
-            test
+            clean build test CODE_SIGNING_REQUIRED=NO
       - run:
          name: Change directory to root...
          command: cd ../../
