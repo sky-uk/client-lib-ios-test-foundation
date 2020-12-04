@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SkyTestFoundation",
+        "repositoryURL": "/Users/sky/workspace/client-lib-ios-test-foundation",
+        "state": {
+          "branch": "if_os",
+          "revision": "b8595fe73e67d80117c4bf64a3d96e3d00fd9d62",
+          "version": null
+        }
+      },
+      {
+        "package": "Swifter",
+        "repositoryURL": "https://github.com/httpswift/swifter",
+        "state": {
+          "branch": null,
+          "revision": "9483a5d459b45c3ffd059f7b55f9638e268632fd",
+          "version": "1.5.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

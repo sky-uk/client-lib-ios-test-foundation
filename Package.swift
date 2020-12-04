@@ -20,11 +20,13 @@ let package = Package(
     targets: [
         .target(
             name: "SkyTestFoundation",
-            dependencies: ["Swifter"]
+            dependencies: ["Swifter"],
+	    path: "Xcode/Sources"
         ),
         .testTarget(
             name: "SkyTestFoundationTests",
-            dependencies: ["SkyTestFoundation"]
+            dependencies: ["SkyTestFoundation"],
+	    path: "Xcode/Tests"
         )
     ]
 )
