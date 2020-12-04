@@ -31,11 +31,12 @@ jobs:
       - run:
          name: Run UI Test of DemoMacOS
          command: >
+            cd Demos/DemoMacOS;
             xcodebuild test
             -project DemoMacOS.xcodeproj
             -disableAutomaticPackageResolution
             -scheme DemoMacOSUITests
-            -resultBundlePath TestResults
+            -resultBundlePath TestResultsDemoMacOs
             -enableCodeCoverage YES
             -clonedSourcePackagesDirPath SourcePackages
       - run:
