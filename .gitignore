@@ -7,3 +7,5 @@ TestResults
 Demos/DemoMacOS/SourcePackages
 Info.plist
 Demos/DemoMacOS/TestResults.xcresult
+Demos/DemoMacOS/TestResultsDemoMacOs.xcresult/Data
+Demos/DemoMacOS/TestResultsDemoMacOs
