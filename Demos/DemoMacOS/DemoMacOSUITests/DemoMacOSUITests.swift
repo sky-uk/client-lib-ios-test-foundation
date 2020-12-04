@@ -3,24 +3,19 @@ import SkyTestFoundation
 
 class DemoMacOSUITests: SkyUITestCase {
 
-    override func setUpWithError() throws {
-        continueAfterFailure = false
-    }
-
-    override func tearDownWithError() throws {
-
-    }
-
-    func testExample() throws {
+    func testMockServer() throws {
+        // Given
+        let text = "Hello world from SkyTestFoundation Mock Server."
         httpServerBuilder.routeImagesAt(path: "/image", properties: nil)
-        let text = "Hello world."
-        try httpServerBuilder.route((endpoint: "/message", statusCode: 200, body: text.data(using: .utf8)!, responseTime: 0))
+        try httpServerBuilder
+            .route((endpoint: "/message", statusCode: 200, body: text.data(using: .utf8)!, responseTime: 0))
             .buildAndStart()
-
-        // UI tests must launch the application that they test.
+        // When
         let app = XCUIApplication()
         app.launch()
-
+        // Then
         exist(app.windows.staticTexts[text])
+        exist(app.windows.children(matching: .image).element)
+        httpServerBuilder.httpServer.stop()
     }
 }
