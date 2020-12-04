@@ -19,6 +19,7 @@ jobs:
       - run:
          name: Run UI Test of DemoMacOS
          command: >
+            sudo sqlite3 "/Library/Application Support/com.apple.TCC/TCC.db" "INSERT INTO access VALUES ('kTCCServiceAccessibility','com.apple.dt.Xcode-Helper',0,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL);"
             cd Demos/DemoMacOS;
             xcodebuild
             -project DemoMacOS.xcodeproj
