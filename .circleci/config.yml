@@ -38,7 +38,6 @@ jobs:
             -resultBundlePath TestResults
             -enableCodeCoverage YES
             -clonedSourcePackagesDirPath SourcePackages
-            | xcpretty
       - run:
          name: Change directory to root...
          command: cd ../../
