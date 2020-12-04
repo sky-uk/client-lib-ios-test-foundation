@@ -37,9 +37,8 @@ jobs:
             -disableAutomaticPackageResolution
             -scheme DemoMacOSUITests
             -resultBundlePath TestResultsDemoMacOs
-            -enableCodeCoverage YES
             -clonedSourcePackagesDirPath SourcePackages
-            clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+            test
       - run:
          name: Change directory to root...
          command: cd ../../
