@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		331FD047257A4BB7001472AD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331FD046257A4BB7001472AD /* ImageLoader.swift */; };
 		331FD04C257A4BED001472AD /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331FD04B257A4BED001472AD /* AsyncImage.swift */; };
-		331FD05E257A5078001472AD /* SkyTestFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 331FD05D257A5078001472AD /* SkyTestFoundation */; };
+		331FD077257A5A2B001472AD /* SkyTestFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 331FD076257A5A2B001472AD /* SkyTestFoundation */; };
 		33A1D33F257A3D6E00C6B5C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1D33E257A3D6E00C6B5C7 /* AppDelegate.swift */; };
 		33A1D341257A3D6E00C6B5C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1D340257A3D6E00C6B5C7 /* ContentView.swift */; };
 		33A1D343257A3D6F00C6B5C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33A1D342257A3D6F00C6B5C7 /* Assets.xcassets */; };
@@ -75,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				331FD05E257A5078001472AD /* SkyTestFoundation in Frameworks */,
+				331FD077257A5A2B001472AD /* SkyTestFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +200,7 @@
 			);
 			name = DemoMacOSUITests;
 			packageProductDependencies = (
-				331FD05D257A5078001472AD /* SkyTestFoundation */,
+				331FD076257A5A2B001472AD /* SkyTestFoundation */,
 			);
 			productName = DemoMacOSUITests;
 			productReference = 33A1D35B257A3D7000C6B5C7 /* DemoMacOSUITests.xctest */;
@@ -238,7 +238,7 @@
 			);
 			mainGroup = 33A1D332257A3D6E00C6B5C7;
 			packageReferences = (
-				331FD05C257A5078001472AD /* XCRemoteSwiftPackageReference "." */,
+				331FD075257A5A2B001472AD /* XCRemoteSwiftPackageReference "client-lib-ios-test-foundation" */,
 			);
 			productRefGroup = 33A1D33C257A3D6E00C6B5C7 /* Products */;
 			projectDirPath = "";
@@ -624,9 +624,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		331FD05C257A5078001472AD /* XCRemoteSwiftPackageReference "." */ = {
+		331FD075257A5A2B001472AD /* XCRemoteSwiftPackageReference "client-lib-ios-test-foundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = ../../;
+			repositoryURL = "https://github.com/sky-uk/client-lib-ios-test-foundation";
 			requirement = {
 				branch = if_os;
 				kind = branch;
@@ -635,9 +635,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		331FD05D257A5078001472AD /* SkyTestFoundation */ = {
+		331FD076257A5A2B001472AD /* SkyTestFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 331FD05C257A5078001472AD /* XCRemoteSwiftPackageReference "." */;
+			package = 331FD075257A5A2B001472AD /* XCRemoteSwiftPackageReference "client-lib-ios-test-foundation" */;
 			productName = SkyTestFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */

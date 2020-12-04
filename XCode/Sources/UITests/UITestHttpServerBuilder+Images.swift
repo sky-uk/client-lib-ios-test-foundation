@@ -101,41 +101,7 @@ extension UITestHttpServerBuilder {
         UIGraphicsEndImageContext()
         return myImage?.jpegData(compressionQuality: 1) ?? Data()
         #else
-        let rect = NSRect(origin: NSPoint.zero, size: size)
-
-
-       let context = CGContext(data: nil,
-                           width: Int(size.width),
-                           height: Int(size.height),
-                           bitsPerComponent: 8,
-                           bytesPerRow: 4 * Int(size.width),
-                           space: CGColorSpaceCreateDeviceRGB(),
-                           bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)
-       // Draw square
-        let path = CGPathCreateWithRect(size, nil)
-        CGContextAddPath(context, path)
-
-        CGContextSetStrokeColorWithColor(context, NSColor.redColor().CGColor)
-        CGContextSetLineWidth(context, 20)
-        CGContextSetLineJoin(context, CGLineJoin.Round)
-        CGContextSetLineCap(context, CGLineCap.Round)
-
-        let dashArray:[CGFloat] = [16, 32]
-
-        CGContextSetLineDash(context, 0, dashArray, 2)
-          CGContextReplacePathWithStrokedPath(context)
-
-        CGContextSetFillColorWithColor(context, NSColor.redColor().CGColor)
-        CGContextFillPath(context)
-        if let image = CGBitmapContextCreateImage(context) {
-            return image.data
-        } else {
             return Data()
-        }
-
-
-
-
         #endif
     }
 
