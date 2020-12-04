@@ -86,28 +86,56 @@ extension UITestHttpServerBuilder {
         context.setAlpha(0.9)
 
         let minSide = min(size.width, size.height)
-
         let midPoint = CGPoint(x: size.width / 2, y: size.height / 2)
         [0, 0.3, 0.48].forEach { (inset) in
             let x = (size.width - minSide) / 2
             let y = (size .height - minSide) / 2
             context.strokeEllipse(in: CGRect(x: x, y: y, width: minSide, height: minSide).insetBy(dx: minSide * CGFloat(inset), dy: minSide * CGFloat(inset)))
         }
-
         let off: CGFloat = 20
-
         context.strokeLineSegments(between: [CGPoint(x: midPoint.x, y: midPoint.y - off), CGPoint(x: midPoint.x, y: midPoint.y + off)])
         context.strokeLineSegments(between: [CGPoint(x: midPoint.x - off, y: midPoint.y), CGPoint(x: midPoint.x + off, y: midPoint.y)])
-
         drawText(context: context, at: CGPoint(x: 0, y: 0), text: text, offsize: 13)
         drawText(context: context, at: CGPoint(x: midPoint.x, y: midPoint.y), text: "\(size.width)x\(size.height)")
-
         let myImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return myImage?.jpegData(compressionQuality: 1) ?? Data()
         #else
-        // TODO draw image with NSImage
-        return Data()
+        let rect = NSRect(origin: NSPoint.zero, size: size)
+
+
+       let context = CGContext(data: nil,
+                           width: Int(size.width),
+                           height: Int(size.height),
+                           bitsPerComponent: 8,
+                           bytesPerRow: 4 * Int(size.width),
+                           space: CGColorSpaceCreateDeviceRGB(),
+                           bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)
+       // Draw square
+        let path = CGPathCreateWithRect(size, nil)
+        CGContextAddPath(context, path)
+
+        CGContextSetStrokeColorWithColor(context, NSColor.redColor().CGColor)
+        CGContextSetLineWidth(context, 20)
+        CGContextSetLineJoin(context, CGLineJoin.Round)
+        CGContextSetLineCap(context, CGLineCap.Round)
+
+        let dashArray:[CGFloat] = [16, 32]
+
+        CGContextSetLineDash(context, 0, dashArray, 2)
+          CGContextReplacePathWithStrokedPath(context)
+
+        CGContextSetFillColorWithColor(context, NSColor.redColor().CGColor)
+        CGContextFillPath(context)
+        if let image = CGBitmapContextCreateImage(context) {
+            return image.data
+        } else {
+            return Data()
+        }
+
+
+
+
         #endif
     }
 
