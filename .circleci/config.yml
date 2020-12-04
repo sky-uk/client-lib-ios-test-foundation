@@ -17,21 +17,8 @@ jobs:
             rm ~/.ssh/id_rsa || true
             for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
       - run:
-         name: Build & Test SPM Package
-         command: >
-           xcodebuild test
-           -disableAutomaticPackageResolution
-           -scheme SkyTestFoundation
-           -destination 'platform=iOS Simulator,name=iPhone 11'
-           | xcpretty
-
-      - run:
-         name: Change directory to DemoMacOS
-         command: cd Demos/DemoMacOS/
-      - run:
          name: Run UI Test of DemoMacOS
          command: >
-            sudo sqlite3 "/Library/Application Support/com.apple.TCC/TCC.db" "INSERT INTO access VALUES ('kTCCServiceAccessibility','com.apple.dt.Xcode-Helper',0,1,1,NULL,NULL);";
             cd Demos/DemoMacOS;
             xcodebuild
             -project DemoMacOS.xcodeproj
@@ -41,8 +28,14 @@ jobs:
             -clonedSourcePackagesDirPath SourcePackages
             clean build test CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
       - run:
-         name: Change directory to root...
-         command: cd ../../
+         name: Build & Test SPM Package
+         command: >
+           xcodebuild test
+           -disableAutomaticPackageResolution
+           -scheme SkyTestFoundation
+           -destination 'platform=iOS Simulator,name=iPhone 11'
+           | xcpretty
+
 
 workflows:
   version: 2
