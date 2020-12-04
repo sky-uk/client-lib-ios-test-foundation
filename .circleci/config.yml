@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   prebase:
     macos:
-      xcode: 12.0.0
+      xcode: 12.2.0
     shell: /bin/bash --login -eo pipefail
     steps:
       - checkout
@@ -17,13 +17,31 @@ jobs:
             rm ~/.ssh/id_rsa || true
             for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
       - run:
-         name: Build & Test
+         name: Build & Test SPM Package
          command: >
            xcodebuild test
            -disableAutomaticPackageResolution
            -scheme SkyTestFoundation
            -destination 'platform=iOS Simulator,name=iPhone 11'
            | xcpretty
+
+      - run:
+         name: Change directory to DemoMacOS
+         command: cd Demos/DemoMacOS/
+      - run:
+         name: Run UI Test of DemoMacOS
+         command: >
+            xcodebuild test
+            -project DemoMacOS.xcodeproj
+            -disableAutomaticPackageResolution
+            -scheme DemoMacOSUITests
+            -resultBundlePath TestResults
+            -enableCodeCoverage YES
+            -clonedSourcePackagesDirPath SourcePackages
+            | xcpretty
+      - run:
+         name: Change directory to root...
+         command: cd ../../
 
 workflows:
   version: 2
