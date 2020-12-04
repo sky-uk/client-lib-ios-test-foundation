@@ -5,24 +5,6 @@ import UIKit
 #else
 import Cocoa
 typealias UIImage = NSImage
-extension NSImage {
-    var cgImage: CGImage? {
-        var proposedRect = CGRect(origin: .zero, size: size)
-        return cgImage(forProposedRect: &proposedRect, context: nil, hints: nil)
-    }
-
-    convenience init?(named name: String) {
-        self.init(named: Name(name))
-    }
-
-    func jpegData(compressionQuality: CGFloat) -> Data? {
-        guard let cgImage = cgImage else {
-            return nil
-        }
-        let bitmapRep = NSBitmapImageRep(cgImage: cgImage)
-        return bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:])!
-    }
-}
 
 typealias UIFont = NSFont
 
@@ -74,10 +56,40 @@ extension UITestHttpServerBuilder {
     // MARK: Image utilities
     static func drawOnImage(text: String, properties: ImageProperties? = nil) -> Data {
         let size = properties?.size ?? CGSize(width: 500, height: 500)
-
+        let context: CGContext
         #if canImport(UIKit)
         UIGraphicsBeginImageContext(size)
-        let context = UIGraphicsGetCurrentContext()!
+        context = UIGraphicsGetCurrentContext()!
+        #else
+        context = CGContext(data: nil,
+                           width: Int(size.width),
+                           height: Int(size.height),
+                           bitsPerComponent: 8,
+                           bytesPerRow: 4 * Int(size.width),
+                           space: CGColorSpaceCreateDeviceRGB(),
+                           bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
+        #endif
+        let midPoint = CGPoint(x: size.width / 2, y: size.height / 2)
+        drawImage(context: context, size: size)
+        drawText(context: context, at: CGPoint(x: 0, y: 0), text: text, offsize: 13)
+        drawText(context: context, at: CGPoint(x: midPoint.x, y: midPoint.y), text: "\(size.width)x\(size.height)")
+        #if canImport(UIKit)
+        let myImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return myImage?.jpegData(compressionQuality: 1) ?? Data()
+        #else
+        if let cgImage = context.makeImage() {
+            let bitmapRep = NSBitmapImageRep(cgImage: cgImage)
+            return bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:])!
+        } else {
+            return Data()
+        }
+        #endif
+
+    }
+
+
+    static func drawImage(context: CGContext, size: CGSize) {
         context.setFillColor(gray: 0.9, alpha: 1.0)
         context.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
         context.setLineWidth(2.0)
@@ -95,14 +107,6 @@ extension UITestHttpServerBuilder {
         let off: CGFloat = 20
         context.strokeLineSegments(between: [CGPoint(x: midPoint.x, y: midPoint.y - off), CGPoint(x: midPoint.x, y: midPoint.y + off)])
         context.strokeLineSegments(between: [CGPoint(x: midPoint.x - off, y: midPoint.y), CGPoint(x: midPoint.x + off, y: midPoint.y)])
-        drawText(context: context, at: CGPoint(x: 0, y: 0), text: text, offsize: 13)
-        drawText(context: context, at: CGPoint(x: midPoint.x, y: midPoint.y), text: "\(size.width)x\(size.height)")
-        let myImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return myImage?.jpegData(compressionQuality: 1) ?? Data()
-        #else
-            return Data()
-        #endif
     }
 
     static func drawText(context: CGContext, at point: CGPoint, text: String, offsize: CGFloat = 20) {

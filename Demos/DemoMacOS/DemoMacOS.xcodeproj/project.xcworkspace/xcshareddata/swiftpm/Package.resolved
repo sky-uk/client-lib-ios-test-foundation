@@ -3,10 +3,10 @@
     "pins": [
       {
         "package": "SkyTestFoundation",
-        "repositoryURL": "https://github.com/sky-uk/client-lib-ios-test-foundation",
+        "repositoryURL": "https://github.com/sky-uk/client-lib-ios-test-foundation.git",
         "state": {
           "branch": "if_os",
-          "revision": "cf3c7eeb4deef7ca700b2875fb636fc5429a5cb9",
+          "revision": "694f00d2745f5549fca3eac9657b1e2424a8a477",
           "version": null
         }
       },

@@ -22,8 +22,7 @@ struct ContentView: View {
     func loadImage() {
         let url = URL(string: "http://localhost:8080/image")!
         URLSession.shared.dataTask(with: url) { data, response, error in
-            print("response.image: \(data)")
-                        if let data = data, data.count > 0 {
+                        if let data = data {
                             DispatchQueue.main.async {
                                 let dd = ImageUtils.getImage(size: CGSize(width: 200,height: 200))
                                 let nsImage = NSImage(data: dd)!
@@ -32,12 +31,10 @@ struct ContentView: View {
                         }
                     }.resume()
     }
-
     func loadText() {
         text = Text("Placeholder")
         let url = URL(string: "http://localhost:8080/message")!
         URLSession.shared.dataTask(with: url) { data, response, error in
-            print("response.texT: \(data)")
                         if let data = data, data.count > 0 {
 
                             DispatchQueue.main.async {
@@ -62,6 +59,7 @@ struct ImageUtils {
                            bytesPerRow: 4 * Int(size.width),
                            space: CGColorSpaceCreateDeviceRGB(),
                            bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
+
        // Draw square
         let path = CGPath(rect: rect, transform: nil)
         context.addPath(path)

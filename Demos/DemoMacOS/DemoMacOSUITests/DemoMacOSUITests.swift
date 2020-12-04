@@ -12,7 +12,7 @@ class DemoMacOSUITests: SkyUITestCase {
     }
 
     func testExample() throws {
-        httpServerBuilder.routeImagesAt(path: "image", properties: nil)
+        httpServerBuilder.routeImagesAt(path: "/image", properties: nil)
         let text = "Hello world."
         try httpServerBuilder.route((endpoint: "/message", statusCode: 200, body: text.data(using: .utf8)!, responseTime: 0))
             .buildAndStart()
