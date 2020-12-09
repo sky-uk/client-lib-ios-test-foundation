@@ -19,7 +19,7 @@ jobs:
       - run:
          name: Run UI Test of Demo iOS
          command: >
-            cd Demos/DemoMacOS;
+            cd Demos/DemoIOS;
             xcodebuild test
             -disableAutomaticPackageResolution
             -project DemoIOS.xcodeproj
