@@ -226,7 +226,7 @@ The same test of Demo iOS App is executued.
 
 Note: pay attention to settings/capabilities of target app, in order to perform http request to localhost from the app, and entitlements set to UI test target in order to allow socket bind to localhost.
 
-The foolowing view is disaplied during the execution of the test:
+The following view is disaplied during the execution of the test:
 
 ![demo_macos_app](https://user-images.githubusercontent.com/51656240/101652813-fce23a80-3a3e-11eb-9858-445d6734e5c1.jpg)
 
