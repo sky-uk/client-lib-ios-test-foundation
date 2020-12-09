@@ -26,7 +26,7 @@ jobs:
            | xcpretty
       - run:
          name: Run Demo iOS UI Test
-         command >
+         command: >
            xcodebuild test -disableAutomaticPackageResolution
            -project Demos/DemoIOS/DemoIOS.xcodeproj
            -scheme DemoIOSUITests
