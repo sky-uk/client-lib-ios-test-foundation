@@ -51,17 +51,8 @@ jobs:
             rm ~/.ssh/id_rsa || true
             for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
       - run:
-         name: Build & Test SPM Package
-         command: >
-           xcodebuild test
-           -disableAutomaticPackageResolution
-           -scheme SkyTestFoundation
-           -destination 'platform=iOS Simulator,name=iPhone 11'
-           | xcpretty
-      - run:
          name: Run UI Test of Demo iOS
          command: >
-            cd Demos/DemoIOS;
             xcodebuild test
             -disableAutomaticPackageResolution
             -project DemoIOS.xcodeproj
