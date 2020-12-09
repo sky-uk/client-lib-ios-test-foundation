@@ -94,11 +94,10 @@ public class UITestHttpServerBuilder {
                 let data: Data
                 if let imageProperties = imageResponse.properties {
                     let properties = imageProperties(request)
-                    data = UITestHttpServerBuilder.drawOnImage(text: request.path, properties: properties)!.jpegData(compressionQuality: 1)!
+                    data = UITestHttpServerBuilder.drawOnImage(text: request.path, properties: properties)
                 } else {
-                    data = UITestHttpServerBuilder.drawOnImage(text: request.path)!.jpegData(compressionQuality: 1)!
+                    data = UITestHttpServerBuilder.drawOnImage(text: request.path)
                 }
-
                 return HttpResponse.raw(200, "", nil) { (writer) in
                     try writer.write(data)
                 }
@@ -133,7 +132,6 @@ public class UITestHttpServerBuilder {
         }
 
         for endpointCallBackResponse in httpCallBackResponses {
-            let queue = DispatchQueue(label: "queue.endpoint.\(endpointCallBackResponse.endpoint)")
             httpServer[endpointCallBackResponse.endpoint] = { request in
                 self.updateEndpointCallCount(endpointCallBackResponse.endpoint)
                 return endpointCallBackResponse.callBack(request)

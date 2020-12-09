@@ -186,3 +186,47 @@ Returns true if ui test is running on iOS simulator. It can be used in conjuncti
 
 ### Mocks - Random data generators
 TODO
+
+### Demos
+## Demo iOS App 
+The app requests a text and an image to the mock sever. The project includes an UI test example showing mock server usage.
+```swift
+import XCTest
+import SkyTestFoundation
+
+class DemoIOSUITests: SkyUITestCase {
+
+    func testMockServer() throws {
+        // Given
+        let text = "Hello world from SkyTestFoundation Mock Server."
+        httpServerBuilder.routeImagesAt(path: "/image", properties: nil)
+        try httpServerBuilder
+            .route((endpoint: "/message", statusCode: 200, body: text.data(using: .utf8)!, responseTime: 0))
+            .buildAndStart()
+        // When
+        let app = XCUIApplication()
+        app.launch()
+        // Then
+        exist(app.staticTexts[text])
+        exist(app.windows
+                .children(matching: .other).element
+                .children(matching: .other).element
+                .children(matching: .other).element
+                .children(matching: .image).element)
+
+        httpServerBuilder.httpServer.stop()
+    }
+}
+```
+The following view will be displayed in the iOS simulator during the test execution:
+![ demo_ios_app](https://user-images.githubusercontent.com/51656240/101651922-e4255500-3a3d-11eb-82bc-0bf8d067bcb7.png)
+
+## Demo MacOS App 
+The same test of Demo iOS App is executued. 
+
+Note: pay attention to settings/capabilities of target app, in order to perform http request to localhost from the app, and entitlements set to UI test target in order to allow socket bind to localhost.
+
+The foolowing view is disaplied during the execution of the test:
+
+![demo_macos_app](https://user-images.githubusercontent.com/51656240/101652813-fce23a80-3a3e-11eb-9858-445d6734e5c1.jpg)
+

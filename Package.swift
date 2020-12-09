@@ -6,7 +6,10 @@ import PackageDescription
 let package = Package(
     name: "SkyTestFoundation",
     platforms: [
-            .iOS(.v12)
+        .iOS(.v12),
+        .macOS(.v10_15),
+        .tvOS(.v12),
+        .watchOS(.v5)
         ],
     products: [
         .library(name: "SkyTestFoundation", targets: ["SkyTestFoundation"])
@@ -17,11 +20,13 @@ let package = Package(
     targets: [
         .target(
             name: "SkyTestFoundation",
-            dependencies: ["Swifter"]
+            dependencies: ["Swifter"],
+	    path: "Xcode/Sources"
         ),
         .testTarget(
             name: "SkyTestFoundationTests",
-            dependencies: ["SkyTestFoundation"]
+            dependencies: ["SkyTestFoundation"],
+	    path: "Xcode/Tests"
         )
     ]
 )
