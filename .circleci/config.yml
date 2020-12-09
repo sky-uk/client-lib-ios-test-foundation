@@ -27,7 +27,41 @@ jobs:
       - run:
          name: Run UI Test of Demo iOS
          command: >
-            cd Demos/DemoIOS; 
+            cd Demos/DemoIOS;
+            xcodebuild test
+            -disableAutomaticPackageResolution
+            -project DemoIOS.xcodeproj
+            -scheme DemoIOSUITests
+            -sdk iphonesimulator
+            -destination 'platform=iOS Simulator,name=iPhone 11'
+            -clonedSourcePackagesDirPath SourcePackages
+  demoios:
+    macos:
+      xcode: 12.2.0
+    shell: /bin/bash --login -eo pipefail
+    working_directory: ~/Demos/DemoIOS
+    steps:
+      - checkout
+      - run:
+          name: Enable cloning private Swift Package Manager repositories
+          command: sudo defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES
+      - run:
+          name: Add GitHub to SSH Known Hosts
+          command: |
+            rm ~/.ssh/id_rsa || true
+            for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
+      - run:
+         name: Build & Test SPM Package
+         command: >
+           xcodebuild test
+           -disableAutomaticPackageResolution
+           -scheme SkyTestFoundation
+           -destination 'platform=iOS Simulator,name=iPhone 11'
+           | xcpretty
+      - run:
+         name: Run UI Test of Demo iOS
+         command: >
+            cd Demos/DemoIOS;
             xcodebuild test
             -disableAutomaticPackageResolution
             -project DemoIOS.xcodeproj
@@ -42,3 +76,4 @@ workflows:
   build-test:
     jobs:
       - spm
+      - demoios
