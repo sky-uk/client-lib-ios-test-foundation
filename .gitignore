@@ -9,3 +9,5 @@ Info.plist
 Demos/DemoMacOS/TestResults.xcresult
 Demos/DemoMacOS/TestResultsDemoMacOs.xcresult/Data
 Demos/DemoMacOS/TestResultsDemoMacOs
+manifest.db
+Demos/DemoIOS/SourcePackages

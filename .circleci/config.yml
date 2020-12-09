@@ -17,17 +17,16 @@ jobs:
             rm ~/.ssh/id_rsa || true
             for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
       - run:
-         name: Run UI Test of DemoMacOS
+         name: Run UI Test of Demo iOS
          command: >
-            sudo sqlite3 "/Library/Application Support/com.apple.TCC/TCC.db" "INSERT INTO access VALUES ('kTCCServiceAccessibility','com.apple.dt.Xcode-Helper',0,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL);"
             cd Demos/DemoMacOS;
-            xcodebuild
-            -project DemoMacOS.xcodeproj
-            -sdk macosx
+            xcodebuild test
             -disableAutomaticPackageResolution
-            -scheme DemoMacOSUITests
+            -project DemoIOS.xcodeproj
+            -scheme DemoIOSUITests
+            -sdk iphonesimulator
+            -destination 'platform=iOS Simulator,name=iPhone 11'
             -clonedSourcePackagesDirPath SourcePackages
-            clean build test CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
       - run:
          name: Build & Test SPM Package
          command: >
