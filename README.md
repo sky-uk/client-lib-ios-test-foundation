@@ -221,3 +221,10 @@ class DemoIOSUITests: SkyUITestCase {
 The following view will be displayed in the iOS simulator during the test execution:
 ![ demo_ios_app](https://user-images.githubusercontent.com/51656240/101651922-e4255500-3a3d-11eb-82bc-0bf8d067bcb7.png)
 
+## Demo MacOS App 
+The same test of Demo iOS App is executued. 
+Note: Pay attention to settings/capabilities of target app, in order to perform http request to localhost from the app, and entitlements set to UI test target in order to allow socket bind to localhost.
+
+The foolowing view is disaplied during the execution of the test:
+![demo_macos_app](https://user-images.githubusercontent.com/51656240/101652520-a248de80-3a3e-11eb-9a63-8ce9827378be.jpg)
+
