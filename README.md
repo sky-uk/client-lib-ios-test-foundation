@@ -188,8 +188,8 @@ Returns true if ui test is running on iOS simulator. It can be used in conjuncti
 TODO
 
 ### Demos
-##Demo iOS App 
-The app requests a text and an image to the mock sever. The project include an UI test example showing mock server usage
+## Demo iOS App 
+The app requests a text and an image to the mock sever. The project includes an UI test example showing mock server usage.
 ```swift
 import XCTest
 import SkyTestFoundation
@@ -218,3 +218,6 @@ class DemoIOSUITests: SkyUITestCase {
     }
 }
 ```
+The following view will be displayed in the iOS simulator during the test execution:
+![ demo_ios_app](https://user-images.githubusercontent.com/51656240/101651922-e4255500-3a3d-11eb-82bc-0bf8d067bcb7.png)
+
