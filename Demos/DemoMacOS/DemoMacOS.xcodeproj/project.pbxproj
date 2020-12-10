@@ -636,8 +636,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sky-uk/client-lib-ios-test-foundation";
 			requirement = {
-				branch = if_os;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
