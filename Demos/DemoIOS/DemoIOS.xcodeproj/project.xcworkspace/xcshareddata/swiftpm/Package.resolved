@@ -5,9 +5,9 @@
         "package": "SkyTestFoundation",
         "repositoryURL": "https://github.com/sky-uk/client-lib-ios-test-foundation",
         "state": {
-          "branch": "if_os",
-          "revision": "d3b43db6d85f0471dedca46c9b36bd083c0aff35",
-          "version": null
+          "branch": null,
+          "revision": "13e4f501f2bffcc6d9c1596accfc9498a854ca99",
+          "version": "2.0.4"
         }
       },
       {

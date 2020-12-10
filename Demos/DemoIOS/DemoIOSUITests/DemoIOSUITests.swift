@@ -15,7 +15,11 @@ class DemoIOSUITests: SkyUITestCase {
         app.launch()
         // Then
         exist(app.staticTexts[text])
-        exist(app.windows.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .image).element)
+        exist(app.windows
+                .children(matching: .other).element
+                .children(matching: .other).element
+                .children(matching: .other).element
+                .children(matching: .image).element)
         httpServerBuilder.httpServer.stop()
     }
 }
