@@ -195,7 +195,7 @@ print(v)  // prints 673D6E7C-ECE4-493C-B86B-25DAE78C02CC
 v = String.mock()
 print(v)  // prints 2D092A17-5BBB-4F91-8E4B-BC45A902D235
 ```
-#### Real Data / Dictionares
+#### Real Data / Dictionaries
 TBD
 
 ### Demos
