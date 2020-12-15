@@ -185,7 +185,7 @@ Determines if the element is NOT enabled for user interaction.
 Returns true if ui test is running on iOS simulator. It can be used in conjunction with `XCTSkipIf/1` in order to skip the execution of a ui test if on iOS simulator.
 
 ### Mocks - Random data generators
-The framework provides mocks for built-in data type of Swift. In mock testing, the dependencies are replaced with objects that simulate the behaviour of the real ones. The purpose of mocking is to isolate and focus on the code being tested and not on the behaviour or state of external dependencies.
+The framework provides mocks for built-in data types of Swift. In mock testing, the dependencies are replaced with objects that simulate the behaviour of the real ones. The purpose of mocking is to isolate and focus on the code being tested and not on the behaviour or state of external dependencies.
 Each mocks returns a random value of the associated data type.
 
 Example
@@ -195,9 +195,8 @@ print(v)  // prints 673D6E7C-ECE4-493C-B86B-25DAE78C02CC
 v = String.mock()
 print(v)  // prints 2D092A17-5BBB-4F91-8E4B-BC45A902D235
 ```
-
-
-
+#### Real Data / Dictionares
+TBD
 
 ### Demos
 ## Demo iOS App 
