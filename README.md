@@ -68,7 +68,6 @@ If the execution of the method under test performs an http request not handled b
 
 Note: 
 - `Endpoint.Selfcare.cities.urlPath` is a relative path not containing `127.0.0.1:8080`
-- `httpServerBuilder` is defined in SkyUnitTestCase, the associated mock server is started in XCTestCase.setUp() and stopped in XCTestCase.tearDown() instance methods.
 
 ### SkyUITestCase - User Interface test example
 In the context of UI test a mobile app (MA) can be represented as a black box (see Input/Output) defined by its own inputs and outputs. 
@@ -120,16 +119,25 @@ class LoginTests: SkyUITestCase {
     
  }
  ``` 
-Note: `httpServerBuilder` is defined in `SkyUITestCase`
 
-### UI UITestHttpServerBuilder
-Mock server builder to be used in UI tests.
-#### func route(_ response: (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?), on: ((Swifter.HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder
+### Mock Server Builders
+SkyUITestCase and SkyUTTestCase provided mock server builder to easy to define the state of the mock server. Builder can be accessed using the variable 'httpServerBuilder' defined in SkyUITestCase and SkyUTTestCase.
+
+#### UI mock server builder
+```swift
+func route(_ response: (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?), on: ((Swifter.HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder
+```
 Adds http route to mock server. Clousure `on` is called on main the thread when a http request with path equals to `endpoint` is received by the mock server.
-#### func route(endpoint: String, on: @escaping ((Swifter.HttpRequest) -> HttpResponse)) -> UITestHttpServerBuilder
-Adds http route to mock server. Closure `on` is called on a background thread when a http request with path equals to `endpoint` is received by the mock server. The closure allows to return different Http responses given an http request.
-#### buildAndStart(port: in_port_t = 8080, file: StaticString = #file, line: UInt = #line) throws -> HttpServer
-Build all routes added so far and starts the mock server.
+
+```swift
+func route(endpoint: String, on: @escaping ((Swifter.HttpRequest) -> HttpResponse)) -> UITestHttpServerBuilder
+```
+Adds http route to mock server. Closure `on` is called on a background thread when a http request with path equals to `endpoint` is received by the mock server. The closure allows to define different Http responses given the same endpoint.
+
+```swift
+func buildAndStart(port: in_port_t = 8080, file: StaticString = #file, line: UInt = #line) throws -> HttpServer
+```
+Build all routes added so far and starts the mock server. 
 
 Example
 ```swift
