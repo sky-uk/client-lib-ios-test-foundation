@@ -4,8 +4,10 @@ The suite has to parts, one for Unit testing and the other one for User Interfac
 ## Test Environment
 During tests execution, iOS Mobile App (MA) should interact with a Mock Server which appear to be the real counterparts of BE server. The framework provides a mock server that allows a tight control over what data the iOS App receives.
 ![](https://user-images.githubusercontent.com/51656240/94568277-9685b280-026c-11eb-80ac-d5a6d95bcdf3.png)
+## SkyUITestCase/SkyUTTestCase primary classes for defining test cases
+SkyUITestCase and SkyUTTestCase classes extend XCTestCase and define a mock server. Use SkyUITestCase and SkyUTTestCase for UI and UT test case respectively.
 
-### Unit Test Template with SUT performing Http Requests
+### SkyUTTestCase - Unit Test Template with SUT performing Http Requests
 The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUp()` forwards http request performed by MA to localhost.
 See [Unit Test Overview](https://developer.bskyb.com/wiki/pages/viewpage.action?spaceKey=DPTECH&title=Unit+testing) for more deatil on unit testing approach in Sky.
 ```swift
@@ -58,16 +60,17 @@ func UnexepctedRequestFail(_ request: Swifter.HttpRequest, file: StaticString = 
     XCTFail("Url request not stubbed: \(String(describing: request.path))", file: file, line: line)
 }
 ```
-Note: `Endpoint.Selfcare.cities.urlPath` is a relative path not containing `127.0.0.1:8080`.
-
 The test is composed by 3 sections:
 - Given: mocks and http routes are defined
 - When: call to method of SUT (system under test) to be tested
 - Then: expected values assertions
-
 If the execution of the method under test performs an http request not handled by the mocks server then `onUnexpected`'s clousure `(HttpRequest) -> ()` is called.
 
-### UI Test Template
+Note: 
+- `Endpoint.Selfcare.cities.urlPath` is a relative path not containing `127.0.0.1:8080`
+- `httpServerBuilder` is defined in SkyUnitTestCase, the associated mock server is started in XCTestCase.setUp() and stopped in XCTestCase.tearDown() instance methods.
+
+### SkyUITestCase - UI Test Template
 In the context of UI test a mobile app (MA) can be represented as a black box (see Input/Output) defined by its own inputs and outputs. 
 
 ![Input/Output](https://user-images.githubusercontent.com/51656240/95301424-e1ad5000-0880-11eb-8b42-007bda2722ae.png)
@@ -116,7 +119,9 @@ class LoginTests: SkyUITestCase {
     }
     
  }
- ```
+ ``` 
+Note: `httpServerBuilder` is defined in `SkyUITestCase`
+
 ### UI UITestHttpServerBuilder
 Mock server builder to be used in UI tests.
 #### func route(_ response: (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?), on: ((Swifter.HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder
