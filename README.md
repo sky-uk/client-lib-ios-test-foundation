@@ -121,7 +121,7 @@ class LoginTests: SkyUITestCase {
  ``` 
 
 ### Mock Server Builders
-SkyUITestCase and SkyUTTestCase provided mock server builder to easy to define the state of the mock server. Builder can be accessed using the variable 'httpServerBuilder' defined in SkyUITestCase and SkyUTTestCase.
+SkyUITestCase and SkyUTTestCase provided mock server builder to easy the definition of the mock server routes. Builder can be accessed using the variable 'httpServerBuilder' defined in SkyUITestCase and SkyUTTestCase.
 
 #### UI mock server builder
 ```swift
