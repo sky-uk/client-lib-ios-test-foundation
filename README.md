@@ -246,6 +246,6 @@ The following view is displayed during the execution of the test:
 
 ![demo_macos_app](https://user-images.githubusercontent.com/51656240/101652813-fce23a80-3a3e-11eb-9858-445d6734e5c1.jpg)
 
-####List of acronyms
+#### List of acronyms
 - MA mobile iOS application
 - SUT system under test
