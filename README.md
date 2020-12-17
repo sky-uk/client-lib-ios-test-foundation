@@ -5,9 +5,9 @@ The suite has to parts, one for Unit testing and the other one for User Interfac
 During tests execution, iOS Mobile App (MA) should interact with a Mock Server which appear to be the real counterparts of BE server. The framework provides a mock server that allows a tight control over what data the iOS App receives.
 ![](https://user-images.githubusercontent.com/51656240/94568277-9685b280-026c-11eb-80ac-d5a6d95bcdf3.png)
 ## SkyUITestCase/SkyUTTestCase primary classes for defining test cases
-SkyUITestCase and SkyUTTestCase classes extend XCTestCase and define a mock server. Use SkyUITestCase and SkyUTTestCase for UI and UT test case respectively.
+SkyUITestCase and SkyUTTestCase classes extend XCTestCase and define a mock server. Use SkyUITestCase and SkyUTTestCase for UI and Unit test cases respectively.
 
-### SkyUTTestCase - Unit Test Template with SUT performing Http Requests
+### SkyUTTestCase - Unit Test example with SUT performing Http Requests
 The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUp()` forwards http request performed by MA to localhost.
 See [Unit Test Overview](https://developer.bskyb.com/wiki/pages/viewpage.action?spaceKey=DPTECH&title=Unit+testing) for more deatil on unit testing approach in Sky.
 ```swift
@@ -70,7 +70,7 @@ Note:
 - `Endpoint.Selfcare.cities.urlPath` is a relative path not containing `127.0.0.1:8080`
 - `httpServerBuilder` is defined in SkyUnitTestCase, the associated mock server is started in XCTestCase.setUp() and stopped in XCTestCase.tearDown() instance methods.
 
-### SkyUITestCase - UI Test Template
+### SkyUITestCase - User Interface test example
 In the context of UI test a mobile app (MA) can be represented as a black box (see Input/Output) defined by its own inputs and outputs. 
 
 ![Input/Output](https://user-images.githubusercontent.com/51656240/95301424-e1ad5000-0880-11eb-8b42-007bda2722ae.png)
@@ -246,3 +246,6 @@ The following view is displayed during the execution of the test:
 
 ![demo_macos_app](https://user-images.githubusercontent.com/51656240/101652813-fce23a80-3a3e-11eb-9858-445d6734e5c1.jpg)
 
+####List of acronyms
+- MA mobile iOS application
+- SUT system under test
