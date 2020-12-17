@@ -121,9 +121,10 @@ class LoginTests: SkyUITestCase {
  ``` 
 
 ### Mock Server Builders
-SkyUITestCase and SkyUTTestCase provided mock server builder to easy the definition of the mock server routes. Builder can be accessed using the variable 'httpServerBuilder' defined in SkyUITestCase and SkyUTTestCase.
+SkyUITestCase and SkyUTTestCase provide mock server builder to easy the definition of the mock server routes. Builder can be accessed using the variable `httpServerBuilder` defined in SkyUITestCase and SkyUTTestCase.
 
-#### UI mock server builder
+#### API - UI mock server builder
+Available methods of `httpServerBuilder`:
 ```swift
 func route(_ response: (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?), on: ((Swifter.HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder
 ```
@@ -163,6 +164,25 @@ The test is composed by 3 sections:
 - Given: mocks, http routes are defined and app is launced 
 - When: ui gesture are performed in order to navigate to the view to be tested 
 - Then: assertions on ui element of the view (to be tested)
+
+#### API - UT mock server builder
+Available methods of `httpServerBuilder`:
+
+```swift
+func route(_ endpoint: String, _ completion: @escaping (HttpRequest, Int) -> (HttpResponse)) -> UTHttpServerBuilder
+```
+Adds http route to mock server. Clousure `on` returns the Http reponses associated to the `endpoint`. The first argument of the closure is the http request received by the mock server and the second one contains the number of http request received so far by the mock server.
+
+```swift
+func onUnexpected(_ asserts: @escaping (HttpRequest) -> Void) -> UTHttpServerBuilder
+```
+If the SUT performs an http request not handled by the mock server then the closure ```asserts``` is called. The argument of the assert contains the
+http request not handled by the mock server.
+
+```swift
+func buildAndStart(port: in_port_t = 8080, forceIPv4: Bool = false, priority: DispatchQoS.QoSClass = .userInteractive) throws -> HttpServer
+```
+Build all routes added so far and starts the mock server.
 
 ### XCTAssert Extensions
 Useful extensions of assertions defined in XCTest framework.
