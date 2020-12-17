@@ -4,7 +4,7 @@ The suite has to parts, one for Unit testing and the other one for User Interfac
 ## Test Environment
 During tests execution, iOS Mobile App (MA) should interact with a Mock Server which appear to be the real counterparts of BE server. The framework provides a mock server that allows a tight control over what data the iOS App receives.
 ![](https://user-images.githubusercontent.com/51656240/94568277-9685b280-026c-11eb-80ac-d5a6d95bcdf3.png)
-During the execution of the tests the MA must forward http request to http://127.0.0.1:8080 (it is possible to change the port of the mock server).
+During the execution of the tests the MA must forward http requests to http://127.0.0.1:8080.
 
 ## SkyUITestCase/SkyUTTestCase primary classes for defining test cases
 SkyUITestCase and SkyUTTestCase classes extend XCTestCase and define a mock server. Use SkyUITestCase and SkyUTTestCase for UI and Unit test cases respectively.
