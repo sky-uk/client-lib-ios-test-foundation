@@ -5,6 +5,7 @@ options:
     iOS: "12.4"
 settings:
     VALIDATE_WORKSPACE: YES
+    OTHER_LDFLAGS: -weak_framework XCTest
 targets:
   SkyTestFoundation:
     templates:
