@@ -17,7 +17,7 @@ jobs:
             rm ~/.ssh/id_rsa || true
             for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
       - run:
-         name: Build & Test SPM Package
+         name: Build & Test
          command: swift test
   carhage:
     macos:
@@ -28,12 +28,7 @@ jobs:
       - run:
           ./bootstrap
       - run:
-          name: Add GitHub to SSH Known Hosts
-          command: |
-            rm ~/.ssh/id_rsa || true
-            for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
-      - run:
-         name: Build & Test SPM Package
+         name: Build & Test
          command: xcodebuild test -disableAutomaticPackageResolution -scheme SkyTestFoundation -destination 'platform=iOS Simulator,name=iPhone 11' | xcpretty
 
 workflows:
