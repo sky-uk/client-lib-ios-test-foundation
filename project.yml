@@ -32,7 +32,6 @@ targetTemplates:
     }
     dependencies:
       - carthage: Swifter
-      - framework: XCTest.framework
   APIFrameworkTests:
     platform: iOS
     type: bundle.unit-test
