@@ -1,0 +1,41 @@
+name: SkyTestFoundation
+options:
+  bundleIdPrefix: it.sky
+  deploymentTarget:
+    iOS: "12.4"
+settings:
+    VALIDATE_WORKSPACE: YES
+targets:
+  SkyTestFoundation:
+    templates:
+      - APIFramework
+    scheme:
+      testTargets:
+        - SkyTestFoundationTests
+    sources:
+      - XCode/Sources
+  SkyTestFoundationTests:
+    templates:
+      - APIFrameworkTests
+targetTemplates:
+  APIFramework:
+    platform: iOS
+    type: framework
+    info:
+      path: ${target_name}.plist
+      properties:
+        CFBundleIdentifier: it.sky.SkyTestFoundation
+        CFBundleShortVersionString: "2.0.5"
+    scheme: {
+        SkyTestFoundation
+    }
+    dependencies:
+      - carthage: Swifter
+      - framework: XCTest.framework
+  APIFrameworkTests:
+    platform: iOS
+    type: bundle.unit-test
+    sources:
+      - path: XCode/Tests/SkyTestFoundationTests
+    dependencies:
+      - target: SkyTestFoundation
