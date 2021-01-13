@@ -6,6 +6,7 @@ options:
 settings:
     VALIDATE_WORKSPACE: YES
     OTHER_LDFLAGS: -weak_framework XCTest
+    ENABLE_BITCODE: NO
 targets:
   SkyTestFoundation:
     templates:
