@@ -233,6 +233,13 @@ print(v)  // prints 2D092A17-5BBB-4F91-8E4B-BC45A902D235
 #### Real Data / Dictionaries
 TBD
 
+## Installation
+### Carthage
+Add SkyTestFoundation to your Cartfile.private
+```github "sky-uk/client-lib-ios-test-foundation"```
+### Swift Package Manager
+SPM is supported too
+
 ### Demos
 ## Demo iOS App 
 The app requests a text and an image to the mock sever. The project includes an UI test example showing mock server usage.
