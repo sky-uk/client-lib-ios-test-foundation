@@ -7,35 +7,74 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F24AB1E010B1803A29175A7 /* Swifter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 62F096C27DE6386F809733E6 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		16E1B493677F70C72599891B /* SkyUnitTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9248980675CE656DDB308D7B /* SkyUnitTestCase.swift */; };
 		1F350108653B2AA63CCEDA2A /* UTHttpServerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3AD61488629F24C0AD8B39 /* UTHttpServerBuilder.swift */; };
+		1FC05613A5749879E3C3FA94 /* UITestHttpServerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FB0471D386217EF129A068 /* UITestHttpServerBuilderTests.swift */; };
 		1FEB8EC11E588D35E2677091 /* UITestHttpServerBuilder+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE687E8D6138EE687447DAA /* UITestHttpServerBuilder+Images.swift */; };
 		23832F166FB209568F64F82B /* XCTAssertion+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A3E5DC532951F7B4EF2A37 /* XCTAssertion+.swift */; };
 		26478C7D1F3200069C38EF5D /* HttpRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697012634A7365D8E39C6FAB /* HttpRequest+.swift */; };
+		28EE504670D48C6975F380BF /* SkyTestFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E730C31B9B08BBA9539A0446 /* SkyTestFoundation.framework */; };
+		32D2417F52B339003B870D8C /* SkyUnitTestCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274EB3B71EEA2EC1513C2800 /* SkyUnitTestCaseTests.swift */; };
+		47DA664B3EE27283C0249DF0 /* SkyUITestCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EE092EF4E12E61F0679E25 /* SkyUITestCaseTests.swift */; };
 		5E6884A50B0E5099F89BA976 /* ImageReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9803CF0EFAB3A4ED74EC94 /* ImageReponse.swift */; };
 		72A74A24B3EC3B143212E0C8 /* XCAssertEquals+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F83BBA93D994EB95018BF0 /* XCAssertEquals+.swift */; };
 		7DE794E08862EC4E3C139548 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F81548665144A3A5B539B99 /* Mocks.swift */; };
 		8076FB9D575F5F0CC9278A87 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117041351FEA09482DE98464 /* XCTest.framework */; };
+		8442CA6EEA88E0749FE05506 /* EndpointReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9581552E92610A68894AEB /* EndpointReportTests.swift */; };
 		8F085C6C3A2264E275F30C73 /* UITestHttpServerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B24525AC2F9D892BC3D27 /* UITestHttpServerBuilder.swift */; };
 		A38A8802C38CBA261882EAC1 /* ImageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB6FBC0FDB4D8623986139D /* ImageProperties.swift */; };
 		A4E0EC87FE3FD4B6E9EA875E /* SkyUITestsCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B215476F2562E84A4641FD /* SkyUITestsCase.swift */; };
+		A711AA07F5672657C82613CD /* XCTAssertURLEqualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44D0C08FC045B703D9D1CFD /* XCTAssertURLEqualTests.swift */; };
 		B7D382F03B8174B4A1C17A24 /* HttpServer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F27AB77D2BAF17FE639E6B /* HttpServer+.swift */; };
+		CBB957722CBDA48C46B0218A /* SkyTestFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E730C31B9B08BBA9539A0446 /* SkyTestFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC96A519081C16C9ED76E56C /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F096C27DE6386F809733E6 /* Swifter.framework */; };
 		DE0734D69A3439B9F2DFF32D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6E831602F378733E752601 /* Logger.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7A7336ECFBE3BC7B4B639B1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00B7F66283DAC4CE4DF5E46B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F06378CAD02068C9AFE4069E;
+			remoteInfo = SkyTestFoundation;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EB33B2E0C05198AE44031377 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CBB957722CBDA48C46B0218A /* SkyTestFoundation.framework in Embed Frameworks */,
+				0F24AB1E010B1803A29175A7 /* Swifter.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		03FB0471D386217EF129A068 /* UITestHttpServerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHttpServerBuilderTests.swift; sourceTree = "<group>"; };
 		0F81548665144A3A5B539B99 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		117041351FEA09482DE98464 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XCTest.framework; sourceTree = "<group>"; };
 		21A3E5DC532951F7B4EF2A37 /* XCTAssertion+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTAssertion+.swift"; sourceTree = "<group>"; };
+		274EB3B71EEA2EC1513C2800 /* SkyUnitTestCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUnitTestCaseTests.swift; sourceTree = "<group>"; };
 		55F27AB77D2BAF17FE639E6B /* HttpServer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpServer+.swift"; sourceTree = "<group>"; };
 		62F096C27DE6386F809733E6 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Swifter.framework; sourceTree = "<group>"; };
 		638B24525AC2F9D892BC3D27 /* UITestHttpServerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHttpServerBuilder.swift; sourceTree = "<group>"; };
 		697012634A7365D8E39C6FAB /* HttpRequest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpRequest+.swift"; sourceTree = "<group>"; };
+		6F440F36F2CA11D4F067E6DE /* SkyTestFoundationTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SkyTestFoundationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E9581552E92610A68894AEB /* EndpointReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointReportTests.swift; sourceTree = "<group>"; };
 		9248980675CE656DDB308D7B /* SkyUnitTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUnitTestCase.swift; sourceTree = "<group>"; };
 		9DE687E8D6138EE687447DAA /* UITestHttpServerBuilder+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITestHttpServerBuilder+Images.swift"; sourceTree = "<group>"; };
 		BA3AD61488629F24C0AD8B39 /* UTHttpServerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTHttpServerBuilder.swift; sourceTree = "<group>"; };
 		BC6E831602F378733E752601 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		C44D0C08FC045B703D9D1CFD /* XCTAssertURLEqualTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTAssertURLEqualTests.swift; sourceTree = "<group>"; };
+		D1EE092EF4E12E61F0679E25 /* SkyUITestCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUITestCaseTests.swift; sourceTree = "<group>"; };
 		E0F83BBA93D994EB95018BF0 /* XCAssertEquals+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCAssertEquals+.swift"; sourceTree = "<group>"; };
 		E730C31B9B08BBA9539A0446 /* SkyTestFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SkyTestFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6B215476F2562E84A4641FD /* SkyUITestsCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUITestsCase.swift; sourceTree = "<group>"; };
@@ -53,12 +92,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		38D2559E80BF31131EA569C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28EE504670D48C6975F380BF /* SkyTestFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		00C86BAC76F6D91EBBDE5328 = {
 			isa = PBXGroup;
 			children = (
+				C0D19CDB730A4553CA251B9E /* SkyTestFoundationTests */,
 				55F2BA24CFF675117A35B6B0 /* Sources */,
 				392EFB32058A9730ACB6ED15 /* Frameworks */,
 				2DC455A99FE63E003C9292F7 /* Products */,
@@ -69,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				E730C31B9B08BBA9539A0446 /* SkyTestFoundation.framework */,
+				6F440F36F2CA11D4F067E6DE /* SkyTestFoundationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +185,19 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
+		C0D19CDB730A4553CA251B9E /* SkyTestFoundationTests */ = {
+			isa = PBXGroup;
+			children = (
+				7E9581552E92610A68894AEB /* EndpointReportTests.swift */,
+				D1EE092EF4E12E61F0679E25 /* SkyUITestCaseTests.swift */,
+				274EB3B71EEA2EC1513C2800 /* SkyUnitTestCaseTests.swift */,
+				03FB0471D386217EF129A068 /* UITestHttpServerBuilderTests.swift */,
+				C44D0C08FC045B703D9D1CFD /* XCTAssertURLEqualTests.swift */,
+			);
+			name = SkyTestFoundationTests;
+			path = XCode/Tests/SkyTestFoundationTests;
+			sourceTree = "<group>";
+		};
 		F14090B43C19B6634030CFE1 /* Asserts */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +209,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5655EC333A3740FE0C9C2B5F /* SkyTestFoundationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0797DCD238F1184B0A33815 /* Build configuration list for PBXNativeTarget "SkyTestFoundationTests" */;
+			buildPhases = (
+				E074EF1206C510FE0FB8FF09 /* Sources */,
+				38D2559E80BF31131EA569C0 /* Frameworks */,
+				EB33B2E0C05198AE44031377 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				70E400D5C8C73773D9AC28F6 /* PBXTargetDependency */,
+			);
+			name = SkyTestFoundationTests;
+			productName = SkyTestFoundationTests;
+			productReference = 6F440F36F2CA11D4F067E6DE /* SkyTestFoundationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F06378CAD02068C9AFE4069E /* SkyTestFoundation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D45FA83F6C53AE0BAE01B53F /* Build configuration list for PBXNativeTarget "SkyTestFoundation" */;
@@ -185,6 +265,7 @@
 			projectRoot = "";
 			targets = (
 				F06378CAD02068C9AFE4069E /* SkyTestFoundation */,
+				5655EC333A3740FE0C9C2B5F /* SkyTestFoundationTests */,
 			);
 		};
 /* End PBXProject section */
@@ -210,9 +291,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E074EF1206C510FE0FB8FF09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8442CA6EEA88E0749FE05506 /* EndpointReportTests.swift in Sources */,
+				47DA664B3EE27283C0249DF0 /* SkyUITestCaseTests.swift in Sources */,
+				32D2417F52B339003B870D8C /* SkyUnitTestCaseTests.swift in Sources */,
+				1FC05613A5749879E3C3FA94 /* UITestHttpServerBuilderTests.swift in Sources */,
+				A711AA07F5672657C82613CD /* XCTAssertURLEqualTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		70E400D5C8C73773D9AC28F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F06378CAD02068C9AFE4069E /* SkyTestFoundation */;
+			targetProxy = 7A7336ECFBE3BC7B4B639B1D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		39E7861A893AAF17D79C63D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = it.sky.SkyTestFoundationTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		423F794F88D7873AA7F33F76 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -290,6 +410,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};
@@ -320,6 +441,25 @@
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
+		};
+		F1AA5D141AC7A7AF4E60F9F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = it.sky.SkyTestFoundationTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
 		};
 		F5D66E43278DBA36BA887D5C /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -378,6 +518,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -389,6 +530,15 @@
 			buildConfigurations = (
 				F5D66E43278DBA36BA887D5C /* Debug */,
 				4D70B8EF1A53914C9EA60A1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A0797DCD238F1184B0A33815 /* Build configuration list for PBXNativeTarget "SkyTestFoundationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1AA5D141AC7A7AF4E60F9F9 /* Debug */,
+				39E7861A893AAF17D79C63D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
