@@ -1,0 +1,24 @@
+name: SkyTestFoundation
+options:
+  bundleIdPrefix: it.sky
+  deploymentTarget:
+    iOS: "12.4"
+targets:
+  SkyTestFoundation:
+    templates:
+      - APIFramework
+targetTemplates:
+  APIFramework:
+    platform: iOS
+    type: framework
+    info:
+      path: ${target_name}.plist
+      properties:
+        CFBundleIdentifier: it.sky.SkyTestFoundation
+        CFBundleShortVersionString: "2.0.5"
+    scheme: {}
+    sources:
+      - XCode/Sources
+    dependencies:
+      - carthage: Swifter
+      - framework: XCTest.framework
