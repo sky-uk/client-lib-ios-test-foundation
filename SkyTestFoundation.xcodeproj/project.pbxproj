@@ -20,7 +20,6 @@
 		5E6884A50B0E5099F89BA976 /* ImageReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9803CF0EFAB3A4ED74EC94 /* ImageReponse.swift */; };
 		72A74A24B3EC3B143212E0C8 /* XCAssertEquals+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F83BBA93D994EB95018BF0 /* XCAssertEquals+.swift */; };
 		7DE794E08862EC4E3C139548 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F81548665144A3A5B539B99 /* Mocks.swift */; };
-		8076FB9D575F5F0CC9278A87 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117041351FEA09482DE98464 /* XCTest.framework */; };
 		8442CA6EEA88E0749FE05506 /* EndpointReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9581552E92610A68894AEB /* EndpointReportTests.swift */; };
 		8F085C6C3A2264E275F30C73 /* UITestHttpServerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B24525AC2F9D892BC3D27 /* UITestHttpServerBuilder.swift */; };
 		A38A8802C38CBA261882EAC1 /* ImageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB6FBC0FDB4D8623986139D /* ImageProperties.swift */; };
@@ -60,7 +59,6 @@
 /* Begin PBXFileReference section */
 		03FB0471D386217EF129A068 /* UITestHttpServerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHttpServerBuilderTests.swift; sourceTree = "<group>"; };
 		0F81548665144A3A5B539B99 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
-		117041351FEA09482DE98464 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XCTest.framework; sourceTree = "<group>"; };
 		21A3E5DC532951F7B4EF2A37 /* XCTAssertion+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTAssertion+.swift"; sourceTree = "<group>"; };
 		274EB3B71EEA2EC1513C2800 /* SkyUnitTestCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUnitTestCaseTests.swift; sourceTree = "<group>"; };
 		55F27AB77D2BAF17FE639E6B /* HttpServer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpServer+.swift"; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC96A519081C16C9ED76E56C /* Swifter.framework in Frameworks */,
-				8076FB9D575F5F0CC9278A87 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +122,6 @@
 		392EFB32058A9730ACB6ED15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				117041351FEA09482DE98464 /* XCTest.framework */,
 				49FC2860A6A3968ED4BBFDBB /* Carthage */,
 			);
 			name = Frameworks;
@@ -345,7 +341,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"\".\"",
 				);
 				INFOPLIST_FILE = SkyTestFoundation.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -427,7 +422,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"\".\"",
 				);
 				INFOPLIST_FILE = SkyTestFoundation.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
