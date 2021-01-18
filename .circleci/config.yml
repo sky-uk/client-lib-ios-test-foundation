@@ -21,7 +21,7 @@ jobs:
          command: cd ./Demos/DemoMacOS
       - run:
          name: Build & Test
-         command: xcodebuild -disableAutomaticPackageResolution | xcpretty
+         command: xcodebuild | xcpretty
 
   demoMac:
     macos:
@@ -42,7 +42,7 @@ jobs:
          command: cd ./Demos/DemoIOS
       - run:
          name: Build & Test
-         command: xcodebuild -disableAutomaticPackageResolution -destination 'platform=iOS Simulator,name=iPhone 11' | xcpretty
+         command: xcodebuild -destination 'platform=iOS Simulator,name=iPhone 11' | xcpretty
 
 workflows:
   version: 2
