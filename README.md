@@ -247,8 +247,10 @@ and in the test target add the following script
 SPM is supported too
 
 ### Demos
+Source code available at: https://github.com/sky-uk/client-lib-ios-test-foundation/tree/demos
 ## Demo iOS App 
 The app requests a text and an image to the mock sever. The project includes an UI test example showing mock server usage.
+
 ```swift
 import XCTest
 import SkyTestFoundation
