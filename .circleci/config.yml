@@ -2,7 +2,7 @@
 version: 2.1
 
 jobs:
-  spm:
+  demoiOS:
     macos:
       xcode: 12.3.0
     shell: /bin/bash --login -eo pipefail
@@ -17,23 +17,36 @@ jobs:
             rm ~/.ssh/id_rsa || true
             for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
       - run:
+         name: Going to build DemoMacOS
+         command: cd ./Demos/DemoMacOS
+      - run:
          name: Build & Test
-         command: swift test
-  carhage:
+         command: xcodebuild -disableAutomaticPackageResolution | xcpretty
+
+  demoMac:
     macos:
       xcode: 12.3.0
     shell: /bin/bash --login -eo pipefail
     steps:
       - checkout
       - run:
-          ./bootstrap
+          name: Enable cloning private Swift Package Manager repositories
+          command: sudo defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES
+      - run:
+          name: Add GitHub to SSH Known Hosts
+          command: |
+            rm ~/.ssh/id_rsa || true
+            for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
+      - run:
+         name: Going to build DemoIOS
+         command: cd ./Demos/DemoIOS
       - run:
          name: Build & Test
-         command: xcodebuild test -disableAutomaticPackageResolution -scheme SkyTestFoundation -destination 'platform=iOS Simulator,name=iPhone 11' | xcpretty
+         command: xcodebuild -disableAutomaticPackageResolution -destination 'platform=iOS Simulator,name=iPhone 11' | xcpretty
 
 workflows:
   version: 2
   build-test:
     jobs:
-      - spm
-      - carhage
+      - demoiOS
+      - demoMac
