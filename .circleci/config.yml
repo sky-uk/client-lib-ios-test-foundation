@@ -21,7 +21,7 @@ jobs:
          command: cd ./Demos/DemoMacOS
       - run:
          name: Build & Test
-         command: xcodebuild | xcpretty
+         command: xcodebuild -project DemoMacOS.xcodeproj | xcpretty
 
   demoMac:
     macos:
