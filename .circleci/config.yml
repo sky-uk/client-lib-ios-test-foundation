@@ -2,24 +2,6 @@
 version: 2.1
 
 jobs:
-  demoMac:
-    macos:
-      xcode: 12.3.0
-    shell: /bin/bash --login -eo pipefail
-    steps:
-      - checkout
-      - run:
-          name: Enable cloning private Swift Package Manager repositories
-          command: sudo defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES
-      - run:
-          name: Add GitHub to SSH Known Hosts
-          command: |
-            rm ~/.ssh/id_rsa || true
-            for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
-      - run:
-         name: Build & Test
-         command: xcodebuild -project Demos/DemoMacOS/DemoMacOS.xcodeproj
-
   demoiOS:
     macos:
       xcode: 12.3.0
@@ -35,15 +17,12 @@ jobs:
             rm ~/.ssh/id_rsa || true
             for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
       - run:
-         name: Going to build DemoIOS
-         command: cd ./Demos/DemoIOS
-      - run:
          name: Build & Test
-         command: xcodebuild -destination 'platform=iOS Simulator,name=iPhone 11' | xcpretty
+         command: xcodebuild -project Demos/DemoIOS/DemoIOS.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 11' | xcpretty
 
 workflows:
   version: 2
   build-test:
     jobs:
       - demoiOS
-      - demoMac
+#      - demoMac mac app no supported by circle ci
