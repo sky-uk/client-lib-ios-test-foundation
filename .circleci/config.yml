@@ -2,7 +2,7 @@
 version: 2.1
 
 jobs:
-  demoiOS:
+  demoMac:
     macos:
       xcode: 12.3.0
     shell: /bin/bash --login -eo pipefail
@@ -17,13 +17,10 @@ jobs:
             rm ~/.ssh/id_rsa || true
             for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
       - run:
-         name: Going to build DemoMacOS
-         command: cd ./Demos/DemoMacOS
-      - run:
          name: Build & Test
-         command: xcodebuild -project DemoMacOS.xcodeproj | xcpretty
+         command: xcodebuild -project Demos/DemoMacOS/DemoMacOS.xcodeproj
 
-  demoMac:
+  demoiOS:
     macos:
       xcode: 12.3.0
     shell: /bin/bash --login -eo pipefail
