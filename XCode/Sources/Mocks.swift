@@ -17,6 +17,7 @@ public enum RealDataDictionary {
     case email
     case mobilePhone
     case landlinePhone
+    case loremIpsum
 }
 
 public extension String {
@@ -37,6 +38,7 @@ public extension String {
             case .email: return ["rossi@mailx.com", "esposito@liberox.it", "ferrari@skymail.com", "mario.bianchi@mail.com", "russo.italo@mail.com"].randomElement()!
             case .mobilePhone: return ["3391212149", "340303328832", "3391349898", "3239039023"].randomElement()!
             case .landlinePhone: return ["0554641900", "0230302400", "0957181801", "0516400100", "0115066201"].randomElement()!
+            case .loremIpsum: return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         }
     }
 
