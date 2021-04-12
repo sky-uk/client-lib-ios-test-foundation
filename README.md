@@ -235,11 +235,13 @@ Real data dictionaries that can be used to assign meaningful values to generate 
 Availables real data dictionaries are:
 <img width="570" alt="realdatadic" src="https://user-images.githubusercontent.com/51656240/114414177-e3006200-9bae-11eb-9a78-714e4b6762ad.png">
 
-i.e.
+Example
+```swift 
 var v = String.mock(.firstname) // randomly generate a firstname value
 print(v) // prints Augusto
 v = String.mock(.firstname)
 print(v) // prints Elisa
+```
 
 
 
