@@ -231,7 +231,9 @@ v = String.mock()
 print(v)  // prints 2D092A17-5BBB-4F91-8E4B-BC45A902D235
 ```
 #### Real Data / Dictionaries
-TBD
+Real data dictionaries that can be used to meaningful assign values to generate mocks.
+<img width="570" alt="realdatadic" src="https://user-images.githubusercontent.com/51656240/114414177-e3006200-9bae-11eb-9a78-714e4b6762ad.png">
+
 
 ## Installation
 ### Carthage
