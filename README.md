@@ -231,8 +231,15 @@ v = String.mock()
 print(v)  // prints 2D092A17-5BBB-4F91-8E4B-BC45A902D235
 ```
 #### Real Data / Dictionaries
-Real data dictionaries that can be used to meaningful assign values to generate mocks.
+Real data dictionaries that can be used to assign meaningful values to generate mocks.
 <img width="570" alt="realdatadic" src="https://user-images.githubusercontent.com/51656240/114414177-e3006200-9bae-11eb-9a78-714e4b6762ad.png">
+
+i.e.
+var v = String.mock(.firstname) // randomly generate a firstname value
+print(v) // prints Augusto
+v = String.mock(.firstname)
+print(v) // prints Elisa
+
 
 
 ## Installation
