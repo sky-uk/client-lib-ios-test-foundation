@@ -55,7 +55,6 @@ public class UITestHttpServerBuilder {
         return self
     }
 
-
     private func updateEndpointCallCount(_ endpoint: String) {
         uncallqQueue.async {
             let callCount: Int
@@ -86,7 +85,7 @@ public class UITestHttpServerBuilder {
             return "Endpoint: \(edResponse.endpoint)\n" + "\(String(describing: String(bytes: edResponse.body, encoding: .utf8)))"
         }
     }
-    
+
     func buildImageResponses() {
         imagesResponse.forEach { (imageResponse) in
             httpServer[imageResponse.path] = { request in
@@ -162,7 +161,6 @@ public class UITestHttpServerBuilder {
             self.httpRequestCount = httpRequestCount
         }
     }
-
 
 }
 

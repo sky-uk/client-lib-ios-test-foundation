@@ -81,4 +81,3 @@ public extension Date {
         return Calendar(identifier: .gregorian).date(byAdding: .day, value: Int.random(in: 1...1000), to: Date.mock())!
     }
 }
-

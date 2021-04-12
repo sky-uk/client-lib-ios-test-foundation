@@ -17,4 +17,3 @@ class UITestHttpServerBuilderTest: XCTestCase {
         XCTAssertNotNil(mockServer)
     }
 }
-

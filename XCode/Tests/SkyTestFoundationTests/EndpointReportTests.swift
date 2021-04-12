@@ -17,4 +17,3 @@ class EndpointReportTests: XCTestCase {
         XCTAssertEqual(endpointReport.httpRequestCount, httpRequestCount)
     }
 }
-

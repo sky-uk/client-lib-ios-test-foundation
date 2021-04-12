@@ -88,7 +88,6 @@ extension UITestHttpServerBuilder {
 
     }
 
-
     static func drawImage(context: CGContext, size: CGSize) {
         context.setFillColor(gray: 0.9, alpha: 1.0)
         context.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))

@@ -38,3 +38,38 @@ public func isDisabled(_ element: XCUIElement, _ message: String = "", file: Sta
 public func isRunningOnSimulator() -> Bool {
     return ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] != nil
 }
+
+extension XCUIElement {
+    func withText(_ value: String) -> XCUIElement {
+        let predicate = NSPredicate(format: "label ==[c] %@", value)
+        return staticTexts.containing(predicate).firstMatch
+    }
+
+    func withText(_ value: String) -> XCUIElementQuery {
+        let predicate = NSPredicate(format: "label ==[c] %@", value)
+        return staticTexts.containing(predicate)
+    }
+
+    func withTextContaining(_ value: String) -> XCUIElement {
+        let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
+        return staticTexts.containing(predicate).firstMatch
+    }
+}
+
+func withIndex(_ query: XCUIElementQuery, index: Int) -> XCUIElement {
+    return query.element(boundBy: index)
+}
+
+extension String {
+    func takeLast(_ maxLength: Int) -> String {
+        return String(suffix(maxLength))
+    }
+
+    func takeFirst(_ maxLength: Int) -> String {
+        return String(prefix(maxLength))
+    }
+
+    func toUpperCase() -> String {
+        return self.uppercased()
+    }
+}

@@ -7,7 +7,7 @@ public enum URLComponent {
     case queryParameters
 }
 
-public func XCTAssertURLEqual(_ url1: String, _ url2: String, ignores:[URLComponent] = [], file: StaticString = #filePath, line: UInt = #line) {
+public func XCTAssertURLEqual(_ url1: String, _ url2: String, ignores: [URLComponent] = [], file: StaticString = #filePath, line: UInt = #line) {
     guard  let urlComponents1 = URLComponents(string: url1) else {
         XCTFail("Cannot get URL components of \(url1)")
         return
@@ -38,10 +38,9 @@ public func XCTAssertURLEqual(_ url1: String, _ url2: String, ignores:[URLCompon
             for index in 0..<queryItems1.count {
                 let queryItem1 = queryItems1[index]
                 let queryItem2 = queryItems2[index]
-                XCTAssertEqual(queryItem1.name, queryItem2.name,"Query parameter name", file: file, line: line)
-                XCTAssertEqual(queryItem1.value, queryItem2.value,"Query parameter value", file: file, line: line)
+                XCTAssertEqual(queryItem1.name, queryItem2.name, "Query parameter name", file: file, line: line)
+                XCTAssertEqual(queryItem1.value, queryItem2.value, "Query parameter value", file: file, line: line)
             }
         }
     }
 }
-
