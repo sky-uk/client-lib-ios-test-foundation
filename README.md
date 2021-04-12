@@ -88,10 +88,10 @@ class LoginTests: SkyUITestCase {
     func testSelectSignedContractGivenContractNotActivated() throws {
         // Given
         try httpServerBuilder
-            .route(try TokenManagerMocks.Auths.Response.ok200.edr())
-            .route(try Mocks.Selfcare.E2EContract.Response.contractIdcmJjRzF3cTdiU3oranF3bWlLWG96dz09.edr())
-            .route(try Mocks.Selfcare.E2EContract.Response.contractIdWUNjanhxMXNMZTg3emRzVURPa1ExZz09.edr())
-            .route(try TokenManagerMocks.CustomersMe.Response.multiContract.edr())
+            .route(TokenManagerMocks.Auths.Response.ok200.edr())
+            .route(Mocks.Selfcare.E2EContract.Response.contractIdcmJjRzF3cTdiU3oranF3bWlLWG96dz09.edr())
+            .route(Mocks.Selfcare.E2EContract.Response.contractIdWUNjanhxMXNMZTg3emRzVURPa1ExZz09.edr())
+            .route(TokenManagerMocks.CustomersMe.Response.multiContract.edr())
             .buildAndStart()
 
         appLaunched(httpServerBuilder.httpServer.port, disableFeatureFlags: [.skipPreActiveCheck], persistenceStatus: .empty)
@@ -112,8 +112,8 @@ class LoginTests: SkyUITestCase {
         // Then
         tap(MSAElements.Home.profileButton)
         exist(MSAElements.ContractSelector.mainView)
-        tap(MSAElements.ContractSelector.mainView.tables.staticTexts["Codice cliente: 15519872"])
-        tap(MSAElements.ContractSelector.mainView.staticTexts[String.msa.generics.confirm().uppercased()])
+        tap(MSAElements.ContractSelector.mainView.withText("Codice cliente: 15519872"))
+        tap(MSAElements.ContractSelector.mainView.withText(String.msa.generics.confirm().uppercased()))
         exist(MSAElements.Alert.mainView)
         tap(MSAElements.Alert.mainButton)
         exist(MSAElements.Home.mainView)
