@@ -39,7 +39,7 @@ public func isRunningOnSimulator() -> Bool {
     return ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] != nil
 }
 
-extension XCUIElement {
+public extension XCUIElement {
     func withText(_ value: String) -> XCUIElement {
         let predicate = NSPredicate(format: "label ==[c] %@", value)
         return staticTexts.containing(predicate).firstMatch
@@ -56,11 +56,11 @@ extension XCUIElement {
     }
 }
 
-func withIndex(_ query: XCUIElementQuery, index: Int) -> XCUIElement {
+public func withIndex(_ query: XCUIElementQuery, index: Int) -> XCUIElement {
     return query.element(boundBy: index)
 }
 
-extension String {
+public extension String {
     func takeLast(_ maxLength: Int) -> String {
         return String(suffix(maxLength))
     }
