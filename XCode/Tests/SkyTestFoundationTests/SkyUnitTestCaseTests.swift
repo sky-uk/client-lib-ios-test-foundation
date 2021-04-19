@@ -11,7 +11,7 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
 
     func testOneEndpoint() throws {
         let exp = expectation(description: "")
-        try httpServerBuilder
+        httpServerBuilder
             .route("/login") { (_, _) -> (HttpResponse) in
                 return HttpResponse.ok(HttpResponseBody.data(Data()))
             }
@@ -31,7 +31,7 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         let exp00 = expectation(description: "expectation 00")
         let exp01 = expectation(description: "expectation 01")
 
-        try httpServerBuilder
+        httpServerBuilder
             .route("/endpoint00") { (_, _) -> (HttpResponse) in
                 return HttpResponse.ok(HttpResponseBody.data(Data()))
             }
@@ -63,7 +63,7 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         let exp01 = expectation(description: "expectation 01")
         let exp02 = expectation(description: "expectation 02")
 
-        try httpServerBuilder
+        httpServerBuilder
             .route("/endpoint00") { (_, _) -> (HttpResponse) in
                 return HttpResponse.ok(HttpResponseBody.data(Data()))
             }
@@ -104,7 +104,7 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
             case waiting, reached, signalled
         }
         let exp = expectation(description: "..")
-        try httpServerBuilder
+        httpServerBuilder
             .route("login") { (_, _) -> (HttpResponse) in
                 return HttpResponse.ok(HttpResponseBody.data(Data()))
             }

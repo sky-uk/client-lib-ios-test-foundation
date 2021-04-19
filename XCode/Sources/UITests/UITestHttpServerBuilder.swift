@@ -1,5 +1,6 @@
 import Foundation
 import Swifter
+import XCTest
 
 public typealias EndpointDataResponse = (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?)
 public typealias DataReponse = (statusCode: Int, body: Data, responseTime: UInt32?)
@@ -104,7 +105,7 @@ public class UITestHttpServerBuilder {
         }
     }
     @discardableResult
-    public func buildAndStart(port: in_port_t = 8080, file: StaticString = #file, line: UInt = #line) throws -> HttpServer {
+    public func buildAndStart(port: in_port_t = 8080, file: StaticString = #file, line: UInt = #line) -> HttpServer {
         buildImageResponses()
         let groupByEndpoint = Dictionary(grouping: httpResponses) { $0.endpoint }
         for (endpoint, responses) in groupByEndpoint {
@@ -143,7 +144,11 @@ public class UITestHttpServerBuilder {
         }
 
         Logger.info("Starting  server [port=\(port)]")
-        try httpServer.start(port)
+        do {
+            try httpServer.start(port)
+        } catch {
+            XCTFail("\(error)")
+        }
         return httpServer
     }
 
