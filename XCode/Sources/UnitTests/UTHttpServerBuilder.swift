@@ -1,5 +1,6 @@
 import Foundation
 import Swifter
+import XCTest
 
 public class UTHttpServerBuilder {
     public private(set) var httpServer: HttpServer = HttpServer()
@@ -28,11 +29,15 @@ public class UTHttpServerBuilder {
     }
 
     @discardableResult
-    public func buildAndStart(port: in_port_t = 8080, forceIPv4: Bool = false, priority: DispatchQoS.QoSClass = .userInteractive) throws -> HttpServer {
+    public func buildAndStart(port: in_port_t = 8080, forceIPv4: Bool = false, priority: DispatchQoS.QoSClass = .userInteractive) -> HttpServer {
         httpRoutes.forEach { (route) in
             buildRoute(endpoint: route.enpoint, completion: route.completion)
         }
-        try httpServer.start(port, forceIPv4: forceIPv4, priority: priority)
+        do {
+            try httpServer.start(port, forceIPv4: forceIPv4, priority: priority)
+        } catch {
+            XCTFail("\(error)")
+        }
         return httpServer
     }
 

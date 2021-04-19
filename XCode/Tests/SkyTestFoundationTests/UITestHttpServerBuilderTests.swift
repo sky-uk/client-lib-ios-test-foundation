@@ -8,7 +8,7 @@ class UITestHttpServerBuilderTest: XCTestCase {
     }
 
     func testBuildAndStart() throws {
-        let mockServer = try UITestHttpServerBuilder().buildAndStart()
+        let mockServer = UITestHttpServerBuilder().buildAndStart()
         XCTAssertNotNil(mockServer)
         mockServer.stop()
 
