@@ -208,24 +208,17 @@ In the context of UI tests we have notice that a behaviour of a mobile applicati
 ![some_verbs_sodalizio](https://user-images.githubusercontent.com/51656240/115408436-22533200-a1f1-11eb-9ae0-7b5eb9ad4fb1.jpg)
 
 We have defind a simple DSL in order to facilitate the writing of UI tests. It is a thing layer defined on top of primtives offered by XCTest. 
-The same DSL for testing is defined  for Android platform on top of Espresso (see [client-lib-android-test-foundation](https://github.com/sky-uk/client-lib-android-test-foundation)).
+The same DSL for testing is defined for Android platform on top of Espresso (see [client-lib-android-test-foundation](https://github.com/sky-uk/client-lib-android-test-foundation)).
+The following custom assertions are wrappers of events defined in `XCUIElement` like `tap()`. The custom assertions wait for any element to appear before firing the wrapped event. The effect of using custom assertions is to reduce flakiness of ui test execution.
 
-Useful extensions of assertions defined in XCTest framework that can be used in UI tests.
-The following custom assertions are wrappers of events defined in `XCUIElement` like `tap()`. The custom assertions wait for any element to appear before firing the wrapped event.
-The effect of using custom assertions is to reduce flakiness of ui test execution.
-#### exist(_ element)
-Determines if the element exists.
-#### notExist(_ element)
-Determines if the element NOT exists.
-#### tap(_ element)
-Sends a tap event to a hittable point computed for the element.
-#### isEnabled(_ element)
-Determines if the element is enabled for user interaction.
-#### isNotEnabled(_ elemenyt)
-Determines if the element is NOT enabled for user interaction.
-#### isRunningOnSimulator() -> Bool
-Returns true if ui test is running on iOS simulator. It can be used in conjunction with `XCTSkipIf/1` in order to skip the execution of a ui test if on iOS simulator.
-
+* exist(_ element) Determines if the element exists.
+* notExist(_ element) Determines if the element NOT exists.
+* tap(_ element) Sends a tap event to a hittable point computed for the element.
+* isEnabled(_ element) Determines if the element is enabled for user interaction.
+* isNotEnabled(_ element) Determines if the element is NOT enabled for user interaction.
+isRunningOnSimulator() -> Bool Returns true if ui test is running on iOS simulator. It can be used in conjunction with `XCTSkipIf/1` in order to skip the execution of a ui test if on iOS simulator.
+* withText(_ text) A query that matches staticText view elements.
+* withIndex(_ query, index) the index-th element of the result of the query *query*
 ### Mocks - Random data generators
 The framework provides mocks for built-in data types of Swift. In mock testing, the dependencies are replaced with objects that simulate the behaviour of the real ones. The purpose of mocking is to isolate and focus on the code being tested and not on the behaviour or state of external dependencies.
 Each mocks returns a random value of the associated data type.
