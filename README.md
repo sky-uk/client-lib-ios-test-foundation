@@ -223,6 +223,10 @@ The following custom assertions are wrappers of events defined in `XCUIElement` 
 * **swipeDown(_ element)** performs swipe up user gesture on element
 * **swipeLeft(_ element)** performs swipe up user gesture on element
 * **swipeRight(_ element)** performs swipe up user gesture on element
+* * **swipeUp()** performs swipe up user gesture  
+* **swipeDown()** performs swipe up user gesture 
+* **swipeLeft()** performs swipe up user gesture 
+* **swipeRight()** performs swipe up user gesture 
 
 Notice: DSL for testing allows to write iOS UI Test and copy it to android and viceversa.
 ### Mocks - Random data generators
