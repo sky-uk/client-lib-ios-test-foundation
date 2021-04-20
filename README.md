@@ -217,16 +217,16 @@ The following custom assertions are wrappers of events defined in `XCUIElement` 
 * **isEnabled(_ element)** Determines if the element is enabled for user interaction.
 * **isNotEnabled(_ element)** Determines if the element is NOT enabled for user interaction.
 * **isRunningOnSimulator()** -> Bool Returns true if ui test is running on iOS simulator. It can be used in conjunction with `XCTSkipIf/1` in order to skip the execution of a ui test if on iOS simulator.
-* **withText(_ text)** A query that matches staticText view elements.
+* **withText(_ text)** A XCUIElementQuery query for locating staticText view elements.
 * **withIndex(_ query, index)** the index-th element of the result of the query *query*
 * **swipeUp(_ element)** performs swipe up user gesture on element 
 * **swipeDown(_ element)** performs swipe up user gesture on element
 * **swipeLeft(_ element)** performs swipe up user gesture on element
 * **swipeRight(_ element)** performs swipe up user gesture on element
 * * **swipeUp()** performs swipe up user gesture  
-* **swipeDown()** performs swipe up user gesture 
-* **swipeLeft()** performs swipe up user gesture 
-* **swipeRight()** performs swipe up user gesture 
+* **swipeDown()** performs swipe down user gesture 
+* **swipeLeft()** performs swipe left user gesture 
+* **swipeRight()** performs swipe right user gesture 
 
 Notice: DSL for testing allows to write iOS UI Test and copy it to android and viceversa.
 ### Mocks - Random data generators
