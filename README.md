@@ -87,14 +87,14 @@ class LoginTests: SkyUITestCase {
 
     func testSelectSignedContractGivenContractNotActivated() throws {
         // Given
-        try httpServerBuilder
+        httpServerBuilder
             .route(TokenManagerMocks.Auths.Response.ok200.edr())
             .route(Mocks.Selfcare.E2EContract.Response.contractIdcmJjRzF3cTdiU3oranF3bWlLWG96dz09.edr())
             .route(Mocks.Selfcare.E2EContract.Response.contractIdWUNjanhxMXNMZTg3emRzVURPa1ExZz09.edr())
             .route(TokenManagerMocks.CustomersMe.Response.multiContract.edr())
             .buildAndStart()
 
-        appLaunched(httpServerBuilder.httpServer.port, disableFeatureFlags: [.skipPreActiveCheck], persistenceStatus: .empty)
+        appLaunched(disableFeatureFlags: [.skipPreActiveCheck], persistenceStatus: .empty)
         // When
         tap(MSAElements.Welcome.accediButton)
 
@@ -150,13 +150,13 @@ import SkyTestFoundation
 class UITests: SkyUITestCase {
     func test() throws {
         // Given
-        try httpServerBuilder
+        httpServerBuilder
             .route(endpoint: "/endpoint1", on: { (request) -> HttpResponse in
                 return HttpResponse.raw(statusCode: 200, body: Data())
             })
             .buildAndStart()
 
-        appLaunched(httpServerBuilder.httpServer.port)
+        appLaunched()
         // ...
     }
 }
@@ -202,7 +202,10 @@ XCTAssertURLEqual("http://www.sky.com?name1=value1", "http://www.sky.com?name1=v
 XCTAssertURLEqual("http://www.sky.com?name2=value2&name1=value1", "http://www.sky.com?name1=value1&name2=value2")
 XCTAssertURLEqual("http://www.sky.com", "http://www.sky.com?q1=value1", ignores: [.queryParameters])
 ```
-### UI XCTAssert Extensions
+## DSL for UI Testing
+In the context of user interface test we have notice that a behaviour of a mobile application can be described with a language composed by some verbs & nouns.
+![some_verbs_sodalizio](https://user-images.githubusercontent.com/51656240/115403838-11a0bd00-a1ed-11eb-8816-3c06be09633c.jpg)
+
 Useful extensions of assertions defined in XCTest framework that can be used in UI tests.
 The following custom assertions are wrappers of events defined in `XCUIElement` like `tap()`. The custom assertions wait for any element to appear before firing the wrapped event.
 The effect of using custom assertions is to reduce flakiness of ui test execution.
