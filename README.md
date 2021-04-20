@@ -224,7 +224,7 @@ The following custom assertions are wrappers of events defined in `XCUIElement` 
 * **swipeLeft(_ element)** performs swipe up user gesture on element
 * **swipeRight(_ element)** performs swipe up user gesture on element
 
-Notice: this allow to write iOS UI Test and copy it to android and viceversa.
+Notice: DSL for testing allows to write iOS UI Test and copy it to android and viceversa.
 ### Mocks - Random data generators
 The framework provides mocks for built-in data types of Swift. In mock testing, the dependencies are replaced with objects that simulate the behaviour of the real ones. The purpose of mocking is to isolate and focus on the code being tested and not on the behaviour or state of external dependencies.
 Each mocks returns a random value of the associated data type.
