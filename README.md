@@ -223,7 +223,7 @@ The following custom assertions are wrappers of events defined in `XCUIElement` 
 * **swipeDown(_ element)** performs swipe up user gesture on element
 * **swipeLeft(_ element)** performs swipe up user gesture on element
 * **swipeRight(_ element)** performs swipe up user gesture on element
-* * **swipeUp()** performs swipe up user gesture  
+* **swipeUp()** performs swipe up user gesture  
 * **swipeDown()** performs swipe down user gesture 
 * **swipeLeft()** performs swipe left user gesture 
 * **swipeRight()** performs swipe right user gesture 
