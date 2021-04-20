@@ -33,7 +33,7 @@ class CustomerRepositoryTests: SkyUnitTestCase {
         let query = "Milano"
         let citiesResponse = [City.mock(egonId: String.mock(), name: String.mock(), province: String.mock())]
 
-        try httpServerBuilder.route(Endpoint.Selfcare.cities.urlPath) { (request, callCount) -> (HttpResponse) in
+        httpServerBuilder.route(Endpoint.Selfcare.cities.urlPath) { (request, callCount) -> (HttpResponse) in
             XCTAssertEqual(request.method, ReactiveAPIHTTPMethod.get.rawValue)
             XCTAssertEqual(request.queryParam("q"), query)
             XCTAssertEqual(request.headers["egon-route"], true.stringValue)
