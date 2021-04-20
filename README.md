@@ -219,6 +219,10 @@ The following custom assertions are wrappers of events defined in `XCUIElement` 
 * **isRunningOnSimulator()** -> Bool Returns true if ui test is running on iOS simulator. It can be used in conjunction with `XCTSkipIf/1` in order to skip the execution of a ui test if on iOS simulator.
 * **withText(_ text)** A query that matches staticText view elements.
 * **withIndex(_ query, index)** the index-th element of the result of the query *query*
+* **swipeUp(_ element)** performs swipe up user gesture on element 
+* **swipeDown(_ element)** performs swipe up user gesture on element
+* **swipeLeft(_ element)** performs swipe up user gesture on element
+* **swipeRight(_ element)** performs swipe up user gesture on element
 ### Mocks - Random data generators
 The framework provides mocks for built-in data types of Swift. In mock testing, the dependencies are replaced with objects that simulate the behaviour of the real ones. The purpose of mocking is to isolate and focus on the code being tested and not on the behaviour or state of external dependencies.
 Each mocks returns a random value of the associated data type.
