@@ -203,10 +203,11 @@ XCTAssertURLEqual("http://www.sky.com?name2=value2&name1=value1", "http://www.sk
 XCTAssertURLEqual("http://www.sky.com", "http://www.sky.com?q1=value1", ignores: [.queryParameters])
 ```
 ## DSL for UI Testing
-In the context of user interface test we have notice that a behaviour of a mobile application can be described with a language composed by some verbs & nouns.
+In the context of UI tests we have notice that a behaviour of a mobile application can be described with a language composed by some verbs & nouns.
 
 ![some_verbs_sodalizio](https://user-images.githubusercontent.com/51656240/115408436-22533200-a1f1-11eb-9ae0-7b5eb9ad4fb1.jpg)
 
+We have defind a simple DSL that can be used to write tests. It is a thing layer defined on top of primtives offered by XCTest. The same DSL for testing is defined in for Android platform on top of Espresso [client-lib-android-test-foundation](https://github.com/sky-uk/client-lib-android-test-foundation)
 
 Useful extensions of assertions defined in XCTest framework that can be used in UI tests.
 The following custom assertions are wrappers of events defined in `XCUIElement` like `tap()`. The custom assertions wait for any element to appear before firing the wrapped event.
