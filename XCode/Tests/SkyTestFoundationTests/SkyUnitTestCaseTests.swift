@@ -22,7 +22,7 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
             XCTAssertNil(error)
             exp.fulfill()
         }).resume()
-        waitForExpectations(timeout: 3) { (error) in
+        waitForExpectations(timeout: 5) { (error) in
             print("Error:\(String(describing: error))")
         }
     }

@@ -39,6 +39,11 @@ public func isRunningOnSimulator() -> Bool {
     return ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] != nil
 }
 
+public func withText(_ value: String) -> XCUIElement {
+    let predicate = NSPredicate(format: "label ==[c] %@", value)
+    return XCUIApplication().staticTexts.containing(predicate).firstMatch
+}
+
 public extension XCUIElement {
     func withText(_ value: String) -> XCUIElement {
         let predicate = NSPredicate(format: "label ==[c] %@", value)
