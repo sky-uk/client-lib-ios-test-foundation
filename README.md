@@ -204,7 +204,9 @@ XCTAssertURLEqual("http://www.sky.com", "http://www.sky.com?q1=value1", ignores:
 ```
 ## DSL for UI Testing
 In the context of user interface test we have notice that a behaviour of a mobile application can be described with a language composed by some verbs & nouns.
-![some_verbs_sodalizio](https://user-images.githubusercontent.com/51656240/115403838-11a0bd00-a1ed-11eb-8816-3c06be09633c.jpg)
+
+![some_verbs_sodalizio](https://user-images.githubusercontent.com/51656240/115408436-22533200-a1f1-11eb-9ae0-7b5eb9ad4fb1.jpg)
+
 
 Useful extensions of assertions defined in XCTest framework that can be used in UI tests.
 The following custom assertions are wrappers of events defined in `XCUIElement` like `tap()`. The custom assertions wait for any element to appear before firing the wrapped event.
