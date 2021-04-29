@@ -80,4 +80,3 @@ public extension XCUIElement {
         return textFields[hint]
     }
 }
-

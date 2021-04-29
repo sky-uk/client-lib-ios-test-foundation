@@ -15,5 +15,4 @@ public extension HttpRequest {
         let row = queryParams.first { $0.0.removingPercentEncoding == key }?.1
         return row?.removingPercentEncoding
     }
-
 }

@@ -104,6 +104,7 @@ public class UITestHttpServerBuilder {
             }
         }
     }
+
     @discardableResult
     public func buildAndStart(port: in_port_t = 8080, file: StaticString = #file, line: UInt = #line) -> HttpServer {
         buildImageResponses()
@@ -166,7 +167,6 @@ public class UITestHttpServerBuilder {
             self.httpRequestCount = httpRequestCount
         }
     }
-
 }
 
 public extension HttpResponse {
