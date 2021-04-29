@@ -88,21 +88,18 @@ class LoginTests: SkyUITestCase {
     func testSelectSignedContractGivenContractNotActivated() throws {
         // Given
         httpServerBuilder
-            .route(TokenManagerMocks.Auths.Response.ok200.edr())
-            .route(Mocks.Selfcare.E2EContract.Response.contractIdcmJjRzF3cTdiU3oranF3bWlLWG96dz09.edr())
-            .route(Mocks.Selfcare.E2EContract.Response.contractIdWUNjanhxMXNMZTg3emRzVURPa1ExZz09.edr())
-            .route(TokenManagerMocks.CustomersMe.Response.multiContract.edr())
+            .route(TokenManagerMocks.Auths.ok200.edr())
+            .route(Mocks.Selfcare.E2EContract.contractIdcmJjRzF3cTdiU3oranF3bWlLWG96dz09.edr())
+            .route(Mocks.Selfcare.E2EContract.contractIdWUNjanhxMXNMZTg3emRzVURPa1ExZz09.edr())
+            .route(TokenManagerMocks.CustomersMe.multiContract.edr())
             .buildAndStart()
 
         appLaunched(disableFeatureFlags: [.skipPreActiveCheck], persistenceStatus: .empty)
         // When
         tap(MSAElements.Welcome.accediButton)
 
-        tap(MSAElements.Login.mainView.scrollViews.otherElements.textFields[String.msa.login.userPlaceholder()])
-        MSAElements.Login.mainView.typeText(testCredentialUsername)
-
-        tap(MSAElements.Login.mainView.scrollViews.otherElements.secureTextFields[String.msa.generics.password()])
-        MSAElements.Login.mainView.typeText(testCredentialPassword)
+        typeText(MSAElements.Login.mainView.withTextInput(String.msa.login.userPlaceholder()), testCredentialUsername)
+        typeText(MSAElements.Login.mainView.scrollViews.otherElements.secureTextFields[String.msa.generics.password()], testCredentialPassword)
 
         tap(MSAElements.Login.loginButton)
         tap(MSAElements.Alert.secondaryButton, "Biometric alert")
@@ -118,7 +115,6 @@ class LoginTests: SkyUITestCase {
         tap(MSAElements.Alert.mainButton)
         exist(MSAElements.Home.mainView)
     }
-    
  }
  ``` 
 
