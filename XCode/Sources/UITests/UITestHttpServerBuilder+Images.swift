@@ -13,7 +13,6 @@ typealias UIColor = NSColor
 extension NSColor {
     static let white = NSColor(white: 1, alpha: 1)
 }
-
 #endif
 
 extension UITestHttpServerBuilder.EndpointReport {
@@ -62,12 +61,12 @@ extension UITestHttpServerBuilder {
         context = UIGraphicsGetCurrentContext()!
         #else
         context = CGContext(data: nil,
-                           width: Int(size.width),
-                           height: Int(size.height),
-                           bitsPerComponent: 8,
-                           bytesPerRow: 4 * Int(size.width),
-                           space: CGColorSpaceCreateDeviceRGB(),
-                           bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
+                            width: Int(size.width),
+                            height: Int(size.height),
+                            bitsPerComponent: 8,
+                            bytesPerRow: 4 * Int(size.width),
+                            space: CGColorSpaceCreateDeviceRGB(),
+                            bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
         #endif
         let midPoint = CGPoint(x: size.width / 2, y: size.height / 2)
         drawImage(context: context, size: size)
