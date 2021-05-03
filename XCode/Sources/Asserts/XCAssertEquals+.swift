@@ -67,3 +67,11 @@ public func assertNotNull(_ expression: @autoclosure () throws -> Any?, _ messag
 public func assertNull(_ expression: @autoclosure () throws -> Any?, _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
     return XCTAssertNil(try expression(), message(), file: file, line: line)
 }
+
+public func assertTrue(_ expression: @autoclosure () throws -> Bool, _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
+    XCTAssertTrue(try expression(), message(), file: file, line: line)
+}
+
+public func assertFalse(_ expression: @autoclosure () throws -> Bool, _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
+    XCTAssertFalse(try expression(), message(), file: file, line: line)
+}
