@@ -185,18 +185,18 @@ Build all routes added so far and starts the mock server.
 ### XCTAssert Extensions
 Useful extensions of assertions defined in XCTest framework.
 
-#### XCTAssertURLEqual(_ url1, _ url2, ignores, ...)
+#### assertURLEquals(_ url1, _ url2, ignores, ...)
 Asserts that two http urls are equals. Use `ignores` parameter to skip comparisions between specific components of url1 and url2.
 
 Example
 ```swift 
-XCTAssertURLEqual("http://www.sky.com/path1", "http://www.sky.com/path1")
-XCTAssertURLEqual("http://www.sky.com/path1", "http://xxx.xxx.xxx/path1", ignores: [.host])
-XCTAssertURLEqual("http://www.sky.com/path1", "http://www.sky.com/path2", ignores: [.path])
+assertURLEquals("http://www.sky.com/path1", "http://www.sky.com/path1")
+assertURLEquals("http://www.sky.com/path1", "http://xxx.xxx.xxx/path1", ignores: [.host])
+assertURLEquals("http://www.sky.com/path1", "http://www.sky.com/path2", ignores: [.path])
 
-XCTAssertURLEqual("http://www.sky.com?name1=value1", "http://www.sky.com?name1=value1")
-XCTAssertURLEqual("http://www.sky.com?name2=value2&name1=value1", "http://www.sky.com?name1=value1&name2=value2")
-XCTAssertURLEqual("http://www.sky.com", "http://www.sky.com?q1=value1", ignores: [.queryParameters])
+assertURLEquals("http://www.sky.com?name1=value1", "http://www.sky.com?name1=value1")
+assertURLEquals("http://www.sky.com?name2=value2&name1=value1", "http://www.sky.com?name1=value1&name2=value2")
+assertURLEquals("http://www.sky.com", "http://www.sky.com?q1=value1", ignores: [.queryParameters])
 ```
 ## DSL for UI Testing
 In the context of UI tests we have notice that a behaviour of a mobile application can be described with a language composed by few verbs and nouns.
