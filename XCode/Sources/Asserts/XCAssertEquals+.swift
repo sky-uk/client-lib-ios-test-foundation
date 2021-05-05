@@ -75,3 +75,17 @@ public func assertTrue(_ expression: @autoclosure () throws -> Bool, _ message: 
 public func assertFalse(_ expression: @autoclosure () throws -> Bool, _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
     XCTAssertFalse(try expression(), message(), file: file, line: line)
 }
+
+public func assertGreaterThanZero(_ expression:  Int, file: StaticString = #filePath, line: UInt = #line) {
+    XCTAssertGreaterThan(expression, 0, "", file: file, line: line)
+}
+
+public extension XCTestCase {
+    func repeatTest(times: Int = 10,_ test: () throws -> Void) throws {
+        try (1...times).forEach { _ in
+          setUp()
+          try test()
+          tearDown()
+        }
+      }
+}
