@@ -1,5 +1,7 @@
 import Foundation
 
+private class OverrideBundleFinder {}
+
 extension Foundation.Bundle {
     static var overrideModule: Bundle = {
         let bundleName = "SkyTestFoundation_client-lib-ios-test-foundation"
