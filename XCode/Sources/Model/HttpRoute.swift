@@ -1,8 +1,8 @@
 import Foundation
 
 public struct HttpRoute: Hashable, CustomStringConvertible {
-    let path: String
-    let method: HttpMethod
+    public let path: String
+    public let method: HttpMethod
 
     public init(_ path: String, _ method: HttpMethod = .get) {
         self.path = path
