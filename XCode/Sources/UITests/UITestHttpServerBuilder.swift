@@ -133,6 +133,7 @@ public class UITestHttpServerBuilder {
         }
 
         for endpointCallBackResponse in httpCallBackResponses {
+            Logger.info("Building endpoint: \(endpointCallBackResponse.endpoint)")
             httpServer.buildRoute(endpointCallBackResponse.endpoint) { request in
                 Logger.info("Handled request:\(request.method) \(request.path) Params:\(request.queryParams)")
                 self.updateEndpointCallCount(endpointCallBackResponse.endpoint)
