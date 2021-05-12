@@ -199,7 +199,7 @@ assertURLEquals("http://www.sky.com?name2=value2&name1=value1", "http://www.sky.
 assertURLEquals("http://www.sky.com", "http://www.sky.com?q1=value1", ignores: [.queryParameters])
 ```
 ## DSL for UI Testing
-In the context of UI tests we have notice that a behaviour of a mobile application can be described with a language composed by few verbs and nouns.
+In the context of UI tests we have noticed that a behaviour of a mobile application can be described with a language composed by few verbs and nouns.
 
 ![some_verbs_sodalizio](https://user-images.githubusercontent.com/51656240/115408436-22533200-a1f1-11eb-9ae0-7b5eb9ad4fb1.jpg)
 
