@@ -13,7 +13,7 @@ public class UTHttpServerBuilder {
             lock.wait()
             callCount += 1
             lock.signal()
-            return completion(request, callCount)
+            return completion(request.httpRequest(), callCount)
         }
         return self
     }
@@ -21,7 +21,7 @@ public class UTHttpServerBuilder {
     public func onUnexpected(_ asserts: @escaping (HttpRequest) -> Void) -> UTHttpServerBuilder {
         httpServer.notFoundHandler = { request in
             DispatchQueue.main.sync {
-                asserts(request)
+                asserts(request.httpRequest())
             }
             return HttpResponse.badRequest(HttpResponseBody.html(""))
         }
@@ -48,7 +48,7 @@ public class UTHttpServerBuilder {
             lock.wait()
             callCount += 1
             lock.signal()
-            return completion(request, callCount)
+            return completion(request.httpRequest(), callCount)
         }
     }
 
