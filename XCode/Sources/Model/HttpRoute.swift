@@ -4,7 +4,7 @@ public struct HttpRoute: Hashable, CustomStringConvertible {
     let path: String
     let method: HttpMethod
 
-    init(_ path: String, _ method: HttpMethod = .get) {
+    public init(_ path: String, _ method: HttpMethod = .get) {
         self.path = path
         self.method = method
     }
