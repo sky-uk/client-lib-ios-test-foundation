@@ -113,7 +113,7 @@ public class UITestHttpServerBuilder {
             let queue = DispatchQueue(label: "queue.endpoint.\(endpoint)")
             var index = 0
             Logger.info("Building endpoint: \(endpoint) Response.count:\(responses.count)")
-            httpServer.buildRoute(endpoint)  { request in
+            httpServer.buildRoute(endpoint) { request in
                 Logger.info("Handled request path:\(request.path) Params:\(request.queryParams) Response.count:\(responses.count)")
                 var response: EDResponse!
                 self.updateEndpointCallCount(endpoint)
@@ -133,7 +133,7 @@ public class UITestHttpServerBuilder {
         }
 
         for endpointCallBackResponse in httpCallBackResponses {
-            httpServer.buildRoute(endpointCallBackResponse.endpoint)  { request in
+            httpServer.buildRoute(endpointCallBackResponse.endpoint) { request in
                 self.updateEndpointCallCount(endpointCallBackResponse.endpoint)
                 return endpointCallBackResponse.callBack(request.httpRequest())
             }
@@ -197,8 +197,8 @@ private struct ConcreteHttpRequest: HttpRequest {
     var method: String
     var body: [UInt8]
     var address: String?
-    var headers: [String : String]
-    var params: [String : String]
+    var headers: [String: String]
+    var params: [String: String]
     var queryParams: [(String, String)]
 }
 

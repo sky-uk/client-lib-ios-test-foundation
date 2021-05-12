@@ -1,6 +1,5 @@
 import Foundation
 
-
 public struct HttpRoute: Hashable, CustomStringConvertible {
     let path: String
     let method: HttpMethod

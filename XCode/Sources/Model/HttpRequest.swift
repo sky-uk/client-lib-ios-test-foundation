@@ -6,7 +6,7 @@ public protocol HttpRequest {
     var method: String { get }
     var body: [UInt8] { get }
     var address: String? { get }
-    var headers: [String : String] { get }
+    var headers: [String: String] { get }
     var params: [String: String] { get }
     var queryParams: [(String, String)] { get }
 }

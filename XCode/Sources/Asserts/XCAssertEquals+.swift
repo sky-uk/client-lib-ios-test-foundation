@@ -45,18 +45,17 @@ public func assertURLEquals(_ url1: String, _ url2: String, ignores: [URLCompone
     }
 }
 
-
 public func assertEquals<T>(_ expression1: @autoclosure () throws -> T,
                             _ expression2: @autoclosure () throws -> T,
-                            _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) where T : Equatable {
+                            _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) where T: Equatable {
     return XCTAssertEqual(try expression1(), try expression2(), message(), file: file, line: line)
 }
 
-public func assertEquals<T>(_ expression1: @autoclosure () throws -> T, _ expression2: @autoclosure () throws -> T, accuracy: T, _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) where T : FloatingPoint {
+public func assertEquals<T>(_ expression1: @autoclosure () throws -> T, _ expression2: @autoclosure () throws -> T, accuracy: T, _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) where T: FloatingPoint {
     return XCTAssertEqual(try expression1(), try expression2(), accuracy: accuracy, message(), file: file, line: line)
 }
 
-public func assertEquals<T>(_ expression1: @autoclosure () throws -> T, _ expression2: @autoclosure () throws -> T, accuracy: T, _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) where T : Numeric {
+public func assertEquals<T>(_ expression1: @autoclosure () throws -> T, _ expression2: @autoclosure () throws -> T, accuracy: T, _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) where T: Numeric {
     return XCTAssertEqual(try expression1(), try expression2(), accuracy: accuracy, message(), file: file, line: line)
 }
 
@@ -76,12 +75,12 @@ public func assertFalse(_ expression: @autoclosure () throws -> Bool, _ message:
     XCTAssertFalse(try expression(), message(), file: file, line: line)
 }
 
-public func assertGreaterThanZero(_ expression:  Int, file: StaticString = #filePath, line: UInt = #line) {
+public func assertGreaterThanZero(_ expression: Int, file: StaticString = #filePath, line: UInt = #line) {
     XCTAssertGreaterThan(expression, 0, "", file: file, line: line)
 }
 
 public extension XCTestCase {
-    func repeatTest(times: Int = 10,_ test: () throws -> Void) throws {
+    func repeatTest(times: Int = 10, _ test: () throws -> Void) throws {
         try (1...times).forEach { _ in
           setUp()
           try test()

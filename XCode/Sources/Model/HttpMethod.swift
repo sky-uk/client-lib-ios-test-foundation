@@ -8,4 +8,3 @@ public enum HttpMethod: String {
     case patch
     case head
 }
-
