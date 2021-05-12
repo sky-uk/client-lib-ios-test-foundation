@@ -3,5 +3,5 @@ import Swifter
 
 struct ImageReponse {
     let path: String
-    let properties: ((Swifter.HttpRequest) -> ImageProperties)?
+    let properties: ((HttpRequest) -> ImageProperties)?
 }

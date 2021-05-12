@@ -1,6 +1,16 @@
 import Foundation
 import Swifter
 
+public protocol HttpRequest {
+    var path: String { get }
+    var method: String { get }
+    var body: [UInt8] { get }
+    var address: String? { get }
+    var headers: [String: String] { get }
+    var params: [String: String] { get }
+    var queryParams: [(String, String)] { get }
+}
+
 public extension HttpRequest {
 
     func header(name: String) -> String? {

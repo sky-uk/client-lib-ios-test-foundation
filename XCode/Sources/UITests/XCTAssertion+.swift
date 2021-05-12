@@ -124,7 +124,7 @@ public func swipeRight(_ element: XCUIElement, file: StaticString = #filePath, l
 }
 #endif
 
-public func typeText(_ element: XCUIElement,_ stringToBeTyped: String) {
+public func typeText(_ element: XCUIElement, _ stringToBeTyped: String) {
     tap(element)
     element.typeText(stringToBeTyped)
 }
@@ -132,4 +132,3 @@ public func typeText(_ element: XCUIElement,_ stringToBeTyped: String) {
 public func typeText(_ stringToBeTyped: String) {
     XCUIApplication().typeText(stringToBeTyped)
 }
-

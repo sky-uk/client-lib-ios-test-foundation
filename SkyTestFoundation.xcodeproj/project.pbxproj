@@ -13,9 +13,11 @@
 		1FC05613A5749879E3C3FA94 /* UITestHttpServerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FB0471D386217EF129A068 /* UITestHttpServerBuilderTests.swift */; };
 		1FEB8EC11E588D35E2677091 /* UITestHttpServerBuilder+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE687E8D6138EE687447DAA /* UITestHttpServerBuilder+Images.swift */; };
 		23832F166FB209568F64F82B /* XCTAssertion+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A3E5DC532951F7B4EF2A37 /* XCTAssertion+.swift */; };
-		26478C7D1F3200069C38EF5D /* HttpRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697012634A7365D8E39C6FAB /* HttpRequest+.swift */; };
 		28EE504670D48C6975F380BF /* SkyTestFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E730C31B9B08BBA9539A0446 /* SkyTestFoundation.framework */; };
 		32D2417F52B339003B870D8C /* SkyUnitTestCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274EB3B71EEA2EC1513C2800 /* SkyUnitTestCaseTests.swift */; };
+		33B33479264BDE00002EB479 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B33477264BDE00002EB479 /* HttpMethod.swift */; };
+		33B3347A264BDE00002EB479 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B33478264BDE00002EB479 /* HttpRequest.swift */; };
+		33B3347D264BE45C002EB479 /* HttpRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B3347C264BE45C002EB479 /* HttpRoute.swift */; };
 		47DA664B3EE27283C0249DF0 /* SkyUITestCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EE092EF4E12E61F0679E25 /* SkyUITestCaseTests.swift */; };
 		5E6884A50B0E5099F89BA976 /* ImageReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9803CF0EFAB3A4ED74EC94 /* ImageReponse.swift */; };
 		72A74A24B3EC3B143212E0C8 /* XCAssertEquals+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F83BBA93D994EB95018BF0 /* XCAssertEquals+.swift */; };
@@ -61,10 +63,12 @@
 		0F81548665144A3A5B539B99 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		21A3E5DC532951F7B4EF2A37 /* XCTAssertion+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTAssertion+.swift"; sourceTree = "<group>"; };
 		274EB3B71EEA2EC1513C2800 /* SkyUnitTestCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUnitTestCaseTests.swift; sourceTree = "<group>"; };
+		33B33477264BDE00002EB479 /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		33B33478264BDE00002EB479 /* HttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		33B3347C264BE45C002EB479 /* HttpRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRoute.swift; sourceTree = "<group>"; };
 		55F27AB77D2BAF17FE639E6B /* HttpServer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpServer+.swift"; sourceTree = "<group>"; };
 		62F096C27DE6386F809733E6 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Swifter.framework; sourceTree = "<group>"; };
 		638B24525AC2F9D892BC3D27 /* UITestHttpServerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHttpServerBuilder.swift; sourceTree = "<group>"; };
-		697012634A7365D8E39C6FAB /* HttpRequest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpRequest+.swift"; sourceTree = "<group>"; };
 		6F440F36F2CA11D4F067E6DE /* SkyTestFoundationTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SkyTestFoundationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9581552E92610A68894AEB /* EndpointReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointReportTests.swift; sourceTree = "<group>"; };
 		9248980675CE656DDB308D7B /* SkyUnitTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUnitTestCase.swift; sourceTree = "<group>"; };
@@ -119,6 +123,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		33B3347B264BE44C002EB479 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				33B33477264BDE00002EB479 /* HttpMethod.swift */,
+				33B33478264BDE00002EB479 /* HttpRequest.swift */,
+				33B3347C264BE45C002EB479 /* HttpRoute.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		392EFB32058A9730ACB6ED15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,7 +153,7 @@
 		55F2BA24CFF675117A35B6B0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				697012634A7365D8E39C6FAB /* HttpRequest+.swift */,
+				33B3347B264BE44C002EB479 /* Model */,
 				55F27AB77D2BAF17FE639E6B /* HttpServer+.swift */,
 				FFB6FBC0FDB4D8623986139D /* ImageProperties.swift */,
 				FB9803CF0EFAB3A4ED74EC94 /* ImageReponse.swift */,
@@ -246,8 +260,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1020;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 7A827916D0C3CD57952B50B2 /* Build configuration list for PBXProject "SkyTestFoundation" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -271,11 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26478C7D1F3200069C38EF5D /* HttpRequest+.swift in Sources */,
 				B7D382F03B8174B4A1C17A24 /* HttpServer+.swift in Sources */,
 				A38A8802C38CBA261882EAC1 /* ImageProperties.swift in Sources */,
+				33B33479264BDE00002EB479 /* HttpMethod.swift in Sources */,
+				33B3347D264BE45C002EB479 /* HttpRoute.swift in Sources */,
 				5E6884A50B0E5099F89BA976 /* ImageReponse.swift in Sources */,
 				DE0734D69A3439B9F2DFF32D /* Logger.swift in Sources */,
+				33B3347A264BDE00002EB479 /* HttpRequest.swift in Sources */,
 				7DE794E08862EC4E3C139548 /* Mocks.swift in Sources */,
 				A4E0EC87FE3FD4B6E9EA875E /* SkyUITestsCase.swift in Sources */,
 				16E1B493677F70C72599891B /* SkyUnitTestCase.swift in Sources */,
@@ -401,7 +415,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
-				OTHER_LDFLAGS = "-weak_framework XCTest";
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -510,7 +527,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-weak_framework XCTest";
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
