@@ -1,6 +1,9 @@
 # Sky Test Foundation [![CircleCI](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master.svg?style=svg&circle-token=6a18106ecc99952ea6841f658f86282b5ff557f5)](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master)
 Test suite for iOS mobile applications: a collection of tools and classes to facilitate the writing of automatic tests during development of an iOS mobile application.
 The suite has to parts, one for Unit testing and the other one for User Interface (or functional) tests.
+![sky_test_foundation_layers](https://user-images.githubusercontent.com/51656240/118296905-c2913380-b4dd-11eb-8cc7-6c1306aaf774.png)
+
+
 ## Test Environment
 During tests execution, iOS Mobile App (MA) should interact with a Mock Server which appear to be the real counterparts of BE server. The framework provides a mock server that allows a tight control over what data the iOS App receives.
 ![](https://user-images.githubusercontent.com/51656240/94568277-9685b280-026c-11eb-80ac-d5a6d95bcdf3.png)
