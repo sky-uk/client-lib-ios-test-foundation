@@ -142,7 +142,7 @@ public class UITestHttpServerBuilder {
         }
 
         httpServer.notFoundHandler = { request in
-            Logger.info("NOT handled request path: \(request.path) Params:\(request.queryParams)")
+            Logger.info("NOT handled: \(request.method) \(request.path) Params:\(request.queryParams)")
             return HttpResponse.notFound
         }
 

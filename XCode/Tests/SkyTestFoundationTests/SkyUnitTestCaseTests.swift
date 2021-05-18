@@ -119,4 +119,42 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         dataTask00.resume()
         wait(for: [exp], timeout: 3)
     }
+
+
+    func testPathParameterCall() throws {
+        let exp00 = expectation(description: "expectation 00")
+        let exp01 = expectation(description: "expectation 01")
+        var callCount0 = 0
+        var callCount1 = 0
+        httpServerBuilder
+            .route("/endpoint/1") { (request, callCount) -> (HttpResponse) in
+                callCount0 = callCount
+                return HttpResponse.ok(HttpResponseBody.data(Data()))
+            }
+            .route("/endpoint/2") { (request, callCount) -> (HttpResponse) in
+                callCount1 = callCount
+                return HttpResponse.ok(HttpResponseBody.data(Data()))
+            }
+            .buildAndStart()
+
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+
+        let url00 = URL(string: "http://localhost:8080/endpoint/1")!
+        let dataTask00 = session.dataTask(with: url00) { (_, _, error) in
+            XCTAssertNil(error)
+            exp00.fulfill()
+        }
+
+        let url01 = URL(string: "http://localhost:8080/endpoint/2")!
+        let dataTask01 = session.dataTask(with: url01) { (_, _, error) in
+            XCTAssertNil(error)
+            exp01.fulfill()
+        }
+
+        dataTask00.resume()
+        dataTask01.resume()
+        wait(for: [exp00, exp01], timeout: 3)
+        XCTAssertEqual(callCount0, 1)
+        XCTAssertEqual(callCount1, 1)
+    }
 }

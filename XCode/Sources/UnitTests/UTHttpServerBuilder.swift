@@ -1,7 +1,6 @@
 import Foundation
-import Swifter
 import XCTest
-
+import Swifter
 public class UTHttpServerBuilder {
     public private(set) var httpServer: HttpServer = HttpServer()
     public var httpRoutes: [Route] = []
