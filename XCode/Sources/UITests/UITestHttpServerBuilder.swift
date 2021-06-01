@@ -78,10 +78,11 @@ public class UITestHttpServerBuilder {
                 let responseCount = groupByEndpoint[$0]?.count ?? 0
                 return EndpointReport(endpoint: $0, responseCount: responseCount, httpRequestCount: 0)
             }
+            self.updateCallCountSemaphore.signal()
             return expectedReports.map {
                 $0.edited(receivedCallCount: endpointCallCount[$0.endpoint] ?? 0)
             }
-            self.updateCallCountSemaphore.signal()
+
         }
     }
 
