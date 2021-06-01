@@ -58,7 +58,7 @@ public class UITestHttpServerBuilder {
 
     private func updateEndpointCallCount(_ endpoint: HttpRoute) {
         updateCallCountQueue.async {
-            updateCallCountSemaphore.wait()
+            self.updateCallCountSemaphore.wait()
             let callCount: Int
             if let count = self.endpointCallCount[endpoint] {
                 callCount = count + 1
@@ -66,7 +66,7 @@ public class UITestHttpServerBuilder {
                 callCount = 1
             }
             self.endpointCallCount[endpoint] = callCount
-            updateCallCountSemaphore.signal()
+            self.updateCallCountSemaphore.signal()
         }
     }
 
