@@ -71,7 +71,7 @@ public class UITestHttpServerBuilder {
     }
 
     public func callReport() -> [EndpointReport] {
-        uncallqQueue.async {
+        updateCallCountQueue.async {
             self.updateCallCountSemaphore.wait()
             let groupByEndpoint = Dictionary(grouping: httpResponses, by: { $0.route })
             let expectedReports: [EndpointReport] = groupByEndpoint.keys.map {
