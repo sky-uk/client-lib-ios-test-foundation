@@ -23,8 +23,8 @@ public class UITestHttpServerBuilder {
         let endpoint: HttpRoute
         let callBack: (HttpRequest) -> HttpResponse
     }
-
-    private let uncallqQueue = DispatchQueue(label: "queue.endpoint.uncalled")
+    private let updateCallCountSemaphore = DispatchSemaphore(value: 1)
+    private let updateCallCountQueue = DispatchQueue(label: "queue.endpoint.uncalled")
     private var httpResponses: [EDResponse] = []
     private var httpCallBackResponses: [ECallBackResponse] = []
     private var imagesResponse: [ImageReponse] = []
@@ -57,7 +57,8 @@ public class UITestHttpServerBuilder {
     }
 
     private func updateEndpointCallCount(_ endpoint: HttpRoute) {
-        uncallqQueue.async {
+        updateCallCountQueue.async {
+            updateCallCountSemaphore.wait()
             let callCount: Int
             if let count = self.endpointCallCount[endpoint] {
                 callCount = count + 1
@@ -65,11 +66,12 @@ public class UITestHttpServerBuilder {
                 callCount = 1
             }
             self.endpointCallCount[endpoint] = callCount
+            updateCallCountSemaphore.signal()
         }
     }
 
     public func callReport() -> [EndpointReport] {
-        uncallqQueue.sync {
+        uncallqQueue.async {
             let groupByEndpoint = Dictionary(grouping: httpResponses, by: { $0.route })
             let expectedReports: [EndpointReport] = groupByEndpoint.keys.map {
                 let responseCount = groupByEndpoint[$0]?.count ?? 0
