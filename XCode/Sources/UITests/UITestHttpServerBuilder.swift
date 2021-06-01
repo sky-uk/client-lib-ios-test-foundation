@@ -72,6 +72,7 @@ public class UITestHttpServerBuilder {
 
     public func callReport() -> [EndpointReport] {
         uncallqQueue.async {
+            self.updateCallCountSemaphore.wait()
             let groupByEndpoint = Dictionary(grouping: httpResponses, by: { $0.route })
             let expectedReports: [EndpointReport] = groupByEndpoint.keys.map {
                 let responseCount = groupByEndpoint[$0]?.count ?? 0
@@ -80,6 +81,7 @@ public class UITestHttpServerBuilder {
             return expectedReports.map {
                 $0.edited(receivedCallCount: endpointCallCount[$0.endpoint] ?? 0)
             }
+            self.updateCallCountSemaphore.signal()
         }
     }
 
