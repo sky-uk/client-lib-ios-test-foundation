@@ -44,6 +44,13 @@ public func withIndex(_ query: XCUIElementQuery, index: Int) -> XCUIElement {
     return query.element(boundBy: index)
 }
 
+
+public func withTextContaining(_ value: String) -> XCUIElement {
+    let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
+    let result: XCUIElementQuery = XCUIApplication().staticTexts.containing(predicate)
+    return result.containing(predicate).firstMatch
+}
+
 public extension XCUIElement {
     func withText(_ value: String) -> XCUIElement {
         let predicate = NSPredicate(format: "label ==[c] %@", value)
