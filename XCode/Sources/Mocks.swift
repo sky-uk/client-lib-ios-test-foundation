@@ -4,6 +4,7 @@ import Foundation
 public enum RealDataDictionary {
     case int
     case uint
+    case positiveInt
     case url
     case uuid
     case firstname
@@ -27,7 +28,8 @@ public extension String {
             case .street: return ["Via Roma", "Via Giuseppe di Vittorio", "Via Jervis", "Piazza Bodoni", "Corso Trieste"].randomElement()!
             case .url: return "http://www.\(String.mock()).com"
             case .uuid: return UUID().uuidString
-            case .int: return "\(Int.random(in: -50...50))"
+            case .int: return "\(Int.random(in: -10...10))"
+            case .positiveInt: return "\(Int.random(in: 1...10))"
             case .uint: return "\(Int.random(in: 0...100))"
             case .month: return "\(Int.random(in: 1...12))"
             case .year: return "\(Int.random(in: 2000...2050))"
