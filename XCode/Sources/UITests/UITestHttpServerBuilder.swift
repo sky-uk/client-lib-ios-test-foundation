@@ -56,6 +56,18 @@ public class UITestHttpServerBuilder {
         return self
     }
 
+
+    public func undefinedRoute(_ asserts: @escaping (HttpRequest) -> Void) -> UITestHttpServerBuilder {
+        httpServer.notFoundHandler = { request in
+            DispatchQueue.main.sync {
+                asserts(request.httpRequest())
+            }
+            return HttpResponse.notFound
+        }
+        return self
+    }
+
+
     private func updateEndpointCallCount(_ endpoint: HttpRoute) {
         updateCallCountQueue.async {
             self.updateCallCountSemaphore.wait()
