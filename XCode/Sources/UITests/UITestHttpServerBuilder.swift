@@ -59,6 +59,7 @@ public class UITestHttpServerBuilder {
 
     public func undefinedRoute(_ asserts: @escaping (HttpRequest) -> Void) -> UITestHttpServerBuilder {
         httpServer.notFoundHandler = { request in
+            Logger.info("NOT handled: \(request.method) \(request.path) Params:\(request.queryParams)")
             DispatchQueue.main.sync {
                 asserts(request.httpRequest())
             }
@@ -158,9 +159,11 @@ public class UITestHttpServerBuilder {
             }
         }
 
-        httpServer.notFoundHandler = { request in
-            Logger.info("NOT handled: \(request.method) \(request.path) Params:\(request.queryParams)")
-            return HttpResponse.notFound
+        if httpServer.notFoundHandler == nil {
+            httpServer.notFoundHandler = { request in
+                Logger.info("NOT handled: \(request.method) \(request.path) Params:\(request.queryParams)")
+                return HttpResponse.notFound
+            }
         }
 
         Logger.info("Starting  server [port=\(port)]")
