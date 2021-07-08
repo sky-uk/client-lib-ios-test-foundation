@@ -35,12 +35,7 @@ public func isRunningOnSimulator() -> Bool {
 }
 
 public func withText(_ value: String) -> XCUIElement {
-    let predicate = NSPredicate(format: "label ==[c] %@", value)
-    let result: XCUIElementQuery = XCUIApplication().staticTexts.containing(predicate)
-    if result.count > 1 {
-        XCTFail("withText: Multiple matches found for \(value)")
-    }
-    return result.firstMatch
+    return XCUIApplication().staticTexts[value]
 }
 
 func withText(_ value: String) -> XCUIElementQuery {
@@ -52,11 +47,11 @@ public func withIndex(_ query: XCUIElementQuery, index: Int) -> XCUIElement {
     return query.element(boundBy: index)
 }
 
-public func withTextContaining(_ value: String) -> XCUIElement {
+public func withTextContaining(_ value: String, file: StaticString = #filePath, line: UInt = #line) -> XCUIElement {
     let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
     let result: XCUIElementQuery = XCUIApplication().staticTexts.containing(predicate)
     if result.count > 1 {
-        XCTFail("withTextContaining: Multiple matches found for \(value)")
+        XCTFail("withTextContaining: Multiple matches found for \(value)", file: file, line: line)
     }
     return result.firstMatch
 }
@@ -68,12 +63,7 @@ func withTextContaining(_ value: String) -> XCUIElementQuery {
 
 public extension XCUIElement {
     func withText(_ value: String) -> XCUIElement {
-        let predicate = NSPredicate(format: "label ==[c] %@", value)
-        let result = staticTexts.containing(predicate)
-        if result.count > 1 {
-            XCTFail("withText: Multiple matches found for \(value)")
-        }
-        return result.firstMatch
+        return self.staticTexts[value]
     }
 
     func withText(_ value: String) -> XCUIElementQuery {
@@ -81,11 +71,11 @@ public extension XCUIElement {
         return staticTexts.containing(predicate)
     }
 
-    func withTextContaining(_ value: String) -> XCUIElement {
+    func withTextContaining(_ value: String, file: StaticString = #filePath, line: UInt = #line) -> XCUIElement {
         let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
         let result = staticTexts.containing(predicate)
         if result.count > 1 {
-            XCTFail("withTextContaining: Multiple matches found for \(value)")
+            XCTFail("withTextContaining: Multiple matches found for \(value)", file: file, line: line)
         }
         return result.firstMatch
     }
