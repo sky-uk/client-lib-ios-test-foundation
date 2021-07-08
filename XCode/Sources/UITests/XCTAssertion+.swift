@@ -35,32 +35,26 @@ public func isRunningOnSimulator() -> Bool {
 }
 
 public func withText(_ value: String) -> XCUIElement {
-    return XCUIApplication().staticTexts[value]
-}
-
-func withText(_ value: String) -> XCUIElementQuery {
     let predicate = NSPredicate(format: "label ==[c] %@", value)
-    return XCUIApplication().staticTexts.containing(predicate)
+    let result: XCUIElementQuery = XCUIApplication().staticTexts.containing(predicate)
+    return result.firstMatch
 }
 
 public func withIndex(_ query: XCUIElementQuery, index: Int) -> XCUIElement {
     return query.element(boundBy: index)
 }
 
+
 public func withTextContaining(_ value: String) -> XCUIElement {
     let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
     let result: XCUIElementQuery = XCUIApplication().staticTexts.containing(predicate)
-    return result.firstMatch
-}
-
-func withTextContaining(_ value: String) -> XCUIElementQuery {
-    let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
-    return XCUIApplication().staticTexts.containing(predicate)
+    return result.containing(predicate).firstMatch
 }
 
 public extension XCUIElement {
     func withText(_ value: String) -> XCUIElement {
-        return self.staticTexts[value]
+        let predicate = NSPredicate(format: "label ==[c] %@", value)
+        return staticTexts.containing(predicate).firstMatch
     }
 
     func withText(_ value: String) -> XCUIElementQuery {
@@ -70,13 +64,7 @@ public extension XCUIElement {
 
     func withTextContaining(_ value: String) -> XCUIElement {
         let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
-        let result = staticTexts.containing(predicate)
-        return result.firstMatch
-    }
-
-    func withTextContaining(_ value: String) -> XCUIElementQuery {
-        let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
-        return staticTexts.containing(predicate)
+        return staticTexts.containing(predicate).firstMatch
     }
 }
 
@@ -151,3 +139,4 @@ public func typeText(_ element: XCUIElement, _ stringToBeTyped: String) {
 public func typeText(_ stringToBeTyped: String) {
     XCUIApplication().typeText(stringToBeTyped)
 }
+
