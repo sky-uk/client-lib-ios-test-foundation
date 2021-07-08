@@ -34,13 +34,8 @@ public func isRunningOnSimulator() -> Bool {
     return ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] != nil
 }
 
-public func withText(_ value: String, file: StaticString = #filePath, line: UInt = #line) -> XCUIElement {
-    let predicate = NSPredicate(format: "label ==[c] %@", value)
-    let result: XCUIElementQuery = XCUIApplication().staticTexts.containing(predicate)
-    if result.count > 1 {
-        XCTFail("withText: Multiple matches found for \(value)", file: file, line: line)
-    }
-    return result.firstMatch
+public func withText(_ value: String) -> XCUIElement {
+    return staticTexts[value]
 }
 
 func withText(_ value: String) -> XCUIElementQuery {
@@ -67,13 +62,8 @@ func withTextContaining(_ value: String) -> XCUIElementQuery {
 }
 
 public extension XCUIElement {
-    func withText(_ value: String, file: StaticString = #filePath, line: UInt = #line) -> XCUIElement {
-        let predicate = NSPredicate(format: "label ==[c] %@", value)
-        let result = staticTexts.containing(predicate)
-        if result.count > 1 {
-            XCTFail("withText: Multiple matches found for \(value)", file: file, line: line)
-        }
-        return result.firstMatch
+    func withText(_ value: String) -> XCUIElement {
+        return staticTexts[value]
     }
 
     func withText(_ value: String) -> XCUIElementQuery {
