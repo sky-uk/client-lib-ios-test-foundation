@@ -35,7 +35,7 @@ public func isRunningOnSimulator() -> Bool {
 }
 
 public func withText(_ value: String) -> XCUIElement {
-    return staticTexts[value]
+    return self.staticTexts[value]
 }
 
 func withText(_ value: String) -> XCUIElementQuery {
@@ -63,7 +63,7 @@ func withTextContaining(_ value: String) -> XCUIElementQuery {
 
 public extension XCUIElement {
     func withText(_ value: String) -> XCUIElement {
-        return staticTexts[value]
+        return self.staticTexts[value]
     }
 
     func withText(_ value: String) -> XCUIElementQuery {
