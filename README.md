@@ -318,6 +318,6 @@ The following view is displayed during the execution of the test:
 - SUT system under test
 
 ## FAQ
-How can I see code coverage?
+- How can I see code coverage?
 ![Code Coverage](https://user-images.githubusercontent.com/51656240/128475362-159093d0-6fc1-4a4b-b49a-968fe6e0847f.png)
 ![Code Coverage](https://user-images.githubusercontent.com/51656240/128475438-3ab46cc7-844a-41ac-b09f-92c5c5207ac6.png)
