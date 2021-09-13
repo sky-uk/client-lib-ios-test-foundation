@@ -330,20 +330,20 @@ From "Edit scheme...":
 `callCount` stores the number of http request call received by the mock server for a specific endpoint.
 ```swift
  func testCallCountExample() throws {
-        let exp00 = expectation(description: "expectation 00")
-
-        var callCount0 = 0
-        var callCount1 = 0
-        httpServerBuilder
-            .route("/endpoint/1") { (request, callCount) -> (HttpResponse) in
-                callCount0 = callCount
-                return HttpResponse.ok(HttpResponseBody.data(Data()))
-            }
-            .route("/endpoint/2") { (request, callCount) -> (HttpResponse) in
-                callCount1 = callCount
-                return HttpResponse.ok(HttpResponseBody.data(Data()))
-            }
-            .buildAndStart()
+     let exp00 = expectation(description: "expectation 00")
+     
+     var callCount0 = 0
+     var callCount1 = 0
+     httpServerBuilder
+       .route("/endpoint/1") { (request, callCount) -> (HttpResponse) in
+           callCount0 = callCount
+           return HttpResponse.ok(HttpResponseBody.data(Data()))
+        }
+        .route("/endpoint/2") { (request, callCount) -> (HttpResponse) in
+            callCount1 = callCount
+            return HttpResponse.ok(HttpResponseBody.data(Data()))
+        }
+        .buildAndStart()
 
         let session = URLSession(configuration: URLSessionConfiguration.default)
 
@@ -355,8 +355,8 @@ From "Edit scheme...":
 
         dataTask00.resume()
 
-        wait(for: [exp00], timeout: 3)
-        XCTAssertEqual(callCount0, 1)
-        XCTAssertEqual(callCount1, 0)
-    }
+    wait(for: [exp00], timeout: 3)
+    XCTAssertEqual(callCount0, 1)
+    XCTAssertEqual(callCount1, 0)
+}
 ```
