@@ -172,7 +172,7 @@ public func isNotSelected(_ element: XCUIElement, _ message: String = "", file: 
 }
 
 
-extension Array where Element: Equatable {
+public extension Array where Element: Equatable {
     func randomExcept(_ items: [Element]) -> Element? {
         return compactMap({ (item) -> Element? in
             return !items.contains(item) ? item : nil
