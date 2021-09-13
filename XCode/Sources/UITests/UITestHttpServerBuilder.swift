@@ -132,7 +132,6 @@ public class UITestHttpServerBuilder {
             var index = 0
             Logger.info("Building endpoint: \(endpoint) Response.count:\(responses.count)")
             httpServer.buildRoute(endpoint) { request in
-                Logger.info("Handled request:\(request.method) \(request.path) Params:\(request.queryParams) Response.count:\(responses.count)")
                 var response: EDResponse!
                 self.updateEndpointCallCount(endpoint)
                 queue.sync {
@@ -140,6 +139,7 @@ public class UITestHttpServerBuilder {
                     response = responses[index]
                     index = index + 1
                 }
+                Logger.info("Handled request:\(request.method) \(request.path) Query params:\(request.queryParams) Response statusCode: \(response.statusCode) Response.count:\(responses.count)")
                 if let onReceivedHttpRequest = response.onReceivedHttpRequest {
                     DispatchQueue.main.sync {
                         onReceivedHttpRequest(request.httpRequest())
