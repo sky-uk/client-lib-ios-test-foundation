@@ -18,7 +18,7 @@ public func notExist(_ element: XCUIElement, _ message: String = "", file: Stati
 public func isEnabled(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) -> XCUIElement {
     XCTAssertEqual(element.elementType, .button, "\(message) - \(element) is not of type Button.", file: file, line: line)
     XCTAssertTrue(element.waitForExistence(timeout: expectationTimeout), "\(message) - \(element) does not exist.", file: file, line: line)
-    XCTAssertTrue(element.isEnabled)
+    XCTAssertTrue(element.isEnabled,"\(element) is not enabled.", file: file, line: line)
     return element
 }
 
@@ -26,7 +26,7 @@ public func isEnabled(_ element: XCUIElement, _ message: String = "", file: Stat
 public func isDisabled(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) -> XCUIElement {
     XCTAssertEqual(element.elementType, .button, "\(message) - \(element) is not of type Button.", file: file, line: line)
     XCTAssertTrue(element.waitForExistence(timeout: expectationTimeout), "\(message) - \(element) does not exist.", file: file, line: line)
-    XCTAssertFalse(element.isEnabled, file: file, line: line)
+    XCTAssertFalse(element.isEnabled, "\(element) is not disabled.", file: file, line: line)
     return element
 }
 
@@ -96,39 +96,57 @@ public func tap(_ element: XCUIElement, _ message: String = "", file: StaticStri
 #if canImport(UIKit)
 public func swipeUp() {
     XCUIApplication().swipeUp()
+    waitForAWhile(0.5)
+
 }
 
 public func swipeLeft() {
     XCUIApplication().swipeLeft()
+    waitForAWhile(0.5)
 }
 
 public func swipeRight() {
     XCUIApplication().swipeRight()
+    waitForAWhile(0.5)
 }
 
 public func swipeDown() {
     XCUIApplication().swipeDown()
+    waitForAWhile(0.5)
 }
 
 public func swipeUp(_ element: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
     exist(element, file: file, line: line)
     element.swipeUp()
+    waitForAWhile(0.5)
 }
 
 public func swipeDown(_ element: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
     exist(element, file: file, line: line)
     element.swipeDown()
+    waitForAWhile(0.5)
 }
 
 public func swipeLeft(_ element: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
     exist(element, file: file, line: line)
     element.swipeLeft()
+    waitForAWhile(0.5)
 }
 
 public func swipeRight(_ element: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
     exist(element, file: file, line: line)
     element.swipeRight()
+    waitForAWhile(0.5)
 }
+
+public func typeText(_ stringToBeTyped: String) {
+    XCUIApplication().typeText(stringToBeTyped)
+}
+
+public func waitForAWhile(_ seconds: Double = 2) {
+    _ = XCUIApplication().staticTexts["_not_exist_element_"].waitForExistence(timeout: seconds)
+}
+
 #endif
 
 public func typeText(_ element: XCUIElement, _ stringToBeTyped: String) {
@@ -136,7 +154,28 @@ public func typeText(_ element: XCUIElement, _ stringToBeTyped: String) {
     element.typeText(stringToBeTyped)
 }
 
-public func typeText(_ stringToBeTyped: String) {
-    XCUIApplication().typeText(stringToBeTyped)
+public func skipRunTestIf(_ condition: Bool, _ message: String, file: StaticString = #filePath, line: UInt = #line) throws {
+    try XCTSkipIf(condition, message, file: file, line: line)
 }
 
+@discardableResult
+public func isSelected(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) -> XCUIElement {
+  let element = exist(element, message, file: file, line: line)
+  XCTAssertTrue(element.isSelected, message, file: file, line: line)
+  return element
+}
+@discardableResult
+public func isNotSelected(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) -> XCUIElement {
+  let element = exist(element, message, file: file, line: line)
+  XCTAssertFalse(element.isSelected, message, file: file, line: line)
+  return element
+}
+
+
+extension Array where Element: Equatable {
+    func randomExcept(_ items: [Element]) -> Element? {
+        return compactMap({ (item) -> Element? in
+            return !items.contains(item) ? item : nil
+        }).randomElement()
+    }
+}
