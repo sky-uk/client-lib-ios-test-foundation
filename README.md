@@ -325,3 +325,38 @@ The following view is displayed during the execution of the test:
 From "Edit scheme...":
 ![Enable/Disable Breakpoints](https://user-images.githubusercontent.com/51656240/129052171-f7597352-0087-4b3e-b8eb-f5863dd6398f.png)
 
+### Examples
+#### Unit Test and callCount
+`callCount` stores the number of http request call received by the mock server for a specific endpoint.
+```swift
+ func testCallCountExample() throws {
+        let exp00 = expectation(description: "expectation 00")
+
+        var callCount0 = 0
+        var callCount1 = 0
+        httpServerBuilder
+            .route("/endpoint/1") { (request, callCount) -> (HttpResponse) in
+                callCount0 = callCount
+                return HttpResponse.ok(HttpResponseBody.data(Data()))
+            }
+            .route("/endpoint/2") { (request, callCount) -> (HttpResponse) in
+                callCount1 = callCount
+                return HttpResponse.ok(HttpResponseBody.data(Data()))
+            }
+            .buildAndStart()
+
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+
+        let url00 = URL(string: "http://localhost:8080/endpoint/1")!
+        let dataTask00 = session.dataTask(with: url00) { (_, _, error) in
+            XCTAssertNil(error)
+            exp00.fulfill()
+        }
+
+        dataTask00.resume()
+
+        wait(for: [exp00], timeout: 3)
+        XCTAssertEqual(callCount0, 1)
+        XCTAssertEqual(callCount1, 0)
+    }
+```
