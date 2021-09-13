@@ -170,3 +170,12 @@ public func isNotSelected(_ element: XCUIElement, _ message: String = "", file: 
   XCTAssertFalse(element.isSelected, message, file: file, line: line)
   return element
 }
+
+
+extension Array where Element: Equatable {
+    func random(except items: [Element]) -> Element? {
+        return compactMap({ (item) -> Element? in
+            return !items.contains(item) ? item : nil
+        }).randomElement()
+    }
+}
