@@ -44,6 +44,9 @@ public func withIndex(_ query: XCUIElementQuery, index: Int) -> XCUIElement {
     return query.element(boundBy: index)
 }
 
+public func assertViewCount(_ element: XCUIElementQuery, expectedCount: Int) {
+    XCTAssertEqual(element.count, expectedCount, "assertViewCount failed: view count is not equals to expectedCount \(expectedCount)")
+}
 
 public func withTextContaining(_ value: String) -> XCUIElement {
     let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
