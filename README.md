@@ -218,6 +218,7 @@ The following custom assertions are wrappers of events defined in `XCUIElement` 
 * **isRunningOnSimulator()** -> Bool Returns true if ui test is running on iOS simulator. It can be used in conjunction with `XCTSkipIf/1` in order to skip the execution of a ui test if on iOS simulator.
 * **withText(_ text)** A XCUIElementQuery query for locating staticText view elements.
 * **withIndex(_ query, index)** the index-th element of the result of the query *query*
+* **assertViewCount(_ query, expectedCount)** Asserts if the number of view matched by *query* is equals to *expectedCount*
 * **swipeUp(_ element)** performs swipe up user gesture on element 
 * **swipeDown(_ element)** performs swipe up user gesture on element
 * **swipeLeft(_ element)** performs swipe up user gesture on element
