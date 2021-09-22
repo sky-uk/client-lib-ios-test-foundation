@@ -79,7 +79,7 @@ In the context of UI test a mobile app (MA) can be represented as a black box (s
 
 ![Input/Output](https://user-images.githubusercontent.com/51656240/95301424-e1ad5000-0880-11eb-8b42-007bda2722ae.png)
 
-MA behaviour depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the behaviour of MSA can be described by the UI element displayed to the user and by the http requests executed so far by MSA. UI Tests verify the correctness of MSA's behaviour defining asserts on inputs and/or ouputs of the black box. 
+MA behavior depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the behavior of MSA can be described by the UI element displayed to the user and by the http requests executed so far by MSA. UI Tests verify the correctness of MSA's behavior defining asserts on inputs and/or ouputs of the black box. 
 
 ```swift
 import XCTest
@@ -202,7 +202,7 @@ assertURLEquals("http://www.sky.com?name2=value2&name1=value1", "http://www.sky.
 assertURLEquals("http://www.sky.com", "http://www.sky.com?q1=value1", ignores: [.queryParameters])
 ```
 ## DSL for UI Testing
-In the context of UI tests we have noticed that a behaviour of a mobile application can be described with a language composed by few verbs and nouns.
+In the context of UI tests we have noticed that a behavior of a mobile application can be described with a language composed by few verbs and nouns.
 
 ![some_verbs_sodalizio](https://user-images.githubusercontent.com/51656240/115408436-22533200-a1f1-11eb-9ae0-7b5eb9ad4fb1.jpg)
 
@@ -230,7 +230,7 @@ The following custom assertions are wrappers of events defined in `XCUIElement` 
 
 Notice: DSL for testing allows to write iOS UI Test and copy it to android and viceversa.
 ### Mocks - Random data generators
-The framework provides mocks for built-in data types of Swift. In mock testing, the dependencies are replaced with objects that simulate the behaviour of the real ones. The purpose of mocking is to isolate and focus on the code being tested and not on the behaviour or state of external dependencies.
+The framework provides mocks for built-in data types of Swift. In mock testing, the dependencies are replaced with objects that simulate the behavior of the real ones. The purpose of mocking is to isolate and focus on the code being tested and not on the behavior or state of external dependencies.
 Each mocks returns a random value of the associated data type.
 
 
