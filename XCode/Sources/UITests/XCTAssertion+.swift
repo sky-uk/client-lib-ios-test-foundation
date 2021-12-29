@@ -152,7 +152,6 @@ public func typeText(_ stringToBeTyped: String) {
 public func waitForAWhile(_ seconds: Double = 2) {
     _ = XCUIApplication().staticTexts["_not_exist_element_"].waitForExistence(timeout: seconds)
 }
-
 #endif
 
 public func typeText(_ element: XCUIElement, _ stringToBeTyped: String) {
