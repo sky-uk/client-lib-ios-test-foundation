@@ -98,22 +98,25 @@ public func tap(_ element: XCUIElement, _ message: String = "", file: StaticStri
 }
 #if canImport(UIKit)
 public func swipeUp() {
+    waitForAWhile(0.5)
     XCUIApplication().swipeUp()
     waitForAWhile(0.5)
-
 }
 
 public func swipeLeft() {
+    waitForAWhile(0.5)
     XCUIApplication().swipeLeft()
     waitForAWhile(0.5)
 }
 
 public func swipeRight() {
+    waitForAWhile(0.5)
     XCUIApplication().swipeRight()
     waitForAWhile(0.5)
 }
 
 public func swipeDown() {
+    waitForAWhile(0.5)
     XCUIApplication().swipeDown()
     waitForAWhile(0.5)
 }
