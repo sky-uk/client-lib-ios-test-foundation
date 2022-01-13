@@ -97,51 +97,51 @@ public func tap(_ element: XCUIElement, _ message: String = "", file: StaticStri
     element.tap()
 }
 #if canImport(UIKit)
-public func swipeUp() {
+public func swipeUp(velocity: XCUIGestureVelocity = .default) {
     waitForAWhile(0.5)
-    XCUIApplication().swipeUp()
-    waitForAWhile(0.5)
-}
-
-public func swipeLeft() {
-    waitForAWhile(0.5)
-    XCUIApplication().swipeLeft()
+    XCUIApplication().swipeUp(velocity: velocity)
     waitForAWhile(0.5)
 }
 
-public func swipeRight() {
+public func swipeLeft(velocity: XCUIGestureVelocity = .default) {
     waitForAWhile(0.5)
-    XCUIApplication().swipeRight()
-    waitForAWhile(0.5)
-}
-
-public func swipeDown() {
-    waitForAWhile(0.5)
-    XCUIApplication().swipeDown()
+    XCUIApplication().swipeLeft(velocity: velocity)
     waitForAWhile(0.5)
 }
 
-public func swipeUp(_ element: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
+public func swipeRight(velocity: XCUIGestureVelocity = .default) {
+    waitForAWhile(0.5)
+    XCUIApplication().swipeRight(velocity: velocity)
+    waitForAWhile(0.5)
+}
+
+public func swipeDown(velocity: XCUIGestureVelocity = .default) {
+    waitForAWhile(0.5)
+    XCUIApplication().swipeDown(velocity: velocity)
+    waitForAWhile(0.5)
+}
+
+public func swipeUp(_ element: XCUIElement, velocity: XCUIGestureVelocity = .default, file: StaticString = #filePath, line: UInt = #line) {
     exist(element, file: file, line: line)
-    element.swipeUp()
+    element.swipeUp(velocity: velocity)
     waitForAWhile(0.5)
 }
 
-public func swipeDown(_ element: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
+public func swipeDown(_ element: XCUIElement, velocity: XCUIGestureVelocity = .default, file: StaticString = #filePath, line: UInt = #line) {
     exist(element, file: file, line: line)
-    element.swipeDown()
+    element.swipeDown(velocity: velocity)
     waitForAWhile(0.5)
 }
 
-public func swipeLeft(_ element: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
+public func swipeLeft(_ element: XCUIElement, velocity: XCUIGestureVelocity = .default, file: StaticString = #filePath, line: UInt = #line) {
     exist(element, file: file, line: line)
-    element.swipeLeft()
+    element.swipeLeft(velocity: velocity)
     waitForAWhile(0.5)
 }
 
-public func swipeRight(_ element: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
+public func swipeRight(_ element: XCUIElement, velocity: XCUIGestureVelocity = .default, file: StaticString = #filePath, line: UInt = #line) {
     exist(element, file: file, line: line)
-    element.swipeRight()
+    element.swipeRight(velocity: velocity)
     waitForAWhile(0.5)
 }
 
