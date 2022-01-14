@@ -94,7 +94,13 @@ public extension XCUIElement {
 // MARK: Gestures
 public func tap(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) {
     XCTAssertTrue(element.waitForExistence(timeout: expectationTimeout), "\(message) - \(element) does not exist.", file: file, line: line)
-    element.tap()
+    if element.isHittable {
+        element.tap()
+    } else {
+        // Fix when tap causes: "Failed to scroll to visible (by AX action) when tap on element" error
+        let coordinate: XCUICoordinate = element.coordinate(withNormalizedOffset: CGVector(dx: 0.0, dy: 0.0))
+        coordinate.tap()
+    }
 }
 #if canImport(UIKit)
 public func swipeUp(velocity: XCUIGestureVelocity = .default) {
