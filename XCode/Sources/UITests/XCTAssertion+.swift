@@ -96,6 +96,12 @@ public func tap(_ element: XCUIElement, _ message: String = "", file: StaticStri
     XCTAssertTrue(element.waitForExistence(timeout: expectationTimeout), "\(message) - \(element) does not exist.", file: file, line: line)
     element.tap()
 }
+
+public func doubleTap(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) {
+    XCTAssertTrue(element.waitForExistence(timeout: expectationTimeout), "\(message) - \(element) does not exist.", file: file, line: line)
+    element.doubleTap()
+}
+
 #if canImport(UIKit)
 public func swipeUp(velocity: XCUIGestureVelocity = .default) {
     waitForAWhile(0.5)
