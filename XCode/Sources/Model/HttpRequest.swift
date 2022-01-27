@@ -13,7 +13,7 @@ public protocol HttpRequest {
 
 public extension HttpRequest {
 
-    func header(name: String) -> String? {
+    func header(_ name: String) -> String? {
         return self.headers[name]
     }
 
