@@ -258,15 +258,6 @@ print(v) // prints Elisa
 
 
 ## Installation
-### Carthage
-Add SkyTestFoundation to your Cartfile.private
-
-```github "sky-uk/client-lib-ios-test-foundation"```
-
-and in the test target add the following script
-
-![image](https://user-images.githubusercontent.com/51656240/104758256-710aaf00-575e-11eb-9559-84b3f39b58fb.png)
-
 ### Swift Package Manager
 SPM is supported too
 
