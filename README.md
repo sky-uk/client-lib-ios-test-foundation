@@ -259,7 +259,7 @@ print(v) // prints Elisa
 
 ## Installation
 ### Swift Package Manager
-SPM is supported too
+SPM is supported
 
 ### Demos
 Source code available at: https://github.com/sky-uk/client-lib-ios-test-foundation/tree/demos
