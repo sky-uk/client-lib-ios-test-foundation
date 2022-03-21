@@ -91,6 +91,7 @@ public extension XCUIElement {
     }
 }
 
+#if !os(tvOS)
 // MARK: Gestures
 public func tap(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) {
     XCTAssertTrue(element.waitForExistence(timeout: expectationTimeout), "\(message) - \(element) does not exist.", file: file, line: line)
@@ -101,6 +102,7 @@ public func doubleTap(_ element: XCUIElement, _ message: String = "", file: Stat
     XCTAssertTrue(element.waitForExistence(timeout: expectationTimeout), "\(message) - \(element) does not exist.", file: file, line: line)
     element.doubleTap()
 }
+#endif
 
 #if canImport(UIKit)
 #if !os(tvOS)
