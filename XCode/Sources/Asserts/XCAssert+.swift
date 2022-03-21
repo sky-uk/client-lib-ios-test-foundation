@@ -88,3 +88,7 @@ public extension XCTestCase {
         }
       }
 }
+
+public func assertFail(_ message: String = "") {
+    XCTFail(message)
+}
