@@ -14,7 +14,7 @@ class SkyUITestCaseTests: SkyUITestCase {
         let exp = expectation(description: "")
 
         httpServerBuilder
-            .route((route: HttpRoute("/login"), statusCode: 200, body: body, responseTime: nil))
+            .route((endpoint: HttpEndpoint("/login"), statusCode: 200, body: body, responseTime: nil))
             .buildAndStart()
 
         let url = URL(string: "http://localhost:8080/login")!
@@ -36,8 +36,8 @@ class SkyUITestCaseTests: SkyUITestCase {
         let exp01 = expectation(description: "expectation 01")
 
         httpServerBuilder
-            .route((route: HttpRoute("/endpoint00"), statusCode: 200, body: Data(), responseTime: nil))
-            .route((route: HttpRoute("/endpoint01"), statusCode: 200, body: Data(), responseTime: nil))
+            .route((endpoint: HttpEndpoint("/endpoint00"), statusCode: 200, body: Data(), responseTime: nil))
+            .route((endpoint: HttpEndpoint("/endpoint01"), statusCode: 200, body: Data(), responseTime: nil))
             .buildAndStart()
 
         let session = URLSession(configuration: URLSessionConfiguration.default)

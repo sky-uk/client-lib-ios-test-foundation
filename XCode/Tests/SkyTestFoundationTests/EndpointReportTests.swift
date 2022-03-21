@@ -8,7 +8,7 @@ class EndpointReportTests: XCTestCase {
         let responseCount = 1
         let httpRequestCount = 2
         let endpointReport = UITestHttpServerBuilder.EndpointReport(
-            endpoint: HttpRoute(endpoint),
+            endpoint: HttpEndpoint(endpoint),
             responseCount: responseCount,
             httpRequestCount: httpRequestCount
         )

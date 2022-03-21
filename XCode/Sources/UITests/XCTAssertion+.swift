@@ -34,7 +34,7 @@ public func isRunningOnSimulator() -> Bool {
     return ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] != nil
 }
 
-public func withText(_ value: String) -> XCUIElement {
+public func withTextEquals(_ value: String) -> XCUIElement {
     let predicate = NSPredicate(format: "label ==[c] %@", value)
     let result: XCUIElementQuery = XCUIApplication().staticTexts.containing(predicate)
     return result.firstMatch
@@ -44,7 +44,7 @@ public func withIndex(_ query: XCUIElementQuery, index: Int) -> XCUIElement {
     return query.element(boundBy: index)
 }
 
-public func assertViewCount(_ element: XCUIElementQuery, expectedCount: Int) {
+public func assertViewCount(_ element: XCUIElementQuery, _ expectedCount: Int) {
     XCTAssertEqual(element.count, expectedCount, "assertViewCount failed: view count is not equals to expectedCount \(expectedCount)")
 }
 
@@ -55,12 +55,12 @@ public func withTextContaining(_ value: String) -> XCUIElement {
 }
 
 public extension XCUIElement {
-    func withText(_ value: String) -> XCUIElement {
+    func withTextEquals(_ value: String) -> XCUIElement {
         let predicate = NSPredicate(format: "label ==[c] %@", value)
         return staticTexts.containing(predicate).firstMatch
     }
 
-    func withText(_ value: String) -> XCUIElementQuery {
+    func withTextEquals(_ value: String) -> XCUIElementQuery {
         let predicate = NSPredicate(format: "label ==[c] %@", value)
         return staticTexts.containing(predicate)
     }
@@ -103,6 +103,7 @@ public func doubleTap(_ element: XCUIElement, _ message: String = "", file: Stat
 }
 
 #if canImport(UIKit)
+#if !os(tvOS)
 public func swipeUp(velocity: XCUIGestureVelocity = .default) {
     waitForAWhile(0.5)
     XCUIApplication().swipeUp(velocity: velocity)
@@ -150,7 +151,7 @@ public func swipeRight(_ element: XCUIElement, velocity: XCUIGestureVelocity = .
     element.swipeRight(velocity: velocity)
     waitForAWhile(0.5)
 }
-
+#endif // os(tvOS)
 public func typeText(_ stringToBeTyped: String) {
     XCUIApplication().typeText(stringToBeTyped)
 }

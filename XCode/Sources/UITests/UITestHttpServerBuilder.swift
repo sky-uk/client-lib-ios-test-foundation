@@ -2,7 +2,7 @@ import Foundation
 import Swifter
 import XCTest
 
-public typealias EndpointDataResponse = (route: HttpRoute, statusCode: Int, body: Data, responseTime: UInt32?)
+public typealias EndpointDataResponse = (endpoint: HttpEndpoint, statusCode: Int, body: Data, responseTime: UInt32?)
 public typealias DataReponse = (statusCode: Int, body: Data, responseTime: UInt32?)
 
 public class UITestHttpServerBuilder {
@@ -12,7 +12,7 @@ public class UITestHttpServerBuilder {
     public init() {}
 
     private struct EDResponse {
-        let route: HttpRoute
+        let endpoint: HttpEndpoint
         let statusCode: Int
         let body: Data
         let responseTime: UInt32?
@@ -20,7 +20,7 @@ public class UITestHttpServerBuilder {
     }
 
     private struct ECallBackResponse {
-        let endpoint: HttpRoute
+        let endpoint: HttpEndpoint
         let callBack: (HttpRequest) -> HttpResponse
     }
     private let updateCallCountSemaphore = DispatchSemaphore(value: 1)
@@ -29,7 +29,7 @@ public class UITestHttpServerBuilder {
     private var httpCallBackResponses: [ECallBackResponse] = []
     private var imagesResponse: [ImageReponse] = []
 
-    private var endpointCallCount: [HttpRoute: Int] = [:]
+    private var endpointCallCount: [HttpEndpoint: Int] = [:]
 
     public func route(_ responses: [EndpointDataResponse]) -> UITestHttpServerBuilder {
         responses.forEach { response in
@@ -43,7 +43,7 @@ public class UITestHttpServerBuilder {
     }
 
     public func route(_ response: EndpointDataResponse, on: ((HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder {
-        httpResponses.append(EDResponse(route: response.route,
+        httpResponses.append(EDResponse(endpoint: response.endpoint,
                                         statusCode: response.statusCode,
                                         body: response.body,
                                         responseTime: response.responseTime,
@@ -51,7 +51,7 @@ public class UITestHttpServerBuilder {
         return self
     }
 
-    public func route(endpoint: HttpRoute, on: @escaping ((HttpRequest) -> HttpResponse)) -> UITestHttpServerBuilder {
+    public func route(endpoint: HttpEndpoint, on: @escaping ((HttpRequest) -> HttpResponse)) -> UITestHttpServerBuilder {
         httpCallBackResponses.append(ECallBackResponse(endpoint: endpoint, callBack: on))
         return self
     }
@@ -69,7 +69,7 @@ public class UITestHttpServerBuilder {
     }
 
 
-    private func updateEndpointCallCount(_ endpoint: HttpRoute) {
+    private func updateEndpointCallCount(_ endpoint: HttpEndpoint) {
         updateCallCountQueue.async {
             self.updateCallCountSemaphore.wait()
             let callCount: Int
@@ -86,7 +86,7 @@ public class UITestHttpServerBuilder {
     public func callReport() -> [EndpointReport] {
         updateCallCountQueue.sync {
             self.updateCallCountSemaphore.wait()
-            let groupByEndpoint = Dictionary(grouping: httpResponses, by: { $0.route })
+            let groupByEndpoint = Dictionary(grouping: httpResponses, by: { $0.endpoint })
             let expectedReports: [EndpointReport] = groupByEndpoint.keys.map {
                 let responseCount = groupByEndpoint[$0]?.count ?? 0
                 return EndpointReport(endpoint: $0, responseCount: responseCount, httpRequestCount: 0)
@@ -101,7 +101,7 @@ public class UITestHttpServerBuilder {
 
     public func definedResponses() -> [String] {
         return self.httpResponses.map { (edResponse) -> String in
-            return "Endpoint: \(edResponse.route)\n" + "\(String(describing: String(bytes: edResponse.body, encoding: .utf8)))"
+            return "Endpoint: \(edResponse.endpoint)\n" + "\(String(describing: String(bytes: edResponse.body, encoding: .utf8)))"
         }
     }
 
@@ -126,7 +126,7 @@ public class UITestHttpServerBuilder {
     @discardableResult
     public func buildAndStart(port: in_port_t = 8080, file: StaticString = #file, line: UInt = #line) -> HttpServer {
         buildImageResponses()
-        let groupByEndpoint = Dictionary(grouping: httpResponses) { $0.route }
+        let groupByEndpoint = Dictionary(grouping: httpResponses) { $0.endpoint }
         for (endpoint, responses) in groupByEndpoint {
             let queue = DispatchQueue(label: "queue.endpoint.\(endpoint)")
             var index = 0
@@ -177,13 +177,13 @@ public class UITestHttpServerBuilder {
 
     public struct EndpointReport {
         // endpoint
-        public let endpoint: HttpRoute
+        public let endpoint: HttpEndpoint
         // associated response count
         public let responseCount: Int
         // received http requests count
         public let httpRequestCount: Int
 
-        public init(endpoint: HttpRoute, responseCount: Int, httpRequestCount: Int) {
+        public init(endpoint: HttpEndpoint, responseCount: Int, httpRequestCount: Int) {
             self.endpoint = endpoint
             self.responseCount = responseCount
             self.httpRequestCount = httpRequestCount
@@ -226,20 +226,20 @@ private struct ConcreteHttpRequest: HttpRequest {
 
 extension Swifter.HttpServer {
 
-    func buildRoute(_ route: HttpRoute, body: ((Swifter.HttpRequest) -> HttpResponse)?) {
-        switch route.method {
+    func buildRoute(_ endpoint: HttpEndpoint, body: ((Swifter.HttpRequest) -> HttpResponse)?) {
+        switch endpoint.method {
             case .delete:
-                return self.DELETE[route.path] = body
+                return self.DELETE[endpoint.path] = body
             case .get:
-                return self.GET[route.path] = body
+                return self.GET[endpoint.path] = body
             case .head:
-                return self.HEAD[route.path] = body
+                return self.HEAD[endpoint.path] = body
             case .patch:
-                return self.PATCH[route.path] = body
+                return self.PATCH[endpoint.path] = body
             case .post:
-                return self.POST[route.path] = body
+                return self.POST[endpoint.path] = body
             case .put:
-                return self.PUT[route.path] = body
+                return self.PUT[endpoint.path] = body
         }
     }
 }

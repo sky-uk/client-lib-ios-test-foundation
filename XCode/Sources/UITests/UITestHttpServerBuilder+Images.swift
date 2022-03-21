@@ -30,7 +30,7 @@ extension UITestHttpServerBuilder.EndpointReport {
 }
 
 public extension Sequence where Element == UITestHttpServerBuilder.EndpointReport {
-    func filter(_ endpoint: HttpRoute) -> Element? {
+    func filter(_ endpoint: HttpEndpoint) -> Element? {
         return self.first { $0.endpoint == endpoint }
     }
 
