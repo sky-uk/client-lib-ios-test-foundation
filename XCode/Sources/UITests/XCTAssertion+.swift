@@ -48,7 +48,7 @@ public func assertViewCount(_ element: XCUIElementQuery, _ expectedCount: Int) {
     XCTAssertEqual(element.count, expectedCount, "assertViewCount failed: view count is not equals to expectedCount \(expectedCount)")
 }
 
-public func withTextContaining(_ value: String) -> XCUIElement {
+public func withTextContains(_ value: String) -> XCUIElement {
     let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
     let result: XCUIElementQuery = XCUIApplication().staticTexts.containing(predicate)
     return result.containing(predicate).firstMatch
@@ -65,7 +65,7 @@ public extension XCUIElement {
         return staticTexts.containing(predicate)
     }
 
-    func withTextContaining(_ value: String) -> XCUIElement {
+    func withTextContains(_ value: String) -> XCUIElement {
         let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
         return staticTexts.containing(predicate).firstMatch
     }
