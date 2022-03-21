@@ -1,5 +1,4 @@
 import XCTest
-import Swifter
 @testable import SkyTestFoundation
 
 class SkyUnitTestCaseTests: SkyUnitTestCase {
@@ -13,7 +12,7 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         let exp = expectation(description: "")
         httpServerBuilder
             .route("/login") { (_, _) -> (HttpResponse) in
-                return HttpResponse.ok(HttpResponseBody.data(Data()))
+                return HttpResponse()
             }
             .buildAndStart()
         let url = URL(string: "http://localhost:8080/login")!
@@ -33,10 +32,10 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
 
         httpServerBuilder
             .route("/endpoint00") { (_, _) -> (HttpResponse) in
-                return HttpResponse.ok(HttpResponseBody.data(Data()))
+                return HttpResponse()
             }
             .route("/endpoint01", { (_, _) -> (HttpResponse) in
-                return HttpResponse.ok(HttpResponseBody.data(Data()))
+                return HttpResponse()
             })
             .buildAndStart()
 
@@ -65,7 +64,7 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
 
         httpServerBuilder
             .route("/endpoint00") { (_, _) -> (HttpResponse) in
-                return HttpResponse.ok(HttpResponseBody.data(Data()))
+                return HttpResponse()
             }
             .onUnexpected { _ in
                 exp01.fulfill() // "Unexpected request.path
@@ -106,7 +105,7 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         let exp = expectation(description: "..")
         httpServerBuilder
             .route("login") { (_, _) -> (HttpResponse) in
-                return HttpResponse.ok(HttpResponseBody.data(Data()))
+                return HttpResponse()
             }
             .buildAndStart()
 
@@ -129,11 +128,11 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         httpServerBuilder
             .route("/endpoint/1") { (request, callCount) -> (HttpResponse) in
                 callCount0 = callCount
-                return HttpResponse.ok(HttpResponseBody.data(Data()))
+                return HttpResponse()
             }
             .route("/endpoint/2") { (request, callCount) -> (HttpResponse) in
                 callCount1 = callCount
-                return HttpResponse.ok(HttpResponseBody.data(Data()))
+                return HttpResponse()
             }
             .buildAndStart()
 

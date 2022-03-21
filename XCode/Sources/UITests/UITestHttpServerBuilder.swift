@@ -63,7 +63,7 @@ public class UITestHttpServerBuilder {
             DispatchQueue.main.sync {
                 asserts(request.httpRequest())
             }
-            return HttpResponse.notFound
+            return HttpResponse.notFound().toSwifter()
         }
         return self
     }
@@ -116,9 +116,7 @@ public class UITestHttpServerBuilder {
                 } else {
                     data = UITestHttpServerBuilder.drawOnImage(text: request.path)
                 }
-                return HttpResponse.raw(200, "", nil) { (writer) in
-                    try writer.write(data)
-                }
+                return HttpResponse(body: data, statusCode: 200).toSwifter()
             }
         }
     }
@@ -146,7 +144,7 @@ public class UITestHttpServerBuilder {
                     }
                 }
                 sleep(response.responseTime ?? 0)
-                return HttpResponse.raw(statusCode: response.statusCode, body: response.body)
+                return HttpResponse(body: response.body, statusCode: response.statusCode).toSwifter()
             }
         }
 
@@ -155,14 +153,14 @@ public class UITestHttpServerBuilder {
             httpServer.buildRoute(endpointCallBackResponse.endpoint) { request in
                 Logger.info("Handled request:\(request.method) \(request.path) Params:\(request.queryParams)")
                 self.updateEndpointCallCount(endpointCallBackResponse.endpoint)
-                return endpointCallBackResponse.callBack(request.httpRequest())
+                return endpointCallBackResponse.callBack(request.httpRequest()).toSwifter()
             }
         }
 
         if httpServer.notFoundHandler == nil {
             httpServer.notFoundHandler = { request in
                 Logger.info("NOT handled: \(request.method) \(request.path) Params:\(request.queryParams)")
-                return HttpResponse.notFound
+                return HttpResponse.notFound().toSwifter()
             }
         }
 
@@ -187,14 +185,6 @@ public class UITestHttpServerBuilder {
             self.endpoint = endpoint
             self.responseCount = responseCount
             self.httpRequestCount = httpRequestCount
-        }
-    }
-}
-
-public extension HttpResponse {
-    static func raw(statusCode: Int, body: Data) -> HttpResponse {
-        return HttpResponse.raw(statusCode, "", nil) { (writer) in
-            try writer.write(body)
         }
     }
 }
@@ -226,7 +216,7 @@ private struct ConcreteHttpRequest: HttpRequest {
 
 extension Swifter.HttpServer {
 
-    func buildRoute(_ endpoint: HttpEndpoint, body: ((Swifter.HttpRequest) -> HttpResponse)?) {
+    func buildRoute(_ endpoint: HttpEndpoint, body: ((Swifter.HttpRequest) -> Swifter.HttpResponse)?) {
         switch endpoint.method {
             case .delete:
                 return self.DELETE[endpoint.path] = body

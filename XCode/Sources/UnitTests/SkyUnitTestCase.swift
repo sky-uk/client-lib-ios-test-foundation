@@ -1,4 +1,3 @@
-import Swifter
 import XCTest
 
 open class SkyUnitTestCase: XCTestCase {
@@ -16,8 +15,3 @@ open class SkyUnitTestCase: XCTestCase {
     }
 }
 
-extension HttpResponse {
-    static func ok(_ data: Data) -> HttpResponse {
-        return HttpResponse.ok(HttpResponseBody.data(data))
-    }
-}
