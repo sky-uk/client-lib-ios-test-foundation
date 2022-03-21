@@ -164,10 +164,12 @@ public func waitForAWhile(_ seconds: Double = 2) {
 
 #endif
 
+#if !os(tvOS)
 public func typeText(_ element: XCUIElement, _ stringToBeTyped: String) {
     tap(element)
     element.typeText(stringToBeTyped)
 }
+#endif
 
 public func skipRunTestIf(_ condition: Bool, _ message: String, file: StaticString = #filePath, line: UInt = #line) throws {
     try XCTSkipIf(condition, message, file: file, line: line)
