@@ -1,5 +1,4 @@
 import Foundation
-import Swifter
 
 public protocol HttpRequest {
     var path: String { get }
