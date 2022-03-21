@@ -13,7 +13,7 @@ public class UTHttpServerBuilder {
             callCount += 1
             lock.signal()
             Logger.info("Handled request:\(request.method) \(request.path) Params:\(request.queryParams) call count:\(callCount)")
-            return completion(request.httpRequest(), callCount)
+            return completion(request.httpRequest(), callCount).toSwifter()
         }
         return self
     }
@@ -23,7 +23,7 @@ public class UTHttpServerBuilder {
             DispatchQueue.main.sync {
                 asserts(request.httpRequest())
             }
-            return HttpResponse.badRequest(HttpResponseBody.html(""))
+            return HttpResponse.badRequest().toSwifter()
         }
         return self
     }
@@ -46,7 +46,7 @@ public class UTHttpServerBuilder {
             lock.wait()
             callCount += 1
             lock.signal()
-            return completion(request.httpRequest(), callCount)
+            return completion(request.httpRequest(), callCount).toSwifter()
         }
     }
 
