@@ -5,15 +5,15 @@ import XCTest
 public struct HttpRoute {
     let endpoint: HttpEndpoint
     let response: HttpResponse
-    let responseTime: UInt32?
+    let sleepDelay: UInt32?
     
-    public init(endpoint: HttpEndpoint, response: HttpResponse, responseTime: UInt32? = nil) {
+    public init(endpoint: HttpEndpoint, response: HttpResponse, sleepDelay: UInt32? = nil) {
         self.endpoint = endpoint
         self.response = response
-        self.responseTime = responseTime
+        self.sleepDelay = sleepDelay
     }
 }
-public typealias DataReponse = (statusCode: Int, body: Data, responseTime: UInt32?)
+public typealias DataReponse = (statusCode: Int, body: Data, delay: UInt32?)
 
 public class UITestHttpServerBuilder {
     public static let httpLocalhost = "http://127.0.0.1"
@@ -26,7 +26,7 @@ public class UITestHttpServerBuilder {
         let statusCode: Int
         let body: Data
         let headers: [String: String]
-        let responseTime: UInt32?
+        let sleepDelay: UInt32?
         let onReceivedHttpRequest: ((HttpRequest) -> Void)?
     }
 
@@ -58,7 +58,7 @@ public class UITestHttpServerBuilder {
                                         statusCode: route.response.statusCode,
                                         body: route.response.body,
                                         headers: route.response.headers,
-                                        responseTime: route.responseTime,
+                                        sleepDelay: route.sleepDelay,
                                         onReceivedHttpRequest: on))
         return self
     }
@@ -155,7 +155,7 @@ public class UITestHttpServerBuilder {
                         onReceivedHttpRequest(request.httpRequest())
                     }
                 }
-                sleep(response.responseTime ?? 0)
+                sleep(response.sleepDelay ?? 0)
                 return HttpResponse(body: response.body, statusCode: response.statusCode,  headers: response.headers).toSwifter()
             }
         }
