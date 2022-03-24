@@ -2,9 +2,9 @@ import Foundation
 import Swifter
 
 public class HttpResponse {
-    let body: Data
-    let statusCode: Int
-    let headers: [String : String]
+    public let body: Data
+    public let statusCode: Int
+    public let headers: [String : String]
     
     public init(body: Data = Data(), statusCode: Int = 200, headers: [String: String] = [:]) {
         self.body = body
