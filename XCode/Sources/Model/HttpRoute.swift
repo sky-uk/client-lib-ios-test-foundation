@@ -1,15 +1,13 @@
 import Foundation
 
-public struct HttpEndpoint: Hashable, CustomStringConvertible {
-    public let path: String
-    public let method: HttpMethod
-
-    public init(_ path: String, _ method: HttpMethod = .get) {
-        self.path = path
-        self.method = method
-    }
-
-    public var description: String {
-        return "\(method) \(path)"
+public struct HttpRoute {
+    public let endpoint: HttpEndpoint
+    public let response: HttpResponse
+    public let sleepDelay: UInt32?
+    
+    public init(endpoint: HttpEndpoint, response: HttpResponse, sleepDelay: UInt32? = nil) {
+        self.endpoint = endpoint
+        self.response = response
+        self.sleepDelay = sleepDelay
     }
 }

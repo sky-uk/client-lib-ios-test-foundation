@@ -2,17 +2,6 @@ import Foundation
 import Swifter
 import XCTest
 
-public struct HttpRoute {
-    let endpoint: HttpEndpoint
-    let response: HttpResponse
-    let sleepDelay: UInt32?
-    
-    public init(endpoint: HttpEndpoint, response: HttpResponse, sleepDelay: UInt32? = nil) {
-        self.endpoint = endpoint
-        self.response = response
-        self.sleepDelay = sleepDelay
-    }
-}
 public typealias DataReponse = (statusCode: Int, body: Data, delay: UInt32?)
 
 public class UITestHttpServerBuilder {
