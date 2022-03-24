@@ -2,7 +2,17 @@ import Foundation
 import Swifter
 import XCTest
 
-public typealias EndpointDataResponse = (endpoint: HttpEndpoint, statusCode: Int, body: Data, responseTime: UInt32?)
+public struct HttpRoute {
+    let endpoint: HttpEndpoint
+    let response: HttpResponse
+    let responseTime: UInt32?
+    
+    public init(endpoint: HttpEndpoint, response: HttpResponse, responseTime: UInt32? = nil) {
+        self.endpoint = endpoint
+        self.response = response
+        self.responseTime = responseTime
+    }
+}
 public typealias DataReponse = (statusCode: Int, body: Data, responseTime: UInt32?)
 
 public class UITestHttpServerBuilder {
@@ -15,6 +25,7 @@ public class UITestHttpServerBuilder {
         let endpoint: HttpEndpoint
         let statusCode: Int
         let body: Data
+        let headers: [String: String]
         let responseTime: UInt32?
         let onReceivedHttpRequest: ((HttpRequest) -> Void)?
     }
@@ -31,8 +42,8 @@ public class UITestHttpServerBuilder {
 
     private var endpointCallCount: [HttpEndpoint: Int] = [:]
 
-    public func route(_ responses: [EndpointDataResponse]) -> UITestHttpServerBuilder {
-        responses.forEach { response in
+    public func route(_ routes: [HttpRoute]) -> UITestHttpServerBuilder {
+        routes.forEach { response in
             _ = route(response)
         }
         return self
@@ -42,11 +53,12 @@ public class UITestHttpServerBuilder {
         imagesResponse.append(ImageReponse(path: path, properties: properties))
     }
 
-    public func route(_ response: EndpointDataResponse, on: ((HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder {
-        httpResponses.append(EDResponse(endpoint: response.endpoint,
-                                        statusCode: response.statusCode,
-                                        body: response.body,
-                                        responseTime: response.responseTime,
+    public func route(_ route: HttpRoute, on: ((HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder {
+        httpResponses.append(EDResponse(endpoint: route.endpoint,
+                                        statusCode: route.response.statusCode,
+                                        body: route.response.body,
+                                        headers: route.response.headers,
+                                        responseTime: route.responseTime,
                                         onReceivedHttpRequest: on))
         return self
     }
@@ -144,7 +156,7 @@ public class UITestHttpServerBuilder {
                     }
                 }
                 sleep(response.responseTime ?? 0)
-                return HttpResponse(body: response.body, statusCode: response.statusCode).toSwifter()
+                return HttpResponse(body: response.body, statusCode: response.statusCode,  headers: response.headers).toSwifter()
             }
         }
 

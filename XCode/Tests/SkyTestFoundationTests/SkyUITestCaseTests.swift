@@ -10,11 +10,11 @@ class SkyUITestCaseTests: SkyUITestCase {
     }
 
     func testOneEndpoint() throws {
-        let body = "xyz".data(using: .ascii)!
+        let httpResponse = HttpResponse(body: "xyz".data(using: .ascii)!)
         let exp = expectation(description: "")
 
         httpServerBuilder
-            .route((endpoint: HttpEndpoint("/login"), statusCode: 200, body: body, responseTime: nil))
+            .route(HttpRoute(endpoint: HttpEndpoint("/login"), response: httpResponse))
             .buildAndStart()
 
         let url = URL(string: "http://localhost:8080/login")!
@@ -22,7 +22,7 @@ class SkyUITestCaseTests: SkyUITestCase {
         session.dataTask(with: url, completionHandler: { (data, response, error) in
             XCTAssertNil(error)
             XCTAssertEqual((response as? HTTPURLResponse)?.statusCode, 200)
-            XCTAssertEqual(body, data!)
+            XCTAssertEqual(httpResponse.body, data!)
             exp.fulfill()
         }).resume()
 
@@ -36,8 +36,8 @@ class SkyUITestCaseTests: SkyUITestCase {
         let exp01 = expectation(description: "expectation 01")
 
         httpServerBuilder
-            .route((endpoint: HttpEndpoint("/endpoint00"), statusCode: 200, body: Data(), responseTime: nil))
-            .route((endpoint: HttpEndpoint("/endpoint01"), statusCode: 200, body: Data(), responseTime: nil))
+            .route(HttpRoute(endpoint: HttpEndpoint("/endpoint00"), response: HttpResponse(body: Data())))
+            .route(HttpRoute(endpoint: HttpEndpoint("/endpoint01"), response: HttpResponse(body: Data())))
             .buildAndStart()
 
         let session = URLSession(configuration: URLSessionConfiguration.default)
@@ -56,5 +56,30 @@ class SkyUITestCaseTests: SkyUITestCase {
         dataTask00.resume()
         dataTask01.resume()
         wait(for: [exp00, exp01], timeout: 3)
+    }
+    
+    
+    func testResponseHeaders() throws {
+        let httpResponse = HttpResponse(body: "xyz".data(using: .ascii)!, headers: ["key1": "value1"])
+        let exp = expectation(description: "")
+
+        httpServerBuilder
+            .route(HttpRoute(endpoint: HttpEndpoint("/login"), response: httpResponse))
+            .buildAndStart()
+
+        let url = URL(string: "http://localhost:8080/login")!
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        session.dataTask(with: url, completionHandler: { (data, response, error) in
+            XCTAssertNil(error)
+            let headers: [String : String]? = (response as? HTTPURLResponse)?.allHeaderFields as? [String : String]
+            XCTAssertNotNil(headers)
+            XCTAssertEqual(headers!["key1"], "value1")
+            XCTAssertEqual(httpResponse.body, data!)
+            exp.fulfill()
+        }).resume()
+
+        waitForExpectations(timeout: 5) { (error) in
+            print("Error:\(String(describing: error))")
+        }
     }
 }
