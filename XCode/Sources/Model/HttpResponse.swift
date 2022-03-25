@@ -4,8 +4,8 @@ import Swifter
 public class HttpResponse {
     public let body: Data
     public let statusCode: Int
-    public let headers: [String : String]
-    
+    public let headers: [String: String]
+
     public init(body: Data = Data(), statusCode: Int = 200, headers: [String: String] = [:]) {
         self.body = body
         self.statusCode = statusCode
@@ -17,15 +17,14 @@ extension HttpResponse {
     public static func notFound() -> HttpResponse {
         return HttpResponse(statusCode: 404)
     }
-    
+
     public static func badRequest() -> HttpResponse {
         return HttpResponse(statusCode: 400)
     }
-    
+
     func toSwifter() -> Swifter.HttpResponse {
         return Swifter.HttpResponse.raw(statusCode, "", headers) { (writer) in
             try writer.write(self.body)
         }
     }
 }
-

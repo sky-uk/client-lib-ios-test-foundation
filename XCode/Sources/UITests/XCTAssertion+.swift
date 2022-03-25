@@ -18,7 +18,7 @@ public func notExist(_ element: XCUIElement, _ message: String = "", file: Stati
 public func isEnabled(_ element: XCUIElement, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) -> XCUIElement {
     XCTAssertEqual(element.elementType, .button, "\(message) - \(element) is not of type Button.", file: file, line: line)
     XCTAssertTrue(element.waitForExistence(timeout: expectationTimeout), "\(message) - \(element) does not exist.", file: file, line: line)
-    XCTAssertTrue(element.isEnabled,"\(element) is not enabled.", file: file, line: line)
+    XCTAssertTrue(element.isEnabled, "\(element) is not enabled.", file: file, line: line)
     return element
 }
 
@@ -187,7 +187,6 @@ public func isNotSelected(_ element: XCUIElement, _ message: String = "", file: 
   XCTAssertFalse(element.isSelected, message, file: file, line: line)
   return element
 }
-
 
 public extension Array where Element: Equatable {
     func randomExcept(_ items: [Element]) -> Element? {

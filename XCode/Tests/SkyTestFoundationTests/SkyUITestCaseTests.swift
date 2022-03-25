@@ -57,8 +57,7 @@ class SkyUITestCaseTests: SkyUITestCase {
         dataTask01.resume()
         wait(for: [exp00, exp01], timeout: 3)
     }
-    
-    
+
     func testResponseHeaders() throws {
         let httpResponse = HttpResponse(body: "xyz".data(using: .ascii)!, headers: ["key1": "value1"])
         let exp = expectation(description: "")
@@ -71,7 +70,7 @@ class SkyUITestCaseTests: SkyUITestCase {
         let session = URLSession(configuration: URLSessionConfiguration.default)
         session.dataTask(with: url, completionHandler: { (data, response, error) in
             XCTAssertNil(error)
-            let headers: [String : String]? = (response as? HTTPURLResponse)?.allHeaderFields as? [String : String]
+            let headers: [String: String]? = (response as? HTTPURLResponse)?.allHeaderFields as? [String: String]
             XCTAssertNotNil(headers)
             XCTAssertEqual(headers!["key1"], "value1")
             XCTAssertEqual(httpResponse.body, data!)

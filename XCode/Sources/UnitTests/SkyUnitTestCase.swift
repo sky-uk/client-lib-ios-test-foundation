@@ -14,4 +14,3 @@ open class SkyUnitTestCase: XCTestCase {
         super.tearDown()
     }
 }
-
