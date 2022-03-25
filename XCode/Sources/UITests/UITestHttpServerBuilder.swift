@@ -38,8 +38,10 @@ public class UITestHttpServerBuilder {
         return self
     }
 
-    public func routeImagesAt(path: String, properties: ((HttpRequest) -> ImageProperties)? = nil) {
+    @discardableResult
+    public func routeImagesAt(path: String, properties: ((HttpRequest) -> ImageProperties)? = nil) -> UITestHttpServerBuilder {
         imagesResponse.append(ImageReponse(path: path, properties: properties))
+        return self
     }
 
     public func route(_ route: HttpRoute, on: ((HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder {
