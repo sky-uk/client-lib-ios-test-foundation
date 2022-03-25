@@ -38,8 +38,10 @@ public class UITestHttpServerBuilder {
         return self
     }
 
-    public func routeImagesAt(path: String, properties: ((HttpRequest) -> ImageProperties)? = nil) {
+    @discardableResult
+    public func routeImagesAt(path: String, properties: ((HttpRequest) -> ImageProperties)? = nil) -> UITestHttpServerBuilder {
         imagesResponse.append(ImageReponse(path: path, properties: properties))
+        return self
     }
 
     public func route(_ route: HttpRoute, on: ((HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder {
@@ -57,7 +59,6 @@ public class UITestHttpServerBuilder {
         return self
     }
 
-
     public func undefinedRoute(_ asserts: @escaping (HttpRequest) -> Void) -> UITestHttpServerBuilder {
         httpServer.notFoundHandler = { request in
             Logger.info("NOT handled: \(request.method) \(request.path) Params:\(request.queryParams)")
@@ -68,7 +69,6 @@ public class UITestHttpServerBuilder {
         }
         return self
     }
-
 
     private func updateEndpointCallCount(_ endpoint: HttpEndpoint) {
         updateCallCountQueue.async {
@@ -145,7 +145,7 @@ public class UITestHttpServerBuilder {
                     }
                 }
                 sleep(response.sleepDelay ?? 0)
-                return HttpResponse(body: response.body, statusCode: response.statusCode,  headers: response.headers).toSwifter()
+                return HttpResponse(body: response.body, statusCode: response.statusCode, headers: response.headers).toSwifter()
             }
         }
 

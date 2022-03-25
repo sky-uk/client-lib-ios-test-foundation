@@ -119,18 +119,17 @@ class SkyUnitTestCaseTests: SkyUnitTestCase {
         wait(for: [exp], timeout: 3)
     }
 
-
     func testPathParameterCall() throws {
         let exp00 = expectation(description: "expectation 00")
         let exp01 = expectation(description: "expectation 01")
         var callCount0 = 0
         var callCount1 = 0
         httpServerBuilder
-            .route("/endpoint/1") { (request, callCount) -> (HttpResponse) in
+            .route("/endpoint/1") { (_, callCount) -> (HttpResponse) in
                 callCount0 = callCount
                 return HttpResponse()
             }
-            .route("/endpoint/2") { (request, callCount) -> (HttpResponse) in
+            .route("/endpoint/2") { (_, callCount) -> (HttpResponse) in
                 callCount1 = callCount
                 return HttpResponse()
             }
