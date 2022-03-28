@@ -183,8 +183,8 @@ assertURLEquals("http://www.sky.com", "http://www.sky.com?q1=value1", ignores: [
 ## DSL for UI Testing
 SkyTestFoundation provides a simple DSL in order to facilitate the writing of UI tests. It is a thin layer defined on top of primtives offered by XCTest. 
 The same DSL for testing is defined for Android platform on top of Espresso (see [client-lib-android-test-foundation](https://github.com/sky-uk/client-lib-android-test-foundation)).
-The example below gives you an idea of ​​how to use DSL for testing in your test. Suppose a PetStore app composed by two screens/views:
-[client-lib-android-test-foundation](https://user-images.githubusercontent.com/51656240/160416057-0c3e4935-a406-4efa-8e27-58c8198853ef.png)
+The example below gives you an idea of how to use DSL for testing in your test. Suppose a PetStore app composed by two screens/views:
+![client-lib-android-test-foundation](https://user-images.githubusercontent.com/51656240/160416057-0c3e4935-a406-4efa-8e27-58c8198853ef.png)
 The behaviour "Display a list of pets after login" can described and test with the following ui test:
 ```swift 
 func testDisplayPetListView() {
