@@ -65,7 +65,7 @@ If the execution of the method under test performs an http request not handled b
 Note: 
 - `Routes.User.login().path` is a relative path not containing `127.0.0.1:8080`
 
-Open example app located in folder `example` for more details.
+See example mobile app located in folder `example` for more details.
 
 ### SkyUITestCase - User Interface test example
 In the context of UI test a mobile app (MA) can be represented as a black box (see Input/Output) defined by its own inputs and outputs. 
