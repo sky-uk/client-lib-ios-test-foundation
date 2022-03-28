@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SkyTestFoundation",
+        "repositoryURL": "https://github.com/sky-uk/client-lib-ios-test-foundation.git",
+        "state": {
+          "branch": null,
+          "revision": "a2fe15f65a295234e07dad83f8eb63639e3e7065",
+          "version": "2.5.7"
+        }
+      },
+      {
+        "package": "ReactiveAPI",
+        "repositoryURL": "https://github.com/sky-uk/ReactiveAPI",
+        "state": {
+          "branch": null,
+          "revision": "da79b4e55a43996ca1071fd9099bdbdecc9b6031",
+          "version": "1.13.3"
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift",
+        "state": {
+          "branch": "main",
+          "revision": "7741a11cb4252c379c8e034508cb1b92b8b40427",
+          "version": null
+        }
+      },
+      {
+        "package": "Swifter",
+        "repositoryURL": "https://github.com/httpswift/swifter",
+        "state": {
+          "branch": null,
+          "revision": "9483a5d459b45c3ffd059f7b55f9638e268632fd",
+          "version": "1.5.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

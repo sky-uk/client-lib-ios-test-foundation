@@ -1,0 +1,833 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		33166D4527E9D97200ECCE87 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33166D4427E9D97200ECCE87 /* LoginTests.swift */; };
+		331DAE6627CEC1FF00543389 /* SkyTestFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 331DAE6527CEC1FF00543389 /* SkyTestFoundation */; };
+		331DAE6827CEC20500543389 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 331DAE6727CEC20500543389 /* RxBlocking */; };
+		331DAE6A27CEC3B000543389 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 331DAE6927CEC3B000543389 /* RxSwift */; };
+		33B349DD27E0C58000E08107 /* PetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B349DC27E0C58000E08107 /* PetDetailView.swift */; };
+		33B3AB2A27D78557002AC2F8 /* MockResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B3AB2927D78557002AC2F8 /* MockResponses.swift */; };
+		33E715BA27EDCAF100E35A1A /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E715B927EDCAF100E35A1A /* RoundedLabel.swift */; };
+		33EF622F27CE399A00AC572D /* PetStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF622E27CE399A00AC572D /* PetStoreApp.swift */; };
+		33EF623127CE399A00AC572D /* PetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF623027CE399A00AC572D /* PetListView.swift */; };
+		33EF623327CE399B00AC572D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33EF623227CE399B00AC572D /* Assets.xcassets */; };
+		33EF623627CE399B00AC572D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33EF623527CE399B00AC572D /* Preview Assets.xcassets */; };
+		33EF624027CE399B00AC572D /* PetStoreAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF623F27CE399B00AC572D /* PetStoreAppTests.swift */; };
+		33EF625B27CE3A1700AC572D /* BindingBool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF625927CE3A1600AC572D /* BindingBool+.swift */; };
+		33EF625C27CE3A1700AC572D /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF625A27CE3A1700AC572D /* Urls.swift */; };
+		33EF625E27CE3A2A00AC572D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF625D27CE3A2A00AC572D /* LoginView.swift */; };
+		33EF626127CE3A6500AC572D /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF626027CE3A6500AC572D /* UserSession.swift */; };
+		33EF626627CE3B6000AC572D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 33EF626527CE3B6000AC572D /* RxSwift */; };
+		33EF626B27CE3C8100AC572D /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF626827CE3C8100AC572D /* UITests.swift */; };
+		33EF626D27CE3C8100AC572D /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF626A27CE3C8100AC572D /* Routes.swift */; };
+		33EF627327CE3E3600AC572D /* PetListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF627227CE3E3600AC572D /* PetListTests.swift */; };
+		33EF627527CE3E7900AC572D /* PetStoreSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 33EF627427CE3E7900AC572D /* PetStoreSDK */; };
+		33EF627727CE3E7900AC572D /* PetStoreSDKTests in Frameworks */ = {isa = PBXBuildFile; productRef = 33EF627627CE3E7900AC572D /* PetStoreSDKTests */; };
+		33EF627A27CE3EAD00AC572D /* SkyTestFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 33EF627927CE3EAD00AC572D /* SkyTestFoundation */; };
+		33EF627E27CE504200AC572D /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF627D27CE504200AC572D /* UI.swift */; };
+		33EF628027CE507500AC572D /* AccessibilityLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF627F27CE507500AC572D /* AccessibilityLabel.swift */; };
+		33EF628127CE50BA00AC572D /* AccessibilityLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF627F27CE507500AC572D /* AccessibilityLabel.swift */; };
+		33EF628527CE51A200AC572D /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF628427CE51A200AC572D /* Services.swift */; };
+		33F1851327EDF62C0010150C /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1851227EDF62C0010150C /* FoodView.swift */; };
+		33F1851527EDF7DA0010150C /* FoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1851427EDF7DA0010150C /* FoodTests.swift */; };
+		FA02CA6127EF560F0025C620 /* PetStoreSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FA02CA6027EF560F0025C620 /* PetStoreSDK */; };
+		FA02CA6427F0B4650025C620 /* SkyTestFoundationLibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02CA6327F0B4650025C620 /* SkyTestFoundationLibExtensions.swift */; };
+		FA02CA6727F0B9030025C620 /* SkyTestFoundationRuntimeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02CA6627F0B9030025C620 /* SkyTestFoundationRuntimeExtensions.swift */; };
+		FA02CA6827F0B9FB0025C620 /* SkyTestFoundationRuntimeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02CA6627F0B9030025C620 /* SkyTestFoundationRuntimeExtensions.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		33EF623C27CE399B00AC572D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33EF622327CE399A00AC572D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33EF622A27CE399A00AC572D;
+			remoteInfo = PetStoreApp;
+		};
+		33EF624627CE399B00AC572D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33EF622327CE399A00AC572D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33EF622A27CE399A00AC572D;
+			remoteInfo = PetStoreApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		33166D4427E9D97200ECCE87 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
+		332E42D227E124FD0048A031 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		33B349DC27E0C58000E08107 /* PetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailView.swift; sourceTree = "<group>"; };
+		33B3AB2927D78557002AC2F8 /* MockResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResponses.swift; sourceTree = "<group>"; };
+		33E715B927EDCAF100E35A1A /* RoundedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLabel.swift; sourceTree = "<group>"; };
+		33EF622B27CE399A00AC572D /* PetStoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetStoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		33EF622E27CE399A00AC572D /* PetStoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetStoreApp.swift; sourceTree = "<group>"; };
+		33EF623027CE399A00AC572D /* PetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListView.swift; sourceTree = "<group>"; };
+		33EF623227CE399B00AC572D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		33EF623527CE399B00AC572D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		33EF623B27CE399B00AC572D /* PetStoreAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetStoreAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		33EF623F27CE399B00AC572D /* PetStoreAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetStoreAppTests.swift; sourceTree = "<group>"; };
+		33EF624527CE399B00AC572D /* PetStoreAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetStoreAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		33EF625927CE3A1600AC572D /* BindingBool+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BindingBool+.swift"; sourceTree = "<group>"; };
+		33EF625A27CE3A1700AC572D /* Urls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
+		33EF625D27CE3A2A00AC572D /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		33EF626027CE3A6500AC572D /* UserSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		33EF626827CE3C8100AC572D /* UITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
+		33EF626A27CE3C8100AC572D /* Routes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		33EF627227CE3E3600AC572D /* PetListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListTests.swift; sourceTree = "<group>"; };
+		33EF627C27CE3F0100AC572D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		33EF627D27CE504200AC572D /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
+		33EF627F27CE507500AC572D /* AccessibilityLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityLabel.swift; sourceTree = "<group>"; };
+		33EF628427CE51A200AC572D /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		33F1851227EDF62C0010150C /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
+		33F1851427EDF7DA0010150C /* FoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTests.swift; sourceTree = "<group>"; };
+		FA02CA6327F0B4650025C620 /* SkyTestFoundationLibExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyTestFoundationLibExtensions.swift; sourceTree = "<group>"; };
+		FA02CA6627F0B9030025C620 /* SkyTestFoundationRuntimeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyTestFoundationRuntimeExtensions.swift; sourceTree = "<group>"; };
+		FABFB29327EF556D00246831 /* PetStoreSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PetStoreSDK; path = ../PetStoreSDK; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		33EF622827CE399A00AC572D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33EF626627CE3B6000AC572D /* RxSwift in Frameworks */,
+				FA02CA6127EF560F0025C620 /* PetStoreSDK in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33EF623827CE399B00AC572D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				331DAE6A27CEC3B000543389 /* RxSwift in Frameworks */,
+				331DAE6627CEC1FF00543389 /* SkyTestFoundation in Frameworks */,
+				331DAE6827CEC20500543389 /* RxBlocking in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33EF624227CE399B00AC572D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33EF627527CE3E7900AC572D /* PetStoreSDK in Frameworks */,
+				33EF627727CE3E7900AC572D /* PetStoreSDKTests in Frameworks */,
+				33EF627A27CE3EAD00AC572D /* SkyTestFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		33E715B827EDCAD900E35A1A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				33E715B927EDCAF100E35A1A /* RoundedLabel.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		33EF622227CE399A00AC572D = {
+			isa = PBXGroup;
+			children = (
+				FABFB29227EF556D00246831 /* Packages */,
+				332E42D227E124FD0048A031 /* MyPlayground.playground */,
+				33EF622D27CE399A00AC572D /* PetStoreApp */,
+				33EF623E27CE399B00AC572D /* PetStoreAppTests */,
+				33EF624827CE399B00AC572D /* PetStoreAppUITests */,
+				33EF622C27CE399A00AC572D /* Products */,
+				33EF626F27CE3DE000AC572D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		33EF622C27CE399A00AC572D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				33EF622B27CE399A00AC572D /* PetStoreApp.app */,
+				33EF623B27CE399B00AC572D /* PetStoreAppTests.xctest */,
+				33EF624527CE399B00AC572D /* PetStoreAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		33EF622D27CE399A00AC572D /* PetStoreApp */ = {
+			isa = PBXGroup;
+			children = (
+				33EF625F27CE3A3700AC572D /* Env */,
+				33EF625827CE39D100AC572D /* View */,
+				33EF628327CE518200AC572D /* Services */,
+				33EF628227CE517800AC572D /* Utils */,
+				33EF622E27CE399A00AC572D /* PetStoreApp.swift */,
+				33EF623227CE399B00AC572D /* Assets.xcassets */,
+				33EF623427CE399B00AC572D /* Preview Content */,
+				33EF627F27CE507500AC572D /* AccessibilityLabel.swift */,
+			);
+			path = PetStoreApp;
+			sourceTree = "<group>";
+		};
+		33EF623427CE399B00AC572D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				33EF623527CE399B00AC572D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		33EF623E27CE399B00AC572D /* PetStoreAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				33EF623F27CE399B00AC572D /* PetStoreAppTests.swift */,
+			);
+			path = PetStoreAppTests;
+			sourceTree = "<group>";
+		};
+		33EF624827CE399B00AC572D /* PetStoreAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FA02CA6227F0B4380025C620 /* skyTF extensions */,
+				33EF627C27CE3F0100AC572D /* Info.plist */,
+				33EF626727CE3C5500AC572D /* core */,
+				33166D4427E9D97200ECCE87 /* LoginTests.swift */,
+				33EF627227CE3E3600AC572D /* PetListTests.swift */,
+				33F1851427EDF7DA0010150C /* FoodTests.swift */,
+			);
+			path = PetStoreAppUITests;
+			sourceTree = "<group>";
+		};
+		33EF625827CE39D100AC572D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				33E715B827EDCAD900E35A1A /* UI */,
+				33EF625D27CE3A2A00AC572D /* LoginView.swift */,
+				33EF623027CE399A00AC572D /* PetListView.swift */,
+				33B349DC27E0C58000E08107 /* PetDetailView.swift */,
+				33F1851227EDF62C0010150C /* FoodView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		33EF625F27CE3A3700AC572D /* Env */ = {
+			isa = PBXGroup;
+			children = (
+				33EF626027CE3A6500AC572D /* UserSession.swift */,
+			);
+			path = Env;
+			sourceTree = "<group>";
+		};
+		33EF626727CE3C5500AC572D /* core */ = {
+			isa = PBXGroup;
+			children = (
+				33EF626A27CE3C8100AC572D /* Routes.swift */,
+				33EF627D27CE504200AC572D /* UI.swift */,
+				33B3AB2927D78557002AC2F8 /* MockResponses.swift */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		33EF626F27CE3DE000AC572D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		33EF628227CE517800AC572D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				33EF625A27CE3A1700AC572D /* Urls.swift */,
+				33EF625927CE3A1600AC572D /* BindingBool+.swift */,
+				FA02CA6627F0B9030025C620 /* SkyTestFoundationRuntimeExtensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		33EF628327CE518200AC572D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				33EF628427CE51A200AC572D /* Services.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FA02CA6227F0B4380025C620 /* skyTF extensions */ = {
+			isa = PBXGroup;
+			children = (
+				33EF626827CE3C8100AC572D /* UITests.swift */,
+				FA02CA6327F0B4650025C620 /* SkyTestFoundationLibExtensions.swift */,
+			);
+			path = "skyTF extensions";
+			sourceTree = "<group>";
+		};
+		FABFB29227EF556D00246831 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				FABFB29327EF556D00246831 /* PetStoreSDK */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		33EF622A27CE399A00AC572D /* PetStoreApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33EF624F27CE399B00AC572D /* Build configuration list for PBXNativeTarget "PetStoreApp" */;
+			buildPhases = (
+				33EF622727CE399A00AC572D /* Sources */,
+				33EF622827CE399A00AC572D /* Frameworks */,
+				33EF622927CE399A00AC572D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PetStoreApp;
+			packageProductDependencies = (
+				33EF626527CE3B6000AC572D /* RxSwift */,
+				FA02CA6027EF560F0025C620 /* PetStoreSDK */,
+			);
+			productName = PetStoreApp;
+			productReference = 33EF622B27CE399A00AC572D /* PetStoreApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		33EF623A27CE399B00AC572D /* PetStoreAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33EF625227CE399B00AC572D /* Build configuration list for PBXNativeTarget "PetStoreAppTests" */;
+			buildPhases = (
+				33EF623727CE399B00AC572D /* Sources */,
+				33EF623827CE399B00AC572D /* Frameworks */,
+				33EF623927CE399B00AC572D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				33EF623D27CE399B00AC572D /* PBXTargetDependency */,
+			);
+			name = PetStoreAppTests;
+			packageProductDependencies = (
+				331DAE6527CEC1FF00543389 /* SkyTestFoundation */,
+				331DAE6727CEC20500543389 /* RxBlocking */,
+				331DAE6927CEC3B000543389 /* RxSwift */,
+			);
+			productName = PetStoreAppTests;
+			productReference = 33EF623B27CE399B00AC572D /* PetStoreAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		33EF624427CE399B00AC572D /* PetStoreAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33EF625527CE399B00AC572D /* Build configuration list for PBXNativeTarget "PetStoreAppUITests" */;
+			buildPhases = (
+				33EF624127CE399B00AC572D /* Sources */,
+				33EF624227CE399B00AC572D /* Frameworks */,
+				33EF624327CE399B00AC572D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				33EF624727CE399B00AC572D /* PBXTargetDependency */,
+			);
+			name = PetStoreAppUITests;
+			packageProductDependencies = (
+				33EF627427CE3E7900AC572D /* PetStoreSDK */,
+				33EF627627CE3E7900AC572D /* PetStoreSDKTests */,
+				33EF627927CE3EAD00AC572D /* SkyTestFoundation */,
+			);
+			productName = PetStoreAppUITests;
+			productReference = 33EF624527CE399B00AC572D /* PetStoreAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		33EF622327CE399A00AC572D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					33EF622A27CE399A00AC572D = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					33EF623A27CE399B00AC572D = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 33EF622A27CE399A00AC572D;
+					};
+					33EF624427CE399B00AC572D = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 33EF622A27CE399A00AC572D;
+					};
+				};
+			};
+			buildConfigurationList = 33EF622627CE399A00AC572D /* Build configuration list for PBXProject "PetStoreApp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 33EF622227CE399A00AC572D;
+			packageReferences = (
+				33EF626427CE3B6000AC572D /* XCRemoteSwiftPackageReference "RxSwift" */,
+				33EF627827CE3EAD00AC572D /* XCRemoteSwiftPackageReference "client-lib-ios-test-foundation" */,
+			);
+			productRefGroup = 33EF622C27CE399A00AC572D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				33EF622A27CE399A00AC572D /* PetStoreApp */,
+				33EF623A27CE399B00AC572D /* PetStoreAppTests */,
+				33EF624427CE399B00AC572D /* PetStoreAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		33EF622927CE399A00AC572D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33EF623627CE399B00AC572D /* Preview Assets.xcassets in Resources */,
+				33EF623327CE399B00AC572D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33EF623927CE399B00AC572D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33EF624327CE399B00AC572D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		33EF622727CE399A00AC572D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33EF623127CE399A00AC572D /* PetListView.swift in Sources */,
+				33EF622F27CE399A00AC572D /* PetStoreApp.swift in Sources */,
+				33E715BA27EDCAF100E35A1A /* RoundedLabel.swift in Sources */,
+				33EF628027CE507500AC572D /* AccessibilityLabel.swift in Sources */,
+				33F1851327EDF62C0010150C /* FoodView.swift in Sources */,
+				33EF625B27CE3A1700AC572D /* BindingBool+.swift in Sources */,
+				33EF626127CE3A6500AC572D /* UserSession.swift in Sources */,
+				33EF625E27CE3A2A00AC572D /* LoginView.swift in Sources */,
+				33B349DD27E0C58000E08107 /* PetDetailView.swift in Sources */,
+				33EF628527CE51A200AC572D /* Services.swift in Sources */,
+				33EF625C27CE3A1700AC572D /* Urls.swift in Sources */,
+				FA02CA6727F0B9030025C620 /* SkyTestFoundationRuntimeExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33EF623727CE399B00AC572D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33EF624027CE399B00AC572D /* PetStoreAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33EF624127CE399B00AC572D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33EF626D27CE3C8100AC572D /* Routes.swift in Sources */,
+				33EF627327CE3E3600AC572D /* PetListTests.swift in Sources */,
+				33B3AB2A27D78557002AC2F8 /* MockResponses.swift in Sources */,
+				FA02CA6827F0B9FB0025C620 /* SkyTestFoundationRuntimeExtensions.swift in Sources */,
+				FA02CA6427F0B4650025C620 /* SkyTestFoundationLibExtensions.swift in Sources */,
+				33EF627E27CE504200AC572D /* UI.swift in Sources */,
+				33F1851527EDF7DA0010150C /* FoodTests.swift in Sources */,
+				33EF626B27CE3C8100AC572D /* UITests.swift in Sources */,
+				33EF628127CE50BA00AC572D /* AccessibilityLabel.swift in Sources */,
+				33166D4527E9D97200ECCE87 /* LoginTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		33EF623D27CE399B00AC572D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33EF622A27CE399A00AC572D /* PetStoreApp */;
+			targetProxy = 33EF623C27CE399B00AC572D /* PBXContainerItemProxy */;
+		};
+		33EF624727CE399B00AC572D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33EF622A27CE399A00AC572D /* PetStoreApp */;
+			targetProxy = 33EF624627CE399B00AC572D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		33EF624D27CE399B00AC572D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		33EF624E27CE399B00AC572D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		33EF625027CE399B00AC572D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PetStoreApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 64346Y5J98;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.PetStoreApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		33EF625127CE399B00AC572D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PetStoreApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 64346Y5J98;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.PetStoreApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		33EF625327CE399B00AC572D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 64346Y5J98;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.PetStoreAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PetStoreApp.app/PetStoreApp";
+			};
+			name = Debug;
+		};
+		33EF625427CE399B00AC572D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 64346Y5J98;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.PetStoreAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PetStoreApp.app/PetStoreApp";
+			};
+			name = Release;
+		};
+		33EF625627CE399B00AC572D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 64346Y5J98;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PetStoreAppUITests/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.PetStoreAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PetStoreApp;
+			};
+			name = Debug;
+		};
+		33EF625727CE399B00AC572D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 64346Y5J98;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PetStoreAppUITests/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.PetStoreAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PetStoreApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		33EF622627CE399A00AC572D /* Build configuration list for PBXProject "PetStoreApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33EF624D27CE399B00AC572D /* Debug */,
+				33EF624E27CE399B00AC572D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33EF624F27CE399B00AC572D /* Build configuration list for PBXNativeTarget "PetStoreApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33EF625027CE399B00AC572D /* Debug */,
+				33EF625127CE399B00AC572D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33EF625227CE399B00AC572D /* Build configuration list for PBXNativeTarget "PetStoreAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33EF625327CE399B00AC572D /* Debug */,
+				33EF625427CE399B00AC572D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33EF625527CE399B00AC572D /* Build configuration list for PBXNativeTarget "PetStoreAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33EF625627CE399B00AC572D /* Debug */,
+				33EF625727CE399B00AC572D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		33EF626427CE3B6000AC572D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		33EF627827CE3EAD00AC572D /* XCRemoteSwiftPackageReference "client-lib-ios-test-foundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sky-uk/client-lib-ios-test-foundation.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.5.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		331DAE6527CEC1FF00543389 /* SkyTestFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33EF627827CE3EAD00AC572D /* XCRemoteSwiftPackageReference "client-lib-ios-test-foundation" */;
+			productName = SkyTestFoundation;
+		};
+		331DAE6727CEC20500543389 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33EF626427CE3B6000AC572D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		331DAE6927CEC3B000543389 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33EF626427CE3B6000AC572D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		33EF626527CE3B6000AC572D /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33EF626427CE3B6000AC572D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		33EF627427CE3E7900AC572D /* PetStoreSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PetStoreSDK;
+		};
+		33EF627627CE3E7900AC572D /* PetStoreSDKTests */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PetStoreSDKTests;
+		};
+		33EF627927CE3EAD00AC572D /* SkyTestFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33EF627827CE3EAD00AC572D /* XCRemoteSwiftPackageReference "client-lib-ios-test-foundation" */;
+			productName = SkyTestFoundation;
+		};
+		FA02CA6027EF560F0025C620 /* PetStoreSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PetStoreSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 33EF622327CE399A00AC572D /* Project object */;
+}

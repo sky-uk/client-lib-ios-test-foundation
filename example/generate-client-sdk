@@ -1,0 +1,19 @@
+#!/bin/bash -e
+SWAGGER_CODEGEN_DOWNLOAD_URL="https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.33/swagger-codegen-cli-3.0.33.jar"
+SWAGGER_CODEGEN_JAR="codegen/swagger-codegen-cli.jar"
+SWIFT_CODEGEN_JAR="codegen/swift-codegen-1.0.0.jar"
+PACKAGE_NAME="PetStoreSDK"
+PACKAGE_VERSION="1.0.0"
+
+# Check if swagger codegen jar is present. If not, download it
+if [ ! -f "$SWAGGER_CODEGEN_JAR" ]; then
+  echo "Download Swagger Codegen"
+  curl -# -L "$SWAGGER_CODEGEN_DOWNLOAD_URL" -o "$SWAGGER_CODEGEN_JAR"
+fi
+
+rm -rf "$PACKAGE_NAME"
+java -cp "${SWIFT_CODEGEN_JAR}:${SWAGGER_CODEGEN_JAR}" io.swagger.codegen.v3.cli.SwaggerCodegen generate \
+    --input-spec openapi-specs/PetStore.yaml \
+    --lang sky-swift \
+    --additional-properties packageName="$PACKAGE_NAME" packageVersion="$PACKAGE_VERSION" \
+    --output "$PACKAGE_NAME"

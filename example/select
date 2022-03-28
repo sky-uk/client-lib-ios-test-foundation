@@ -1,0 +1,38 @@
+#!/bin/bash -e
+cd openapi-specs
+
+SPECS=$(ls *.yaml | grep -v PetStore.yaml)
+
+echo -e "Select your OpenAPI spec by typing one of the names from the following list\n\n${SPECS}\n\nand hit ENTER"
+
+read SELECTED
+
+cp -a "$SELECTED" PetStore.yaml
+
+cd ..
+
+./generate-client-sdk
+
+SWIFT_FILES=$(grep -rl "FOOD ADDITIONS" . | grep ".swift" | uniq)
+
+if [ "$SELECTED" == "PetStore_Ver01+Food.yaml" ]; then
+    echo
+    echo "Uncommenting FOOD ADDITIONS ..."
+    for file in $SWIFT_FILES; do
+        echo "Processing $file"
+        sed -i.bak 's/\/\* FOOD ADDITIONS START/\/\* FOOD ADDITIONS START \*\//' $file
+        sed -i.bak 's/FOOD ADDITIONS END \*\//\/\* FOOD ADDITIONS END \*\//' $file
+    done
+else
+    echo
+    echo "Commenting FOOD ADDITIONS ..."
+    for file in $SWIFT_FILES; do
+        echo "Processing $file"
+        sed -i.bak 's/\/\* FOOD ADDITIONS START \*\//\/\* FOOD ADDITIONS START/' $file
+        sed -i.bak 's/\/\* FOOD ADDITIONS END \*\//FOOD ADDITIONS END \*\//' $file
+    done
+fi
+
+rm -rf $(find . -name '*.bak')
+
+git status
