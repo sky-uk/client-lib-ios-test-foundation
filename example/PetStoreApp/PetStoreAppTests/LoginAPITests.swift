@@ -5,7 +5,7 @@ import PetStoreSDK
 import PetStoreSDKTests
 @testable import PetStoreApp
 
-class PetStoreAppTests: SkyUnitTestCase {
+class LoginAPITests: SkyUnitTestCase {
 
     var sut: Services?
 
@@ -14,7 +14,7 @@ class PetStoreAppTests: SkyUnitTestCase {
         sut = Services(baseUrl: Urls.baseUrl().replaceHostnameWithLocalhost())
     }
 
-    func testLoginRequest() async throws {
+    func testLogin() async throws {
         
         var loginCallCount = 0
         
