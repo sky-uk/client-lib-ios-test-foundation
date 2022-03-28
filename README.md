@@ -16,6 +16,13 @@ SkyUITestCase and SkyUnitTestCase classes extend XCTestCase and define a mock se
 The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUp()` forwards http request performed by MA to localhost.
 See [Unit Test Overview](https://developer.bskyb.com/wiki/pages/viewpage.action?spaceKey=DPTECH&title=Unit+testing) for more deatil on unit testing approach in Sky.
 ```swift
+import XCTest
+import SkyTestFoundation
+import RxBlocking
+import PetStoreSDK
+import PetStoreSDKTests
+@testable import PetStoreApp
+
 class LoginAPITests: SkyUnitTestCase {
 
     var sut: Services?
@@ -36,6 +43,8 @@ class LoginAPITests: SkyUnitTestCase {
             assertEquals(request.queryParam("username"), "Alessandro")
             assertEquals(request.queryParam("password"), "Secret")
             return HttpResponse(body: apiResponse.encoded())
+        }.onUnexpected{ httpRequest in
+            assertFail("Unexpected http request: \(httpRequest)")
         }
         .buildAndStart()
         
@@ -45,6 +54,7 @@ class LoginAPITests: SkyUnitTestCase {
         assertEquals(loginCallCount, 1)
     }
 }
+
 ```
 
 where 
