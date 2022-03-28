@@ -74,6 +74,7 @@ MA behavior depends on user activity (user gestures), BE state (BE http response
 
 ```swift
 class PetList: SkyUITestCase {
+
     func testDisplayPetListView() {
 
           // Given
@@ -188,7 +189,8 @@ SkyTestFoundation custom assertions are wrappers of events defined in `XCUIEleme
 * **isEnabled(_ element)** Determines if the element is enabled for user interaction.
 * **isNotEnabled(_ element)** Determines if the element is NOT enabled for user interaction.
 * **isRunningOnSimulator()** -> Bool Returns true if ui test is running on iOS simulator. It can be used in conjunction with `XCTSkipIf/1` in order to skip the execution of a ui test if on iOS simulator.
-* **withText(_ text)** A XCUIElementQuery query for locating staticText view elements.
+* **withTextEquals(_ text)** A XCUIElementQuery query for locating staticText view elements equals to `text`
+* **withTextContains(_ text)** A XCUIElementQuery query for locating staticText view elements containing `text`
 * **withIndex(_ query, index)** the index-th element of the result of the query *query*
 * **assertViewCount(_ query, expectedCount)** Asserts if the number of view matched by *query* is equals to *expectedCount*
 * **swipeUp(_ element)** performs swipe up user gesture on element 
