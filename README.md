@@ -57,13 +57,13 @@ class LoginAPITests: SkyUnitTestCase {
 }
 
 ```
-In the `Given` section http mocks reponse are define, in `When` section loginUser of SUT (System Under Test) is called, finally in the `Then` asserts on expected values are defined.
+In the `Given` section http mocks reponse are defined, in `When` section `loginUser/2` method of SUT (System Under Test) is called, finally in the `Then` section asserts on expected values are defined.
 If the execution of the method under test performs an http request not handled by the mocks server then `onUnexpected`'s clousure `(HttpRequest) -> ()` is called.
 
 Note: 
 - `Routes.User.login().path` is a relative path not containing `127.0.0.1:8080`
 
-See example mobile app located in folder `example` for more details.
+See the mobile app located in folder `example` for more details.
 
 ### SkyUITestCase - User Interface test example
 In the context of UI test a mobile app (MA) can be represented as a black box (see Input/Output) defined by its own inputs and outputs. 
@@ -73,28 +73,30 @@ In the context of UI test a mobile app (MA) can be represented as a black box (s
 MA behavior depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the behavior of MA can be described by the UI element displayed to the user and by the http requests executed so far by MA. UI Tests verify the correctness of MA's behavior defining asserts on inputs and/or outputs of the black box. 
 
 ```swift
-func testDisplayPetListView() {
+class PetList: SkyUITestCase {
+    func testDisplayPetListView() {
 
-      // Given
-      let tom = Pet.mock(name: "Tom")
-      let jerry = Pet.mock(name: "Jerry")
-      let pets = [jerry, tom]
+          // Given
+          let tom = Pet.mock(name: "Tom")
+          let jerry = Pet.mock(name: "Jerry")
+          let pets = [jerry, tom]
 
-      httpServerBuilder
-          .route(MockResponses.User.successLogin())
-          .route(MockResponses.Pet.findByStatus(pets: pets))
-          .buildAndStart()
+          httpServerBuilder
+              .route(MockResponses.User.successLogin())
+              .route(MockResponses.Pet.findByStatus(pets: pets))
+              .buildAndStart()
 
-      // When
-      appLaunch()
+          // When
+          appLaunch()
 
-      typeText(withTextInput("Username"), "Alessandro")
-      typeText(withTextInput("Password"), "Secret")
-      tap(withButton(“Login"))
+          typeText(withTextInput("Username"), "Alessandro")
+          typeText(withTextInput("Password"), "Secret")
+          tap(withButton(“Login"))
 
-      // Then
-      exist(withTextEquals(tom.name))
-      exist(withTextEquals(jerry.name))
+          // Then
+          exist(withTextEquals(tom.name))
+          exist(withTextEquals(jerry.name))
+    }
 }
  ``` 
 
