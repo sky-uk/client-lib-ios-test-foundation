@@ -25,6 +25,8 @@ class LoginAPITests: SkyUnitTestCase {
             assertEquals(request.queryParam("username"), "Alessandro")
             assertEquals(request.queryParam("password"), "Secret")
             return HttpResponse(body: apiResponse.encoded())
+        }.onUnexpected{ httpRequest in
+            assertFail("Unexpected http request: \(httpRequest)")
         }
         .buildAndStart()
         
