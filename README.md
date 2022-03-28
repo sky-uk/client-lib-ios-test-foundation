@@ -10,52 +10,51 @@ During tests execution, iOS Mobile App (MA) should interact with a Mock Server w
 During the execution of the tests the MA must forward http requests to http://127.0.0.1:8080.
 
 ## SkyUITestCase/SkyUTTestCase primary classes for defining test cases
-SkyUITestCase and SkyUTTestCase classes extend XCTestCase and define a mock server. Use SkyUITestCase and SkyUTTestCase for UI and Unit test cases respectively.
+SkyUITestCase and SkyUnitTestCase classes extend XCTestCase and define a mock server. Use SkyUITestCase and SkyUTTestCase for UI and Unit test cases respectively.
 
-### SkyUTTestCase - Unit Test example with SUT performing Http Requests
+### SkyUnitTestCase - Unit Test example with SUT performing Http Requests
 The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUp()` forwards http request performed by MA to localhost.
 See [Unit Test Overview](https://developer.bskyb.com/wiki/pages/viewpage.action?spaceKey=DPTECH&title=Unit+testing) for more deatil on unit testing approach in Sky.
 ```swift
 import XCTest
-import Swifter
 import SkyTestFoundation
+import RxBlocking
+import PetStoreSDK
+import PetStoreSDKTests
+@testable import PetStoreApp
 
-class CustomerRepositoryTests: SkyUnitTestCase {
+class LoginAPITests: SkyUnitTestCase {
 
-    var sut: AddressServices!
+    var sut: Services?
 
-     override func setUp() {
+    override func setUp() {
         super.setUp()
-        let sdk = FakeMySkyAppSDK.localhost()     // forwards MSA's http requests to 127.0.0.0:8080 
-        sdk.services.selfCare.customerRepository.clearAll(removingUserSelections: true)
-        sut = sdk.services.selfCare.address
+        sut = Services(baseUrl: Urls.baseUrl().replaceHostnameWithLocalhost())
     }
+
+    func testLogin() async throws {
+        
+        var loginCallCount = 0
+        
+        let apiResponse = ApiResponse.mock(code: 200)
+        
+        httpServerBuilder.route(Routes.User.login().path) { request, callCount in
+            loginCallCount = callCount
+            assertEquals(request.queryParam("username"), "Alessandro")
+            assertEquals(request.queryParam("password"), "Secret")
+            return HttpResponse(body: apiResponse.encoded())
+        }.onUnexpected{ httpRequest in
+            assertFail("Unexpected http request: \(httpRequest)")
+        }
+        .buildAndStart()
+        
+        let pets = try await sut!.user.loginUser(username: "Alessandro", password: "Secret").value
     
-    func testGetNormalizedCities() throws {
-        // Given
-        let query = "Milano"
-        let citiesResponse = [City.mock(egonId: String.mock(), name: String.mock(), province: String.mock())]
-
-        httpServerBuilder.route(Endpoint.Selfcare.cities.urlPath) { (request, callCount) -> (HttpResponse) in
-            XCTAssertEqual(request.method, ReactiveAPIHTTPMethod.get.rawValue)
-            XCTAssertEqual(request.queryParam("q"), query)
-            XCTAssertEqual(request.headers["egon-route"], true.stringValue)
-            let data = try! JSONHelper.encode(value: citiesResponse)
-            return HttpResponse.ok(HttpResponseBody.data(data))
-
-        }.onUnexpected { (request) in
-
-            UnexepctedRequestFail(request)
-
-        }.buildAndStart()
-    
-        // When
-        let streamed = try sut.getNormalizedCities(query: query).toBlocking().single()
-        // Then
-        XCTAssertNotNil(streamed)
-        XCTAssertEqual(streamed.first, citiesResponse.first)
+        assertNotNull(pets)
+        assertEquals(loginCallCount, 1)
     }
 }
+
 ```
 
 where 
