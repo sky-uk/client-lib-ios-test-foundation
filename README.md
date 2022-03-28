@@ -145,41 +145,6 @@ The test is composed by 3 sections:
 - When: ui gesture are performed in order to navigate to the view to be tested 
 - Then: assertions on ui element of the view (to be tested)
 
-#### API - UT mock server builder
-Available methods of `httpServerBuilder`:
-
-```swift
-func route(_ endpoint: String, _ completion: @escaping (HttpRequest, Int) -> (HttpResponse)) -> UTHttpServerBuilder
-```
-Adds http route to mock server. Clousure `on` returns the Http reponses associated to the `endpoint`. The first argument of the closure is the http request received by the mock server and the second one contains the number of http request received so far by the mock server.
-
-```swift
-func onUnexpected(_ asserts: @escaping (HttpRequest) -> Void) -> UTHttpServerBuilder
-```
-If the SUT performs an http request not handled by the mock server then the closure ```asserts``` is called. The argument of the assert contains the
-http request not handled by the mock server.
-
-```swift
-func buildAndStart(port: in_port_t = 8080, forceIPv4: Bool = false, priority: DispatchQoS.QoSClass = .userInteractive) throws -> HttpServer
-```
-Build all routes added so far and starts the mock server.
-
-### XCTAssert Extensions
-Useful extensions of assertions defined in XCTest framework.
-
-#### assertURLEquals(_ url1, _ url2, ignores, ...)
-Asserts that two http urls are equals. Use `ignores` parameter to skip comparisions between specific components of url1 and url2.
-
-Example
-```swift 
-assertURLEquals("http://www.sky.com/path1", "http://www.sky.com/path1")
-assertURLEquals("http://www.sky.com/path1", "http://xxx.xxx.xxx/path1", ignores: [.host])
-assertURLEquals("http://www.sky.com/path1", "http://www.sky.com/path2", ignores: [.path])
-
-assertURLEquals("http://www.sky.com?name1=value1", "http://www.sky.com?name1=value1")
-assertURLEquals("http://www.sky.com?name2=value2&name1=value1", "http://www.sky.com?name1=value1&name2=value2")
-assertURLEquals("http://www.sky.com", "http://www.sky.com?q1=value1", ignores: [.queryParameters])
-```
 ## DSL for UI Testing
 SkyTestFoundation provides a simple DSL in order to facilitate the writing of UI tests. It is a thin layer defined on top of primtives offered by XCTest. 
 The same DSL for testing is defined for Android platform on top of Espresso (see [client-lib-android-test-foundation](https://github.com/sky-uk/client-lib-android-test-foundation)).
