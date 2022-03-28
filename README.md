@@ -79,46 +79,32 @@ In the context of UI test a mobile app (MA) can be represented as a black box (s
 
 ![Input/Output](https://user-images.githubusercontent.com/51656240/95301424-e1ad5000-0880-11eb-8b42-007bda2722ae.png)
 
-MA behavior depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the behavior of MSA can be described by the UI element displayed to the user and by the http requests executed so far by MSA. UI Tests verify the correctness of MSA's behavior defining asserts on inputs and/or outputs of the black box. 
+MA behavior depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the behavior of MA can be described by the UI element displayed to the user and by the http requests executed so far by MSA. UI Tests verify the correctness of MA's behavior defining asserts on inputs and/or outputs of the black box. 
 
 ```swift
-import XCTest
-import Swifter
-import SkyTestFoundation
+func testDisplayPetListView() {
 
-class LoginTests: SkyUITestCase {
+      // Given
+      let tom = Pet.mock(name: "Tom")
+      let jerry = Pet.mock(name: "Jerry")
+      let pets = [jerry, tom]
 
-    func testSelectSignedContractGivenContractNotActivated() throws {
-        // Given
-        httpServerBuilder
-            .route(TokenManagerMocks.Auths.ok200.edr())
-            .route(Mocks.Selfcare.E2EContract.contractIdcmJjRzF3cTdiU3oranF3bWlLWG96dz09.edr())
-            .route(Mocks.Selfcare.E2EContract.contractIdWUNjanhxMXNMZTg3emRzVURPa1ExZz09.edr())
-            .route(TokenManagerMocks.CustomersMe.multiContract.edr())
-            .buildAndStart()
+      httpServerBuilder
+          .route(MockResponses.User.successLogin())
+          .route(MockResponses.Pet.findByStatus(pets: pets))
+          .buildAndStart()
 
-        appLaunched(disableFeatureFlags: [.skipPreActiveCheck], persistenceStatus: .empty)
-        // When
-        tap(MSAElements.Welcome.accediButton)
+      // When
+      appLaunch()
 
-        typeText(MSAElements.Login.mainView.withTextInput(String.msa.login.userPlaceholder()), testCredentialUsername)
-        typeText(MSAElements.Login.mainView.scrollViews.otherElements.secureTextFields[String.msa.generics.password()], testCredentialPassword)
+      typeText(withTextInput("Username"), "Alessandro")
+      typeText(withTextInput("Password"), "Secret")
+      tap(withButton(“Login"))
 
-        tap(MSAElements.Login.loginButton)
-        tap(MSAElements.Alert.secondaryButton, "Biometric alert")
-        tap(MSAElements.Alert.mainButton)
-
-        exist(MSAElements.AlternativeHome.mainView)
-        // Then
-        tap(MSAElements.Home.profileButton)
-        exist(MSAElements.ContractSelector.mainView)
-        tap(MSAElements.ContractSelector.mainView.withText("Codice cliente: 15519872"))
-        tap(MSAElements.ContractSelector.mainView.withText(String.msa.generics.confirm().uppercased()))
-        exist(MSAElements.Alert.mainView)
-        tap(MSAElements.Alert.mainButton)
-        exist(MSAElements.Home.mainView)
-    }
- }
+      // Then
+      exist(withTextEquals(tom.name))
+      exist(withTextEquals(jerry.name))
+}
  ``` 
 
 ### Mock Server Builders
