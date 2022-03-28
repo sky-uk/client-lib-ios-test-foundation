@@ -284,9 +284,6 @@ The following view is displayed during the execution of the test:
 - SUT system under test
 
 ## FAQ
-### - How can I see code coverage in Xcode?
-![coverage1](https://user-images.githubusercontent.com/51656240/160425514-1a42e7c1-ae74-4d3b-81aa-84d44a513450.png)
-![Code Coverage](https://user-images.githubusercontent.com/51656240/128475438-3ab46cc7-844a-41ac-b09f-92c5c5207ac6.png)
 ### - How can I enable/disable breakpoints for UI tests in Xcode?
 From "Edit scheme...":
 ![Enable/Disable Breakpoints](https://user-images.githubusercontent.com/51656240/129052171-f7597352-0087-4b3e-b8eb-f5863dd6398f.png)
