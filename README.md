@@ -177,7 +177,7 @@ func testDisplayPetListView() {
 }
 ```
 In the "Given" section we defined http mock responses required by the app, in the "When" section the app is launched and the "Login" button is tapped after user credentials are typed.
-Finally in the "Then" section we assert the existence of two pets returned by the mock server.
+Finally in the "Then" section we assert the existence in the view hierarchy of two pets returned by the mock server.
 
 SkyTestFoundation custom assertions are wrappers of events defined in `XCUIElement` like `tap()`. DSL assertions wait for any element to appear before firing the wrapped event. One of the effect of using custom assertions is to reduce flakiness of ui test execution.
 
