@@ -33,9 +33,8 @@ class LoginAPITests: SkyUnitTestCase {
     }
 
     func testLogin() async throws {
-        
+        // Given
         var loginCallCount = 0
-        
         let apiResponse = ApiResponse.mock(code: 200)
         
         httpServerBuilder.route(Routes.User.login().path) { request, callCount in
@@ -47,9 +46,10 @@ class LoginAPITests: SkyUnitTestCase {
             assertFail("Unexpected http request: \(httpRequest)")
         }
         .buildAndStart()
-        
+        // When
         let pets = try await sut!.user.loginUser(username: "Alessandro", password: "Secret").value
     
+        // Then
         assertNotNull(pets)
         assertEquals(loginCallCount, 1)
     }
