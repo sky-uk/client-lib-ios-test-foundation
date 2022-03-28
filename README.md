@@ -1,4 +1,4 @@
-# Sky Test Foundation [![CircleCI](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master.svg?style=svg&circle-token=6a18106ecc99952ea6841f658f86282b5ff557f5)](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master)
+# Sky Test Foundation iOS [![CircleCI](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master.svg?style=svg&circle-token=6a18106ecc99952ea6841f658f86282b5ff557f5)](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master)
 Sky Test Foundation is a collection of tools and classes to facilitate developers to write automatic tests.
 
 It's meant to be mobile app tests' `lingua franca`. Out of the box, it allows you to port tests between iOS and Android by simply copy-pasting Swift to Kotlin or vice-versa.
