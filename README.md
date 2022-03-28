@@ -14,8 +14,8 @@ During tests execution, iOS Mobile App (MA) can interact with a real or a mocked
 ![](https://user-images.githubusercontent.com/51656240/94568277-9685b280-026c-11eb-80ac-d5a6d95bcdf3.png)
 During test execution, to use the embedded mock server, the MA must forward http requests to http://127.0.0.1:8080.
 
-## SkyUITestCase/SkyUnitTestCase primary classes for defining test cases
-SkyUITestCase and SkyUnitTestCase classes extend XCTestCase and define a mock server. Use SkyUITestCase and SkyUnitTestCase for UI and Unit test cases respectively.
+## Use SkyUITestCase/SkyUnitTestCase as base classes when writing Test suites
+`SkyUITestCase` and `SkyUnitTestCase` classes extend `XCTestCase` and define a mock server. Use `SkyUITestCase` for UI tests and `SkyUnitTestCase` for Unit test cases.
 
 ### SkyUnitTestCase - Unit Test example with SUT performing Http Requests
 The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `Urls.baseUrl().replaceHostnameWithLocalhost()` in the `setupUp()` forwards http request performed by MA to localhost.
