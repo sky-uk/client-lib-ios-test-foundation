@@ -6,9 +6,9 @@ import Foundation
 
 extension URL {
     func replaceHostnameWithLocalhostIfUITestIsRunning() -> URL {
-        guard TestsHelper.isUITestRunning else { return self }
+        guard CommandLine.arguments.contains(TestSuiteKeys.enableUITestArg) else { return self }
         #if DEBUG
-        return replaceHostnameWithLocalhost(port: TestsHelper.mockServerHttpPort)
+        return replaceHostnameWithLocalhost()
         #else
         return self
         #endif
@@ -20,34 +20,8 @@ extension URL {
     }
 }
 
-struct TestsHelper {
-    static let isUITestRunning = CommandLine.arguments.contains("-enable-uitest")  // TODO C8 TestSuiteKeys NO Release
-
-    #if DEBUG
-    static let mockServerHttpPort: Int = UserDefaults.standard.integer(forKey: TestSuiteKeys.serverHttpPort.rawValue)
-    #endif
-}
-
 #if DEBUG
-enum TestSuiteKeys: String {
-    case prefixTest = "test."
-    case serverHttpPort = "server-http-port"
-    case persistence
-    case deeplink
+struct TestSuiteKeys {
     static let enableUITestArg = "-enable-uitest"
-}
-
-extension TestSuiteKeys {
-    func argValue() -> Bool {
-        UserDefaults.standard.bool(forKey: self.rawValue)
-    }
-
-    func argValue() -> String? {
-        UserDefaults.standard.string(forKey: self.rawValue)
-    }
-
-    func buildArg(suffix: String = "", value: String) -> [String] {
-        ["-" + self.rawValue + suffix, value]
-    }
 }
 #endif
