@@ -13,7 +13,7 @@ During the execution of the tests the MA must forward http requests to http://12
 SkyUITestCase and SkyUnitTestCase classes extend XCTestCase and define a mock server. Use SkyUITestCase and SkyUnitTestCase for UI and Unit test cases respectively.
 
 ### SkyUnitTestCase - Unit Test example with SUT performing Http Requests
-The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUp()` forwards http request performed by MA to localhost.
+The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `Urls.baseUrl().replaceHostnameWithLocalhost()` in the `setupUp()` forwards http request performed by MA to localhost.
 See [Unit Test Overview](https://developer.bskyb.com/wiki/pages/viewpage.action?spaceKey=DPTECH&title=Unit+testing) for more deatil on unit testing approach in Sky.
 ```swift
 import XCTest
