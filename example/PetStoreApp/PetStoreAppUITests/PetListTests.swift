@@ -3,7 +3,7 @@ import SkyTestFoundation
 import PetStoreSDK
 import PetStoreSDKTests
 
-class PetList: UITests {
+class PetList: SkyUITestCase {
 
     func testDisplayPetListView() {
         // Given

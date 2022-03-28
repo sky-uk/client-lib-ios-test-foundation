@@ -1,7 +1,7 @@
 import XCTest
 import SkyTestFoundation
 
-class UITests: SkyUITestCase {
+extension SkyUITestCase {
     
     @discardableResult
     func appLaunch(_ serverHttpPort: Int = 8080) -> XCUIApplication {
