@@ -46,6 +46,7 @@ class LoginAPITests: SkyUnitTestCase {
             assertFail("Unexpected http request: \(httpRequest)")
         }
         .buildAndStart()
+        
         // When
         let pets = try await sut!.user.loginUser(username: "Alessandro", password: "Secret").value
     
