@@ -9,8 +9,8 @@ During tests execution, iOS Mobile App (MA) should interact with a Mock Server w
 ![](https://user-images.githubusercontent.com/51656240/94568277-9685b280-026c-11eb-80ac-d5a6d95bcdf3.png)
 During the execution of the tests the MA must forward http requests to http://127.0.0.1:8080.
 
-## SkyUITestCase/SkyUTTestCase primary classes for defining test cases
-SkyUITestCase and SkyUnitTestCase classes extend XCTestCase and define a mock server. Use SkyUITestCase and SkyUTTestCase for UI and Unit test cases respectively.
+## SkyUITestCase/SkyUnitTestCase primary classes for defining test cases
+SkyUITestCase and SkyUnitTestCase classes extend XCTestCase and define a mock server. Use SkyUITestCase and SkyUnitTestCase for UI and Unit test cases respectively.
 
 ### SkyUnitTestCase - Unit Test example with SUT performing Http Requests
 The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUp()` forwards http request performed by MA to localhost.
@@ -78,7 +78,7 @@ In the context of UI test a mobile app (MA) can be represented as a black box (s
 
 ![Input/Output](https://user-images.githubusercontent.com/51656240/95301424-e1ad5000-0880-11eb-8b42-007bda2722ae.png)
 
-MA behavior depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the behavior of MA can be described by the UI element displayed to the user and by the http requests executed so far by MSA. UI Tests verify the correctness of MA's behavior defining asserts on inputs and/or outputs of the black box. 
+MA behavior depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the behavior of MA can be described by the UI element displayed to the user and by the http requests executed so far by MA. UI Tests verify the correctness of MA's behavior defining asserts on inputs and/or outputs of the black box. 
 
 ```swift
 func testDisplayPetListView() {
@@ -107,7 +107,7 @@ func testDisplayPetListView() {
  ``` 
 
 ### Mock Server Builders
-SkyUITestCase and SkyUTTestCase provide mock server builder to easy the definition of the mock server routes. Builder can be accessed using the variable `httpServerBuilder` defined in SkyUITestCase and SkyUTTestCase.
+SkyUITestCase and SkyUnitTestCase provide mock server builder to easy the definition of the mock server routes. Builder can be accessed using the variable `httpServerBuilder` defined in SkyUITestCase and SkyUnitTestCase.
 
 #### API - UI mock server builder
 Available methods of `httpServerBuilder`:
