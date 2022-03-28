@@ -283,11 +283,6 @@ The following view is displayed during the execution of the test:
 - MA mobile iOS application
 - SUT system under test
 
-## FAQ
-### - How can I enable/disable breakpoints for UI tests in Xcode?
-From "Edit scheme...":
-![Enable/Disable Breakpoints](https://user-images.githubusercontent.com/51656240/129052171-f7597352-0087-4b3e-b8eb-f5863dd6398f.png)
-
 ### Examples
 #### Unit Test and callCount
 `callCount` stores the number of http request call received by the mock server for a specific endpoint.
