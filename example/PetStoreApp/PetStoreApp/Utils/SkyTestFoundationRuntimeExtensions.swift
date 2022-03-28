@@ -8,11 +8,15 @@ extension URL {
     func replaceHostnameWithLocalhostIfUITestIsRunning() -> URL {
         guard TestsHelper.isUITestRunning else { return self }
         #if DEBUG
-        return URL(string: absoluteString.replacingOccurrences(of: host ?? "", with: "127.0.0.1:\(TestsHelper.mockServerHttpPort)")
-            .replacingOccurrences(of: scheme!, with: "http"))!
+        return replaceHostnameWithLocalhost(port: TestsHelper.mockServerHttpPort)
         #else
         return self
         #endif
+    }
+    
+    func replaceHostnameWithLocalhost(port: Int = 8080) -> URL {
+        return URL(string: absoluteString.replacingOccurrences(of: host ?? "", with: "127.0.0.1:\(port)")
+            .replacingOccurrences(of: scheme!, with: "http"))!
     }
 }
 

@@ -2,6 +2,7 @@ import XCTest
 import SkyTestFoundation
 import RxBlocking
 import PetStoreSDK
+import PetStoreSDKTests
 @testable import PetStoreApp
 
 class PetStoreAppTests: SkyUnitTestCase {
@@ -10,15 +11,26 @@ class PetStoreAppTests: SkyUnitTestCase {
 
     override func setUp() {
         super.setUp()
-        sut = Services(baseUrl: Urls.baseUrl().replaceHostnameWithLocalhostIfUITestIsRunning())
+        sut = Services(baseUrl: Urls.baseUrl().replaceHostnameWithLocalhost())
     }
 
-    func test() async throws {
-        do {
-            let pets = try await sut!.pet.findPetsByStatus(status: [Pet.Status.available.rawValue]).value
-            assertNotNull(pets)
-        } catch {
-            print("not found")
+    func testLoginRequest() async throws {
+        
+        var loginCallCount = 0
+        
+        let apiResponse = ApiResponse.mock(code: 200)
+        
+        httpServerBuilder.route(Routes.User.login().path) { request, callCount in
+            loginCallCount = callCount
+            assertEquals(request.queryParam("username"), "Alessandro")
+            assertEquals(request.queryParam("password"), "Secret")
+            return HttpResponse(body: apiResponse.encoded())
         }
+        .buildAndStart()
+        
+        let pets = try await sut!.user.loginUser(username: "Alessandro", password: "Secret").value
+    
+        assertNotNull(pets)
+        assertEquals(loginCallCount, 1)
     }
 }
