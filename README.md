@@ -185,7 +185,7 @@ SkyTestFoundation provides a simple DSL in order to facilitate the writing of UI
 The same DSL for testing is defined for Android platform on top of Espresso (see [client-lib-android-test-foundation](https://github.com/sky-uk/client-lib-android-test-foundation)).
 The example below gives you an idea of how to use DSL for testing in your test. Suppose a PetStore app composed by two screens/views:
 ![client-lib-android-test-foundation](https://user-images.githubusercontent.com/51656240/160416057-0c3e4935-a406-4efa-8e27-58c8198853ef.png)
-The behaviour "Display a list of pets after login" can described and test with the following ui test:
+The behaviour "Display a list of pets after login" can described and tested with the following UI test:
 ```swift 
 func testDisplayPetListView() {
 
@@ -210,8 +210,10 @@ func testDisplayPetListView() {
       exist(withTextEquals(tom.name))
       exist(withTextEquals(jerry.name))
 }
+In the "Given" section we defined http mock responses required by the app, in the "When" section the app is launched and the "Login" button is tapped after user credentials are typed.
+Finally in the "Then" section we assert the existence of two pets returned by the mock server.
 ```
-SkyTestFoudnation custom assertions are wrappers of events defined in `XCUIElement` like `tap()`. DSL assertions wait for any element to appear before firing the wrapped event. The effect of using custom assertions is to reduce flakiness of ui test execution.
+SkyTestFoundation custom assertions are wrappers of events defined in `XCUIElement` like `tap()`. DSL assertions wait for any element to appear before firing the wrapped event. One of the effect of using custom assertions is to reduce flakiness of ui test execution.
 
 * **exist(_ element)** Determines if the element exists.
 * **notExist(_ element)** Determines if the element NOT exists.
