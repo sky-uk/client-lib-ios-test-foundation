@@ -6,7 +6,7 @@ It's meant to be mobile app tests' `lingua franca`. Out of the box, it allows yo
 The suite has two parts:
 - Unit testing 
 - User Interface (or functional) tests.
-![sky_test_foundation_layers](https://user-images.githubusercontent.com/51656240/160561299-039b820b-4f74-4b05-b2cf-91b82ac8b5c5.png)
+![sky_test_foundation_layers](https://user-images.githubusercontent.com/51656240/160561639-d79e813f-9083-41bd-9869-4849a7a1bfb4.png)
 
 
 ## Adopted Test Technique
