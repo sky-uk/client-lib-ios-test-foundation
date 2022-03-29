@@ -8,6 +8,7 @@ The suite has two parts:
 - User Interface (or functional) tests.
 ![sky_test_foundation_layers](https://user-images.githubusercontent.com/51656240/160561639-d79e813f-9083-41bd-9869-4849a7a1bfb4.png)
 
+The DSL allows to describe and simulate user flow and http  responses received by the app during test execution.
 
 ## Adopted Test Technique
 SkyTestFoundation has been defined with BlackBox technique in mind.In general, BlackBox test technique does not require specific knowledge of the application's code, internal structure and/or programming knowledge. 
