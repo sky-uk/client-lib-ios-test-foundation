@@ -178,18 +178,30 @@ SkyUITestCase and SkyUnitTestCase provide mock server builder to easy the defini
 #### API - UI mock server builder
 Available methods of `httpServerBuilder`:
 ```swift
-func route(_ response: (endpoint: String, statusCode: Int, body: Data, responseTime: UInt32?), on: ((Swifter.HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder
+public func route(_ route: HttpRoute, on: ((HttpRequest) -> Void)? = nil) -> UITestHttpServerBuilder
 ```
 Adds http route to mock server. Clousure `on` is called on main the thread when a http request with path equals to `endpoint` is received by the mock server.
 
 ```swift
-func route(endpoint: String, on: @escaping ((Swifter.HttpRequest) -> HttpResponse)) -> UITestHttpServerBuilder
+public func route(endpoint: HttpEndpoint, on: @escaping ((HttpRequest) -> HttpResponse)) -> UITestHttpServerBuilder
 ```
 Adds http route to mock server. Closure `on` is called on a background thread when a http request with path equals to `endpoint` is received by the mock server. The closure allows to define different Http responses given the same endpoint.
 
 ```swift
 func buildAndStart(port: in_port_t = 8080, file: StaticString = #file, line: UInt = #line) throws -> HttpServer
 ```
+```swift
+public func callReport() -> [EndpointReport]
+```
+Returns a report of defined of routes. See `EndpointReport` for more details.
+```swift
+public func undefinedRoute(_ asserts: @escaping (HttpRequest) -> Void) -> UITestHttpServerBuilder
+```
+It allows to define assert on http requests not handled by the mock server.
+```swift
+public func routeImagesAt(path: String, properties: ((HttpRequest) -> ImageProperties)? = nil) -> UITestHttpServerBuilder {
+```
+It allows to define endpoint returning image dynamically create by the server.
 Build all routes added so far and starts the mock server. 
 
 Example
