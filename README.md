@@ -9,10 +9,15 @@ The suite has two parts:
 ![sky_test_foundation_layers](https://user-images.githubusercontent.com/51656240/118296905-c2913380-b4dd-11eb-8cc7-6c1306aaf774.png)
 
 
-## Test Environment
-During tests execution, iOS Mobile App (MA) can interact with a real or a mocked backend server. The framework provides a mock server that allows full control over what data the iOS App receives.
+## Adopted Test Techinique
+SkyTestFoundation has been defined with BlackBox technique in mind.In general, BlackBox test technique does not require specific knowledge of the application's code, internal structure and/or programming knowledge. 
+
 ![blackbox](https://user-images.githubusercontent.com/51656240/160555800-6a6be6b0-86a2-4f86-b08b-3546cf1f71a8.png)
-During test execution, to use the embedded mock server, the MA must forward http requests to http://127.0.0.1:8080.
+MA output depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the outputs of MSA are the UI element displayed to the user and by the http requests executed so far by MA. UI Tests verify the correctness of MSA's behaviour defining asserts on inputs and/or ouputs of the black box.
+SkyTF provides, during tests execution, a mock http server that allows full control over what data the iOS App receives and a DSL for testing that allow to assert the existence of ui element in view hierarchy of MA.
+
+Note: during test execution, to use the embedded mock server, the MA must forward http requests to http://127.0.0.1:8080.
+
 
 ## Use SkyUITestCase/SkyUnitTestCase as base classes when writing Test suites
 `SkyUITestCase` and `SkyUnitTestCase` classes extend `XCTestCase` and define a mock server. Use `SkyUITestCase` for UI tests and `SkyUnitTestCase` for Unit test cases.
