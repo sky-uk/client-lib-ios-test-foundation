@@ -105,7 +105,7 @@ I want to login
 So that 
 I can see a list of available pets
 ```
-![petstore_app_ui_tests_dsl_ios](https://user-images.githubusercontent.com/51656240/160637287-1fc3d85a-2e8a-487f-8718-c4177f56c9fe.jpg)
+![login_petlist](https://user-images.githubusercontent.com/51656240/160642959-7c38ff33-502a-4ac8-a086-74ba6f75da55.jpg)
 
 More details of the user story are illustrated in the following picture
 ![sequence_](https://user-images.githubusercontent.com/51656240/160642377-d8a69ab6-861b-45c9-8b51-e7e66bb38e1d.jpg)
