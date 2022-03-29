@@ -97,9 +97,20 @@ Note:
 
 See the mobile app located in folder `example` for more details.
 
-### SkyUITestCase - User Interface test example
-UI Tests verify the correctness of MA's behavior defining asserts on inputs and/or outputs of the black box. 
+### SkyUITestCase - PetStore App Example
+Suppose we have the following user story:
+```
+As User
+I want to login 
+So that 
+I can see a list of available pets
+```
+![petstore_app_ui_tests_dsl_ios](https://user-images.githubusercontent.com/51656240/160637287-1fc3d85a-2e8a-487f-8718-c4177f56c9fe.jpg)
 
+More details of the user story are illustrated in the following picture
+![petstoreapp](https://user-images.githubusercontent.com/51656240/160635860-9e003af6-4037-4a89-952d-19727e242ad4.jpg)
+And finally let's try write a test with the help of SkyTF's DSL.
+ 
 ```swift
 class PetList: SkyUITestCase {
 
