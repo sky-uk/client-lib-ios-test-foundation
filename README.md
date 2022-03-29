@@ -105,7 +105,7 @@ I want to login
 So that 
 I can see a list of available pets
 ```
-<img src="https://user-images.githubusercontent.com/51656240/160643374-c73dbd0a-16e7-4ed5-9d87-fbd32a0e3b28.jpg" width=80% height=80%/>
+<img src="https://user-images.githubusercontent.com/51656240/160643374-c73dbd0a-16e7-4ed5-9d87-fbd32a0e3b28.jpg" width=65% height=65%/>
 
 More details of the user story are illustrated in the following picture
 ![sequence_](https://user-images.githubusercontent.com/51656240/160642377-d8a69ab6-861b-45c9-8b51-e7e66bb38e1d.jpg)
@@ -150,7 +150,7 @@ I want to type invalid credentials
 So that 
 I can see an alert "Invalid Credentials"
 ```
-<img src="https://user-images.githubusercontent.com/51656240/160650539-93aeaf4a-9f4b-4faf-a7b9-4519c72d8f87.jpg" width=90% height=90%/>
+<img src="https://user-images.githubusercontent.com/51656240/160650539-93aeaf4a-9f4b-4faf-a7b9-4519c72d8f87.jpg" width=65% height=65%/>
 
 The associated test ca be written:
 ```swift
