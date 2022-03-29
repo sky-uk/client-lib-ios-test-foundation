@@ -142,13 +142,13 @@ class PetList: SkyUITestCase {
  ``` 
 In the "Given" section we defined http mock responses required by the app, in the "When" section the app is launched and the "Login" button is tapped after user credentials are typed.
 Finally in the "Then" section we assert the existence in the view hierarchy of two pets returned by the mock server.
+Now suppose we'd like to prove implementation's correctness of the following
 
-Now suppose we'd like to prove implementation's correctenes of the following
  ```
 As User
-I want to type invalid credential 
+I want to type invalid credentials
 So that 
-I can see an alert "Ivalid credentials"
+I can see an alert "Invalid credentials"
 ```
 ```swift
 The associated test ca be written:
