@@ -3,7 +3,7 @@ import PetStoreSDK
 import PetStoreSDKTests
 import SkyTestFoundation
 
-class FoodTests: UITests {
+class FoodTests: SkyUITestCase {
     /* FOOD ADDITIONS START
     func testFoodDetail() {
         // Given

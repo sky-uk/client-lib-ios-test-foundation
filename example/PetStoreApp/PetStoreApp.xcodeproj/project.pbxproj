@@ -18,7 +18,7 @@
 		33EF623127CE399A00AC572D /* PetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF623027CE399A00AC572D /* PetListView.swift */; };
 		33EF623327CE399B00AC572D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33EF623227CE399B00AC572D /* Assets.xcassets */; };
 		33EF623627CE399B00AC572D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33EF623527CE399B00AC572D /* Preview Assets.xcassets */; };
-		33EF624027CE399B00AC572D /* PetStoreAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF623F27CE399B00AC572D /* PetStoreAppTests.swift */; };
+		33EF624027CE399B00AC572D /* LoginAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF623F27CE399B00AC572D /* LoginAPITests.swift */; };
 		33EF625B27CE3A1700AC572D /* BindingBool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF625927CE3A1600AC572D /* BindingBool+.swift */; };
 		33EF625C27CE3A1700AC572D /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF625A27CE3A1700AC572D /* Urls.swift */; };
 		33EF625E27CE3A2A00AC572D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF625D27CE3A2A00AC572D /* LoginView.swift */; };
@@ -36,6 +36,9 @@
 		33EF628527CE51A200AC572D /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF628427CE51A200AC572D /* Services.swift */; };
 		33F1851327EDF62C0010150C /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1851227EDF62C0010150C /* FoodView.swift */; };
 		33F1851527EDF7DA0010150C /* FoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1851427EDF7DA0010150C /* FoodTests.swift */; };
+		33F81B9F27F1E78500D2AF66 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF626A27CE3C8100AC572D /* Routes.swift */; };
+		33F81BA127F1E90B00D2AF66 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F81BA027F1E90B00D2AF66 /* Utils.swift */; };
+		33F81BA327F1E9DC00D2AF66 /* PetStoreSDKTests in Frameworks */ = {isa = PBXBuildFile; productRef = 33F81BA227F1E9DC00D2AF66 /* PetStoreSDKTests */; };
 		FA02CA6127EF560F0025C620 /* PetStoreSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FA02CA6027EF560F0025C620 /* PetStoreSDK */; };
 		FA02CA6427F0B4650025C620 /* SkyTestFoundationLibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02CA6327F0B4650025C620 /* SkyTestFoundationLibExtensions.swift */; };
 		FA02CA6727F0B9030025C620 /* SkyTestFoundationRuntimeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02CA6627F0B9030025C620 /* SkyTestFoundationRuntimeExtensions.swift */; };
@@ -71,7 +74,7 @@
 		33EF623227CE399B00AC572D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33EF623527CE399B00AC572D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		33EF623B27CE399B00AC572D /* PetStoreAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetStoreAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		33EF623F27CE399B00AC572D /* PetStoreAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetStoreAppTests.swift; sourceTree = "<group>"; };
+		33EF623F27CE399B00AC572D /* LoginAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPITests.swift; sourceTree = "<group>"; };
 		33EF624527CE399B00AC572D /* PetStoreAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetStoreAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33EF625927CE3A1600AC572D /* BindingBool+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BindingBool+.swift"; sourceTree = "<group>"; };
 		33EF625A27CE3A1700AC572D /* Urls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 		33EF628427CE51A200AC572D /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		33F1851227EDF62C0010150C /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
 		33F1851427EDF7DA0010150C /* FoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTests.swift; sourceTree = "<group>"; };
+		33F81BA027F1E90B00D2AF66 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		FA02CA6327F0B4650025C620 /* SkyTestFoundationLibExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyTestFoundationLibExtensions.swift; sourceTree = "<group>"; };
 		FA02CA6627F0B9030025C620 /* SkyTestFoundationRuntimeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyTestFoundationRuntimeExtensions.swift; sourceTree = "<group>"; };
 		FABFB29327EF556D00246831 /* PetStoreSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PetStoreSDK; path = ../PetStoreSDK; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				331DAE6A27CEC3B000543389 /* RxSwift in Frameworks */,
 				331DAE6627CEC1FF00543389 /* SkyTestFoundation in Frameworks */,
 				331DAE6827CEC20500543389 /* RxBlocking in Frameworks */,
+				33F81BA327F1E9DC00D2AF66 /* PetStoreSDKTests in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,7 +186,8 @@
 		33EF623E27CE399B00AC572D /* PetStoreAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				33EF623F27CE399B00AC572D /* PetStoreAppTests.swift */,
+				33EF623F27CE399B00AC572D /* LoginAPITests.swift */,
+				33F81BA027F1E90B00D2AF66 /* Utils.swift */,
 			);
 			path = PetStoreAppTests;
 			sourceTree = "<group>";
@@ -313,6 +319,7 @@
 				331DAE6527CEC1FF00543389 /* SkyTestFoundation */,
 				331DAE6727CEC20500543389 /* RxBlocking */,
 				331DAE6927CEC3B000543389 /* RxSwift */,
+				33F81BA227F1E9DC00D2AF66 /* PetStoreSDKTests */,
 			);
 			productName = PetStoreAppTests;
 			productReference = 33EF623B27CE399B00AC572D /* PetStoreAppTests.xctest */;
@@ -438,7 +445,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33EF624027CE399B00AC572D /* PetStoreAppTests.swift in Sources */,
+				33EF624027CE399B00AC572D /* LoginAPITests.swift in Sources */,
+				33F81B9F27F1E78500D2AF66 /* Routes.swift in Sources */,
+				33F81BA127F1E90B00D2AF66 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,6 +831,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 33EF627827CE3EAD00AC572D /* XCRemoteSwiftPackageReference "client-lib-ios-test-foundation" */;
 			productName = SkyTestFoundation;
+		};
+		33F81BA227F1E9DC00D2AF66 /* PetStoreSDKTests */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PetStoreSDKTests;
 		};
 		FA02CA6027EF560F0025C620 /* PetStoreSDK */ = {
 			isa = XCSwiftPackageProductDependency;

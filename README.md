@@ -1,128 +1,120 @@
-# Sky Test Foundation [![CircleCI](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master.svg?style=svg&circle-token=6a18106ecc99952ea6841f658f86282b5ff557f5)](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master)
-Test suite for iOS mobile applications: a collection of tools and classes to facilitate the writing of automatic tests during development of an iOS mobile application.
-The suite has to parts, one for Unit testing and the other one for User Interface (or functional) tests.
-![sky_test_foundation_layers](https://user-images.githubusercontent.com/51656240/118296905-c2913380-b4dd-11eb-8cc7-6c1306aaf774.png)
+# Sky Test Foundation iOS [![CircleCI](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master.svg?style=svg&circle-token=6a18106ecc99952ea6841f658f86282b5ff557f5)](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master)
+Sky Test Foundation defines a domain specific language to facilitate developers to write automatic tests.
+
+It's meant to be mobile app tests' `lingua franca`. Out of the box, it allows you to port tests between iOS and Android by simply copy-pasting Swift to Kotlin or vice-versa. Sky Test Foundation for Android is still in progress.
+![sky_test_foundation_layers](https://user-images.githubusercontent.com/51656240/160561639-d79e813f-9083-41bd-9869-4849a7a1bfb4.png)
+The DSL allows to describe and simulate user flow and http  responses received by the app during test execution.
+
+## Terminology
+* UX = User Experience
+* SUT = Service Under Test
+* MA = Mobile App
+* BE = Backend
+
+## Adopted Test Technique
+SkyTestFoundation has been defined with BlackBox technique in mind. In general, BlackBox test technique does not require specific knowledge of the application's code, internal structure and/or programming knowledge. MA is seen as a black box as illustrated below:
+
+![blackbox](https://user-images.githubusercontent.com/51656240/160555800-6a6be6b0-86a2-4f86-b08b-3546cf1f71a8.png)
+MA output depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the outputs are the UI elements displayed to the user and the http requests executed by the MA. Tests verify the correctness of MA's behaviour defining asserts on inputs and/or ouputs of the black box.
+SkyTF provides, during tests execution, a mock http server that allows full control over what data the iOS App receives. The mock server allows to define assert on http requests sent by MA too. 
+A domain specific language that allows to assert the existence of ui elements on the view hierarchy and to simulate user gestures/flow is also provided.
 
 
-## Test Environment
-During tests execution, iOS Mobile App (MA) should interact with a Mock Server which appear to be the real counterparts of BE server. The framework provides a mock server that allows a tight control over what data the iOS App receives.
-![](https://user-images.githubusercontent.com/51656240/94568277-9685b280-026c-11eb-80ac-d5a6d95bcdf3.png)
-During the execution of the tests the MA must forward http requests to http://127.0.0.1:8080.
+Note: during test execution, to use the embedded mock server, the MA must forward http requests to http://127.0.0.1:8080.
 
-## SkyUITestCase/SkyUTTestCase primary classes for defining test cases
-SkyUITestCase and SkyUTTestCase classes extend XCTestCase and define a mock server. Use SkyUITestCase and SkyUTTestCase for UI and Unit test cases respectively.
 
-### SkyUTTestCase - Unit Test example with SUT performing Http Requests
-The goal of this kind of unit test is to verify the correctness of the http requests performed by the MA. The `httpServerBuilder` object allows to define the state of the mock server as a set of http routes. Note `FakeMySkyAppSDK.localhost()` in the `setupUp()` forwards http request performed by MA to localhost.
-See [Unit Test Overview](https://developer.bskyb.com/wiki/pages/viewpage.action?spaceKey=DPTECH&title=Unit+testing) for more deatil on unit testing approach in Sky.
+## Use SkyUITestCase/SkyUnitTestCase as base classes when writing Test suites
+`SkyUITestCase` and `SkyUnitTestCase` classes extend `XCTestCase` and define a mock server. Use `SkyUITestCase` for UI tests and `SkyUnitTestCase` for Unit test cases.
+
+### SkyUnitTestCase - Unit Test example with SUT performing Http Requests
+The goal of this kind of unit tests is to verify the correctness of the http requests performed by the MA. Using `httpServerBuilder` you can define the exact mock server's state during test execution, as a set of http routes.
+
+Note: `.replaceHostnameWithLocalhost()` in the `setUp()` is needed to forward http request performed by MA to the local mock server running on localhost.
+
 ```swift
 import XCTest
-import Swifter
 import SkyTestFoundation
+import RxBlocking
+import PetStoreSDK
+import PetStoreSDKTests
+@testable import PetStoreApp
 
-class CustomerRepositoryTests: SkyUnitTestCase {
+class LoginAPITests: SkyUnitTestCase {
 
-    var sut: AddressServices!
+    var sut: Services?
 
-     override func setUp() {
+    override func setUp() {
         super.setUp()
-        let sdk = FakeMySkyAppSDK.localhost()     // forwards MSA's http requests to 127.0.0.0:8080 
-        sdk.services.selfCare.customerRepository.clearAll(removingUserSelections: true)
-        sut = sdk.services.selfCare.address
+        sut = Services(baseUrl: Urls.baseUrl().replaceHostnameWithLocalhost())
     }
-    
-    func testGetNormalizedCities() throws {
+
+    func testLogin() async throws {
         // Given
-        let query = "Milano"
-        let citiesResponse = [City.mock(egonId: String.mock(), name: String.mock(), province: String.mock())]
-
-        httpServerBuilder.route(Endpoint.Selfcare.cities.urlPath) { (request, callCount) -> (HttpResponse) in
-            XCTAssertEqual(request.method, ReactiveAPIHTTPMethod.get.rawValue)
-            XCTAssertEqual(request.queryParam("q"), query)
-            XCTAssertEqual(request.headers["egon-route"], true.stringValue)
-            let data = try! JSONHelper.encode(value: citiesResponse)
-            return HttpResponse.ok(HttpResponseBody.data(data))
-
-        }.onUnexpected { (request) in
-
-            UnexepctedRequestFail(request)
-
-        }.buildAndStart()
-    
+        var loginCallCount = 0
+        let apiResponse = ApiResponse.mock(code: 200)
+        
+        httpServerBuilder.route(Routes.User.login().path) { request, callCount in
+            loginCallCount = callCount
+            assertEquals(request.queryParam("username"), "Alessandro")
+            assertEquals(request.queryParam("password"), "Secret")
+            return HttpResponse(body: apiResponse.encoded())
+        }.onUnexpected{ httpRequest in
+            assertFail("Unexpected http request: \(httpRequest)")
+        }
+        .buildAndStart()
+        
         // When
-        let streamed = try sut.getNormalizedCities(query: query).toBlocking().single()
+        let pets = try await sut!.user.loginUser(username: "Alessandro", password: "Secret").value
+    
         // Then
-        XCTAssertNotNil(streamed)
-        XCTAssertEqual(streamed.first, citiesResponse.first)
+        assertNotNull(pets)
+        assertEquals(loginCallCount, 1)
     }
 }
-```
 
-where 
-
-```swift
-func UnexepctedRequestFail(_ request: Swifter.HttpRequest, file: StaticString = #file, line: UInt = #line) {
-    XCTFail("Url request not stubbed: \(String(describing: request.path))", file: file, line: line)
-}
 ```
-The test is composed by 3 sections:
-- Given: mocks and http routes are defined
-- When: call to method of SUT (system under test) to be tested
-- Then: expected values assertions
+In the `Given` section http mocks reponse are defined, in `When` section `loginUser/2` method of SUT (System Under Test) is called, finally in the `Then` section asserts on expected values are defined.
 If the execution of the method under test performs an http request not handled by the mocks server then `onUnexpected`'s clousure `(HttpRequest) -> ()` is called.
 
 Note: 
-- `Endpoint.Selfcare.cities.urlPath` is a relative path not containing `127.0.0.1:8080`
+- `Routes.User.login().path` is a relative path not containing `127.0.0.1:8080`
+
+See the mobile app located in folder `example` for more details.
 
 ### SkyUITestCase - User Interface test example
-In the context of UI test a mobile app (MA) can be represented as a black box (see Input/Output) defined by its own inputs and outputs. 
-
-![Input/Output](https://user-images.githubusercontent.com/51656240/95301424-e1ad5000-0880-11eb-8b42-007bda2722ae.png)
-
-MA behavior depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the behavior of MSA can be described by the UI element displayed to the user and by the http requests executed so far by MSA. UI Tests verify the correctness of MSA's behavior defining asserts on inputs and/or outputs of the black box. 
+UI Tests verify the correctness of MA's behavior defining asserts on inputs and/or outputs of the black box. 
 
 ```swift
-import XCTest
-import Swifter
-import SkyTestFoundation
+class PetList: SkyUITestCase {
 
-class LoginTests: SkyUITestCase {
+    func testDisplayPetListView() {
 
-    func testSelectSignedContractGivenContractNotActivated() throws {
-        // Given
-        httpServerBuilder
-            .route(TokenManagerMocks.Auths.ok200.edr())
-            .route(Mocks.Selfcare.E2EContract.contractIdcmJjRzF3cTdiU3oranF3bWlLWG96dz09.edr())
-            .route(Mocks.Selfcare.E2EContract.contractIdWUNjanhxMXNMZTg3emRzVURPa1ExZz09.edr())
-            .route(TokenManagerMocks.CustomersMe.multiContract.edr())
-            .buildAndStart()
+          // Given
+          let tom = Pet.mock(name: "Tom")
+          let jerry = Pet.mock(name: "Jerry")
+          let pets = [jerry, tom]
 
-        appLaunched(disableFeatureFlags: [.skipPreActiveCheck], persistenceStatus: .empty)
-        // When
-        tap(MSAElements.Welcome.accediButton)
+          httpServerBuilder
+              .route(MockResponses.User.successLogin())
+              .route(MockResponses.Pet.findByStatus(pets: pets))
+              .buildAndStart()
 
-        typeText(MSAElements.Login.mainView.withTextInput(String.msa.login.userPlaceholder()), testCredentialUsername)
-        typeText(MSAElements.Login.mainView.scrollViews.otherElements.secureTextFields[String.msa.generics.password()], testCredentialPassword)
+          // When
+          appLaunch()
 
-        tap(MSAElements.Login.loginButton)
-        tap(MSAElements.Alert.secondaryButton, "Biometric alert")
-        tap(MSAElements.Alert.mainButton)
+          typeText(withTextInput("Username"), "Alessandro")
+          typeText(withTextInput("Password"), "Secret")
+          tap(withButton(“Login"))
 
-        exist(MSAElements.AlternativeHome.mainView)
-        // Then
-        tap(MSAElements.Home.profileButton)
-        exist(MSAElements.ContractSelector.mainView)
-        tap(MSAElements.ContractSelector.mainView.withText("Codice cliente: 15519872"))
-        tap(MSAElements.ContractSelector.mainView.withText(String.msa.generics.confirm().uppercased()))
-        exist(MSAElements.Alert.mainView)
-        tap(MSAElements.Alert.mainButton)
-        exist(MSAElements.Home.mainView)
+          // Then
+          exist(withTextEquals(tom.name))
+          exist(withTextEquals(jerry.name))
     }
- }
+}
  ``` 
 
 ### Mock Server Builders
-SkyUITestCase and SkyUTTestCase provide mock server builder to easy the definition of the mock server routes. Builder can be accessed using the variable `httpServerBuilder` defined in SkyUITestCase and SkyUTTestCase.
+SkyUITestCase and SkyUnitTestCase provide mock server builder to easy the definition of the mock server routes. Builder can be accessed using the variable `httpServerBuilder` defined in SkyUITestCase and SkyUnitTestCase.
 
 #### API - UI mock server builder
 Available methods of `httpServerBuilder`:
@@ -166,49 +158,41 @@ The test is composed by 3 sections:
 - When: ui gesture are performed in order to navigate to the view to be tested 
 - Then: assertions on ui element of the view (to be tested)
 
-#### API - UT mock server builder
-Available methods of `httpServerBuilder`:
-
-```swift
-func route(_ endpoint: String, _ completion: @escaping (HttpRequest, Int) -> (HttpResponse)) -> UTHttpServerBuilder
-```
-Adds http route to mock server. Clousure `on` returns the Http reponses associated to the `endpoint`. The first argument of the closure is the http request received by the mock server and the second one contains the number of http request received so far by the mock server.
-
-```swift
-func onUnexpected(_ asserts: @escaping (HttpRequest) -> Void) -> UTHttpServerBuilder
-```
-If the SUT performs an http request not handled by the mock server then the closure ```asserts``` is called. The argument of the assert contains the
-http request not handled by the mock server.
-
-```swift
-func buildAndStart(port: in_port_t = 8080, forceIPv4: Bool = false, priority: DispatchQoS.QoSClass = .userInteractive) throws -> HttpServer
-```
-Build all routes added so far and starts the mock server.
-
-### XCTAssert Extensions
-Useful extensions of assertions defined in XCTest framework.
-
-#### assertURLEquals(_ url1, _ url2, ignores, ...)
-Asserts that two http urls are equals. Use `ignores` parameter to skip comparisions between specific components of url1 and url2.
-
-Example
-```swift 
-assertURLEquals("http://www.sky.com/path1", "http://www.sky.com/path1")
-assertURLEquals("http://www.sky.com/path1", "http://xxx.xxx.xxx/path1", ignores: [.host])
-assertURLEquals("http://www.sky.com/path1", "http://www.sky.com/path2", ignores: [.path])
-
-assertURLEquals("http://www.sky.com?name1=value1", "http://www.sky.com?name1=value1")
-assertURLEquals("http://www.sky.com?name2=value2&name1=value1", "http://www.sky.com?name1=value1&name2=value2")
-assertURLEquals("http://www.sky.com", "http://www.sky.com?q1=value1", ignores: [.queryParameters])
-```
 ## DSL for UI Testing
-In the context of UI tests we have noticed that a behavior of a mobile application can be described with a language composed by few verbs and nouns.
-
-![some_verbs_sodalizio](https://user-images.githubusercontent.com/51656240/115408436-22533200-a1f1-11eb-9ae0-7b5eb9ad4fb1.jpg)
-
-We have defined a simple DSL in order to facilitate the writing of UI tests. It is a thin layer defined on top of primtives offered by XCTest. 
+SkyTestFoundation provides a simple DSL in order to facilitate the writing of UI tests. It is a thin layer defined on top of primtives offered by XCTest. 
 The same DSL for testing is defined for Android platform on top of Espresso (see [client-lib-android-test-foundation](https://github.com/sky-uk/client-lib-android-test-foundation)).
-The following custom assertions are wrappers of events defined in `XCUIElement` like `tap()`. The custom assertions wait for any element to appear before firing the wrapped event. The effect of using custom assertions is to reduce flakiness of ui test execution.
+The example below gives you an idea of how to use DSL for testing in your test. Suppose a PetStore app composed by two screens/views:
+![client-lib-android-test-foundation](https://user-images.githubusercontent.com/51656240/160416057-0c3e4935-a406-4efa-8e27-58c8198853ef.png)
+The behaviour "Display a list of pets after login" can described and tested with the following UI test:
+```swift 
+func testDisplayPetListView() {
+
+      // Given
+      let tom = Pet.mock(name: "Tom")
+      let jerry = Pet.mock(name: "Jerry")
+      let pets = [jerry, tom]
+
+      httpServerBuilder
+          .route(MockResponses.User.successLogin())
+          .route(MockResponses.Pet.findByStatus(pets: pets))
+          .buildAndStart()
+
+      // When
+      appLaunch()
+
+      typeText(withTextInput("Username"), "Alessandro")
+      typeText(withTextInput("Password"), "Secret")
+      tap(withButton(“Login"))
+
+      // Then
+      exist(withTextEquals(tom.name))
+      exist(withTextEquals(jerry.name))
+}
+```
+In the "Given" section we defined http mock responses required by the app, in the "When" section the app is launched and the "Login" button is tapped after user credentials are typed.
+Finally in the "Then" section we assert the existence in the view hierarchy of two pets returned by the mock server.
+
+SkyTestFoundation custom assertions are wrappers of events defined in `XCUIElement` like `tap()`. DSL assertions wait for any element to appear before firing the wrapped event. One of the effect of using custom assertions is to reduce flakiness of ui test execution.
 
 * **exist(_ element)** Determines if the element exists.
 * **notExist(_ element)** Determines if the element NOT exists.
@@ -217,7 +201,8 @@ The following custom assertions are wrappers of events defined in `XCUIElement` 
 * **isEnabled(_ element)** Determines if the element is enabled for user interaction.
 * **isNotEnabled(_ element)** Determines if the element is NOT enabled for user interaction.
 * **isRunningOnSimulator()** -> Bool Returns true if ui test is running on iOS simulator. It can be used in conjunction with `XCTSkipIf/1` in order to skip the execution of a ui test if on iOS simulator.
-* **withText(_ text)** A XCUIElementQuery query for locating staticText view elements.
+* **withTextEquals(_ text)** A XCUIElementQuery query for locating staticText view elements equals to `text`
+* **withTextContains(_ text)** A XCUIElementQuery query for locating staticText view elements containing `text`
 * **withIndex(_ query, index)** the index-th element of the result of the query *query*
 * **assertViewCount(_ query, expectedCount)** Asserts if the number of view matched by *query* is equals to *expectedCount*
 * **swipeUp(_ element)** performs swipe up user gesture on element 
@@ -309,14 +294,6 @@ The following view is displayed during the execution of the test:
 #### List of acronyms
 - MA mobile iOS application
 - SUT system under test
-
-## FAQ
-### - How can I see code coverage in Xcode?
-![Code Coverage](https://user-images.githubusercontent.com/51656240/128475362-159093d0-6fc1-4a4b-b49a-968fe6e0847f.png)
-![Code Coverage](https://user-images.githubusercontent.com/51656240/128475438-3ab46cc7-844a-41ac-b09f-92c5c5207ac6.png)
-### - How can I enable/disable breakpoints for UI tests in Xcode?
-From "Edit scheme...":
-![Enable/Disable Breakpoints](https://user-images.githubusercontent.com/51656240/129052171-f7597352-0087-4b3e-b8eb-f5863dd6398f.png)
 
 ### Examples
 #### Unit Test and callCount

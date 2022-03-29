@@ -6,44 +6,22 @@ import Foundation
 
 extension URL {
     func replaceHostnameWithLocalhostIfUITestIsRunning() -> URL {
-        guard TestsHelper.isUITestRunning else { return self }
+        guard CommandLine.arguments.contains(TestSuiteKeys.enableUITestArg) else { return self }
         #if DEBUG
-        return URL(string: absoluteString.replacingOccurrences(of: host ?? "", with: "127.0.0.1:\(TestsHelper.mockServerHttpPort)")
-            .replacingOccurrences(of: scheme!, with: "http"))!
+        return replaceHostnameWithLocalhost()
         #else
         return self
         #endif
     }
-}
-
-struct TestsHelper {
-    static let isUITestRunning = CommandLine.arguments.contains("-enable-uitest")  // TODO C8 TestSuiteKeys NO Release
-
-    #if DEBUG
-    static let mockServerHttpPort: Int = UserDefaults.standard.integer(forKey: TestSuiteKeys.serverHttpPort.rawValue)
-    #endif
+    
+    func replaceHostnameWithLocalhost(port: Int = 8080) -> URL {
+        return URL(string: absoluteString.replacingOccurrences(of: host ?? "", with: "127.0.0.1:\(port)")
+            .replacingOccurrences(of: scheme!, with: "http"))!
+    }
 }
 
 #if DEBUG
-enum TestSuiteKeys: String {
-    case prefixTest = "test."
-    case serverHttpPort = "server-http-port"
-    case persistence
-    case deeplink
+struct TestSuiteKeys {
     static let enableUITestArg = "-enable-uitest"
-}
-
-extension TestSuiteKeys {
-    func argValue() -> Bool {
-        UserDefaults.standard.bool(forKey: self.rawValue)
-    }
-
-    func argValue() -> String? {
-        UserDefaults.standard.string(forKey: self.rawValue)
-    }
-
-    func buildArg(suffix: String = "", value: String) -> [String] {
-        ["-" + self.rawValue + suffix, value]
-    }
 }
 #endif

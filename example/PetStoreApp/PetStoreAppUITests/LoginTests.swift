@@ -20,7 +20,7 @@ extension UITestHttpServerBuilder {
     }
 }
 
-class LoginTests: UITests {
+class LoginTests: SkyUITestCase {
 
     static func performLogin(username: String = ValidCredentials.username,
                              password: String = ValidCredentials.password) {
