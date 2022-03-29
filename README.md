@@ -212,11 +212,12 @@ import XCTest
 import Swifter
 import SkyTestFoundation
 class UITests: SkyUITestCase {
+
     func test() throws {
         // Given
         httpServerBuilder
-            .route(endpoint: "/endpoint1", on: { (request) -> HttpResponse in
-                return HttpResponse.raw(statusCode: 200, body: Data())
+            .route(endpoint: HttpEndpoint("/endpoint1"), on: { (request) -> HttpResponse in
+                return HttpResponse(body: Data())
             })
             .buildAndStart()
 
@@ -349,7 +350,7 @@ The following view is displayed during the execution of the test:
      httpServerBuilder
        .route("/endpoint/1") { (request, callCount) -> (HttpResponse) in
            callCount0 = callCount
-           return HttpResponse.ok(HttpResponseBody.data(Data()))
+           return HttpResponse(body: Data())
         }
         .route("/endpoint/2") { (request, callCount) -> (HttpResponse) in
             callCount1 = callCount
