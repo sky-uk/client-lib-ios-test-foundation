@@ -150,8 +150,8 @@ I want to type invalid credentials
 So that 
 I can see an alert "Invalid Credentials"
 ```
+![invalid_credentials3](https://user-images.githubusercontent.com/51656240/160650232-1fc1df29-cb48-4642-8110-91565b3eefbc.jpg)
 
-![invalid_credentials2](https://user-images.githubusercontent.com/51656240/160649439-0dd673cf-facb-4b82-884e-5bd2abf7668e.jpg)
 The associated test ca be written:
 ```swift
   func testLoginGivenUnauthorized() {
