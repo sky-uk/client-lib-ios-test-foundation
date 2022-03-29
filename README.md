@@ -140,7 +140,7 @@ class PetList: SkyUITestCase {
     }
 }
  ``` 
-In the "Given" section we defined http mock responses required by the app, in the "When" section the app is launched and the "Login" button is tapped after user credentials are typed.
+In the "Given" section we defined http mock responses required by the app, in the "When" section the app is launched and the "Login" button is tapped after user's credentials are typed.
 Finally in the "Then" section we assert the existence in the view hierarchy of two pets returned by the mock server.
 Now suppose we'd like to prove implementation's correctness of the following
 
