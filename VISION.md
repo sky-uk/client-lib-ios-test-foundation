@@ -1,7 +1,7 @@
 ## ReactiveAPI Vision
 
 ### Goals
-- Defines a domain specific language (DSL) for testing, available for iOS and Android platforms.
+- Defines a domain specific language (DSL) for testing, available for different platforms (like iOS and Android).
 - Write a test once and run it on different platforms
 - Facilitate the adoption of a Test Driven Development approach 
 
