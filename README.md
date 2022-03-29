@@ -105,7 +105,7 @@ I want to login
 So that 
 I can see a list of available pets
 ```
-![login_petlist](https://user-images.githubusercontent.com/51656240/160642959-7c38ff33-502a-4ac8-a086-74ba6f75da55.jpg)
+![login_petlist2](https://user-images.githubusercontent.com/51656240/160643374-c73dbd0a-16e7-4ed5-9d87-fbd32a0e3b28.jpg)
 
 More details of the user story are illustrated in the following picture
 ![sequence_](https://user-images.githubusercontent.com/51656240/160642377-d8a69ab6-861b-45c9-8b51-e7e66bb38e1d.jpg)
