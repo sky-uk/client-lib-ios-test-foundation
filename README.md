@@ -108,7 +108,8 @@ I can see a list of available pets
 ![petstore_app_ui_tests_dsl_ios](https://user-images.githubusercontent.com/51656240/160637287-1fc3d85a-2e8a-487f-8718-c4177f56c9fe.jpg)
 
 More details of the user story are illustrated in the following picture
-![petstoreapp](https://user-images.githubusercontent.com/51656240/160635860-9e003af6-4037-4a89-952d-19727e242ad4.jpg)
+![sequence_](https://user-images.githubusercontent.com/51656240/160642377-d8a69ab6-861b-45c9-8b51-e7e66bb38e1d.jpg)
+
 And finally let's try write a test with the help of SkyTF's DSL.
  
 ```swift
