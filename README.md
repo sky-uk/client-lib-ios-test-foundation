@@ -150,7 +150,7 @@ I want to type invalid credentials
 So that 
 I can see an alert "Invalid Credentials"
 ```
-![invalid_credentials3](https://user-images.githubusercontent.com/51656240/160650232-1fc1df29-cb48-4642-8110-91565b3eefbc.jpg)
+![invalid_credentials4](https://user-images.githubusercontent.com/51656240/160650539-93aeaf4a-9f4b-4faf-a7b9-4519c72d8f87.jpg)
 
 The associated test ca be written:
 ```swift
