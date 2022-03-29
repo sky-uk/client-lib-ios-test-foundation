@@ -162,11 +162,12 @@ The associated test ca be written:
 
         // When
         appLaunch()
-        // Then
         exist(withTextEquals("Please login"))
         typeText(withTextInput("Username"), "Alessandro")
         typeText(withTextInput("Password"), "WrongPassword")
         tap(withButton("Login"))
+        
+        // Then
         exist(withTextEquals("Invalid Credentials"))
         tap(withButton("OK"))
         exist(withTextEquals("Please login"))
