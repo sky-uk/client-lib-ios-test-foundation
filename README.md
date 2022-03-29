@@ -2,12 +2,7 @@
 Sky Test Foundation defines a domain specific language to facilitate developers to write automatic tests.
 
 It's meant to be mobile app tests' `lingua franca`. Out of the box, it allows you to port tests between iOS and Android by simply copy-pasting Swift to Kotlin or vice-versa.
-
-The suite has two parts:
-- Unit testing 
-- User Interface (or functional) tests.
 ![sky_test_foundation_layers](https://user-images.githubusercontent.com/51656240/160561639-d79e813f-9083-41bd-9869-4849a7a1bfb4.png)
-
 The DSL allows to describe and simulate user flow and http  responses received by the app during test execution.
 
 ## Adopted Test Technique
