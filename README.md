@@ -110,7 +110,7 @@ I can see a list of available pets
 More details of the user story are illustrated in the following picture
 ![sequence_](https://user-images.githubusercontent.com/51656240/160642377-d8a69ab6-861b-45c9-8b51-e7e66bb38e1d.jpg)
 
-And finally let's try to write a test with the help of SkyTF's DSL.
+And finally let's test with the help of SkyTF's DSL.
  
 ```swift
 class PetList: SkyUITestCase {
@@ -143,6 +143,33 @@ class PetList: SkyUITestCase {
 In the "Given" section we defined http mock responses required by the app, in the "When" section the app is launched and the "Login" button is tapped after user credentials are typed.
 Finally in the "Then" section we assert the existence in the view hierarchy of two pets returned by the mock server.
 
+Now suppose we'd like to prove implementation's correctenes of the following
+ ```
+As User
+I want to type invalid credential 
+So that 
+I can see an alert "Ivalid credentials"
+```
+```swift
+The associated test ca be written:
+  func testLoginGivenUnauthorized() {
+        // Given
+        httpServerBuilder
+            .route(MockResponses.User.unauthorizedLogin())
+            .buildAndStart()
+
+        // When
+        appLaunch()
+        // Then
+        exist(withTextEquals("Please login"))
+        typeText(withTextInput("Username"), "Alessandro")
+        typeText(withTextInput("Password"), "WrongPassword")
+        tap(withButton("Login"))
+        exist(withTextEquals("Invalid Credentials"))
+        tap(withButton("OK"))
+        exist(withTextEquals("Please login"))
+    }
+```
 ### Mock Server Builders
 SkyUITestCase and SkyUnitTestCase provide mock server builder to easy the definition of the mock server routes. Builder can be accessed using the variable `httpServerBuilder` defined in SkyUITestCase and SkyUnitTestCase.
 
