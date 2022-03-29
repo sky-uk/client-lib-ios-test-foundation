@@ -9,7 +9,7 @@ The DSL allows to describe and simulate user flow and http  responses received b
 SkyTestFoundation has been defined with BlackBox technique in mind.In general, BlackBox test technique does not require specific knowledge of the application's code, internal structure and/or programming knowledge. 
 
 ![blackbox](https://user-images.githubusercontent.com/51656240/160555800-6a6be6b0-86a2-4f86-b08b-3546cf1f71a8.png)
-MA output depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the outputs of MSA are the UI element displayed to the user and by the http requests executed so far by MA. UI Tests verify the correctness of MSA's behaviour defining asserts on inputs and/or ouputs of the black box.
+MA output depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the outputs of MSA are the UI element displayed to the user and by the http requests executed so far by MA. Tests verify the correctness of MSA's behaviour defining asserts on inputs and/or ouputs of the black box.
 SkyTF provides, during tests execution, a mock http server that allows full control over what data the iOS App receives. The mock server allows to define assert on http requests sent by MA too. 
 A domain specific language that allows to assert the existence of ui elements on the view hierarchy and to simulate user gestures/flow is also provided.
 
