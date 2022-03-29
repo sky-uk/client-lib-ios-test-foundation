@@ -148,10 +148,11 @@ Now suppose we'd like to prove implementation's correctness of the following
 As User
 I want to type invalid credentials
 So that 
-I can see an alert "Invalid credentials"
+I can see an alert "Invalid Credentials"
 ```
-```swift
+![invalid_credentials](https://user-images.githubusercontent.com/51656240/160648386-ee6773b8-ce29-40a8-aef8-b0d28e74d6be.png)
 The associated test ca be written:
+```swift
   func testLoginGivenUnauthorized() {
         // Given
         httpServerBuilder
@@ -211,7 +212,7 @@ class UITests: SkyUITestCase {
 ```
  
 The test is composed by 3 sections:
-- Given: mocks, http routes are defined and app is launced 
+- Given: mocks, http routes are defined and app is launched 
 - When: ui gesture are performed in order to navigate to the view to be tested 
 - Then: assertions on ui element of the view (to be tested)
 
