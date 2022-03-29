@@ -1,35 +1,47 @@
-# Sky Test Foundation iOS [![CircleCI](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master.svg?style=svg&circle-token=6a18106ecc99952ea6841f658f86282b5ff557f5)](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master)
-Sky Test Foundation defines a domain specific language to facilitate developers to write automatic tests.
+# Sky Test Foundation (SkyTF) iOS [![CircleCI](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master.svg?style=svg&circle-token=6a18106ecc99952ea6841f658f86282b5ff557f5)](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master)
+Sky Test Foundation defines a domain specific language to facilitate developers writing automatic tests.
 
 It's meant to be mobile app tests' `lingua franca`. Out of the box, it allows you to port tests between iOS and Android by simply copy-pasting Swift to Kotlin or vice-versa. Sky Test Foundation for Android is still in progress.
 ![sky_test_foundation_layers](https://user-images.githubusercontent.com/51656240/160561639-d79e813f-9083-41bd-9869-4849a7a1bfb4.png)
-The DSL allows to describe and simulate user flow and http  responses received by the app during test execution.
+The DSL allows you to define:
+- http responses received by the app
+- a sequence of user gestures
+
+during test execution.
 
 ## Terminology
 * UX = User Experience
-* SUT = Service Under Test
+* SUT = System Under Test
 * MA = Mobile App
 * BE = Backend
 
 ## Adopted Test Technique
-SkyTestFoundation has been defined with BlackBox technique in mind. In general, BlackBox test technique does not require specific knowledge of the application's code, internal structure and/or programming knowledge. MA is seen as a black box as illustrated below:
+Sky Test Foundation adopts BlackBox test technique. In general, BlackBox test technique does not require specific knowledge of the application's code, internal structure and/or programming knowledge. MA is seen as a black box as illustrated below:
 
 ![blackbox](https://user-images.githubusercontent.com/51656240/160555800-6a6be6b0-86a2-4f86-b08b-3546cf1f71a8.png)
-MA output depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the outputs are the UI elements displayed to the user and the http requests executed by the MA. Tests verify the correctness of MA's behaviour defining asserts on inputs and/or ouputs of the black box.
-SkyTF provides, during tests execution, a mock http server that allows full control over what data the iOS App receives. The mock server allows to define assert on http requests sent by MA too. 
-A domain specific language that allows to assert the existence of ui elements on the view hierarchy and to simulate user gestures/flow is also provided.
+MA output depends on:
+- user activity (user gestures)
+- BE state (BE http responses) 
+- MA storage (Persistence Storage)
 
+Outputs are:
+- UI elements displayed to the user
+- HTTP requests executed by the app
 
-Note: during test execution, to use the embedded mock server, the MA must forward http requests to http://127.0.0.1:8080.
+Tests verify the correctness of MA's behaviour defining asserts on Black Box's inputs and/or outputs.
 
+During test execution, SkyTF allows you to:
+- mock HTTP responses received by the App. You can also make assertions on each HTTP request sent by the app
+- assert UI elements existence in view hierarchy
+- simulate user gestures
 
-## Use SkyUITestCase/SkyUnitTestCase as base classes when writing Test suites
-`SkyUITestCase` and `SkyUnitTestCase` classes extend `XCTestCase` and define a mock server. Use `SkyUITestCase` for UI tests and `SkyUnitTestCase` for Unit test cases.
+## Usage
+Extend `SkyUITestCase` for UI tests and `SkyUnitTestCase` for Unit test cases.
 
 ### SkyUnitTestCase - Unit Test example with SUT performing Http Requests
 The goal of this kind of unit tests is to verify the correctness of the http requests performed by the MA. Using `httpServerBuilder` you can define the exact mock server's state during test execution, as a set of http routes.
 
-Note: `.replaceHostnameWithLocalhost()` in the `setUp()` is needed to forward http request performed by MA to the local mock server running on localhost.
+Note: `.replaceHostnameWithLocalhost()` in `setUp()` is needed to forward http request performed by MA to the local mock server running on localhost.
 
 ```swift
 import XCTest
@@ -73,8 +85,12 @@ class LoginAPITests: SkyUnitTestCase {
 }
 
 ```
-In the `Given` section http mocks reponse are defined, in `When` section `loginUser/2` method of SUT (System Under Test) is called, finally in the `Then` section asserts on expected values are defined.
-If the execution of the method under test performs an http request not handled by the mocks server then `onUnexpected`'s clousure `(HttpRequest) -> ()` is called.
+Basic test structure:
+ - `Given`. Here you define your initial state on HTTP server mocks. In this case we defined a login route.
+ - `When`. Here you call all the methods to be tested. In this case we called the `loginUser` method.
+ - `Then`. Here you write all the assertions. In this case we checked `pets` is not `nil` and made sure we called login only once.
+
+If the method under test performs an http request not handled by the mock server, then `onUnexpected`'s closure `(HttpRequest) -> ()` is called.
 
 Note: 
 - `Routes.User.login().path` is a relative path not containing `127.0.0.1:8080`
