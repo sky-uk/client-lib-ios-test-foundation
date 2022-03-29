@@ -18,7 +18,7 @@ during test execution.
 ## Adopted Test Technique
 Sky Test Foundation adopts BlackBox test technique. In general, BlackBox test technique does not require specific knowledge of the application's code, internal structure and/or programming knowledge. MA is seen as a black box as illustrated below:
 
-![blackbox](https://user-images.githubusercontent.com/51656240/160555800-6a6be6b0-86a2-4f86-b08b-3546cf1f71a8.png)
+<img src="https://user-images.githubusercontent.com/51656240/160555800-6a6be6b0-86a2-4f86-b08b-3546cf1f71a8.png" width=80% height=80%/>
 MA output depends on:
 - user activity (user gestures)
 - BE state (BE http responses) 
@@ -105,7 +105,7 @@ I want to login
 So that 
 I can see a list of available pets
 ```
-![login_petlist2](https://user-images.githubusercontent.com/51656240/160643374-c73dbd0a-16e7-4ed5-9d87-fbd32a0e3b28.jpg)
+<img src="https://user-images.githubusercontent.com/51656240/160643374-c73dbd0a-16e7-4ed5-9d87-fbd32a0e3b28.jpg" width=80% height=80%/>
 
 More details of the user story are illustrated in the following picture
 ![sequence_](https://user-images.githubusercontent.com/51656240/160642377-d8a69ab6-861b-45c9-8b51-e7e66bb38e1d.jpg)
@@ -150,7 +150,7 @@ I want to type invalid credentials
 So that 
 I can see an alert "Invalid Credentials"
 ```
-![invalid_credentials4](https://user-images.githubusercontent.com/51656240/160650539-93aeaf4a-9f4b-4faf-a7b9-4519c72d8f87.jpg)
+<img src="https://user-images.githubusercontent.com/51656240/160650539-93aeaf4a-9f4b-4faf-a7b9-4519c72d8f87.jpg" width=90% height=90%/>
 
 The associated test ca be written:
 ```swift
