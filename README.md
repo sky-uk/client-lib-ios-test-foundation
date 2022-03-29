@@ -110,7 +110,7 @@ I can see a list of available pets
 More details of the user story are illustrated in the following picture
 ![sequence_](https://user-images.githubusercontent.com/51656240/160642377-d8a69ab6-861b-45c9-8b51-e7e66bb38e1d.jpg)
 
-And finally let's try write a test with the help of SkyTF's DSL.
+And finally let's try to write a test with the help of SkyTF's DSL.
  
 ```swift
 class PetList: SkyUITestCase {
