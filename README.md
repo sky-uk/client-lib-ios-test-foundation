@@ -190,6 +190,7 @@ Adds http route to mock server. Closure `on` is called on a background thread wh
 ```swift
 func buildAndStart(port: in_port_t = 8080, file: StaticString = #file, line: UInt = #line) throws -> HttpServer
 ```
+Build all routes added so far and starts the mock server. 
 ```swift
 public func callReport() -> [EndpointReport]
 ```
@@ -202,7 +203,8 @@ It allows to define assert on http requests not handled by the mock server.
 public func routeImagesAt(path: String, properties: ((HttpRequest) -> ImageProperties)? = nil) -> UITestHttpServerBuilder {
 ```
 It allows to define endpoint returning image dynamically create by the server.
-Build all routes added so far and starts the mock server. 
+
+
 
 Example
 ```swift
@@ -351,7 +353,7 @@ The following view is displayed during the execution of the test:
         }
         .route("/endpoint/2") { (request, callCount) -> (HttpResponse) in
             callCount1 = callCount
-            return HttpResponse.ok(HttpResponseBody.data(Data()))
+            return HttpResponse(body: Data())
         }
         .buildAndStart()
 
