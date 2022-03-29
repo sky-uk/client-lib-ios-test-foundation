@@ -1,7 +1,8 @@
 ## ReactiveAPI Vision
 
 ### Goals
-- Write APIs in a declarative style as much as possible, avoiding boilerplate and runtime reflection
+- Defines a domain specific language (DSL) for testing, available for iOS and Android platforms.
+- Write a test once and run on different platforms
 - Stay reactive. This library depends on RxSwift because we want to use functional style as much as possible.
 - Have thin layer on top of Apple's URLSession, without reinventing the wheel, staying as tiny as possible
 - Separate session management and security concerns from the API implementations
