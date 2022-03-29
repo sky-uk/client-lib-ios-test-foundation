@@ -11,7 +11,7 @@ The suite has two parts:
 
 ## Test Environment
 During tests execution, iOS Mobile App (MA) can interact with a real or a mocked backend server. The framework provides a mock server that allows full control over what data the iOS App receives.
-![](https://user-images.githubusercontent.com/51656240/94568277-9685b280-026c-11eb-80ac-d5a6d95bcdf3.png)
+![blackbox](https://user-images.githubusercontent.com/51656240/94568277-9685b280-026c-11eb-80ac-d5a6d95bcdf3.png)
 During test execution, to use the embedded mock server, the MA must forward http requests to http://127.0.0.1:8080.
 
 ## Use SkyUITestCase/SkyUnitTestCase as base classes when writing Test suites
