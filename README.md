@@ -303,8 +303,8 @@ class DemoIOSUITests: SkyUITestCase {
     func testMockServer() throws {
         // Given
         let text = "Hello world from SkyTestFoundation Mock Server."
-        httpServerBuilder.routeImagesAt(path: "/image", properties: nil)
         try httpServerBuilder
+            .routeImagesAt(path: "/image", properties: nil)
             .route((endpoint: "/message", statusCode: 200, body: text.data(using: .utf8)!, responseTime: 0))
             .buildAndStart()
         // When
