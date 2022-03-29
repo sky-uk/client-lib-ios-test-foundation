@@ -9,7 +9,7 @@ The suite has two parts:
 ![sky_test_foundation_layers](https://user-images.githubusercontent.com/51656240/118296905-c2913380-b4dd-11eb-8cc7-6c1306aaf774.png)
 
 
-## Adopted Test Techinique
+## Adopted Test Technique
 SkyTestFoundation has been defined with BlackBox technique in mind.In general, BlackBox test technique does not require specific knowledge of the application's code, internal structure and/or programming knowledge. 
 
 ![blackbox](https://user-images.githubusercontent.com/51656240/160555800-6a6be6b0-86a2-4f86-b08b-3546cf1f71a8.png)
