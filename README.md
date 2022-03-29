@@ -5,8 +5,14 @@ It's meant to be mobile app tests' `lingua franca`. Out of the box, it allows yo
 ![sky_test_foundation_layers](https://user-images.githubusercontent.com/51656240/160561639-d79e813f-9083-41bd-9869-4849a7a1bfb4.png)
 The DSL allows to describe and simulate user flow and http  responses received by the app during test execution.
 
+## Terminology
+* UX = User Experience
+* SUT = Service Under Test
+* MA = Mobile App
+* BE = Backend
+
 ## Adopted Test Technique
-SkyTestFoundation has been defined with BlackBox technique in mind.In general, BlackBox test technique does not require specific knowledge of the application's code, internal structure and/or programming knowledge. MA is seen as a black box as illustrated below:
+SkyTestFoundation has been defined with BlackBox technique in mind. In general, BlackBox test technique does not require specific knowledge of the application's code, internal structure and/or programming knowledge. MA is seen as a black box as illustrated below:
 
 ![blackbox](https://user-images.githubusercontent.com/51656240/160555800-6a6be6b0-86a2-4f86-b08b-3546cf1f71a8.png)
 MA output depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the outputs of MSA are the UI element displayed to the user and by the http requests executed so far by MA. Tests verify the correctness of MSA's behaviour defining asserts on inputs and/or ouputs of the black box.
