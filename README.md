@@ -76,11 +76,7 @@ Note:
 See the mobile app located in folder `example` for more details.
 
 ### SkyUITestCase - User Interface test example
-In the context of UI test a mobile app (MA) can be represented as a black box (see Input/Output) defined by its own inputs and outputs. 
-
-![Input/Output](https://user-images.githubusercontent.com/51656240/160555034-ca02641b-f8aa-4163-8017-0af169b58309.png)
-
-MA behavior depends on user activity (user gestures), BE state (BE http responses) and MA storage (Persistence Storage). On the other side, the behavior of MA can be described by the UI element displayed to the user and by the http requests executed so far by MA. UI Tests verify the correctness of MA's behavior defining asserts on inputs and/or outputs of the black box. 
+UI Tests verify the correctness of MA's behavior defining asserts on inputs and/or outputs of the black box. 
 
 ```swift
 class PetList: SkyUITestCase {
