@@ -2,13 +2,8 @@
 
 ### Goals
 - Defines a domain specific language (DSL) for testing, available for iOS and Android platforms.
-- Write a test once and run on different platforms
-- Stay reactive. This library depends on RxSwift because we want to use functional style as much as possible.
-- Have thin layer on top of Apple's URLSession, without reinventing the wheel, staying as tiny as possible
-- Separate session management and security concerns from the API implementations
-- Enhance API testability and mocking
-- Ease Automatic Code Generation of iOS REST APIs
-- Being as much as similar as OkHttp / Retrofit stack on Android, to ease portability of thoughts, code and features between iOS and Android
+- Write a test once and run it on different platforms
+- Facilitate the adoption of a Test Driven Development approach 
 
 ### Scope
 #### Things we will not support:
