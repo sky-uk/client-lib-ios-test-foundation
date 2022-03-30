@@ -3,6 +3,7 @@ import PetStoreSDK
 import RxSwift
 
 struct PetListView: View {
+    // TODO: https://stackoverflow.com/questions/71396296/how-do-i-fix-expression-requiring-global-actor-mainactor-cannot-appear-in-def
     @StateObject var userSession = UserSession()
     @StateObject var services = Services(baseUrl: Urls.baseUrl())
     @State var pets: [Pet] = []
