@@ -3,9 +3,19 @@ cd openapi-specs
 
 SPECS=$(ls *.yaml | grep -v PetStore.yaml)
 
-echo -e "Select your OpenAPI spec by typing one of the names from the following list\n\n${SPECS}\n\nand hit ENTER"
+echo -e "Available OpenAPI specs:\n"
+echo -e "1. PetStore_Ver00.yaml"
+echo -e "2. PetStore_Ver01+Food.yaml"
+echo -e "\nType the number you want to apply and press ENTER:"
+read SELECTION
 
-read SELECTED
+if [ "x$SELECTION" == "x2" ]; then
+    SELECTED="PetStore_Ver01+Food.yaml"
+else
+    SELECTED="PetStore_Ver00.yaml"
+fi
+
+echo -e "\nApplying $SELECTED ...\n"
 
 cp -a "$SELECTED" PetStore.yaml
 
