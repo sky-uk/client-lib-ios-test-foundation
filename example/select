@@ -6,7 +6,7 @@ SPECS=$(ls *.yaml | grep -v PetStore.yaml)
 echo -e "Available OpenAPI specs:\n"
 echo -e "1. PetStore_Ver00.yaml"
 echo -e "2. PetStore_Ver01+Food.yaml"
-echo -e "\nType the number you want to apply and press ENTER:"
+echo -e "\nType the number you want [1, 2] to apply and press ENTER:"
 read SELECTION
 
 if [ "x$SELECTION" == "x2" ]; then
