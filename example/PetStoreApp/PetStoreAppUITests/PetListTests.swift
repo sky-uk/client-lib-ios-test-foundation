@@ -12,15 +12,19 @@ class PetList: SkyUITestCase {
 
         let pets = [jerry, tom]
         httpServerBuilder
-            .handleLogin()
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
             .route(MockResponses.Pet.findByStatus(pets: pets))
             .buildAndStart()
 
         // When
         appLaunch()
-        LoginTests.performLogin()
 
         // Then
+        exist(withTextEquals("Please login"))
+        typeText(withTextInput("Username"), ValidCredentials.username)
+        typeText(withSecureTextInput("Password"), ValidCredentials.password)
+        tap(withButton("Login"))
+
         exist(withTextEquals(tom.name))
         exist(withTextEquals(jerry.name))
     }
@@ -32,15 +36,19 @@ class PetList: SkyUITestCase {
 
         let pets = [jerry, tom]
         httpServerBuilder
-            .handleLogin()
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
             .route(MockResponses.Pet.findByStatus(pets: pets))
             .buildAndStart()
 
         // When
         appLaunch()
-        LoginTests.performLogin()
 
         // Then
+        exist(withTextEquals("Please login"))
+        typeText(withTextInput("Username"), ValidCredentials.username)
+        typeText(withSecureTextInput("Password"), ValidCredentials.password)
+        tap(withButton("Login"))
+
         tap(withTextEquals(tom.name))
         exist(withTextEquals("Network Error"))
     }
@@ -52,16 +60,20 @@ class PetList: SkyUITestCase {
 
         let pets = [jerry, tom]
         httpServerBuilder
-            .handleLogin()
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
             .route(MockResponses.Pet.findByStatus(pets: pets))
             .route(MockResponses.Pet.getPetById(tom))
             .buildAndStart()
 
         // When
         appLaunch()
-        LoginTests.performLogin()
 
         // Then
+        exist(withTextEquals("Please login"))
+        typeText(withTextInput("Username"), ValidCredentials.username)
+        typeText(withSecureTextInput("Password"), ValidCredentials.password)
+        tap(withButton("Login"))
+
         tap(withTextEquals(tom.name))
     }
 
@@ -72,7 +84,7 @@ class PetList: SkyUITestCase {
 
         let pets = [jerry, tom]
         httpServerBuilder
-            .handleLogin()
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
             .route(MockResponses.Pet.findByStatus(pets: pets), on: { request in
                 assertEquals(request.queryParam("status"), "available")
             })
@@ -81,9 +93,13 @@ class PetList: SkyUITestCase {
 
         // When
         appLaunch()
-        LoginTests.performLogin()
 
         // Then
+        exist(withTextEquals("Please login"))
+        typeText(withTextInput("Username"), ValidCredentials.username)
+        typeText(withSecureTextInput("Password"), ValidCredentials.password)
+        tap(withButton("Login"))
+
         tap(withTextEquals(tom.name))
     }
 
@@ -94,7 +110,7 @@ class PetList: SkyUITestCase {
 
         let pets = [jerry, tom]
         httpServerBuilder
-            .handleLogin()
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
             .route(endpoint: MockResponses.Pet.findByStatus(pets: pets).endpoint) { request in
                 assertEquals(request.queryParam("status"), "available")
                 return HttpResponse(body: pets.encoded())
@@ -104,9 +120,13 @@ class PetList: SkyUITestCase {
 
         // When
         appLaunch()
-        LoginTests.performLogin()
 
         // Then
+        exist(withTextEquals("Please login"))
+        typeText(withTextInput("Username"), ValidCredentials.username)
+        typeText(withSecureTextInput("Password"), ValidCredentials.password)
+        tap(withButton("Login"))
+
         tap(withTextEquals(tom.name))
     }
 

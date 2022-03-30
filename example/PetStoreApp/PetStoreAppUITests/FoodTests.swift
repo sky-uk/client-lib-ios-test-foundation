@@ -15,7 +15,7 @@ class FoodTests: SkyUITestCase {
         httpServerBuilder.routeImagesAt(path: "/v2/food/:path/image", properties: nil)
         
         httpServerBuilder
-            .handleLogin()
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
             .route(MockResponses.Pet.findByStatus(pets: [jerry, tom]))
             .route(MockResponses.Pet.getPetById(tom))
             .route(MockResponses.Food.foodSuggestions(foods: [food]))
@@ -23,9 +23,13 @@ class FoodTests: SkyUITestCase {
 
         // When
         appLaunch()
-        LoginTests.performLogin()
 
         // Then
+        exist(withTextEquals("Please login"))
+        typeText(withTextInput("Username"), ValidCredentials.username)
+        typeText(withSecureTextInput("Password"), ValidCredentials.password)
+        tap(withButton("Login"))
+
         tap(withTextEquals(tom.name))
         
         tap(withButton("Suggest food"))

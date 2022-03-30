@@ -36,7 +36,6 @@
 		33EF628527CE51A200AC572D /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF628427CE51A200AC572D /* Services.swift */; };
 		33F1851327EDF62C0010150C /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1851227EDF62C0010150C /* FoodView.swift */; };
 		33F1851527EDF7DA0010150C /* FoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1851427EDF7DA0010150C /* FoodTests.swift */; };
-		33F81B9F27F1E78500D2AF66 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF626A27CE3C8100AC572D /* Routes.swift */; };
 		33F81BA127F1E90B00D2AF66 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F81BA027F1E90B00D2AF66 /* Utils.swift */; };
 		33F81BA327F1E9DC00D2AF66 /* PetStoreSDKTests in Frameworks */ = {isa = PBXBuildFile; productRef = 33F81BA227F1E9DC00D2AF66 /* PetStoreSDKTests */; };
 		FA02CA6127EF560F0025C620 /* PetStoreSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FA02CA6027EF560F0025C620 /* PetStoreSDK */; };
@@ -446,7 +445,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				33EF624027CE399B00AC572D /* LoginAPITests.swift in Sources */,
-				33F81B9F27F1E78500D2AF66 /* Routes.swift in Sources */,
 				33F81BA127F1E90B00D2AF66 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

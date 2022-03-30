@@ -1,60 +1,41 @@
 import XCTest
 import SkyTestFoundation
 
-struct ValidCredentials {
-    static let username = "Ale"
-    static let password = "Secret"
-}
-
-extension UITestHttpServerBuilder {
-    func handleLogin() -> UITestHttpServerBuilder {
-        route(endpoint: Routes.User.login()) { request in
-            guard
-                request.queryParam("username") == ValidCredentials.username,
-                request.queryParam("password") == ValidCredentials.password else {
-                    return MockResponses.User.unauthorizedLogin().response
-                }
-
-            return MockResponses.User.successLogin().response
-        }
-    }
-}
-
 class LoginTests: SkyUITestCase {
-
-    static func performLogin(username: String = ValidCredentials.username,
-                             password: String = ValidCredentials.password) {
-        exist(withTextEquals("Please login"))
-        typeText(withTextInput("Username"), username)
-        typeText(withSecureTextInput("Password"), password)
-        tap(withButton("Login"))
-    }
 
     func testLogin() {
         // Given
         httpServerBuilder
-            .handleLogin()
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
             .buildAndStart()
 
         // When
         appLaunch()
 
         // Then
-        LoginTests.performLogin()
+        exist(withTextEquals("Please login"))
+        typeText(withTextInput("Username"), ValidCredentials.username)
+        typeText(withSecureTextInput("Password"), ValidCredentials.password)
+        tap(withButton("Login"))
+
         notExist(withTextEquals("Please login"))
     }
 
     func testLoginGivenUnauthorized() {
         // Given
         httpServerBuilder
-            .handleLogin()
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
             .buildAndStart()
 
         // When
         appLaunch()
 
         // Then
-        LoginTests.performLogin(username: "Wrong", password: "Credentials")
+        exist(withTextEquals("Please login"))
+        typeText(withTextInput("Username"), "Wrong")
+        typeText(withSecureTextInput("Password"), "Credentials")
+        tap(withButton("Login"))
+
         exist(withTextEquals("Invalid Credentials"))
         tap(withButton("OK"))
         exist(withTextEquals("Please login"))

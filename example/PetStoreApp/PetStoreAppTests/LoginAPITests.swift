@@ -20,7 +20,7 @@ class LoginAPITests: SkyUnitTestCase {
         
         let apiResponse = ApiResponse.mock(code: 200)
         
-        httpServerBuilder.route(Routes.User.login().path) { request, callCount in
+        httpServerBuilder.route("/v2/user/login") { request, callCount in
             loginCallCount = callCount
             assertEquals(request.queryParam("username"), "Alessandro")
             assertEquals(request.queryParam("password"), "Secret")
