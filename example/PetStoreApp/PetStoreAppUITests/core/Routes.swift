@@ -3,25 +3,21 @@ import SkyTestFoundation
 import PetStoreSDK
 import PetStoreSDKTests
 
-struct ValidCredentials {
-    static let username = "Ale"
-    static let password = "Secret"
-}
-
 struct Routes {
     struct User {
         static func login() -> HttpEndpoint { HttpEndpoint("/v2/user/login", HttpMethod.get) }
 
-        static var loginHandler: (HttpRequest) -> HttpResponse = { request in
-            guard
-                request.queryParam("username") == ValidCredentials.username,
-                request.queryParam("password") == ValidCredentials.password else {
-                return MockResponses.User.unauthorizedLogin().response
+        static func loginHandler(username: String, password: String) -> ((HttpRequest) -> HttpResponse) {
+            { request in
+                guard
+                    request.queryParam("username") == username,
+                    request.queryParam("password") == password else {
+                    return MockResponses.User.unauthorizedLogin().response
+                }
+
+                return MockResponses.User.successLogin().response
             }
-
-            return MockResponses.User.successLogin().response
         }
-
     }
 
     struct Pet {

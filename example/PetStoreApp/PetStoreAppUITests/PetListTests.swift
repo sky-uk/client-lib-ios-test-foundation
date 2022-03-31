@@ -12,7 +12,7 @@ class PetList: SkyUITestCase {
 
         let pets = [jerry, tom]
         httpServerBuilder
-            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
             .route(MockResponses.Pet.findByStatus(pets: pets))
             .buildAndStart()
 
@@ -21,8 +21,8 @@ class PetList: SkyUITestCase {
 
         // Then
         exist(withTextEquals("Please login"))
-        typeText(withTextInput("Username"), ValidCredentials.username)
-        typeText(withSecureTextInput("Password"), ValidCredentials.password)
+        typeText(withTextInput("Username"), "Ale")
+        typeText(withSecureTextInput("Password"), "Secret")
         tap(withButton("Login"))
 
         exist(withTextEquals(tom.name))
@@ -36,7 +36,7 @@ class PetList: SkyUITestCase {
 
         let pets = [jerry, tom]
         httpServerBuilder
-            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
             .route(MockResponses.Pet.findByStatus(pets: pets))
             .buildAndStart()
 
@@ -45,8 +45,8 @@ class PetList: SkyUITestCase {
 
         // Then
         exist(withTextEquals("Please login"))
-        typeText(withTextInput("Username"), ValidCredentials.username)
-        typeText(withSecureTextInput("Password"), ValidCredentials.password)
+        typeText(withTextInput("Username"), "Ale")
+        typeText(withSecureTextInput("Password"), "Secret")
         tap(withButton("Login"))
 
         tap(withTextEquals(tom.name))
@@ -60,7 +60,7 @@ class PetList: SkyUITestCase {
 
         let pets = [jerry, tom]
         httpServerBuilder
-            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
             .route(MockResponses.Pet.findByStatus(pets: pets))
             .route(MockResponses.Pet.getPetById(tom))
             .buildAndStart()
@@ -70,8 +70,8 @@ class PetList: SkyUITestCase {
 
         // Then
         exist(withTextEquals("Please login"))
-        typeText(withTextInput("Username"), ValidCredentials.username)
-        typeText(withSecureTextInput("Password"), ValidCredentials.password)
+        typeText(withTextInput("Username"), "Ale")
+        typeText(withSecureTextInput("Password"), "Secret")
         tap(withButton("Login"))
 
         tap(withTextEquals(tom.name))
@@ -84,7 +84,7 @@ class PetList: SkyUITestCase {
 
         let pets = [jerry, tom]
         httpServerBuilder
-            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
             .route(MockResponses.Pet.findByStatus(pets: pets), on: { request in
                 assertEquals(request.queryParam("status"), "available")
             })
@@ -96,8 +96,8 @@ class PetList: SkyUITestCase {
 
         // Then
         exist(withTextEquals("Please login"))
-        typeText(withTextInput("Username"), ValidCredentials.username)
-        typeText(withSecureTextInput("Password"), ValidCredentials.password)
+        typeText(withTextInput("Username"), "Ale")
+        typeText(withSecureTextInput("Password"), "Secret")
         tap(withButton("Login"))
 
         tap(withTextEquals(tom.name))
@@ -110,7 +110,7 @@ class PetList: SkyUITestCase {
 
         let pets = [jerry, tom]
         httpServerBuilder
-            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler)
+            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
             .route(endpoint: MockResponses.Pet.findByStatus(pets: pets).endpoint) { request in
                 assertEquals(request.queryParam("status"), "available")
                 return HttpResponse(body: pets.encoded())
@@ -123,8 +123,8 @@ class PetList: SkyUITestCase {
 
         // Then
         exist(withTextEquals("Please login"))
-        typeText(withTextInput("Username"), ValidCredentials.username)
-        typeText(withSecureTextInput("Password"), ValidCredentials.password)
+        typeText(withTextInput("Username"), "Ale")
+        typeText(withSecureTextInput("Password"), "Secret")
         tap(withButton("Login"))
 
         tap(withTextEquals(tom.name))
