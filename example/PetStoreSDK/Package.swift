@@ -14,8 +14,8 @@ let package = Package(
         .library(name: "PetStoreSDKTests", targets: ["PetStoreSDKTests"])
     ],
     dependencies: [
-        .package(name: "ReactiveAPI", url: "https://github.com/sky-uk/ReactiveAPI", from: "1.13.0"),
-        .package(name: "SkyTestFoundation", url: "https://github.com/sky-uk/client-lib-ios-test-foundation", from: "2.0.3")
+        .package(name: "ReactiveAPI", url: "https://github.com/sky-uk/ReactiveAPI", from: "1.13.3"),
+        .package(name: "SkyTestFoundation", url: "https://github.com/sky-uk/client-lib-ios-test-foundation", from: "2.5.7")
     ],
     targets: [
         .target(

@@ -1,7 +1,7 @@
 #!/bin/bash -e
 SWAGGER_CODEGEN_DOWNLOAD_URL="https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.33/swagger-codegen-cli-3.0.33.jar"
 SWAGGER_CODEGEN_JAR="codegen/swagger-codegen-cli.jar"
-SWIFT_CODEGEN_JAR="codegen/swift-codegen-1.0.0.jar"
+SWIFT_CODEGEN_JAR="codegen/swift-codegen-1.0.3.jar"
 PACKAGE_NAME="PetStoreSDK"
 PACKAGE_VERSION="1.0.0"
 
