@@ -1,5 +1,5 @@
 import Foundation
 
-@MainActor class UserSession: ObservableObject {
-    @Published var isUserLogged = false
+ class UserSession: ObservableObject {
+     @MainActor @Published var isUserLogged = false
 }
