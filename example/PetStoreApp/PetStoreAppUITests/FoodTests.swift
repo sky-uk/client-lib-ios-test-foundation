@@ -15,7 +15,8 @@ class FoodTests: SkyUITestCase {
         httpServerBuilder.routeImagesAt(path: "/v2/food/:path/image", properties: nil)
         
         httpServerBuilder
-            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
+            .route(endpoint: Routes.User.login(),
+                   on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
             .route(MockResponses.Pet.findByStatus(pets: [jerry, tom]))
             .route(MockResponses.Pet.getPetById(tom))
             .route(MockResponses.Food.foodSuggestions(foods: [food]))

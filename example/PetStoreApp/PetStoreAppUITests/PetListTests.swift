@@ -10,10 +10,10 @@ class PetList: SkyUITestCase {
         let tom = Pet.mock(name: "Tom")
         let jerry = Pet.mock(name: "Jerry")
 
-        let pets = [jerry, tom]
         httpServerBuilder
-            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
-            .route(MockResponses.Pet.findByStatus(pets: pets))
+            .route(endpoint: Routes.User.login(),
+                   on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
+            .route(MockResponses.Pet.findByStatus(pets: [jerry, tom]))
             .buildAndStart()
 
         // When
@@ -34,10 +34,10 @@ class PetList: SkyUITestCase {
         let tom = Pet.mock(name: "Tom")
         let jerry = Pet.mock(name: "Jerry")
 
-        let pets = [jerry, tom]
         httpServerBuilder
-            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
-            .route(MockResponses.Pet.findByStatus(pets: pets))
+            .route(endpoint: Routes.User.login(),
+                   on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
+            .route(MockResponses.Pet.findByStatus(pets: [jerry, tom]))
             .buildAndStart()
 
         // When
@@ -58,10 +58,10 @@ class PetList: SkyUITestCase {
         let tom = Pet.mock(name: "Tom")
         let jerry = Pet.mock(name: "Jerry")
 
-        let pets = [jerry, tom]
         httpServerBuilder
-            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
-            .route(MockResponses.Pet.findByStatus(pets: pets))
+            .route(endpoint: Routes.User.login(),
+                   on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
+            .route(MockResponses.Pet.findByStatus(pets: [jerry, tom]))
             .route(MockResponses.Pet.getPetById(tom))
             .buildAndStart()
 
@@ -83,8 +83,10 @@ class PetList: SkyUITestCase {
         let jerry = Pet.mock(name: "Jerry")
 
         let pets = [jerry, tom]
+
         httpServerBuilder
-            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
+            .route(endpoint: Routes.User.login(),
+                   on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
             .route(MockResponses.Pet.findByStatus(pets: pets), on: { request in
                 assertEquals(request.queryParam("status"), "available")
             })
@@ -109,6 +111,7 @@ class PetList: SkyUITestCase {
         let jerry = Pet.mock(name: "Jerry")
 
         let pets = [jerry, tom]
+
         httpServerBuilder
             .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
             .route(endpoint: MockResponses.Pet.findByStatus(pets: pets).endpoint) { request in

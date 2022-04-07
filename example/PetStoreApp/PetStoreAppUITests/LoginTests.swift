@@ -6,7 +6,8 @@ class LoginTests: SkyUITestCase {
     func testLogin() {
         // Given
         httpServerBuilder
-            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
+            .route(endpoint: Routes.User.login(),
+                   on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
             .buildAndStart()
 
         // When
@@ -24,7 +25,8 @@ class LoginTests: SkyUITestCase {
     func testLoginGivenUnauthorized() {
         // Given
         httpServerBuilder
-            .route(endpoint: Routes.User.login(), on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
+            .route(endpoint: Routes.User.login(),
+                   on: Routes.User.loginHandler(username: "Ale", password: "Secret"))
             .buildAndStart()
 
         // When
