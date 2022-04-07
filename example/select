@@ -41,6 +41,7 @@ else
         sed -i.bak 's/\/\* FOOD ADDITIONS START \*\//\/\* FOOD ADDITIONS START/' $file
         sed -i.bak 's/\/\* FOOD ADDITIONS END \*\//FOOD ADDITIONS END \*\//' $file
     done
+    git checkout PetStoreSDK/Sources/PetStoreSDK/PetStoreSDKInfo.swift
 fi
 
 rm -rf $(find . -name '*.bak')
