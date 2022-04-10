@@ -1,4 +1,7 @@
 # Sky Test Foundation (SkyTF) iOS [![CircleCI](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master.svg?style=svg&circle-token=6a18106ecc99952ea6841f658f86282b5ff557f5)](https://circleci.com/gh/sky-uk/client-lib-ios-test-foundation/tree/master)
+
+Presented live on stage at [Swift Heroes 2022 Torino](https://swiftheroes.com/2022/). [Presentation deck](https://github.com/sky-uk/client-lib-ios-test-foundation/blob/master/swiftheroes2022.pdf).
+
 Sky Test Foundation defines a domain specific language to facilitate developers writing automatic tests.
 
 It's meant to be mobile app tests' `lingua franca`. Out of the box, it allows you to port tests between iOS and Android by simply copy-pasting Swift to Kotlin or vice-versa. Sky Test Foundation for Android is still in progress.
