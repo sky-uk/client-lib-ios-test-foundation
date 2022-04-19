@@ -69,6 +69,11 @@ public extension XCUIElement {
         let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
         return staticTexts.containing(predicate).firstMatch
     }
+
+    func withTextContains(_ value: String) -> XCUIElementQuery {
+        let predicate = NSPredicate(format: "label CONTAINS[c] %@", value)
+        return staticTexts.containing(predicate)
+    }
 }
 
 public extension String {
