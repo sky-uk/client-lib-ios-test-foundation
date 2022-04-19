@@ -116,7 +116,7 @@ More details of the user story are illustrated in the following picture
 And finally let's test with the help of SkyTF's DSL.
  
 ```swift
-class PetList: SkyUITestCase {
+class PetListTests: SkyUITestCase {
 
     func testDisplayPetListView() {
 
