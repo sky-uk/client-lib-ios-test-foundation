@@ -1,7 +1,7 @@
 import XCTest
 import Foundation
 
-let expectationTimeout: Double = 30
+let expectationTimeout: Double = 15
 let notExpectationTimeout: Double = 1
 
 @discardableResult
