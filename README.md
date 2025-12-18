@@ -16,7 +16,7 @@ during test execution.
 * UX = User Experience
 * SUT = System Under Test
 * MA = Mobile App
-* BE = Backend
+* BE = Backend 
 
 ## Adopted Test Technique
 Sky Test Foundation adopts BlackBox test technique. In general, BlackBox test technique does not require specific knowledge of the application's code, internal structure and/or programming knowledge. MA is seen as a black box as illustrated below:
